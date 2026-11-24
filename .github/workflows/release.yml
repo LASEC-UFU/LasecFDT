@@ -49,7 +49,11 @@ jobs:
 
       - name: WiX Toolset 3.14
         run: |
-          choco install wixtoolset --version 3.14.1 --no-progress -y
+          # O windows-latest já traz o WiX 3.14; instala só se faltar.
+          if (-not (Get-ChildItem "${env:ProgramFiles(x86)}" -Directory -Filter 'WiX Toolset v3*' -ErrorAction SilentlyContinue)) {
+            choco install wixtoolset --no-progress -y
+            if ($LASTEXITCODE -ne 0) { throw 'Falha ao instalar o WiX' }
+          }
           $wix = Get-ChildItem "${env:ProgramFiles(x86)}" -Directory -Filter 'WiX Toolset v3*' | Sort-Object Name -Descending | Select-Object -First 1
           if (-not $wix) { throw 'WiX não instalado' }
           "WIX_BIN=$($wix.FullName)\bin" >> $env:GITHUB_ENV
