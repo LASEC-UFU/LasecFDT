@@ -139,17 +139,32 @@ Regras que o Host garante, independentemente da UI:
 | Diálogos e telas extras pedidos pelo DTM | ⬜ (doc 09: o worker já emite o evento) |
 | Importar projetos do PACTware | ⛔ formato proprietário, não documentado |
 
-## 8. Implantação no servidor
+## 8. Instalação e implantação no servidor
 
-1. Instale em `Program Files\LasecFDT\`: a UI (`lasecfdt_ui.exe` e a pasta `data`) e, em `engine\`, o Host, o worker e as DLLs do motor. A UI procura o Host em `engine\` (ou em `LASECFDT_HOST`).
-2. **Crie `%ProgramData%\LasecFDT` dando a permissão Modificar ao grupo Usuários.** Isso é tarefa do instalador. Por padrão, uma subpasta criada por um usuário fica só dele: sem essa permissão, cada estação cai no modo isolado e a UI mostra o aviso.
-3. Os DTMs são instalados uma vez no servidor, como hoje.
-4. **Portas:**
+**Instalador:** `LasecFDT-<versão>.msi`, publicado nos Releases do GitHub pelo workflow `.github/workflows/release.yml` (Actions → "Release LasecFDT" → versão). Localmente: `tools\release\build-release.ps1 -Version X.Y.Z -WixDir <WiX 3.14\bin>`.
+
+| O MSI faz | Detalhe |
+|---|---|
+| Instala em `C:\Program Files (x86)\LasecFDT\` | A UI (`lasecfdt_ui.exe` e a pasta `data`, com o runtime VC++ ao lado) e o motor em `engine\` (Host, worker, `lasecfdt.exe`). Pacote de 32 bits, como o motor e os DTMs |
+| Cria `C:\ProgramData\LasecFDT\` com escrita para o grupo **Usuários** | Pasta da planta (projetos, catálogo, arrendamentos, auditoria). É permanente: desinstalar não apaga projetos |
+| Merge modules oficiais **redistribuíveis** da FDT 1.2.1 (§7.1.4) | `FDT_100`: `FDT100.dll` e type library, componente compartilhado com contagem de referência (não quebra o PACTware). `FDT_XMLSchemata`: `engine\FDT XML Schemas\` |
+| Atalhos | Menu Iniciar e área de trabalho |
+| Atualização | Uma versão nova substitui a anterior (MajorUpgrade) |
+
+**Schemas do Frame:**
+- A licença da FDT 1.2 (PNO) permite só uso interno, então os schemas de protocolo HART da 1.2 não vão no instalador.
+- Na primeira execução, o motor monta `C:\ProgramData\LasecFDT\FDTSchemas-<hash>\` (`FdtSchemaLocator`). Ela combina os schemas 1.2.1 instalados com as subpastas de protocolo (§6.4) que outros Frames já instalaram na máquina, por exemplo o PACTware: HART `036D1498-…`, PROFIBUS e outros.
+- Validado a partir do MSI extraído: 41 schemas mais 13 subpastas de protocolo encontradas nesta máquina.
+- Sem outro Frame na máquina, os schemas HART podem faltar. Nesse caso, informe a pasta em `LASECFDT_SCHEMA_PATH`.
+
+**No servidor de terminal:**
+1. Instale o MSI uma vez, como administrador. Instale também os DTMs dos instrumentos, como hoje.
+2. **Portas:**
    - modems nos thin clients chegam por redirecionamento de porta COM do RDP, e cada estação tem a sua;
    - modems no próprio servidor são disputados pelo arrendamento;
    - gateways WirelessHART e HART-IP chegam pela rede.
-5. Mantenha o padrão do RDS de pasta temporária por sessão. O LasecFDT já separa os seus temporários por sessão e por estação.
-6. Opcional: `ngen install` do Host, do worker e das DLLs do motor reduz a memória privada por processo.
+3. Mantenha o padrão do RDS de pasta temporária por sessão.
+4. Opcional: `ngen install` do Host, do worker e das DLLs do motor reduz a memória privada por processo.
 
 ## 9. Validação feita (nesta máquina)
 

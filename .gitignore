@@ -8,3 +8,6 @@ TestResults/
 # Os ZIPs originais e a extração ficam apenas locais.
 *.zip
 specs/
+
+# Saídas do instalador (tools/release/build-release.ps1)
+artifacts/

@@ -74,7 +74,7 @@ namespace LasecFDT.Fdt1.Frame
         public FrameContainer(string schemaPath = null, string dataRoot = null)
         {
             // LASECFDT_SCHEMA_PATH: substitui o diretório de schemas (diagnóstico/experimentos).
-            SchemaPath = schemaPath ?? Environment.GetEnvironmentVariable("LASECFDT_SCHEMA_PATH") ?? Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "FDTSchemas");
+            SchemaPath = schemaPath ?? FdtSchemaLocator.Resolve();
             if (!SchemaPath.EndsWith("\\")) SchemaPath += "\\";
             DataRoot = dataRoot ?? Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "LasecFDT", "BulkData");
         }

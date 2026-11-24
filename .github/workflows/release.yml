@@ -1,0 +1,95 @@
+name: Release LasecFDT
+
+# Gera o instalador (MSI) e o pacote portátil e publica um Release no GitHub.
+# Disparo manual: Actions → "Release LasecFDT" → Run workflow → versão (ex.: v0.2.0).
+on:
+  workflow_dispatch:
+    inputs:
+      version:
+        description: "Versão (tag), ex.: v0.2.0"
+        required: true
+        type: string
+      publish_release:
+        description: "Criar a tag e publicar o Release?"
+        required: true
+        default: true
+        type: boolean
+
+permissions:
+  contents: write   # criar a tag e o Release
+
+jobs:
+  release:
+    runs-on: windows-latest
+    defaults:
+      run:
+        shell: pwsh
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Validar versão
+        run: |
+          $v = '${{ github.event.inputs.version }}'
+          if ($v -notmatch '^v?\d+\.\d+\.\d+$') { throw "Versão inválida: $v (use vX.Y.Z)" }
+          "VERSION=$($v.TrimStart('v'))" >> $env:GITHUB_ENV
+          "TAG=v$($v.TrimStart('v'))" >> $env:GITHUB_ENV
+
+      - name: .NET SDK
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: '10.0.x'
+
+      - name: Flutter
+        uses: subosito/flutter-action@v2
+        with:
+          flutter-version: '3.41.9'
+          channel: stable
+          cache: true
+
+      - name: WiX Toolset 3.14
+        run: |
+          choco install wixtoolset --version 3.14.1 --no-progress -y
+          $wix = Get-ChildItem "${env:ProgramFiles(x86)}" -Directory -Filter 'WiX Toolset v3*' | Sort-Object Name -Descending | Select-Object -First 1
+          if (-not $wix) { throw 'WiX não instalado' }
+          "WIX_BIN=$($wix.FullName)\bin" >> $env:GITHUB_ENV
+
+      # Testes que não dependem de DTMs, porta virtual nem hardware (os demais se marcam como ignorados no runner).
+      - name: Testes (sem hardware)
+        run: |
+          dotnet test tests/LasecFDT.Tests -c Release --nologo --filter "FullyQualifiedName~HostTests|FullyQualifiedName~SchemaLocatorTests"
+
+      - name: Build do instalador
+        run: |
+          ./tools/release/build-release.ps1 -Version $env:VERSION -WixDir $env:WIX_BIN
+
+      - name: Artefatos
+        uses: actions/upload-artifact@v4
+        with:
+          name: LasecFDT-${{ env.VERSION }}
+          path: |
+            artifacts/LasecFDT-${{ env.VERSION }}.msi
+            artifacts/LasecFDT-${{ env.VERSION }}-portable.zip
+
+      - name: Publicar Release
+        if: ${{ github.event.inputs.publish_release == 'true' }}
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: ${{ env.TAG }}
+          target_commitish: ${{ github.sha }}
+          name: LasecFDT ${{ env.TAG }}
+          body: |
+            **LasecFDT ${{ env.TAG }}** — Frame FDT 1.2 com interface moderna, para estações e servidores de terminal (thin clients).
+
+            **Instalação:** execute `LasecFDT-${{ env.VERSION }}.msi` como administrador (no servidor de terminal, uma vez para todas as estações).
+            - Instala em `C:\Program Files (x86)\LasecFDT` (UI + motor em `engine\`).
+            - Cria `C:\ProgramData\LasecFDT` (projetos, catálogo e bloqueios compartilhados entre as estações) com permissão de escrita para Usuários.
+            - Componentes FDT 1.2.1 oficiais redistribuíveis: FDT100.dll (compartilhada, com contagem de referência) e os schemas XML do Frame.
+
+            **Requisitos:** Windows 10/11 ou Windows Server 2019+, .NET Framework 4.8, e os DTMs FDT 1.x dos instrumentos instalados no mesmo computador.
+            Os schemas de protocolo HART (FDT 1.2) não são redistribuíveis: o LasecFDT usa os já instalados por outro Frame na máquina (ex.: PACTware).
+
+            `LasecFDT-${{ env.VERSION }}-portable.zip`: os mesmos arquivos, sem instalação (sem os componentes FDT, que exigem o MSI).
+          files: |
+            artifacts/LasecFDT-${{ env.VERSION }}.msi
+            artifacts/LasecFDT-${{ env.VERSION }}-portable.zip

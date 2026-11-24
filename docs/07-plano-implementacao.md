@@ -60,9 +60,14 @@ Legenda de estado (critério do doc 08): ✅ implementado e validado · 🟡 imp
 | Níveis de usuário; diálogos/telas extras pedidos pelo DTM | ⬜ |
 | Validação num servidor de terminal real com 8 sessões | ⛔ sem servidor RDS nesta máquina |
 
-## Fase 5 — Instalador
+## Fase 5 — Instalador (concluída — doc 11 §8)
 
-MSI com os merge modules oficiais (`FDT_100.msm`, `FDT_XMLSchemata.msm`, `FDT_InteropAssembly.msm`) conforme §7.1.4; schemas por protocolo em subpastas `<protocolId>\` (§6.4).
+| Item | Estado |
+|---|---|
+| MSI (WiX 3.14) com UI, motor, pasta da planta com permissão para Usuários e atalhos | ✅ (extração administrativa validada: app roda a partir do pacote) |
+| Merge modules redistribuíveis FDT 1.2.1: `FDT_100`, `FDT_XMLSchemata` | ✅ (`FDT_InteropAssembly` não é necessário: o interop vai junto do motor; PROFIBUS fica de fora por conflito de arquivos) |
+| Schemas de protocolo (§6.4) | ✅ compostos na execução a partir dos de outros Frames da máquina (os HART da FDT 1.2 não são redistribuíveis) |
+| Release automático no GitHub (`.github/workflows/release.yml`) | ✅ |
 
 ## Fase 6 — FDT 2.x
 

@@ -41,6 +41,12 @@ A UI acha o Host em `engine\` ao lado dela (instalação), em `LASECFDT_HOST`, o
 src\LasecFDT.Cli\bin\Debug\net48\lasecfdt.exe sim --serial CNCB0      # o Comm DTM usa COM20
 ```
 
+## Instalador e Release
+
+- **Instalar:** baixe `LasecFDT-<versão>.msi` em *Releases* no GitHub e execute como administrador. No servidor de terminal, uma vez vale para todas as estações. Detalhes no [doc 11 §8](docs/11-ui-thinclient.md).
+- **Publicar uma versão:** GitHub → Actions → **Release LasecFDT** → *Run workflow* → versão (ex.: `v0.1.0`). O workflow compila, roda os testes que não dependem de hardware, gera o MSI e o zip portátil, cria a tag e publica o Release.
+- **Gerar localmente:** `tools\release\build-release.ps1 -Version 0.1.0 -WixDir "<WiX 3.14>\bin"`. Saída em `artifacts\`.
+
 ## Comandos
 
 ```powershell
