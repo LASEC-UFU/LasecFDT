@@ -76,7 +76,8 @@ namespace LasecFDT.Fdt1.Frame
         {
             var sources = new List<string> { installed };
             sources.AddRange(protocolDirs);
-            string stamp = string.Join("|", sources.Select(s =>
+            // "layout2": arquivos de protocolo também na raiz (pastas montadas antes disso não são reaproveitadas).
+            string stamp = "layout2|" + string.Join("|", sources.Select(s =>
             {
                 var files = Directory.GetFiles(s, "*", SearchOption.AllDirectories);
                 return s + ":" + files.Length + ":" + (files.Length == 0 ? 0 : files.Max(f => File.GetLastWriteTimeUtc(f).Ticks));
@@ -98,6 +99,15 @@ namespace LasecFDT.Fdt1.Frame
                         string dest = Path.Combine(tmp, Path.GetFileName(p));
                         if (!Directory.Exists(dest)) CopyTree(p, dest); // o primeiro Frame encontrado vence
                     }
+                    // Os DTMs resolvem "x-schema:FDTHARTCommunicationSchema.xml" etc. na RAIZ da pasta informada (é assim que
+                    // o PACTware os instala; verificado: sem eles na raiz, TT301 e CodeWrights não trocam dados HART).
+                    // Os schemas do merge module 1.2.1 têm prioridade; entre protocolos, o primeiro encontrado vence.
+                    foreach (var p in protocolDirs)
+                        foreach (var f in Directory.GetFiles(p))
+                        {
+                            string dest = Path.Combine(tmp, Path.GetFileName(f));
+                            if (!File.Exists(dest)) File.Copy(f, dest);
+                        }
                     File.WriteAllText(Path.Combine(tmp, ".complete"), stamp);
                     try { Directory.Move(tmp, target); }
                     catch (IOException) { try { Directory.Delete(tmp, true); } catch { } } // outra sessão montou antes

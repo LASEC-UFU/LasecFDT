@@ -28,6 +28,7 @@ namespace LasecFDT.Tests
                 Assert.StartsWith(target, a);
                 Assert.True(File.Exists(Path.Combine(a, "DTMInformationSchema.xml")));
                 Assert.True(File.Exists(Path.Combine(a, "036D1498-387B-11D4-86E1-00E0987270B9", "FDTHARTCommunicationSchema.xml")));
+                Assert.True(File.Exists(Path.Combine(a, "FDTHARTCommunicationSchema.xml"))); // também na raiz, onde os DTMs procuram
                 // Mesmo conteúdo: reaproveita a pasta (outra estação/sessão não remonta).
                 Assert.Equal(a, FdtSchemaLocator.Compose(installed, new[] { other }, new[] { target }));
                 Assert.Single(Directory.GetDirectories(target));

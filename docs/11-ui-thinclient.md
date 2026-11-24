@@ -154,8 +154,10 @@ Regras que o Host garante, independentemente da UI:
 **Schemas do Frame:**
 - A licença da FDT 1.2 (PNO) permite só uso interno, então os schemas de protocolo HART da 1.2 não vão no instalador.
 - Na primeira execução, o motor monta `C:\ProgramData\LasecFDT\FDTSchemas-<hash>\` (`FdtSchemaLocator`). Ela combina os schemas 1.2.1 instalados com as subpastas de protocolo (§6.4) que outros Frames já instalaram na máquina, por exemplo o PACTware: HART `036D1498-…`, PROFIBUS e outros.
+- Os arquivos dessas subpastas também são copiados para a **raiz** da pasta montada, porque é lá que os DTMs procuram `x-schema:FDTHARTCommunicationSchema.xml` e os demais (é assim que o PACTware os instala). O `v0.1.0` só os copiava para a subpasta; isso foi corrigido no `v0.1.1`.
 - Validado a partir do MSI extraído: 41 schemas mais 13 subpastas de protocolo encontradas nesta máquina.
-- Sem outro Frame na máquina, os schemas HART podem faltar. Nesse caso, informe a pasta em `LASECFDT_SCHEMA_PATH`.
+- **Os schemas HART são obrigatórios.** Em teste com o simulador, sem eles os DTMs dizem que conectaram mas não trocam dados: o comparar do TT301 não lê nada do instrumento, e a cadeia CodeWrights → TT301 não envia nenhum quadro HART. É uma falha silenciosa.
+- Sem outro Frame na máquina (por exemplo, o PACTware), os schemas HART faltam. Nesse caso, informe uma pasta com eles em `LASECFDT_SCHEMA_PATH`.
 
 **No servidor de terminal:**
 1. Instale o MSI uma vez, como administrador. Instale também os DTMs dos instrumentos, como hoje.
