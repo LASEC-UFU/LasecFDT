@@ -1,0 +1,26 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <!--
+    Backend de UMA estação (uma sessão do Windows). Iniciado pela UI com stdin/stdout redirecionados.
+    net48 x86: mesmo runtime dos workers (imagens nativas do .NET Framework compartilhadas entre processos
+    e sessões do servidor) e mesma vista 32 bits do registro em que os DTMs estão registrados.
+    Não hospeda DTMs nem ActiveX: isso fica nos workers.
+  -->
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net48</TargetFramework>
+    <PlatformTarget>x86</PlatformTarget>
+    <LangVersion>latest</LangVersion>
+    <AssemblyName>LasecFDT.Host</AssemblyName>
+    <RootNamespace>LasecFDT.Host</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\LasecFDT.Core\LasecFDT.Core.csproj" />
+    <ProjectReference Include="..\LasecFDT.Fdt1\LasecFDT.Fdt1.csproj" />
+    <ProjectReference Include="..\LasecFDT.Supervisor\LasecFDT.Supervisor.csproj" />
+    <!-- O worker é iniciado pelo Host: copiá-lo para a mesma pasta (WorkerLocator procura ao lado). -->
+    <ProjectReference Include="..\LasecFDT.Worker.Fdt1\LasecFDT.Worker.Fdt1.csproj" ReferenceOutputAssembly="false" />
+  </ItemGroup>
+
+</Project>

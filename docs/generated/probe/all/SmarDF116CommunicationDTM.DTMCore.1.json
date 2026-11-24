@@ -1,0 +1,250 @@
+{
+  "clsid": "BB98D12E-6CDB-4DCF-9EA6-D88E090F6E54",
+  "systemTag": "LASEC-BF15C9B4",
+  "startedAt": "2026-11-23T18:44:45.3935875-03:00",
+  "hostProcess": "x86 / CLR 4.0.30319.42000",
+  "created": true,
+  "environmentAccepted": true,
+  "configured": true,
+  "releasedCleanly": true,
+  "finalState": "Released",
+  "persistenceKind": "StreamInit",
+  "interfaces": {
+    "IBtm": false,
+    "IBtmActiveXControl": false,
+    "IBtmInformation": false,
+    "IBtmParameter": false,
+    "IDtm": true,
+    "IDtm2": false,
+    "IDtmActiveXControl": false,
+    "IDtmActiveXInformation": true,
+    "IDtmApplication": false,
+    "IDtmAuditTrailEvents": false,
+    "IDtmChannel": true,
+    "IDtmDiagnosis": false,
+    "IDtmDocumentation": false,
+    "IDtmEvents": false,
+    "IDtmEvents2": false,
+    "IDtmHardwareIdentification": false,
+    "IDtmImportExport": false,
+    "IDtmInformation": true,
+    "IDtmInformation2": false,
+    "IDtmOnlineDiagnosis": false,
+    "IDtmOnlineParameter": false,
+    "IDtmParameter": true,
+    "IDtmRedundancyEvents": false,
+    "IDtmScanEvents": false,
+    "IDtmSingleDeviceDataAccess": false,
+    "IDtmSingleDeviceDataAccessEvents": false,
+    "IDtmSingleInstanceDataAccess": false,
+    "IDtmSingleInstanceDataAccessEvents": false,
+    "IFdtActiveX": false,
+    "IFdtActiveX2": false,
+    "IFdtBtmTopology": false,
+    "IFdtBulkData": false,
+    "IFdtChannel": false,
+    "IFdtChannelActiveXControl": false,
+    "IFdtChannelActiveXControl2": false,
+    "IFdtChannelActiveXInformation": false,
+    "IFdtChannelCollection": false,
+    "IFdtChannelScan": false,
+    "IFdtChannelSubTopology": false,
+    "IFdtChannelSubTopology2": false,
+    "IFdtCommunication": false,
+    "IFdtCommunicationEvents": false,
+    "IFdtCommunicationEvents2": false,
+    "IFdtContainer": false,
+    "IFdtDialog": false,
+    "IFdtEvents": true,
+    "IFdtFunctionBlockData": false,
+    "IFdtTopology": false,
+    "IPersistStreamInit": true,
+    "IPersistPropertyBag": false,
+    "IOleObject": false
+  },
+  "missingMandatoryDtmInterfaces": [
+    "IDtm2",
+    "IDtmDocumentation",
+    "IDtmDiagnosis",
+    "IDtmInformation2",
+    "IDtmOnlineDiagnosis",
+    "IDtmSingleInstanceDataAccess"
+  ],
+  "information": {
+    "fdtVersion": "1.2",
+    "name": "DF116-DF117 Comm DTM",
+    "vendor": "Smar",
+    "version": "3.0.0.8",
+    "date": "2025-03-27",
+    "deviceTypes": [
+      {
+        "index": 0,
+        "name": "DF116-DF117",
+        "vendor": "Smar",
+        "version": "1.0.1",
+        "date": "2011-08-30",
+        "busCategories": [
+          "HART"
+        ],
+        "variants": [],
+        "outerXml": "<fdt:DtmDeviceType xmlns:fdt=\"x-schema:FDTDataTypesSchema.xml\"><fdt:VersionInformation name=\"DF116-DF117\" version=\"1.0.1\" vendor=\"Smar\" date=\"2011-08-30\" /><fdt:SupportedLanguages><fdt:LanguageId languageId=\"1033\" /></fdt:SupportedLanguages><fdt:BusCategories><fdt:BusCategory busCategory=\"036D1498-387B-11D4-86E1-00E0987270B9\" busCategoryName=\"HART\"><fdt:CommunicationTypeEntry communicationType=\"supported\" /></fdt:BusCategory></fdt:BusCategories></fdt:DtmDeviceType>"
+      }
+    ]
+  },
+  "informationXml": "<?xml version=\"1.0\"?>\r\n<?xml-stylesheet type='text/xsl' href='DTMStyleSheet.xsl' ?>\r\n<FDT xmlns=\"x-schema:DTMInformationSchema.xml\" xmlns:fdt=\"x-schema:FDTDataTypesSchema.xml\" xmlns:fdtappid=\"x-schema:FDTApplicationIdSchema.xml\">\r\n\t<DtmInfo>\r\n\t\t<FDTVersion major=\"1\" minor=\"2\"/>\r\n\t\t<fdt:VersionInformation name=\"DF116-DF117 Comm DTM\" version=\"3.0.0.8\" vendor=\"Smar\" date=\"2025-03-27\"/>\r\n\t\t<DtmDeviceTypes>\r\n\t\t\t<fdt:DtmDeviceType>\r\n\t\t\t\t<fdt:VersionInformation name=\"DF116-DF117\" version=\"1.0.1\" vendor=\"Smar\" date=\"2011-08-30\"/>\r\n\t\t\t\t<fdt:SupportedLanguages>\r\n\t\t\t\t\t<fdt:LanguageId languageId=\"1033\"/>\r\n\t\t\t\t</fdt:SupportedLanguages>\r\n\t\t\t\t<fdt:BusCategories>\r\n\t\t\t\t\t<fdt:BusCategory busCategory=\"036D1498-387B-11D4-86E1-00E0987270B9\" busCategoryName=\"HART\"><fdt:CommunicationTypeEntry communicationType=\"supported\"/></fdt:BusCategory></fdt:BusCategories>\r\n\t\t\t</fdt:DtmDeviceType>\r\n\t\t</DtmDeviceTypes>\r\n\t</DtmInfo>\r\n</FDT>\r\n",
+  "functions": [
+    {
+      "functionId": "2",
+      "name": "OfflineParameterize",
+      "applicationId": "fdtOfflineParameterize",
+      "isStandard": true,
+      "enabled": true,
+      "hidden": false,
+      "path": ""
+    },
+    {
+      "functionId": "1",
+      "name": "1",
+      "isStandard": false,
+      "enabled": true,
+      "hidden": false,
+      "path": ""
+    },
+    {
+      "functionId": "2",
+      "name": "2",
+      "applicationId": "fdtOfflineParameterize",
+      "isStandard": true,
+      "enabled": true,
+      "hidden": false,
+      "path": ""
+    }
+  ],
+  "activeXByFunction": {
+    "2 OfflineParameterize": "F1EF798F-8A76-4CCC-A610-61B019717206",
+    "1 1": "(nenhum)",
+    "2 2": "F1EF798F-8A76-4CCC-A610-61B019717206"
+  },
+  "savedDataSet": {
+    "kind": "StreamInit",
+    "streamBase64": "SAAAADcAOAA2ADcAMwAzAEIANgAtADEAQQAzADgALQA0ADAAMAA4AC0AOAAyADcAOQAtADMANQAxADkAOQBDADMAMQAxADAANgBDAAQAAAADAAAApAMAADwAZgBkAHQAOgBEAHQAbQBEAGUAdgBpAGMAZQBUAHkAcABlACAAeABtAGwAbgBzADoAZgBkAHQAPQAiAHgALQBzAGMAaABlAG0AYQA6AEYARABUAEQAYQB0AGEAVAB5AHAAZQBzAFMAYwBoAGUAbQBhAC4AeABtAGwAIgA+ADwAZgBkAHQAOgBWAGUAcgBzAGkAbwBuAEkAbgBmAG8AcgBtAGEAdABpAG8AbgAgAG4AYQBtAGUAPQAiAEQARgAxADEANgAtAEQARgAxADEANwAiACAAdgBlAHIAcwBpAG8AbgA9ACIAMQAuADAALgAxACIAIAB2AGUAbgBkAG8AcgA9ACIAUwBtAGEAcgAiACAAZABhAHQAZQA9ACIAMgAwADEAMQAtADAAOAAtADMAMAAiAC8APgA8AGYAZAB0ADoAUwB1AHAAcABvAHIAdABlAGQATABhAG4AZwB1AGEAZwBlAHMAPgA8AGYAZAB0ADoATABhAG4AZwB1AGEAZwBlAEkAZAAgAGwAYQBuAGcAdQBhAGcAZQBJAGQAPQAiADEAMAAzADMAIgAvAD4APAAvAGYAZAB0ADoAUwB1AHAAcABvAHIAdABlAGQATABhAG4AZwB1AGEAZwBlAHMAPgA8AGYAZAB0ADoAQgB1AHMAQwBhAHQAZQBnAG8AcgBpAGUAcwA+ADwAZgBkAHQAOgBCAHUAcwBDAGEAdABlAGcAbwByAHkAIABiAHUAcwBDAGEAdABlAGcAbwByAHkAPQAiADAAMwA2AEQAMQA0ADkAOAAtADMAOAA3AEIALQAxADEARAA0AC0AOAA2AEUAMQAtADAAMABFADAAOQA4ADcAMgA3ADAAQgA5ACIAIABiAHUAcwBDAGEAdABlAGcAbwByAHkATgBhAG0AZQA9ACIASABBAFIAVAAiAD4APABmAGQAdAA6AEMAbwBtAG0AdQBuAGkAYwBhAHQAaQBvAG4AVAB5AHAAZQBFAG4AdAByAHkAIABjAG8AbQBtAHUAbgBpAGMAYQB0AGkAbwBuAFQAeQBwAGUAPQAiAHMAdQBwAHAAbwByAHQAZQBkACIALwA+ADwALwBmAGQAdAA6AEIAdQBzAEMAYQB0AGUAZwBvAHIAeQA+ADwALwBmAGQAdAA6AEIAdQBzAEMAYQB0AGUAZwBvAHIAaQBlAHMAPgA8AC8AZgBkAHQAOgBEAHQAbQBEAGUAdgBpAGMAZQBUAHkAcABlAD4AAAAAAAAAAAADAAAAQAAAAEMAaABhAG4AbgBlAGwAUAByAG8AcABlAHIAdAB5ADoAOgBDAGgAYQBuAG4AZQBsAF8ASQBkADoAOgB0AGEAZwAIABgAAABDAEgAQQBOAE4ARQBMAF8AVABBAEcAAAA0AAAAbQBfAGQAdABtAFYAYQByAGkAYQBiAGwAZQBzAC4AbQBfAG8AVABhAGcAQgBsAG8AYwBrAAgAFgAAAEgAQQBSAFQAIABCAEwATwBDAEsAAAA2AAAAbQBfAGQAdABtAFYAYQByAGkAYQBiAGwAZQBzAC4AbQBfAG8AVABhAGcAQgBsAG8AYwBrADIACAAMAAAAMAAwADAAMAAwAAAAFgAAAEQARgAxADEANgAtAEQARgAxADEANwAUAAAASABBAFIAVAAgAEIATABPAEMASwAKAAAAMAAwADAAMAAwAA==",
+    "savedUtc": "2026-11-23T21:44:45.7771733Z"
+  },
+  "steps": [
+    {
+      "step": "CoCreateInstance",
+      "ok": true,
+      "result": "System.__ComObject",
+      "durationMs": 51,
+      "stateAfter": "Up"
+    },
+    {
+      "step": "QueryInterface (inventário)",
+      "ok": true,
+      "result": "IDtm, IDtmActiveXInformation, IDtmChannel, IDtmInformation, IDtmParameter, IFdtEvents, IPersistStreamInit",
+      "durationMs": 0,
+      "stateAfter": "Up"
+    },
+    {
+      "step": "IPersistStreamInit::InitNew",
+      "ok": true,
+      "durationMs": 0,
+      "stateAfter": "NewCreated"
+    },
+    {
+      "step": "IDtm::Environment",
+      "ok": true,
+      "result": "TRUE",
+      "durationMs": 202,
+      "stateAfter": "NewEnabled"
+    },
+    {
+      "step": "IDtm::SetLanguage(0x0409)",
+      "ok": true,
+      "result": "TRUE",
+      "durationMs": 0,
+      "stateAfter": "NewEnabled"
+    },
+    {
+      "step": "IDtmInformation::GetInformation",
+      "ok": true,
+      "result": "FDT 1.2; Smar DF116-DF117 Comm DTM 3.0.0.8; 1 device type(s)",
+      "durationMs": 25,
+      "stateAfter": "NewEnabled"
+    },
+    {
+      "step": "IDtm::InitNew",
+      "ok": true,
+      "result": "TRUE",
+      "durationMs": 1,
+      "stateAfter": "Running"
+    },
+    {
+      "step": "IDtm::Config",
+      "ok": true,
+      "result": "TRUE",
+      "durationMs": 4,
+      "stateAfter": "Configured"
+    },
+    {
+      "step": "IDtm::GetFunctions",
+      "ok": true,
+      "result": "3 função(ões); default=",
+      "durationMs": 7,
+      "stateAfter": "Configured"
+    },
+    {
+      "step": "IDtmActiveXInformation::GetActiveXGuid",
+      "ok": true,
+      "result": "F1EF798F-8A76-4CCC-A610-61B019717206",
+      "durationMs": 31,
+      "stateAfter": "Configured"
+    },
+    {
+      "step": "IDtmActiveXInformation::GetActiveXGuid",
+      "ok": true,
+      "result": "",
+      "durationMs": 1,
+      "stateAfter": "Configured"
+    },
+    {
+      "step": "IDtmActiveXInformation::GetActiveXGuid",
+      "ok": true,
+      "result": "F1EF798F-8A76-4CCC-A610-61B019717206",
+      "durationMs": 1,
+      "stateAfter": "Configured"
+    },
+    {
+      "step": "IPersistStreamInit::Save",
+      "ok": true,
+      "result": "1354 bytes",
+      "durationMs": 2,
+      "stateAfter": "Configured"
+    },
+    {
+      "step": "IDtm::PrepareToRelease",
+      "ok": true,
+      "result": "TRUE",
+      "durationMs": 19,
+      "stateAfter": "Configured"
+    },
+    {
+      "step": "aguardar IDtmEvents::OnPreparedToRelease",
+      "ok": true,
+      "result": "155 ms",
+      "durationMs": 0,
+      "stateAfter": "Configured"
+    },
+    {
+      "step": "IUnknown::Release (final)",
+      "ok": true,
+      "result": "refs RCW restantes=0",
+      "durationMs": 0,
+      "stateAfter": "Released"
+    }
+  ],
+  "events": [
+    "18:44:45.776 IDtmEvents.OnParameterChanged tag=LASEC-BF15C9B4 ",
+    "18:44:45.927 IDtmEvents.OnPreparedToRelease tag=LASEC-BF15C9B4 "
+  ]
+}

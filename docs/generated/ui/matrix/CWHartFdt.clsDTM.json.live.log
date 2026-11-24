@@ -1,0 +1,98 @@
+21:45:20.016 [t1] 25 DTM(s) hospedáveis neste processo (x86).
+21:45:20.150 [t1] [trace] -> LASEC-AA5C35E6 CoCreateInstance
+21:45:20.219 [t1] [trace] <- LASEC-AA5C35E6 OK   CoCreateInstance                                    67 ms  Up               System.__ComObject
+21:45:20.231 [t1] [trace] <- LASEC-AA5C35E6 OK   QueryInterface (inventário)                          0 ms  Up               IDtm, IDtmActiveXInformation, IDtmChannel, IDtmDocumentation, IDtmInformation, IDtmParameter, IFdtChannel, IFdtChannelSubTopology, IFdtCommunication, IFdtEvents, IFdtFunctionBlockData, IPersistStreamInit, IPersistPropertyBag
+21:45:20.239 [t1] [trace] -> LASEC-AA5C35E6 IPersistPropertyBag::InitNew
+21:45:20.253 [t1] [trace] <- LASEC-AA5C35E6 OK   IPersistPropertyBag::InitNew                        14 ms  NewCreated       
+21:45:20.258 [t1] [trace] -> LASEC-AA5C35E6 IDtm::Environment
+21:45:20.263 [t1] [evento] 21:45:20.263 IFdtContainer.GetXmlSchemaPath tag= C:\Source Local\LasecFDT\src\LasecFDT.TestHost\bin\Debug\net48\FDTSchemas\
+21:45:20.384 [t1] [trace] <- LASEC-AA5C35E6 OK   IDtm::Environment                                  126 ms  NewEnabled       TRUE
+21:45:20.387 [t1] [trace] -> LASEC-AA5C35E6 IDtm::SetLanguage(0x0409)
+21:45:20.393 [t1] [evento] 21:45:20.392 IDtmEvents.OnFunctionChanged tag=LASEC-AA5C35E6 
+21:45:20.396 [t1] [trace] <- LASEC-AA5C35E6 OK   IDtm::SetLanguage(0x0409)                            8 ms  NewEnabled       TRUE
+21:45:20.399 [t1] [trace] -> LASEC-AA5C35E6 IDtmInformation::GetInformation
+21:45:20.408 [t1] [trace] <- LASEC-AA5C35E6 OK   IDtmInformation::GetInformation                      9 ms  NewEnabled       FDT 1.2; Codewrights GmbH HART Communication 1.0.58; 1 device type(s)
+21:45:20.412 [t1] [trace] -> LASEC-AA5C35E6 IDtm::InitNew
+21:45:20.416 [t1] [trace] <- LASEC-AA5C35E6 OK   IDtm::InitNew                                        4 ms  Running          TRUE
+21:45:20.425 [t1] [trace] -> LASEC-AA5C35E6 IDtm::Config
+21:45:20.437 [t1] [evento] 21:45:20.437 IDtmEvents.OnFunctionChanged tag=LASEC-AA5C35E6 
+21:45:20.442 [t1] [trace] <- LASEC-AA5C35E6 OK   IDtm::Config                                        16 ms  Configured       TRUE
+21:45:20.446 [t1] [trace] -> LASEC-AA5C35E6 IDtm::PrivateDialogEnabled(True)
+21:45:20.454 [t1] [trace] <- LASEC-AA5C35E6 OK   IDtm::PrivateDialogEnabled(True)                     8 ms  Configured       TRUE
+21:45:20.461 [t1] [trace] -> LASEC-AA5C35E6 IDtm::GetFunctions
+21:45:20.491 [t1] [trace] <- LASEC-AA5C35E6 OK   IDtm::GetFunctions                                  29 ms  Configured       5 função(ões); default=
+21:45:20.510 [t1] [trace] -> LASEC-AA5C35E6 IDtmActiveXInformation::GetActiveXGuid
+21:45:20.513 [t1] [trace] <- LASEC-AA5C35E6 OK   IDtmActiveXInformation::GetActiveXGuid               3 ms  Configured       
+21:45:20.520 [t1] Função 1 'Configuration': GetActiveXGuid retornou vazio: função sem UI ActiveX.
+21:45:20.526 [t1] [trace] -> LASEC-AA5C35E6 IDtmActiveXInformation::GetActiveXGuid
+21:45:20.531 [t1] [trace] <- LASEC-AA5C35E6 OK   IDtmActiveXInformation::GetActiveXGuid               5 ms  Configured       
+21:45:20.538 [t1] Função 20 'mnChangeDeviceAddress': GetActiveXGuid retornou vazio: função sem UI ActiveX.
+21:45:20.543 [t1] [trace] -> LASEC-AA5C35E6 IDtmActiveXInformation::GetActiveXGuid
+21:45:20.547 [t1] [trace] <- LASEC-AA5C35E6 OK   IDtmActiveXInformation::GetActiveXGuid               4 ms  Configured       
+21:45:20.553 [t1] Função 30 'mnChangeDtmAddress': GetActiveXGuid retornou vazio: função sem UI ActiveX.
+21:45:20.558 [t1] [trace] -> LASEC-AA5C35E6 IDtmActiveXInformation::GetActiveXGuid
+21:45:20.563 [t1] [trace] <- LASEC-AA5C35E6 OK   IDtmActiveXInformation::GetActiveXGuid               4 ms  Configured       
+21:45:20.572 [t1] Função 10 'mnLog': GetActiveXGuid retornou vazio: função sem UI ActiveX.
+21:45:20.576 [t1] [trace] -> LASEC-AA5C35E6 IDtmActiveXInformation::GetActiveXGuid
+21:45:20.581 [t1] [trace] <- LASEC-AA5C35E6 OK   IDtmActiveXInformation::GetActiveXGuid               5 ms  Configured       
+21:45:20.587 [t1] Função 100 'mnAbout': GetActiveXGuid retornou vazio: função sem UI ActiveX.
+21:45:20.605 [t1] ERRO: Nenhuma função com UI ActiveX pôde ser aberta.
+21:45:20.611 [t1] [trace] -> LASEC-AA5C35E6 IDtm::PrepareToRelease
+21:45:20.617 [t1] [evento] 21:45:20.617 IDtmEvents.OnPreparedToRelease tag=LASEC-AA5C35E6 
+21:45:20.622 [t1] [trace] <- LASEC-AA5C35E6 OK   IDtm::PrepareToRelease                              10 ms  Configured       TRUE
+21:45:20.627 [t1] [trace] <- LASEC-AA5C35E6 OK   aguardar IDtmEvents::OnPreparedToRelease             0 ms  Configured       0 ms
+21:45:20.633 [t1] [trace] -> LASEC-AA5C35E6 IUnknown::Release (final)
+21:45:20.639 [t1] [trace] <- LASEC-AA5C35E6 OK   IUnknown::Release (final)                            6 ms  Released         refs RCW restantes=0
+21:45:20.645 [t1] [trace] -> GC.Collect/WaitForPendingFinalizers
+21:45:20.653 [t1] [trace] <- GC concluído
+22:33:36.794 [t1] Processo: DEP=ativo, emulação de thunks ATL=ativa, permanente=True
+22:33:37.911 [t1] 25 DTM(s) hospedáveis neste processo (x86).
+22:33:38.046 [t1] [trace] -> LASEC-03020FB0 CoCreateInstance
+22:33:38.118 [t1] [trace] <- LASEC-03020FB0 OK   CoCreateInstance                                    70 ms  Up               System.__ComObject
+22:33:38.131 [t1] [trace] <- LASEC-03020FB0 OK   QueryInterface (inventário)                          0 ms  Up               IDtm, IDtmActiveXInformation, IDtmChannel, IDtmDocumentation, IDtmInformation, IDtmParameter, IFdtChannel, IFdtChannelSubTopology, IFdtCommunication, IFdtEvents, IFdtFunctionBlockData, IPersistStreamInit, IPersistPropertyBag
+22:33:38.144 [t1] [trace] -> LASEC-03020FB0 IPersistPropertyBag::InitNew
+22:33:38.169 [t1] [trace] <- LASEC-03020FB0 OK   IPersistPropertyBag::InitNew                        31 ms  NewCreated       
+22:33:38.172 [t1] [trace] -> LASEC-03020FB0 IDtm::Environment
+22:33:38.180 [t1] [evento] 22:33:38.178 IFdtContainer.GetXmlSchemaPath tag= C:\Source Local\LasecFDT\src\LasecFDT.TestHost\bin\Debug\net48\FDTSchemas\
+22:33:38.343 [t1] [trace] <- LASEC-03020FB0 OK   IDtm::Environment                                  171 ms  NewEnabled       TRUE
+22:33:38.347 [t1] [trace] -> LASEC-03020FB0 IDtm::SetLanguage(0x0409)
+22:33:38.355 [t1] [evento] 22:33:38.354 IDtmEvents.OnFunctionChanged tag=LASEC-03020FB0 
+22:33:38.359 [t1] [trace] <- LASEC-03020FB0 OK   IDtm::SetLanguage(0x0409)                           12 ms  NewEnabled       TRUE
+22:33:38.363 [t1] [trace] -> LASEC-03020FB0 IDtmInformation::GetInformation
+22:33:38.373 [t1] [trace] <- LASEC-03020FB0 OK   IDtmInformation::GetInformation                     10 ms  NewEnabled       FDT 1.2; Codewrights GmbH HART Communication 1.0.58; 1 device type(s)
+22:33:38.378 [t1] [trace] -> LASEC-03020FB0 IDtm::InitNew
+22:33:38.388 [t1] [trace] <- LASEC-03020FB0 OK   IDtm::InitNew                                        9 ms  Running          TRUE
+22:33:38.394 [t1] [trace] -> LASEC-03020FB0 IDtm::Config
+22:33:38.404 [t1] [evento] 22:33:38.404 IDtmEvents.OnFunctionChanged tag=LASEC-03020FB0 
+22:33:38.414 [t1] [trace] <- LASEC-03020FB0 OK   IDtm::Config                                        20 ms  Configured       TRUE
+22:33:38.418 [t1] [trace] -> LASEC-03020FB0 IDtm::PrivateDialogEnabled(True)
+22:33:38.423 [t1] [trace] <- LASEC-03020FB0 OK   IDtm::PrivateDialogEnabled(True)                     5 ms  Configured       TRUE
+22:33:38.432 [t1] [trace] -> LASEC-03020FB0 IDtm::GetFunctions
+22:33:38.440 [t1] [trace] <- LASEC-03020FB0 OK   IDtm::GetFunctions                                   8 ms  Configured       5 função(ões); default=
+22:33:38.465 [t1] [trace] -> LASEC-03020FB0 IDtmActiveXInformation::GetActiveXGuid
+22:33:38.469 [t1] [trace] <- LASEC-03020FB0 OK   IDtmActiveXInformation::GetActiveXGuid               4 ms  Configured       
+22:33:38.473 [t1] Função 1 'Configuration': GetActiveXGuid retornou vazio: função sem UI ActiveX.
+22:33:38.479 [t1] [trace] -> LASEC-03020FB0 IDtmActiveXInformation::GetActiveXGuid
+22:33:38.483 [t1] [trace] <- LASEC-03020FB0 OK   IDtmActiveXInformation::GetActiveXGuid               4 ms  Configured       
+22:33:38.486 [t1] Função 20 'mnChangeDeviceAddress': GetActiveXGuid retornou vazio: função sem UI ActiveX.
+22:33:38.490 [t1] [trace] -> LASEC-03020FB0 IDtmActiveXInformation::GetActiveXGuid
+22:33:38.497 [t1] [trace] <- LASEC-03020FB0 OK   IDtmActiveXInformation::GetActiveXGuid               6 ms  Configured       
+22:33:38.502 [t1] Função 30 'mnChangeDtmAddress': GetActiveXGuid retornou vazio: função sem UI ActiveX.
+22:33:38.505 [t1] [trace] -> LASEC-03020FB0 IDtmActiveXInformation::GetActiveXGuid
+22:33:38.515 [t1] [trace] <- LASEC-03020FB0 OK   IDtmActiveXInformation::GetActiveXGuid               9 ms  Configured       
+22:33:38.519 [t1] Função 10 'mnLog': GetActiveXGuid retornou vazio: função sem UI ActiveX.
+22:33:38.522 [t1] [trace] -> LASEC-03020FB0 IDtmActiveXInformation::GetActiveXGuid
+22:33:38.529 [t1] [trace] <- LASEC-03020FB0 OK   IDtmActiveXInformation::GetActiveXGuid               7 ms  Configured       
+22:33:38.534 [t1] Função 100 'mnAbout': GetActiveXGuid retornou vazio: função sem UI ActiveX.
+22:33:38.551 [t1] ERRO: Nenhuma função com UI ActiveX pôde ser aberta.
+22:33:38.558 [t1] [trace] -> LASEC-03020FB0 IDtm::PrepareToRelease
+22:33:38.564 [t1] [evento] 22:33:38.564 IDtmEvents.OnPreparedToRelease tag=LASEC-03020FB0 
+22:33:38.568 [t1] [trace] <- LASEC-03020FB0 OK   IDtm::PrepareToRelease                              10 ms  Configured       TRUE
+22:33:38.572 [t1] [trace] <- LASEC-03020FB0 OK   aguardar IDtmEvents::OnPreparedToRelease             0 ms  Configured       0 ms
+22:33:38.577 [t1] [trace] -> LASEC-03020FB0 IUnknown::Release (final)
+22:33:38.582 [t1] [trace] <- LASEC-03020FB0 OK   IUnknown::Release (final)                            5 ms  Released         refs RCW restantes=0
+22:33:38.586 [t1] [trace] -> GC.Collect/WaitForPendingFinalizers
+22:33:38.593 [t1] [trace] <- GC concluído
+22:33:38.789 [t1] [saída] relatório gravado; limpeza COM na thread STA
+22:33:39.925 [t1] [saída] Close()
+[saída] Application.Run terminou; código 5

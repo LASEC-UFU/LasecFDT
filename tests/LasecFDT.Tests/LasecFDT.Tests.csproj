@@ -1,0 +1,27 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>net48</TargetFramework>
+    <PlatformTarget>x86</PlatformTarget>
+    <IsPackable>false</IsPackable>
+    <CopyFdtSchemas>true</CopyFdtSchemas>
+    <UseWindowsForms>true</UseWindowsForms>
+  </PropertyGroup>
+  <ItemGroup>
+    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.11.1" />
+    <PackageReference Include="xunit" Version="2.9.2" />
+    <PackageReference Include="xunit.runner.visualstudio" Version="2.8.2" PrivateAssets="all" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\src\LasecFDT.Core\LasecFDT.Core.csproj" />
+    <ProjectReference Include="..\..\src\LasecFDT.Fdt1\LasecFDT.Fdt1.csproj" />
+    <ProjectReference Include="..\..\src\LasecFDT.Supervisor\LasecFDT.Supervisor.csproj" />
+    <ProjectReference Include="..\..\src\LasecFDT.Host\LasecFDT.Host.csproj" />
+    <!-- Só para compilar o worker antes dos testes (executado como processo separado). -->
+    <ProjectReference Include="..\..\src\LasecFDT.Worker.Fdt1\LasecFDT.Worker.Fdt1.csproj" ReferenceOutputAssembly="false" />
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="Jigfdt.fdt100">
+      <HintPath>$(LasecFdtRoot)lib\fdt-jig\Jigfdt.fdt100.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+</Project>

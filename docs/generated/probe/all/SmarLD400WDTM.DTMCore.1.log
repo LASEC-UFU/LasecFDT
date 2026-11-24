@@ -1,0 +1,18 @@
+  [evento] 18:45:02.865 IFdtContainer.GetXmlSchemaPath tag= C:\Source Local\LasecFDT\src\LasecFDT.Cli\bin\Debug\net48\FDTSchemas\
+  [evento] 18:45:02.948 IDtmEvents.OnParameterChanged tag=LASEC-BDEA262F 
+  [evento] 18:45:03.088 IDtmEvents.OnPreparedToRelease tag=LASEC-BDEA262F 
+  OK   CoCreateInstance                                    42 ms  Up               System.__ComObject
+  OK   QueryInterface (inventário)                          0 ms  Up               IDtm, IDtmActiveXInformation, IDtmInformation, IDtmOnlineParameter, IDtmParameter, IFdtEvents, IPersistStreamInit
+  OK   IPersistStreamInit::InitNew                          0 ms  NewCreated       
+  OK   IDtm::Environment                                   43 ms  NewEnabled       TRUE
+  OK   IDtm::SetLanguage(0x0409)                            0 ms  NewEnabled       TRUE
+  OK   IDtmInformation::GetInformation                     16 ms  NewEnabled       FDT 1.2; Smar LD400 Wireless DTM 1.00; 1 device type(s)
+  OK   IDtm::InitNew                                        0 ms  Running          TRUE
+  OK   IDtm::Config                                         3 ms  Configured       TRUE
+  OK   IDtm::GetFunctions                                   4 ms  Configured       1 função(ões); default=
+  OK   IDtmActiveXInformation::GetActiveXGuid              11 ms  Configured       C056D1B0-6A97-4E77-8B6E-F73EA05FB607
+  OK   IPersistStreamInit::Save                             1 ms  Configured       1376 bytes
+  OK   IDtm::PrepareToRelease                              24 ms  Configured       TRUE
+  OK   aguardar IDtmEvents::OnPreparedToRelease             0 ms  Configured       139 ms
+  OK   IUnknown::Release (final)                            0 ms  Released         refs RCW restantes=0
+Resultado: created=True environment=True configured=True releasedCleanly=True final=Released roundTrip=

@@ -1,0 +1,202 @@
+﻿[
+    {
+        "dtm":  "JosueLab.LasecHartCommDTM.CommDtm",
+        "exitCode":  5,
+        "uiOpened":  false,
+        "colors":  null,
+        "closedCleanly":  null,
+        "note":  ""
+    },
+    {
+        "dtm":  "CWHartFdt.clsDTM",
+        "exitCode":  5,
+        "uiOpened":  false,
+        "colors":  null,
+        "closedCleanly":  null,
+        "note":  "Função 1 \u0027Configuration\u0027: GetActiveXGuid retornou vazio: função sem UI ActiveX."
+    },
+    {
+        "dtm":  "Smar.DT301DTM.1",
+        "exitCode":  0,
+        "uiOpened":  true,
+        "colors":  1916,
+        "closedCleanly":  true,
+        "note":  ""
+    },
+    {
+        "dtm":  "Smar.LD400DTM.1",
+        "exitCode":  0,
+        "uiOpened":  true,
+        "colors":  1968,
+        "closedCleanly":  true,
+        "note":  ""
+    },
+    {
+        "dtm":  "Smar.TP301DTM.1",
+        "exitCode":  0,
+        "uiOpened":  true,
+        "colors":  2536,
+        "closedCleanly":  true,
+        "note":  ""
+    },
+    {
+        "dtm":  "Smar.TT301DTM.1",
+        "exitCode":  0,
+        "uiOpened":  true,
+        "colors":  1585,
+        "closedCleanly":  true,
+        "note":  ""
+    },
+    {
+        "dtm":  "SmarDF116CommunicationDTM.DTMCore.1",
+        "exitCode":  0,
+        "uiOpened":  true,
+        "colors":  475,
+        "closedCleanly":  true,
+        "note":  ""
+    },
+    {
+        "dtm":  "SmarFY500DTM.DTMCore.1",
+        "exitCode":  0,
+        "uiOpened":  true,
+        "colors":  790,
+        "closedCleanly":  true,
+        "note":  ""
+    },
+    {
+        "dtm":  "SmarLD1_0DTM.DTMCore.1",
+        "exitCode":  0,
+        "uiOpened":  true,
+        "colors":  2104,
+        "closedCleanly":  true,
+        "note":  ""
+    },
+    {
+        "dtm":  "SmarTT481WDTM.DTMCore.1",
+        "exitCode":  0,
+        "uiOpened":  true,
+        "colors":  1407,
+        "closedCleanly":  true,
+        "note":  ""
+    },
+    {
+        "dtm":  "SmarDT400WDTM.DTMCore.1",
+        "exitCode":  0,
+        "uiOpened":  true,
+        "colors":  1731,
+        "closedCleanly":  true,
+        "note":  ""
+    },
+    {
+        "dtm":  "SmarRD500HDTM.DTMCore.1",
+        "exitCode":  5,
+        "uiOpened":  false,
+        "colors":  null,
+        "closedCleanly":  null,
+        "note":  "Função 2 \u0027OfflineParameterize\u0027: Falha ao instanciar/embutir o controle 2B016858-E508-49C3-BDC2-7777E76CAE46: Component \u0027comct232.ocx\u0027 or one of its dependencies not correctly registered: a file is missing or invalid"
+    },
+    {
+        "dtm":  "SmarLD291DTM.DTMCore.1",
+        "exitCode":  0,
+        "uiOpened":  true,
+        "colors":  909,
+        "closedCleanly":  true,
+        "note":  ""
+    },
+    {
+        "dtm":  "SmarHCC301DTM.DTMCore.1",
+        "exitCode":  0,
+        "uiOpened":  true,
+        "colors":  2913,
+        "closedCleanly":  true,
+        "note":  ""
+    },
+    {
+        "dtm":  "SmarRD400HDTM.DTMCore.1",
+        "exitCode":  0,
+        "uiOpened":  true,
+        "colors":  1410,
+        "closedCleanly":  true,
+        "note":  ""
+    },
+    {
+        "dtm":  "SmarLD400WDTM.DTMCore.1",
+        "exitCode":  0,
+        "uiOpened":  true,
+        "colors":  1363,
+        "closedCleanly":  true,
+        "note":  ""
+    },
+    {
+        "dtm":  "SmarFY400DTM.DTMCore.1",
+        "exitCode":  0,
+        "uiOpened":  true,
+        "colors":  814,
+        "closedCleanly":  true,
+        "note":  ""
+    },
+    {
+        "dtm":  "SmarTT400DTM.DTMCore.1",
+        "exitCode":  0,
+        "uiOpened":  true,
+        "colors":  1964,
+        "closedCleanly":  true,
+        "note":  ""
+    },
+    {
+        "dtm":  "SmarDF100DTM.DTMCore.1",
+        "exitCode":  0,
+        "uiOpened":  true,
+        "colors":  444,
+        "closedCleanly":  true,
+        "note":  ""
+    },
+    {
+        "dtm":  "SmarTP400WDTM.DTMCore.1",
+        "exitCode":  0,
+        "uiOpened":  true,
+        "colors":  1934,
+        "closedCleanly":  true,
+        "note":  ""
+    },
+    {
+        "dtm":  "SmarTT400WDTM.DTMCore.1",
+        "exitCode":  0,
+        "uiOpened":  true,
+        "colors":  1271,
+        "closedCleanly":  true,
+        "note":  ""
+    },
+    {
+        "dtm":  "SmarRP400DTM.DTMCore.1",
+        "exitCode":  0,
+        "uiOpened":  true,
+        "colors":  1182,
+        "closedCleanly":  true,
+        "note":  ""
+    },
+    {
+        "dtm":  "SmarFY301DTM.DTMCore.1",
+        "exitCode":  0,
+        "uiOpened":  true,
+        "colors":  825,
+        "closedCleanly":  true,
+        "note":  ""
+    },
+    {
+        "dtm":  "SmarTT421DTM.DTMCore.1",
+        "exitCode":  0,
+        "uiOpened":  true,
+        "colors":  1920,
+        "closedCleanly":  true,
+        "note":  ""
+    },
+    {
+        "dtm":  "SmarLD301DTM.DTMCore.1",
+        "exitCode":  0,
+        "uiOpened":  true,
+        "colors":  884,
+        "closedCleanly":  true,
+        "note":  ""
+    }
+]

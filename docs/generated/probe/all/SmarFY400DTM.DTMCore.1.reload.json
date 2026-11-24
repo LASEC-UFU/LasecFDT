@@ -1,0 +1,155 @@
+{
+  "clsid": "7524ED93-4F1A-4C2C-B220-5E329762BF0D",
+  "startedAt": "2026-11-23T18:45:05.2099494-03:00",
+  "hostProcess": "x86 / CLR 4.0.30319.42000",
+  "created": true,
+  "environmentAccepted": false,
+  "configured": true,
+  "releasedCleanly": true,
+  "finalState": "Released",
+  "roundTrip": "ok: data set idêntico após Load→Save",
+  "steps": [
+    {
+      "step": "CoCreateInstance",
+      "ok": true,
+      "result": "System.__ComObject",
+      "durationMs": 34,
+      "stateAfter": "Up"
+    },
+    {
+      "step": "QueryInterface (inventário)",
+      "ok": true,
+      "result": "IDtm, IDtmActiveXInformation, IDtmInformation, IDtmOnlineParameter, IDtmParameter, IFdtEvents, IPersistStreamInit",
+      "durationMs": 0,
+      "stateAfter": "Up"
+    },
+    {
+      "step": "IPersistStreamInit::Load",
+      "ok": true,
+      "result": "7898 bytes",
+      "durationMs": 9,
+      "stateAfter": "ExistingCreated"
+    },
+    {
+      "step": "IDtm::Environment",
+      "ok": true,
+      "result": "TRUE",
+      "durationMs": 36,
+      "stateAfter": "Running"
+    },
+    {
+      "step": "IDtm::SetLanguage(0x0409)",
+      "ok": true,
+      "result": "TRUE",
+      "durationMs": 0,
+      "stateAfter": "Running"
+    },
+    {
+      "step": "IDtm::Config",
+      "ok": true,
+      "result": "TRUE",
+      "durationMs": 2,
+      "stateAfter": "Configured"
+    },
+    {
+      "step": "IPersistStreamInit::Save",
+      "ok": true,
+      "result": "7898 bytes",
+      "durationMs": 0,
+      "stateAfter": "Configured"
+    },
+    {
+      "step": "IDtm::PrepareToRelease",
+      "ok": true,
+      "result": "TRUE",
+      "durationMs": 11,
+      "stateAfter": "Configured"
+    },
+    {
+      "step": "aguardar IDtmEvents::OnPreparedToRelease",
+      "ok": true,
+      "result": "91 ms",
+      "durationMs": 0,
+      "stateAfter": "Configured"
+    },
+    {
+      "step": "IUnknown::Release (final)",
+      "ok": true,
+      "result": "refs RCW restantes=0",
+      "durationMs": 0,
+      "stateAfter": "Released"
+    }
+  ],
+  "roundTripSteps": [
+    {
+      "step": "CoCreateInstance",
+      "ok": true,
+      "result": "System.__ComObject",
+      "durationMs": 34,
+      "stateAfter": "Up"
+    },
+    {
+      "step": "QueryInterface (inventário)",
+      "ok": true,
+      "result": "IDtm, IDtmActiveXInformation, IDtmInformation, IDtmOnlineParameter, IDtmParameter, IFdtEvents, IPersistStreamInit",
+      "durationMs": 0,
+      "stateAfter": "Up"
+    },
+    {
+      "step": "IPersistStreamInit::Load",
+      "ok": true,
+      "result": "7898 bytes",
+      "durationMs": 9,
+      "stateAfter": "ExistingCreated"
+    },
+    {
+      "step": "IDtm::Environment",
+      "ok": true,
+      "result": "TRUE",
+      "durationMs": 36,
+      "stateAfter": "Running"
+    },
+    {
+      "step": "IDtm::SetLanguage(0x0409)",
+      "ok": true,
+      "result": "TRUE",
+      "durationMs": 0,
+      "stateAfter": "Running"
+    },
+    {
+      "step": "IDtm::Config",
+      "ok": true,
+      "result": "TRUE",
+      "durationMs": 2,
+      "stateAfter": "Configured"
+    },
+    {
+      "step": "IPersistStreamInit::Save",
+      "ok": true,
+      "result": "7898 bytes",
+      "durationMs": 0,
+      "stateAfter": "Configured"
+    },
+    {
+      "step": "IDtm::PrepareToRelease",
+      "ok": true,
+      "result": "TRUE",
+      "durationMs": 11,
+      "stateAfter": "Configured"
+    },
+    {
+      "step": "aguardar IDtmEvents::OnPreparedToRelease",
+      "ok": true,
+      "result": "91 ms",
+      "durationMs": 0,
+      "stateAfter": "Configured"
+    },
+    {
+      "step": "IUnknown::Release (final)",
+      "ok": true,
+      "result": "refs RCW restantes=0",
+      "durationMs": 0,
+      "stateAfter": "Released"
+    }
+  ]
+}

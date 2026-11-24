@@ -1,0 +1,20 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <!-- Ferramenta de linha de comando / harness de testes do motor FDT 1.x (x86, STA). -->
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net48</TargetFramework>
+    <PlatformTarget>x86</PlatformTarget>
+    <RootNamespace>LasecFDT.Cli</RootNamespace>
+    <AssemblyName>lasecfdt</AssemblyName>
+    <UseWindowsForms>true</UseWindowsForms>
+    <CopyFdtSchemas>true</CopyFdtSchemas>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System.Management" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\LasecFDT.Core\LasecFDT.Core.csproj" />
+    <ProjectReference Include="..\LasecFDT.Fdt1\LasecFDT.Fdt1.csproj" />
+    <ProjectReference Include="..\LasecFDT.Supervisor\LasecFDT.Supervisor.csproj" />
+  </ItemGroup>
+</Project>

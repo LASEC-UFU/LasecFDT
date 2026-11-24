@@ -1,0 +1,22 @@
+{
+  "clsid": "B4B6B3E7-639D-460B-B9A0-6C7F7EB20010",
+  "systemTag": "LASEC-B6C11FB5",
+  "startedAt": "2026-11-23T18:44:32.3447654-03:00",
+  "hostProcess": "x86 / CLR 4.0.30319.42000",
+  "created": false,
+  "environmentAccepted": false,
+  "configured": false,
+  "releasedCleanly": true,
+  "finalState": "Failed",
+  "steps": [
+    {
+      "step": "CoCreateInstance",
+      "ok": false,
+      "error": "FileNotFoundException: Falha na recuperação de fábrica de classes COM do componente com CLSID {B4B6B3E7-639D-460B-B9A0-6C7F7EB20010} devido ao seguinte erro: 80070002 O sistema não pode encontrar o arquivo especificado. (Exceção de HRESULT: 0x80070002).",
+      "hResult": "0x80070002",
+      "durationMs": 53,
+      "stateAfter": "Up"
+    }
+  ],
+  "events": []
+}

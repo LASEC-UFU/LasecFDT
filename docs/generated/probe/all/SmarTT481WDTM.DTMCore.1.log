@@ -1,0 +1,18 @@
+  [evento] 18:44:52.332 IFdtContainer.GetXmlSchemaPath tag= C:\Source Local\LasecFDT\src\LasecFDT.Cli\bin\Debug\net48\FDTSchemas\
+  [evento] 18:44:52.502 IDtmEvents.OnParameterChanged tag=LASEC-771C70A1 
+  [evento] 18:44:52.696 IDtmEvents.OnPreparedToRelease tag=LASEC-771C70A1 
+  OK   CoCreateInstance                                   120 ms  Up               System.__ComObject
+  OK   QueryInterface (inventário)                          0 ms  Up               IDtm, IDtmActiveXInformation, IDtmInformation, IDtmOnlineParameter, IDtmParameter, IFdtEvents, IPersistStreamInit
+  OK   IPersistStreamInit::InitNew                          0 ms  NewCreated       
+  OK   IDtm::Environment                                  104 ms  NewEnabled       TRUE
+  OK   IDtm::SetLanguage(0x0409)                            0 ms  NewEnabled       TRUE
+  OK   IDtmInformation::GetInformation                     32 ms  NewEnabled       FDT 1.2; Smar TT481 Wireless DTM 1.00; 1 device type(s)
+  OK   IDtm::InitNew                                        1 ms  Running          TRUE
+  OK   IDtm::Config                                         4 ms  Configured       TRUE
+  OK   IDtm::GetFunctions                                   8 ms  Configured       1 função(ões); default=
+  OK   IDtmActiveXInformation::GetActiveXGuid              17 ms  Configured       F7DC1021-879D-413B-9EAF-3D3781A248FF
+  OK   IPersistStreamInit::Save                             3 ms  Configured       1376 bytes
+  OK   IDtm::PrepareToRelease                              13 ms  Configured       TRUE
+  OK   aguardar IDtmEvents::OnPreparedToRelease             0 ms  Configured       203 ms
+  OK   IUnknown::Release (final)                            0 ms  Released         refs RCW restantes=0
+Resultado: created=True environment=True configured=True releasedCleanly=True final=Released roundTrip=

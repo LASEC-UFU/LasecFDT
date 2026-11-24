@@ -1,0 +1,31 @@
+  [evento] 18:44:36.590 IFdtContainer.GetXmlSchemaPath tag= C:\Source Local\LasecFDT\src\LasecFDT.Cli\bin\Debug\net48\FDTSchemas\
+  [evento] 18:44:36.638 IDtmEvents.OnFunctionChanged tag=LASEC-3EED238C 
+  [evento] 18:44:36.654 IDtmEvents.OnFunctionChanged tag=LASEC-3EED238C 
+  [evento] 18:44:36.662 IDtmEvents.OnParameterChanged tag=LASEC-3EED238C <?xml version="1.0"?>
+<FDT xmlns="x-schema:DTMParameterSchema.xml" xmlns:fdt="x-schema:FDTDataTypesSchema.xml" 
+ fdt:storageState="persistent" fdt:dataSetState="allDataLoaded">
+ <fdt:DtmDeviceType readAccess="0" writeAccess="0">
+  <fdt:VersionInformation name="HART Communication" vendor="Codewri.
+  [evento] 18:44:36.794 IDtmEvents.OnPreparedToRelease tag=LASEC-3EED238C 
+  OK   CoCreateInstance                                    73 ms  Up               System.__ComObject
+  OK   QueryInterface (inventário)                          0 ms  Up               IDtm, IDtmActiveXInformation, IDtmChannel, IDtmDocumentation, IDtmInformation, IDtmParameter, IFdtChannel, IFdtChannelSubTopology, IFdtCommunication, IFdtEvents, IFdtFunctionBlockData, IPersistStreamInit, IPersistPropertyBag
+  OK   IPersistPropertyBag::Load                           13 ms  ExistingCreated  18 propriedades
+  OK   IDtm::Environment                                   42 ms  Running          TRUE
+  OK   IDtm::SetLanguage(0x0409)                            7 ms  Running          TRUE
+  OK   IDtm::Config                                        15 ms  Configured       TRUE
+  OK   IPersistPropertyBag::Save                            7 ms  Configured       18 propriedades
+  OK   IDtm::PrepareToRelease                               4 ms  Configured       TRUE
+  OK   aguardar IDtmEvents::OnPreparedToRelease             0 ms  Configured       8 ms
+  OK   IUnknown::Release (final)                            0 ms  Released         refs RCW restantes=0
+  -- round-trip de persistência --
+  OK   CoCreateInstance                                    73 ms  Up               System.__ComObject
+  OK   QueryInterface (inventário)                          0 ms  Up               IDtm, IDtmActiveXInformation, IDtmChannel, IDtmDocumentation, IDtmInformation, IDtmParameter, IFdtChannel, IFdtChannelSubTopology, IFdtCommunication, IFdtEvents, IFdtFunctionBlockData, IPersistStreamInit, IPersistPropertyBag
+  OK   IPersistPropertyBag::Load                           13 ms  ExistingCreated  18 propriedades
+  OK   IDtm::Environment                                   42 ms  Running          TRUE
+  OK   IDtm::SetLanguage(0x0409)                            7 ms  Running          TRUE
+  OK   IDtm::Config                                        15 ms  Configured       TRUE
+  OK   IPersistPropertyBag::Save                            7 ms  Configured       18 propriedades
+  OK   IDtm::PrepareToRelease                               4 ms  Configured       TRUE
+  OK   aguardar IDtmEvents::OnPreparedToRelease             0 ms  Configured       8 ms
+  OK   IUnknown::Release (final)                            0 ms  Released         refs RCW restantes=0
+Resultado: created=True environment=False configured=True releasedCleanly=True final=Released roundTrip=ok: data set idêntico após LoadSave

@@ -1,0 +1,18 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <!-- Aplicação mínima de testes do motor FDT 1.x: abre a UI original (ActiveX) de DTMs em modo offline. -->
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net48</TargetFramework>
+    <PlatformTarget>x86</PlatformTarget>
+    <RootNamespace>LasecFDT.TestHost</RootNamespace>
+    <AssemblyName>LasecFDT.TestHost</AssemblyName>
+    <UseWindowsForms>true</UseWindowsForms>
+    <CopyFdtSchemas>true</CopyFdtSchemas>
+    <LasecLegacyActiveXHost>true</LasecLegacyActiveXHost>
+    <ApplicationHighDpiMode>SystemAware</ApplicationHighDpiMode>
+  </PropertyGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\LasecFDT.Core\LasecFDT.Core.csproj" />
+    <ProjectReference Include="..\LasecFDT.Fdt1\LasecFDT.Fdt1.csproj" />
+  </ItemGroup>
+</Project>

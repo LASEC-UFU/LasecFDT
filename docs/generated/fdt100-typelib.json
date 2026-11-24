@@ -1,0 +1,4525 @@
+{
+  "name": "Fdt100",
+  "libId": "036D1471-387B-11D4-86E1-00E0987270B9",
+  "version": "1.20100",
+  "sourcePath": "FDT100.dll",
+  "types": [
+    {
+      "name": "FdtUUIDString",
+      "guid": "036D1472-387B-11D4-86E1-00E0987270B9",
+      "kind": "ALIAS",
+      "flags": 0,
+      "isDual": false,
+      "isHidden": false,
+      "aliasOf": "BSTR",
+      "methods": [],
+      "implements": [],
+      "members": []
+    },
+    {
+      "name": "FdtXmlDocument",
+      "guid": "036D1473-387B-11D4-86E1-00E0987270B9",
+      "kind": "ALIAS",
+      "flags": 0,
+      "isDual": false,
+      "isHidden": false,
+      "aliasOf": "BSTR",
+      "methods": [],
+      "implements": [],
+      "members": []
+    },
+    {
+      "name": "FdtXPath",
+      "guid": "036D1474-387B-11D4-86E1-00E0987270B9",
+      "kind": "ALIAS",
+      "flags": 0,
+      "isDual": false,
+      "isHidden": false,
+      "aliasOf": "BSTR",
+      "methods": [],
+      "implements": [],
+      "members": []
+    },
+    {
+      "name": "IFdtContainer",
+      "guid": "036D1487-387B-11D4-86E1-00E0987270B9",
+      "kind": "DISPATCH",
+      "flags": 4160,
+      "isDual": true,
+      "isHidden": false,
+      "baseInterface": "IDispatch",
+      "methods": [
+        {
+          "name": "SaveRequest",
+          "dispId": 1,
+          "invokeKind": "FUNC",
+          "returnType": "HRESULT",
+          "vtableOffset": 28,
+          "parameters": [
+            {
+              "name": "systemTag",
+              "type": "BSTR",
+              "in": true,
+              "out": false,
+              "retVal": false
+            },
+            {
+              "name": "result",
+              "type": "VARIANT_BOOL*",
+              "in": false,
+              "out": true,
+              "retVal": true
+            }
+          ]
+        },
+        {
+          "name": "LockDataSet",
+          "dispId": 2,
+          "invokeKind": "FUNC",
+          "returnType": "HRESULT",
+          "vtableOffset": 32,
+          "parameters": [
+            {
+              "name": "systemTag",
+              "type": "BSTR",
+              "in": true,
+              "out": false,
+              "retVal": false
+            },
+            {
+              "name": "result",
+              "type": "VARIANT_BOOL*",
+              "in": false,
+              "out": true,
+              "retVal": true
+            }
+          ]
+        },
+        {
+          "name": "UnlockDataSet",
+          "dispId": 3,
+          "invokeKind": "FUNC",
+          "returnType": "HRESULT",
+          "vtableOffset": 36,
+          "parameters": [
+            {
+              "name": "systemTag",
+              "type": "BSTR",
+              "in": true,
+              "out": false,
+              "retVal": false
+            },
+            {
+              "name": "result",
+              "type": "VARIANT_BOOL*",
+              "in": false,
+              "out": true,
+              "retVal": true
+            }
+          ]
+        },
+        {
+          "name": "GetXmlSchemaPath",
+          "dispId": 4,
+          "invokeKind": "FUNC",
+          "returnType": "HRESULT",
+          "vtableOffset": 40,
+          "parameters": [
+            {
+              "name": "result",
+              "type": "BSTR*",
+              "in": false,
+              "out": true,
+              "retVal": true
+            }
+          ]
+        }
+      ],
+      "implements": [],
+      "members": []
+    },
+    {
+      "name": "IFdtChannelCollection",
+      "guid": "E4F31A10-45BF-11D4-BBB3-0060080993FF",
+      "kind": "DISPATCH",
+      "flags": 4160,
+      "isDual": true,
+      "isHidden": false,
+      "baseInterface": "IDispatch",
+      "methods": [
+        {
+          "name": "Item",
+          "dispId": 1,
+          "invokeKind": "PROPERTYGET",
+          "returnType": "HRESULT",
+          "vtableOffset": 28,
+          "parameters": [
+            {
+              "name": "pvarIndex",
+              "type": "VARIANT*",
+              "in": true,
+              "out": false,
+              "retVal": false
+            },
+            {
+              "name": "ppRes",
+              "type": "IFdtChannel**",
+              "in": false,
+              "out": true,
+              "retVal": true
+            }
+          ]
+        },
+        {
+          "name": "Count",
+          "dispId": 2,
+          "invokeKind": "PROPERTYGET",
+          "returnType": "HRESULT",
+          "vtableOffset": 32,
+          "parameters": [
+            {
+              "name": "plCount",
+              "type": "long*",
+              "in": false,
+              "out": true,
+              "retVal": true
+            }
+          ]
+        },
+        {
+          "name": "NewEnum",
+          "dispId": -4,
+          "invokeKind": "PROPERTYGET",
+          "returnType": "HRESULT",
+          "vtableOffset": 36,
+          "parameters": [
+            {
+              "name": "ppEnumVariant",
+              "type": "IUnknown**",
+              "in": false,
+              "out": true,
+              "retVal": true
+            }
+          ]
+        }
+      ],
+      "implements": [],
+      "members": []
+    },
+    {
+      "name": "IFdtChannel",
+      "guid": "036D1488-387B-11D4-86E1-00E0987270B9",
+      "kind": "DISPATCH",
+      "flags": 4160,
+      "isDual": true,
+      "isHidden": false,
+      "baseInterface": "IDispatch",
+      "methods": [
+        {
+          "name": "GetChannelPath",
+          "dispId": 1,
+          "invokeKind": "FUNC",
+          "returnType": "HRESULT",
+          "vtableOffset": 28,
+          "parameters": [
+            {
+              "name": "result",
+              "type": "FdtXPath*",
+              "in": false,
+              "out": true,
+              "retVal": true
+            }
+          ]
+        },
+        {
+          "name": "GetChannelParameters",
+          "dispId": 2,
+          "invokeKind": "FUNC",
+          "returnType": "HRESULT",
+          "vtableOffset": 32,
+          "parameters": [
+            {
+              "name": "parameterPath",
+              "type": "FdtXPath",
+              "in": true,
+              "out": false,
+              "retVal": false
+            },
+            {
+              "name": "protocolId",
+              "type": "FdtUUIDString",
+              "in": true,
+              "out": false,
+              "retVal": false
+            },
+            {
+              "name": "result",
+              "type": "FdtXmlDocument*",
+              "in": false,
+              "out": true,
+              "retVal": true
+            }
+          ]
+        },
+        {
+          "name": "SetChannelParameters",
+          "dispId": 3,
+          "invokeKind": "FUNC",
+          "returnType": "HRESULT",
+          "vtableOffset": 36,
+          "parameters": [
+            {
+              "name": "parameterPath",
+              "type": "FdtXPath",
+              "in": true,
+              "out": false,
+              "retVal": false
+            },
+            {
+              "name": "protocolId",
+              "type": "FdtUUIDString",
+              "in": true,
+              "out": false,
+              "retVal": false
+            },
+            {
+              "name": "XmlDocument",
+              "type": "FdtXmlDocument",
+              "in": true,
+              "out": false,
+              "retVal": false
+            },
+            {
+              "name": "result",
+              "type": "VARIANT_BOOL*",
+              "in": false,
+              "out": true,
+              "retVal": true
+            }
+          ]
+        }
+      ],
+      "implements": [],
+      "members": []
+    },
+    {
+      "name": "IFdtCommunication",
+      "guid": "039ECFC4-9CA8-44E6-944D-B37F288A34D8",
+      "kind": "DISPATCH",
+      "flags": 4160,
+      "isDual": true,
+      "isHidden": false,
+      "baseInterface": "IDispatch",
+      "methods": [
+        {
+          "name": "Abort",
+          "dispId": 1,
+          "invokeKind": "FUNC",
+          "returnType": "HRESULT",
+          "vtableOffset": 28,
+          "parameters": [
+            {
+              "name": "fieldbusFrame",
+              "type": "FdtXmlDocument",
+              "in": true,
+              "out": false,
+              "retVal": false
+            }
+          ]
+        },
+        {
+          "name": "ConnectRequest",
+          "dispId": 2,
+          "invokeKind": "FUNC",
+          "returnType": "HRESULT",
+          "vtableOffset": 32,
+          "parameters": [
+            {
+              "name": "callBack",
+              "type": "IFdtCommunicationEvents*",
+              "in": true,
+              "out": false,
+              "retVal": false
+            },
+            {
+              "name": "invokeId",
+              "type": "FdtUUIDString",
+              "in": true,
+              "out": false,
+              "retVal": false
+            },
+            {
+              "name": "protocolId",
+              "type": "FdtUUIDString",
+              "in": true,
+              "out": false,
+              "retVal": false
+            },
+            {
+              "name": "fieldbusFrame",
+              "type": "FdtXmlDocument",
+              "in": true,
+              "out": false,
+              "retVal": false
+            },
+            {
+              "name": "result",
+              "type": "VARIANT_BOOL*",
+              "in": false,
+              "out": true,
+              "retVal": true
+            }
+          ]
+        },
+        {
+          "name": "DisconnectRequest",
+          "dispId": 3,
+          "invokeKind": "FUNC",
+          "returnType": "HRESULT",
+          "vtableOffset": 36,
+          "parameters": [
+            {
+              "name": "invokeId",
+              "type": "FdtUUIDString",
+              "in": true,
+              "out": false,
+              "retVal": false
+            },
+            {
+              "name": "fieldbusFrame",
+              "type": "FdtXmlDocument",
+              "in": true,
+              "out": false,
+              "retVal": false
+            },
+            {
+              "name": "result",
+              "type": "VARIANT_BOOL*",
+              "in": false,
+              "out": true,
+              "retVal": true
+            }
+          ]
+        },
+        {
+          "name": "TransactionRequest",
+          "dispId": 4,
+          "invokeKind": "FUNC",
+          "returnType": "HRESULT",
+          "vtableOffset": 40,
+          "parameters": [
+            {
+              "name": "invokeId",
+              "type": "FdtUUIDString",
+              "in": true,
+              "out": false,
+              "retVal": false
+            },
+            {
+              "name": "fieldbusFrame",
+              "type": "FdtXmlDocument",
+              "in": true,
+              "out": false,
+              "retVal": false
+            },
+            {
+              "name": "result",
+              "type": "VARIANT_BOOL*",
+              "in": false,
+              "out": true,
+              "retVal": true
+            }
+          ]
+        },
+        {
+          "name": "GetSupportedProtocols",
+          "dispId": 5,
+          "invokeKind": "FUNC",
+          "returnType": "HRESULT",
+          "vtableOffset": 44,
+          "parameters": [
+            {
+              "name": "result",
+              "type": "FdtXmlDocument*",
+              "in": false,
+              "out": true,
+              "retVal": true
+            }
+          ]
+        },
+        {
+          "name": "SequenceBegin",
+          "dispId": 6,
+          "invokeKind": "FUNC",
+          "returnType": "HRESULT",
+          "vtableOffset": 48,
+          "parameters": [
+            {
+              "name": "fieldbusFrame",
+              "type": "FdtXmlDocument",
+              "in": true,
+              "out": false,
+              "retVal": false
+            },
+            {
+              "name": "result",
+              "type": "VARIANT_BOOL*",
+              "in": false,
+              "out": true,
+              "retVal": true
+            }
+          ]
+        },
+        {
+          "name": "SequenceStart",
+          "dispId": 7,
+          "invokeKind": "FUNC",
+          "returnType": "HRESULT",
+          "vtableOffset": 52,
+          "parameters": [
+            {
+              "name": "fieldbusFrame",
+              "type": "FdtXmlDocument",
+              "in": true,
+              "out": false,
+              "retVal": false
+            },
+            {
+              "name": "result",
+              "type": "VARIANT_BOOL*",
+              "in": false,
+              "out": true,
+              "retVal": true
+            }
+          ]
+        },
+        {
+          "name": "SequenceEnd",
+          "dispId": 8,
+          "invokeKind": "FUNC",
+          "returnType": "HRESULT",
+          "vtableOffset": 56,
+          "parameters": [
+            {
+              "name": "fieldbusFrame",
+              "type": "FdtXmlDocument",
+              "in": true,
+              "out": false,
+              "retVal": false
+            },
+            {
+              "name": "result",
+              "type": "VARIANT_BOOL*",
+              "in": false,
+              "out": true,
+              "retVal": true
+            }
+          ]
+        }
+      ],
+      "implements": [],
+      "members": []
+    },
+    {
+      "name": "IFdtCommunicationEvents",
+      "guid": "036D1485-387B-11D4-86E1-00E0987270B9",
+      "kind": "DISPATCH",
+      "flags": 4160,
+      "isDual": true,
+      "isHidden": false,
+      "baseInterface": "IDispatch",
+      "methods": [
+        {
+          "name": "OnAbort",
+          "dispId": 1,
+          "invokeKind": "FUNC",
+          "returnType": "HRESULT",
+          "vtableOffset": 28,
+          "parameters": [
+            {
+              "name": "communicationReference",
+              "type": "FdtUUIDString",
+              "in": true,
+              "out": false,
+              "retVal": false
+            }
+          ]
+        },
+        {
+          "name": "OnConnectResponse",
+          "dispId": 2,
+          "invokeKind": "FUNC",
+          "returnType": "HRESULT",
+          "vtableOffset": 32,
+          "parameters": [
+            {
+              "name": "invokeId",
+              "type": "FdtUUIDString",
+              "in": true,
+              "out": false,
+              "retVal": false
+            },
+            {
+              "name": "response",
+              "type": "FdtXmlDocument",
+              "in": true,
+              "out": false,
+              "retVal": false
+            }
+          ]
+        },
+        {
+          "name": "OnDisconnectResponse",
+          "dispId": 3,
+          "invokeKind": "FUNC",
+          "returnType": "HRESULT",
+          "vtableOffset": 36,
+          "parameters": [
+            {
+              "name": "invokeId",
+              "type": "FdtUUIDString",
+              "in": true,
+              "out": false,
+              "retVal": false
+            },
+            {
+              "name": "response",
+              "type": "FdtXmlDocument",
+              "in": true,
+              "out": false,
+              "retVal": false
+            }
+          ]
+        },
+        {
+          "name": "OnTransactionResponse",
+          "dispId": 4,
+          "invokeKind": "FUNC",
+          "returnType": "HRESULT",
+          "vtableOffset": 40,
+          "parameters": [
+            {
+              "name": "invokeId",
+              "type": "FdtUUIDString",
+              "in": true,
+              "out": false,
+              "retVal": false
+            },
+            {
+              "name": "response",
+              "type": "FdtXmlDocument",
+              "in": true,
+              "out": false,
+              "retVal": false
+            }
+          ]
+        }
+      ],
+      "implements": [],
+      "members": []
+    },
+    {
+      "name": "IDtm",
+      "guid": "036D1481-387B-11D4-86E1-00E0987270B9",
+      "kind": "DISPATCH",
+      "flags": 4160,
+      "isDual": true,
+      "isHidden": false,
+      "baseInterface": "IDispatch",
+      "methods": [
+        {
+          "name": "Environment",
+          "dispId": 1,
+          "invokeKind": "FUNC",
+          "returnType": "HRESULT",
+          "vtableOffset": 28,
+          "parameters": [
+            {
+              "name": "systemTag",
+              "type": "BSTR",
+              "in": true,
+              "out": false,
+              "retVal": false
+            },
+            {
+              "name": "container",
+              "type": "IFdtContainer*",
+              "in": true,
+              "out": false,
+              "retVal": false
+            },
+            {
+              "name": "result",
+              "type": "VARIANT_BOOL*",
+              "in": false,
+              "out": true,
+              "retVal": true
+            }
+          ]
+        },
+        {
+          "name": "InitNew",
+          "dispId": 2,
+          "invokeKind": "FUNC",
+          "returnType": "HRESULT",
+          "vtableOffset": 32,
+          "parameters": [
+            {
+              "name": "deviceType",
+              "type": "FdtXmlDocument",
+              "in": true,
+              "out": false,
+              "retVal": false
+            },
+            {
+              "name": "result",
+              "type": "VARIANT_BOOL*",
+              "in": false,
+              "out": true,
+              "retVal": true
+            }
+          ]
+        },
+        {
+          "name": "Config",
+          "dispId": 3,
+          "invokeKind": "FUNC",
+          "returnType": "HRESULT",
+          "vtableOffset": 36,
+          "parameters": [
+            {
+              "name": "userInfo",
+              "type": "FdtXmlDocument",
+              "in": true,
+              "out": false,
+              "retVal": false
+            },
+            {
+              "name": "result",
+              "type": "VARIANT_BOOL*",
+              "in": false,
+              "out": true,
+              "retVal": true
+            }
+          ]
+        },
+        {
+          "name": "SetCommunication",
+          "dispId": 4,
+          "invokeKind": "FUNC",
+          "returnType": "HRESULT",
+          "vtableOffset": 40,
+          "parameters": [
+            {
+              "name": "communication",
+              "type": "IFdtCommunication*",
+              "in": true,
+              "out": false,
+              "retVal": false
+            },
+            {
+              "name": "result",
+              "type": "VARIANT_BOOL*",
+              "in": false,
+              "out": true,
+              "retVal": true
+            }
+          ]
+        },
+        {
+          "name": "PrepareToRelease",
+          "dispId": 5,
+          "invokeKind": "FUNC",
+          "returnType": "HRESULT",
+          "vtableOffset": 44,
+          "parameters": [
+            {
+              "name": "result",
+              "type": "VARIANT_BOOL*",
+              "in": false,
+              "out": true,
+              "retVal": true
+            }
+          ]
+        },
+        {
+          "name": "PrepareToReleaseCommunication",
+          "dispId": 6,
+          "invokeKind": "FUNC",
+          "returnType": "HRESULT",
+          "vtableOffset": 48,
+          "parameters": [
+            {
+              "name": "result",
+              "type": "VARIANT_BOOL*",
+              "in": false,
+              "out": true,
+              "retVal": true
+            }
+          ]
+        },
+        {
+          "name": "ReleaseCommunication",
+          "dispId": 7,
+          "invokeKind": "FUNC",
+          "returnType": "HRESULT",
+          "vtableOffset": 52,
+          "parameters": [
+            {
+              "name": "result",
+              "type": "VARIANT_BOOL*",
+              "in": false,
+              "out": true,
+              "retVal": true
+            }
+          ]
+        },
+        {
+          "name": "PrepareToDelete",
+          "dispId": 8,
+          "invokeKind": "FUNC",
+          "returnType": "HRESULT",
+          "vtableOffset": 56,
+          "parameters": [
+            {
+              "name": "result",
+              "type": "VARIANT_BOOL*",
+              "in": false,
+              "out": true,
+              "retVal": true
+            }
+          ]
+        },
+        {
+          "name": "SetLanguage",
+          "dispId": 9,
+          "invokeKind": "FUNC",
+          "returnType": "HRESULT",
+          "vtableOffset": 60,
+          "parameters": [
+            {
+              "name": "languageId",
+              "type": "long",
+              "in": true,
+              "out": false,
+              "retVal": false
+            },
+            {
+              "name": "result",
+              "type": "VARIANT_BOOL*",
+              "in": false,
+              "out": true,
+              "retVal": true
+            }
+          ]
+        },
+        {
+          "name": "GetFunctions",
+          "dispId": 10,
+          "invokeKind": "FUNC",
+          "returnType": "HRESULT",
+          "vtableOffset": 64,
+          "parameters": [
+            {
+              "name": "operationState",
+              "type": "FdtXmlDocument",
+              "in": true,
+              "out": false,
+              "retVal": false
+            },
+            {
+              "name": "result",
+              "type": "FdtXmlDocument*",
+              "in": false,
+              "out": true,
+              "retVal": true
+            }
+          ]
+        },
+        {
+          "name": "InvokeFunctionRequest",
+          "dispId": 11,
+          "invokeKind": "FUNC",
+          "returnType": "HRESULT",
+          "vtableOffset": 68,
+          "parameters": [
+            {
+              "name": "invokeId",
+              "type": "FdtUUIDString",
+              "in": true,
+              "out": false,
+              "retVal": false
+            },
+            {
+              "name": "functionCall",
+              "type": "FdtXmlDocument",
+              "in": true,
+              "out": false,
+              "retVal": false
+            },
+            {
+              "name": "result",
+              "type": "VARIANT_BOOL*",
+              "in": false,
+              "out": true,
+              "retVal": true
+            }
+          ]
+        },
+        {
+          "name": "PrivateDialogEnabled",
+          "dispId": 12,
+          "invokeKind": "FUNC",
+          "returnType": "HRESULT",
+          "vtableOffset": 72,
+          "parameters": [
+            {
+              "name": "enabled",
+              "type": "VARIANT_BOOL",
+              "in": true,
+              "out": false,
+              "retVal": false
+            },
+            {
+              "name": "result",
+              "type": "VARIANT_BOOL*",
+              "in": false,
+              "out": true,
+              "retVal": true
+            }
+          ]
+        }
+      ],
+      "implements": [],
+      "members": []
+    },
+    {
+      "name": "IDtmActiveXInformation",
+      "guid": "036D1480-387B-11D4-86E1-00E0987270B9",
+      "kind": "DISPATCH",
+      "flags": 4160,
+      "isDual": true,
+      "isHidden": false,
+      "baseInterface": "IDispatch",
+      "methods": [
+        {
+          "name": "GetActiveXGuid",
+          "dispId": 1,
+          "invokeKind": "FUNC",
+          "returnType": "HRESULT",
+          "vtableOffset": 28,
+          "parameters": [
+            {
+              "name": "functionCall",
+              "type": "FdtXmlDocument",
+              "in": true,
+              "out": false,
+              "retVal": false
+            },
+            {
+              "name": "result",
+              "type": "FdtUUIDString*",
+              "in": false,
+              "out": true,
+              "retVal": true
+            }
+          ]
+        },
+        {
+          "name": "GetActiveXProgId",
+          "dispId": 2,
+          "invokeKind": "FUNC",
+          "returnType": "HRESULT",
+          "vtableOffset": 32,
+          "parameters": [
+            {
+              "name": "functionCall",
+              "type": "FdtXmlDocument",
+              "in": true,
+              "out": false,
+              "retVal": false
+            },
+            {
+              "name": "result",
+              "type": "BSTR*",
+              "in": false,
+              "out": true,
+              "retVal": true
+            }
+          ]
+        }
+      ],
+      "implements": [],
+      "members": []
+    },
+    {
+      "name": "IDtmApplication",
+      "guid": "036D147E-387B-11D4-86E1-00E0987270B9",
+      "kind": "DISPATCH",
+      "flags": 4160,
+      "isDual": true,
+      "isHidden": false,
+      "baseInterface": "IDispatch",
+      "methods": [
+        {
+          "name": "StartApplication",
+          "dispId": 1,
+          "invokeKind": "FUNC",
+          "returnType": "HRESULT",
+          "vtableOffset": 28,
+          "parameters": [
+            {
+              "name": "invokeId",
+              "type": "FdtUUIDString",
+              "in": true,
+              "out": false,
+              "retVal": false
+            },
+            {
+              "name": "functionCall",
+              "type": "FdtXmlDocument",
+              "in": true,
+              "out": false,
+              "retVal": false
+            },
+            {
+              "name": "windowTitle",
+              "type": "BSTR",
+              "in": true,
+              "out": false,
+              "retVal": false
+            },
+            {
+              "name": "result",
+              "type": "VARIANT_BOOL*",
+              "in": false,
+              "out": true,
+              "retVal": true
+            }
+          ]
+        },
+        {
+          "name": "ExitApplication",
+          "dispId": 2,
+          "invokeKind": "FUNC",
+          "returnType": "HRESULT",
+          "vtableOffset": 32,
+          "parameters": [
+            {
+              "name": "invokeId",
+              "type": "FdtUUIDString",
+              "in": true,
+              "out": false,
+              "retVal": false
+            },
+            {
+              "name": "result",
+              "type": "VARIANT_BOOL*",
+              "in": false,
+              "out": true,
+              "retVal": true
+            }
+          ]
+        }
+      ],
+      "implements": [],
+      "members": []
+    },
+    {
+      "name": "IDtmChannel",
+      "guid": "036D1489-387B-11D4-86E1-00E0987270B9",
+      "kind": "DISPATCH",
+      "flags": 4160,
+      "isDual": true,
+      "isHidden": false,
+      "baseInterface": "IDispatch",
+      "methods": [
+        {
+          "name": "GetChannels",
+          "dispId": 1,
+          "invokeKind": "FUNC",
+          "returnType": "HRESULT",
+          "vtableOffset": 28,
+          "parameters": [
+            {
+              "name": "result",
+              "type": "IFdtChannelCollection**",
+              "in": false,
+              "out": true,
+              "retVal": true
+            }
+          ]
+        }
+      ],
+      "implements": [],
+      "members": []
+    },
+    {
+      "name": "IDtmDocumentation",
+      "guid": "036D147C-387B-11D4-86E1-00E0987270B9",
+      "kind": "DISPATCH",
+      "flags": 4160,
+      "isDual": true,
+      "isHidden": false,
+      "baseInterface": "IDispatch",
+      "methods": [
+        {
+          "name": "GetDocumentation",
+          "dispId": 1,
+          "invokeKind": "FUNC",
+          "returnType": "HRESULT",
+          "vtableOffset": 28,
+          "parameters": [
+            {
+              "name": "functionCall",
+              "type": "FdtXmlDocument",
+              "in": true,
+              "out": false,
+              "retVal": false
+            },
+            {
+              "name": "result",
+              "type": "FdtXmlDocument*",
+              "in": false,
+              "out": true,
+              "retVal": true
+            }
+          ]
+        }
+      ],
+      "implements": [],
+      "members": []
+    },
+    {
+      "name": "IDtmDiagnosis",
+      "guid": "036D1476-387B-11D4-86E1-00E0987270B9",
+      "kind": "DISPATCH",
+      "flags": 4160,
+      "isDual": true,
+      "isHidden": false,
+      "baseInterface": "IDispatch",
+      "methods": [
+        {
+          "name": "Verify",
+          "dispId": 1,
+          "invokeKind": "FUNC",
+          "returnType": "HRESULT",
+          "vtableOffset": 28,
+          "parameters": [
+            {
+              "name": "result",
+              "type": "VARIANT_BOOL*",
+              "in": false,
+              "out": true,
+              "retVal": true
+            }
+          ]
+        },
+        {
+          "name": "InitCompare",
+          "dispId": 2,
+          "invokeKind": "FUNC",
+          "returnType": "HRESULT",
+          "vtableOffset": 32,
+          "parameters": [
+            {
+              "name": "systemTag",
+              "type": "BSTR",
+              "in": true,
+              "out": false,
+              "retVal": false
+            },
+            {
+              "name": "result",
+              "type": "VARIANT_BOOL*",
+              "in": false,
+              "out": true,
+              "retVal": true
+            }
+          ]
+        },
+        {
+          "name": "Compare",
+          "dispId": 3,
+          "invokeKind": "FUNC",
+          "returnType": "HRESULT",
+          "vtableOffset": 36,
+          "parameters": [
+            {
+              "name": "result",
+              "type": "VARIANT_BOOL*",
+              "in": false,
+              "out": true,
+              "retVal": true
+            }
+          ]
+        },
+        {
+          "name": "ReleaseCompare",
+          "dispId": 4,
+          "invokeKind": "FUNC",
+          "returnType": "HRESULT",
+          "vtableOffset": 40,
+          "parameters": [
+            {
+              "name": "result",
+              "type": "VARIANT_BOOL*",
+              "in": false,
+              "out": true,
+              "retVal": true
+            }
+          ]
+        }
+      ],
+      "implements": [],
+      "members": []
+    },
+    {
+      "name": "IDtmImportExport",
+      "guid": "036D148E-387B-11D4-86E1-00E0987270B9",
+      "kind": "DISPATCH",
+      "flags": 4160,
+      "isDual": true,
+      "isHidden": false,
+      "baseInterface": "IDispatch",
+      "methods": [
+        {
+          "name": "Import",
+          "dispId": 1,
+          "invokeKind": "FUNC",
+          "returnType": "HRESULT",
+          "vtableOffset": 28,
+          "parameters": [
+            {
+              "name": "stream",
+              "type": "IStream*",
+              "in": true,
+              "out": false,
+              "retVal": false
+            },
+            {
+              "name": "result",
+              "type": "VARIANT_BOOL*",
+              "in": false,
+              "out": true,
+              "retVal": true
+            }
+          ]
+        },
+        {
+          "name": "Export",
+          "dispId": 2,
+          "invokeKind": "FUNC",
+          "returnType": "HRESULT",
+          "vtableOffset": 32,
+          "parameters": [
+            {
+              "name": "stream",
+              "type": "IStream*",
+              "in": true,
+              "out": false,
+              "retVal": false
+            },
+            {
+              "name": "result",
+              "type": "VARIANT_BOOL*",
+              "in": false,
+              "out": true,
+              "retVal": true
+            }
+          ]
+        }
+      ],
+      "implements": [],
+      "members": []
+    },
+    {
+      "name": "IStream",
+      "guid": "0000000C-0000-0000-C000-000000000046",
+      "kind": "INTERFACE",
+      "flags": 0,
+      "isDual": false,
+      "isHidden": false,
+      "baseInterface": "ISequentialStream",
+      "methods": [
+        {
+          "name": "RemoteSeek",
+          "dispId": 1610743808,
+          "invokeKind": "FUNC",
+          "returnType": "HRESULT",
+          "vtableOffset": 20,
+          "parameters": [
+            {
+              "name": "dlibMove",
+              "type": "_LARGE_INTEGER",
+              "in": true,
+              "out": false,
+              "retVal": false
+            },
+            {
+              "name": "dwOrigin",
+              "type": "unsigned long",
+              "in": true,
+              "out": false,
+              "retVal": false
+            },
+            {
+              "name": "plibNewPosition",
+              "type": "_ULARGE_INTEGER*",
+              "in": false,
+              "out": true,
+              "retVal": false
+            }
+          ]
+        },
+        {
+          "name": "SetSize",
+          "dispId": 1610743809,
+          "invokeKind": "FUNC",
+          "returnType": "HRESULT",
+          "vtableOffset": 24,
+          "parameters": [
+            {
+              "name": "libNewSize",
+              "type": "_ULARGE_INTEGER",
+              "in": true,
+              "out": false,
+              "retVal": false
+            }
+          ]
+        },
+        {
+          "name": "RemoteCopyTo",
+          "dispId": 1610743810,
+          "invokeKind": "FUNC",
+          "returnType": "HRESULT",
+          "vtableOffset": 28,
+          "parameters": [
+            {
+              "name": "pstm",
+              "type": "IStream*",
+              "in": true,
+              "out": false,
+              "retVal": false
+            },
+            {
+              "name": "cb",
+              "type": "_ULARGE_INTEGER",
+              "in": true,
+              "out": false,
+              "retVal": false
+            },
+            {
+              "name": "pcbRead",
+              "type": "_ULARGE_INTEGER*",
+              "in": false,
+              "out": true,
+              "retVal": false
+            },
+            {
+              "name": "pcbWritten",
+              "type": "_ULARGE_INTEGER*",
+              "in": false,
+              "out": true,
+              "retVal": false
+            }
+          ]
+        },
+        {
+          "name": "Commit",
+          "dispId": 1610743811,
+          "invokeKind": "FUNC",
+          "returnType": "HRESULT",
+          "vtableOffset": 32,
+          "parameters": [
+            {
+              "name": "grfCommitFlags",
+              "type": "unsigned long",
+              "in": true,
+              "out": false,
+              "retVal": false
+            }
+          ]
+        },
+        {
+          "name": "Revert",
+          "dispId": 1610743812,
+          "invokeKind": "FUNC",
+          "returnType": "HRESULT",
+          "vtableOffset": 36,
+          "parameters": []
+        },
+        {
+          "name": "LockRegion",
+          "dispId": 1610743813,
+          "invokeKind": "FUNC",
+          "returnType": "HRESULT",
+          "vtableOffset": 40,
+          "parameters": [
+            {
+              "name": "libOffset",
+              "type": "_ULARGE_INTEGER",
+              "in": true,
+              "out": false,
+              "retVal": false
+            },
+            {
+              "name": "cb",
+              "type": "_ULARGE_INTEGER",
+              "in": true,
+              "out": false,
+              "retVal": false
+            },
+            {
+              "name": "dwLockType",
+              "type": "unsigned long",
+              "in": true,
+              "out": false,
+              "retVal": false
+            }
+          ]
+        },
+        {
+          "name": "UnlockRegion",
+          "dispId": 1610743814,
+          "invokeKind": "FUNC",
+          "returnType": "HRESULT",
+          "vtableOffset": 44,
+          "parameters": [
+            {
+              "name": "libOffset",
+              "type": "_ULARGE_INTEGER",
+              "in": true,
+              "out": false,
+              "retVal": false
+            },
+            {
+              "name": "cb",
+              "type": "_ULARGE_INTEGER",
+              "in": true,
+              "out": false,
+              "retVal": false
+            },
+            {
+              "name": "dwLockType",
+              "type": "unsigned long",
+              "in": true,
+              "out": false,
+              "retVal": false
+            }
+          ]
+        },
+        {
+          "name": "Stat",
+          "dispId": 1610743815,
+          "invokeKind": "FUNC",
+          "returnType": "HRESULT",
+          "vtableOffset": 48,
+          "parameters": [
+            {
+              "name": "pstatstg",
+              "type": "tagSTATSTG*",
+              "in": false,
+              "out": true,
+              "retVal": false
+            },
+            {
+              "name": "grfStatFlag",
+              "type": "unsigned long",
+              "in": true,
+              "out": false,
+              "retVal": false
+            }
+          ]
+        },
+        {
+          "name": "Clone",
+          "dispId": 1610743816,
+          "invokeKind": "FUNC",
+          "returnType": "HRESULT",
+          "vtableOffset": 52,
+          "parameters": [
+            {
+              "name": "ppstm",
+              "type": "IStream**",
+              "in": false,
+              "out": true,
+              "retVal": false
+            }
+          ]
+        }
+      ],
+      "implements": [],
+      "members": []
+    },
+    {
+      "name": "ISequentialStream",
+      "guid": "0C733A30-2A1C-11CE-ADE5-00AA0044773D",
+      "kind": "INTERFACE",
+      "flags": 0,
+      "isDual": false,
+      "isHidden": false,
+      "baseInterface": "IUnknown",
+      "methods": [
+        {
+          "name": "RemoteRead",
+          "dispId": 1610678272,
+          "invokeKind": "FUNC",
+          "returnType": "HRESULT",
+          "vtableOffset": 12,
+          "parameters": [
+            {
+              "name": "pv",
+              "type": "unsigned char*",
+              "in": false,
+              "out": true,
+              "retVal": false
+            },
+            {
+              "name": "cb",
+              "type": "unsigned long",
+              "in": true,
+              "out": false,
+              "retVal": false
+            },
+            {
+              "name": "pcbRead",
+              "type": "unsigned long*",
+              "in": false,
+              "out": true,
+              "retVal": false
+            }
+          ]
+        },
+        {
+          "name": "RemoteWrite",
+          "dispId": 1610678273,
+          "invokeKind": "FUNC",
+          "returnType": "HRESULT",
+          "vtableOffset": 16,
+          "parameters": [
+            {
+              "name": "pv",
+              "type": "unsigned char*",
+              "in": true,
+              "out": false,
+              "retVal": false
+            },
+            {
+              "name": "cb",
+              "type": "unsigned long",
+              "in": true,
+              "out": false,
+              "retVal": false
+            },
+            {
+              "name": "pcbWritten",
+              "type": "unsigned long*",
+              "in": false,
+              "out": true,
+              "retVal": false
+            }
+          ]
+        }
+      ],
+      "implements": [],
+      "members": []
+    },
+    {
+      "name": "_LARGE_INTEGER",
+      "guid": "00000000-0000-0000-0000-000000000000",
+      "kind": "RECORD",
+      "flags": 0,
+      "isDual": false,
+      "isHidden": false,
+      "methods": [],
+      "implements": [],
+      "members": [
+        {
+          "name": "QuadPart",
+          "type": "I8"
+        }
+      ]
+    },
+    {
+      "name": "_ULARGE_INTEGER",
+      "guid": "00000000-0000-0000-0000-000000000000",
+      "kind": "RECORD",
+      "flags": 0,
+      "isDual": false,
+      "isHidden": false,
+      "methods": [],
+      "implements": [],
+      "members": [
+        {
+          "name": "QuadPart",
+          "type": "UI8"
+        }
+      ]
+    },
+    {
+      "name": "tagSTATSTG",
+      "guid": "00000000-0000-0000-0000-000000000000",
+      "kind": "RECORD",
+      "flags": 0,
+      "isDual": false,
+      "isHidden": false,
+      "methods": [],
+      "implements": [],
+      "members": [
+        {
+          "name": "pwcsName",
+          "type": "LPWSTR"
+        },
+        {
+          "name": "type",
+          "type": "unsigned long"
+        },
+        {
+          "name": "cbSize",
+          "type": "_ULARGE_INTEGER"
+        },
+        {
+          "name": "mtime",
+          "type": "_FILETIME"
+        },
+        {
+          "name": "ctime",
+          "type": "_FILETIME"
+        },
+        {
+          "name": "atime",
+          "type": "_FILETIME"
+        },
+        {
+          "name": "grfMode",
+          "type": "unsigned long"
+        },
+        {
+          "name": "grfLocksSupported",
+          "type": "unsigned long"
+        },
+        {
+          "name": "clsid",
+          "type": "GUID"
+        },
+        {
+          "name": "grfStateBits",
+          "type": "unsigned long"
+        },
+        {
+          "name": "reserved",
+          "type": "unsigned long"
+        }
+      ]
+    },
+    {
+      "name": "_FILETIME",
+      "guid": "00000000-0000-0000-0000-000000000000",
+      "kind": "RECORD",
+      "flags": 0,
+      "isDual": false,
+      "isHidden": false,
+      "methods": [],
+      "implements": [],
+      "members": [
+        {
+          "name": "dwLowDateTime",
+          "type": "unsigned long"
+        },
+        {
+          "name": "dwHighDateTime",
+          "type": "unsigned long"
+        }
+      ]
+    },
+    {
+      "name": "IDtmInformation",
+      "guid": "036D147F-387B-11D4-86E1-00E0987270B9",
+      "kind": "DISPATCH",
+      "flags": 4160,
+      "isDual": true,
+      "isHidden": false,
+      "baseInterface": "IDispatch",
+      "methods": [
+        {
+          "name": "GetInformation",
+          "dispId": 1,
+          "invokeKind": "FUNC",
+          "returnType": "HRESULT",
+          "vtableOffset": 28,
+          "parameters": [
+            {
+              "name": "result",
+              "type": "FdtXmlDocument*",
+              "in": false,
+              "out": true,
+              "retVal": true
+            }
+          ]
+        }
+      ],
+      "implements": [],
+      "members": []
+    },
+    {
+      "name": "IDtmOnlineDiagnosis",
+      "guid": "036D1477-387B-11D4-86E1-00E0987270B9",
+      "kind": "DISPATCH",
+      "flags": 4160,
+      "isDual": true,
+      "isHidden": false,
+      "baseInterface": "IDispatch",
+      "methods": [
+        {
+          "name": "Compare",
+          "dispId": 1,
+          "invokeKind": "FUNC",
+          "returnType": "HRESULT",
+          "vtableOffset": 28,
+          "parameters": [
+            {
+              "name": "result",
+              "type": "FdtXmlDocument*",
+              "in": false,
+              "out": true,
+              "retVal": true
+            }
+          ]
+        },
+        {
+          "name": "GetDeviceStatus",
+          "dispId": 2,
+          "invokeKind": "FUNC",
+          "returnType": "HRESULT",
+          "vtableOffset": 32,
+          "parameters": [
+            {
+              "name": "result",
+              "type": "FdtXmlDocument*",
+              "in": false,
+              "out": true,
+              "retVal": true
+            }
+          ]
+        }
+      ],
+      "implements": [],
+      "members": []
+    },
+    {
+      "name": "IDtmOnlineParameter",
+      "guid": "036D1483-387B-11D4-86E1-00E0987270B9",
+      "kind": "DISPATCH",
+      "flags": 4160,
+      "isDual": true,
+      "isHidden": false,
+      "baseInterface": "IDispatch",
+      "methods": [
+        {
+          "name": "CancelAction",
+          "dispId": 1,
+          "invokeKind": "FUNC",
+          "returnType": "HRESULT",
+          "vtableOffset": 28,
+          "parameters": [
+            {
+              "name": "invokeId",
+              "type": "FdtUUIDString",
+              "in": true,
+              "out": false,
+              "retVal": false
+            },
+            {
+              "name": "result",
+              "type": "VARIANT_BOOL*",
+              "in": false,
+              "out": true,
+              "retVal": true
+            }
+          ]
+        },
+        {
+          "name": "DownloadRequest",
+          "dispId": 2,
+          "invokeKind": "FUNC",
+          "returnType": "HRESULT",
+          "vtableOffset": 32,
+          "parameters": [
+            {
+              "name": "invokeId",
+              "type": "FdtUUIDString",
+              "in": true,
+              "out": false,
+              "retVal": false
+            },
+            {
+              "name": "parameterPath",
+              "type": "FdtXPath",
+              "in": true,
+              "out": false,
+              "retVal": false
+            },
+            {
+              "name": "result",
+              "type": "VARIANT_BOOL*",
+              "in": false,
+              "out": true,
+              "retVal": true
+            }
+          ]
+        },
+        {
+          "name": "UploadRequest",
+          "dispId": 3,
+          "invokeKind": "FUNC",
+          "returnType": "HRESULT",
+          "vtableOffset": 36,
+          "parameters": [
+            {
+              "name": "invokeId",
+              "type": "FdtUUIDString",
+              "in": true,
+              "out": false,
+              "retVal": false
+            },
+            {
+              "name": "parameterPath",
+              "type": "FdtXPath",
+              "in": true,
+              "out": false,
+              "retVal": false
+            },
+            {
+              "name": "result",
+              "type": "VARIANT_BOOL*",
+              "in": false,
+              "out": true,
+              "retVal": true
+            }
+          ]
+        }
+      ],
+      "implements": [],
+      "members": []
+    },
+    {
+      "name": "IDtmParameter",
+      "guid": "036D147D-387B-11D4-86E1-00E0987270B9",
+      "kind": "DISPATCH",
+      "flags": 4160,
+      "isDual": true,
+      "isHidden": false,
+      "baseInterface": "IDispatch",
+      "methods": [
+        {
+          "name": "GetParameters",
+          "dispId": 1,
+          "invokeKind": "FUNC",
+          "returnType": "HRESULT",
+          "vtableOffset": 28,
+          "parameters": [
+            {
+              "name": "parameterPath",
+              "type": "FdtXPath",
+              "in": true,
+              "out": false,
+              "retVal": false
+            },
+            {
+              "name": "result",
+              "type": "FdtXmlDocument*",
+              "in": false,
+              "out": true,
+              "retVal": true
+            }
+          ]
+        },
+        {
+          "name": "SetParameters",
+          "dispId": 2,
+          "invokeKind": "FUNC",
+          "returnType": "HRESULT",
+          "vtableOffset": 32,
+          "parameters": [
+            {
+              "name": "parameterPath",
+              "type": "FdtXPath",
+              "in": true,
+              "out": false,
+              "retVal": false
+            },
+            {
+              "name": "FdtXmlDocument",
+              "type": "FdtXmlDocument",
+              "in": true,
+              "out": false,
+              "retVal": false
+            },
+            {
+              "name": "result",
+              "type": "VARIANT_BOOL*",
+              "in": false,
+              "out": true,
+              "retVal": true
+            }
+          ]
+        }
+      ],
+      "implements": [],
+      "members": []
+    },
+    {
+      "name": "IFdtEvents",
+      "guid": "036D1478-387B-11D4-86E1-00E0987270B9",
+      "kind": "DISPATCH",
+      "flags": 4160,
+      "isDual": true,
+      "isHidden": false,
+      "baseInterface": "IDispatch",
+      "methods": [
+        {
+          "name": "OnChildParameterChanged",
+          "dispId": 1,
+          "invokeKind": "FUNC",
+          "returnType": "HRESULT",
+          "vtableOffset": 28,
+          "parameters": [
+            {
+              "name": "systemTag",
+              "type": "BSTR",
+              "in": true,
+              "out": false,
+              "retVal": false
+            }
+          ]
+        },
+        {
+          "name": "OnParameterChanged",
+          "dispId": 2,
+          "invokeKind": "FUNC",
+          "returnType": "HRESULT",
+          "vtableOffset": 32,
+          "parameters": [
+            {
+              "name": "systemTag",
+              "type": "BSTR",
+              "in": true,
+              "out": false,
+              "retVal": false
+            },
+            {
+              "name": "parameter",
+              "type": "FdtXmlDocument",
+              "in": true,
+              "out": false,
+              "retVal": false
+            }
+          ]
+        },
+        {
+          "name": "OnLockDataSet",
+          "dispId": 3,
+          "invokeKind": "FUNC",
+          "returnType": "HRESULT",
+          "vtableOffset": 36,
+          "parameters": [
+            {
+              "name": "systemTag",
+              "type": "BSTR",
+              "in": true,
+              "out": false,
+              "retVal": false
+            },
+            {
+              "name": "userName",
+              "type": "BSTR",
+              "in": true,
+              "out": false,
+              "retVal": false
+            }
+          ]
+        },
+        {
+          "name": "OnUnlockDataSet",
+          "dispId": 4,
+          "invokeKind": "FUNC",
+          "returnType": "HRESULT",
+          "vtableOffset": 40,
+          "parameters": [
+            {
+              "name": "systemTag",
+              "type": "BSTR",
+              "in": true,
+              "out": false,
+              "retVal": false
+            },
+            {
+              "name": "userName",
+              "type": "BSTR",
+              "in": true,
+              "out": false,
+              "retVal": false
+            },
+            {
+              "name": "result",
+              "type": "VARIANT_BOOL*",
+              "in": false,
+              "out": true,
+              "retVal": true
+            }
+          ]
+        }
+      ],
+      "implements": [],
+      "members": []
+    },
+    {
+      "name": "IDtmActiveXControl",
+      "guid": "036D1486-387B-11D4-86E1-00E0987270B9",
+      "kind": "DISPATCH",
+      "flags": 4160,
+      "isDual": true,
+      "isHidden": false,
+      "baseInterface": "IDispatch",
+      "methods": [
+        {
+          "name": "Init",
+          "dispId": 1,
+          "invokeKind": "FUNC",
+          "returnType": "HRESULT",
+          "vtableOffset": 28,
+          "parameters": [
+            {
+              "name": "invokeId",
+              "type": "FdtUUIDString",
+              "in": true,
+              "out": false,
+              "retVal": false
+            },
+            {
+              "name": "functionCall",
+              "type": "FdtXmlDocument",
+              "in": true,
+              "out": false,
+              "retVal": false
+            },
+            {
+              "name": "dtm",
+              "type": "IDtm*",
+              "in": true,
+              "out": false,
+              "retVal": false
+            },
+            {
+              "name": "result",
+              "type": "VARIANT_BOOL*",
+              "in": false,
+              "out": true,
+              "retVal": true
+            }
+          ]
+        },
+        {
+          "name": "PrepareToRelease",
+          "dispId": 2,
+          "invokeKind": "FUNC",
+          "returnType": "HRESULT",
+          "vtableOffset": 32,
+          "parameters": [
+            {
+              "name": "result",
+              "type": "VARIANT_BOOL*",
+              "in": false,
+              "out": true,
+              "retVal": true
+            }
+          ]
+        }
+      ],
+      "implements": [],
+      "members": []
+    },
+    {
+      "name": "IFdtChannelActiveXInformation",
+      "guid": "F2BD2970-13FA-470C-A28C-6A5969A04037",
+      "kind": "DISPATCH",
+      "flags": 4160,
+      "isDual": true,
+      "isHidden": false,
+      "baseInterface": "IDispatch",
+      "methods": [
+        {
+          "name": "GetChannelActiveXGuid",
+          "dispId": 1,
+          "invokeKind": "FUNC",
+          "returnType": "HRESULT",
+          "vtableOffset": 28,
+          "parameters": [
+            {
+              "name": "functionCall",
+              "type": "FdtXmlDocument",
+              "in": true,
+              "out": false,
+              "retVal": false
+            },
+            {
+              "name": "result",
+              "type": "FdtUUIDString*",
+              "in": false,
+              "out": true,
+              "retVal": true
+            }
+          ]
+        },
+        {
+          "name": "GetChannelActiveXProgId",
+          "dispId": 2,
+          "invokeKind": "FUNC",
+          "returnType": "HRESULT",
+          "vtableOffset": 32,
+          "parameters": [
+            {
+              "name": "functionCall",
+              "type": "FdtXmlDocument",
+              "in": true,
+              "out": false,
+              "retVal": false
+            },
+            {
+              "name": "result",
+              "type": "BSTR*",
+              "in": false,
+              "out": true,
+              "retVal": true
+            }
+          ]
+        },
+        {
+          "name": "GetChannelFunctions",
+          "dispId": 3,
+          "invokeKind": "FUNC",
+          "returnType": "HRESULT",
+          "vtableOffset": 36,
+          "parameters": [
+            {
+              "name": "operationState",
+              "type": "FdtXmlDocument",
+              "in": true,
+              "out": false,
+              "retVal": false
+            },
+            {
+              "name": "result",
+              "type": "FdtXmlDocument*",
+              "in": false,
+              "out": true,
+              "retVal": true
+            }
+          ]
+        }
+      ],
+      "implements": [],
+      "members": []
+    },
+    {
+      "name": "IFdtChannelSubTopology",
+      "guid": "036D1484-387B-11D4-86E1-00E0987270B9",
+      "kind": "DISPATCH",
+      "flags": 4160,
+      "isDual": true,
+      "isHidden": false,
+      "baseInterface": "IDispatch",
+      "methods": [
+        {
+          "name": "ScanRequest",
+          "dispId": 1,
+          "invokeKind": "FUNC",
+          "returnType": "HRESULT",
+          "vtableOffset": 28,
+          "parameters": [
+            {
+              "name": "invokeId",
+              "type": "FdtUUIDString",
+              "in": true,
+              "out": false,
+              "retVal": false
+            },
+            {
+              "name": "result",
+              "type": "VARIANT_BOOL*",
+              "in": false,
+              "out": true,
+              "retVal": true
+            }
+          ]
+        },
+        {
+          "name": "ValidateAddChild",
+          "dispId": 2,
+          "invokeKind": "FUNC",
+          "returnType": "HRESULT",
+          "vtableOffset": 32,
+          "parameters": [
+            {
+              "name": "childsystemTag",
+              "type": "BSTR",
+              "in": true,
+              "out": false,
+              "retVal": false
+            },
+            {
+              "name": "result",
+              "type": "VARIANT_BOOL*",
+              "in": false,
+              "out": true,
+              "retVal": true
+            }
+          ]
+        },
+        {
+          "name": "ValidateRemoveChild",
+          "dispId": 4,
+          "invokeKind": "FUNC",
+          "returnType": "HRESULT",
+          "vtableOffset": 36,
+          "parameters": [
+            {
+              "name": "childsystemTag",
+              "type": "BSTR",
+              "in": true,
+              "out": false,
+              "retVal": false
+            },
+            {
+              "name": "result",
+              "type": "VARIANT_BOOL*",
+              "in": false,
+              "out": true,
+              "retVal": true
+            }
+          ]
+        },
+        {
+          "name": "OnAddChild",
+          "dispId": 5,
+          "invokeKind": "FUNC",
+          "returnType": "HRESULT",
+          "vtableOffset": 40,
+          "parameters": [
+            {
+              "name": "childsystemTag",
+              "type": "BSTR",
+              "in": true,
+              "out": false,
+              "retVal": false
+            }
+          ]
+        },
+        {
+          "name": "OnRemoveChild",
+          "dispId": 6,
+          "invokeKind": "FUNC",
+          "returnType": "HRESULT",
+          "vtableOffset": 44,
+          "parameters": [
+            {
+              "name": "childsystemTag",
+              "type": "BSTR",
+              "in": true,
+              "out": false,
+              "retVal": false
+            }
+          ]
+        }
+      ],
+      "implements": [],
+      "members": []
+    },
+    {
+      "name": "IFdtFunctionBlockData",
+      "guid": "036D1475-387B-11D4-86E1-00E0987270B9",
+      "kind": "DISPATCH",
+      "flags": 4160,
+      "isDual": true,
+      "isHidden": false,
+      "baseInterface": "IDispatch",
+      "methods": [
+        {
+          "name": "SelectFBInstance",
+          "dispId": 1,
+          "invokeKind": "FUNC",
+          "returnType": "HRESULT",
+          "vtableOffset": 28,
+          "parameters": [
+            {
+              "name": "systemTag",
+              "type": "BSTR",
+              "in": true,
+              "out": false,
+              "retVal": false
+            },
+            {
+              "name": "result",
+              "type": "VARIANT_BOOL*",
+              "in": false,
+              "out": true,
+              "retVal": true
+            }
+          ]
+        },
+        {
+          "name": "GetFBInstanceData",
+          "dispId": 2,
+          "invokeKind": "FUNC",
+          "returnType": "HRESULT",
+          "vtableOffset": 32,
+          "parameters": [
+            {
+              "name": "systemTag",
+              "type": "BSTR",
+              "in": true,
+              "out": false,
+              "retVal": false
+            },
+            {
+              "name": "result",
+              "type": "FdtXmlDocument*",
+              "in": false,
+              "out": true,
+              "retVal": true
+            }
+          ]
+        }
+      ],
+      "implements": [],
+      "members": []
+    },
+    {
+      "name": "IFdtChannelActiveXControl",
+      "guid": "036D148B-387B-11D4-86E1-00E0987270B9",
+      "kind": "DISPATCH",
+      "flags": 4160,
+      "isDual": true,
+      "isHidden": false,
+      "baseInterface": "IDispatch",
+      "methods": [
+        {
+          "name": "Init",
+          "dispId": 1,
+          "invokeKind": "FUNC",
+          "returnType": "HRESULT",
+          "vtableOffset": 28,
+          "parameters": [
+            {
+              "name": "invokeId",
+              "type": "FdtUUIDString",
+              "in": true,
+              "out": false,
+              "retVal": false
+            },
+            {
+              "name": "channel",
+              "type": "IFdtChannel*",
+              "in": true,
+              "out": false,
+              "retVal": false
+            },
+            {
+              "name": "result",
+              "type": "VARIANT_BOOL*",
+              "in": false,
+              "out": true,
+              "retVal": true
+            }
+          ]
+        },
+        {
+          "name": "PrepareToRelease",
+          "dispId": 2,
+          "invokeKind": "FUNC",
+          "returnType": "HRESULT",
+          "vtableOffset": 32,
+          "parameters": [
+            {
+              "name": "result",
+              "type": "VARIANT_BOOL*",
+              "in": false,
+              "out": true,
+              "retVal": true
+            }
+          ]
+        }
+      ],
+      "implements": [],
+      "members": []
+    },
+    {
+      "name": "IDtmEvents",
+      "guid": "F15BA42E-BBF1-42ED-8009-7F664A002CFB",
+      "kind": "DISPATCH",
+      "flags": 4160,
+      "isDual": true,
+      "isHidden": false,
+      "baseInterface": "IDispatch",
+      "methods": [
+        {
+          "name": "OnParameterChanged",
+          "dispId": 1,
+          "invokeKind": "FUNC",
+          "returnType": "HRESULT",
+          "vtableOffset": 28,
+          "parameters": [
+            {
+              "name": "systemTag",
+              "type": "BSTR",
+              "in": true,
+              "out": false,
+              "retVal": false
+            },
+            {
+              "name": "parameter",
+              "type": "FdtXmlDocument",
+              "in": true,
+              "out": false,
+              "retVal": false
+            }
+          ]
+        },
+        {
+          "name": "OnErrorMessage",
+          "dispId": 2,
+          "invokeKind": "FUNC",
+          "returnType": "HRESULT",
+          "vtableOffset": 32,
+          "parameters": [
+            {
+              "name": "systemTag",
+              "type": "BSTR",
+              "in": true,
+              "out": false,
+              "retVal": false
+            },
+            {
+              "name": "errorMessage",
+              "type": "BSTR",
+              "in": true,
+              "out": false,
+              "retVal": false
+            }
+          ]
+        },
+        {
+          "name": "OnProgress",
+          "dispId": 3,
+          "invokeKind": "FUNC",
+          "returnType": "HRESULT",
+          "vtableOffset": 36,
+          "parameters": [
+            {
+              "name": "systemTag",
+              "type": "BSTR",
+              "in": true,
+              "out": false,
+              "retVal": false
+            },
+            {
+              "name": "title",
+              "type": "BSTR",
+              "in": true,
+              "out": false,
+              "retVal": false
+            },
+            {
+              "name": "percent",
+              "type": "short",
+              "in": true,
+              "out": false,
+              "retVal": false
+            },
+            {
+              "name": "show",
+              "type": "VARIANT_BOOL",
+              "in": true,
+              "out": false,
+              "retVal": false
+            }
+          ]
+        },
+        {
+          "name": "OnUploadFinished",
+          "dispId": 4,
+          "invokeKind": "FUNC",
+          "returnType": "HRESULT",
+          "vtableOffset": 40,
+          "parameters": [
+            {
+              "name": "invokeId",
+              "type": "FdtUUIDString",
+              "in": true,
+              "out": false,
+              "retVal": false
+            },
+            {
+              "name": "success",
+              "type": "VARIANT_BOOL",
+              "in": true,
+              "out": false,
+              "retVal": false
+            }
+          ]
+        },
+        {
+          "name": "OnDownloadFinished",
+          "dispId": 5,
+          "invokeKind": "FUNC",
+          "returnType": "HRESULT",
+          "vtableOffset": 44,
+          "parameters": [
+            {
+              "name": "invokeId",
+              "type": "FdtUUIDString",
+              "in": true,
+              "out": false,
+              "retVal": false
+            },
+            {
+              "name": "success",
+              "type": "VARIANT_BOOL",
+              "in": true,
+              "out": false,
+              "retVal": false
+            }
+          ]
+        },
+        {
+          "name": "OnApplicationClosed",
+          "dispId": 6,
+          "invokeKind": "FUNC",
+          "returnType": "HRESULT",
+          "vtableOffset": 48,
+          "parameters": [
+            {
+              "name": "invokeId",
+              "type": "FdtUUIDString",
+              "in": true,
+              "out": false,
+              "retVal": false
+            }
+          ]
+        },
+        {
+          "name": "OnFunctionChanged",
+          "dispId": 8,
+          "invokeKind": "FUNC",
+          "returnType": "HRESULT",
+          "vtableOffset": 52,
+          "parameters": [
+            {
+              "name": "systemTag",
+              "type": "BSTR",
+              "in": true,
+              "out": false,
+              "retVal": false
+            }
+          ]
+        },
+        {
+          "name": "OnChannelFunctionChanged",
+          "dispId": 9,
+          "invokeKind": "FUNC",
+          "returnType": "HRESULT",
+          "vtableOffset": 56,
+          "parameters": [
+            {
+              "name": "systemTag",
+              "type": "BSTR",
+              "in": true,
+              "out": false,
+              "retVal": false
+            },
+            {
+              "name": "channelPath",
+              "type": "FdtXPath",
+              "in": true,
+              "out": false,
+              "retVal": false
+            }
+          ]
+        },
+        {
+          "name": "OnPrint",
+          "dispId": 10,
+          "invokeKind": "FUNC",
+          "returnType": "HRESULT",
+          "vtableOffset": 60,
+          "parameters": [
+            {
+              "name": "systemTag",
+              "type": "BSTR",
+              "in": true,
+              "out": false,
+              "retVal": false
+            },
+            {
+              "name": "functionCall",
+              "type": "FdtXmlDocument",
+              "in": true,
+              "out": false,
+              "retVal": false
+            }
+          ]
+        },
+        {
+          "name": "OnNavigation",
+          "dispId": 11,
+          "invokeKind": "FUNC",
+          "returnType": "HRESULT",
+          "vtableOffset": 64,
+          "parameters": [
+            {
+              "name": "systemTag",
+              "type": "BSTR",
+              "in": true,
+              "out": false,
+              "retVal": false
+            }
+          ]
+        },
+        {
+          "name": "OnOnlineStateChanged",
+          "dispId": 12,
+          "invokeKind": "FUNC",
+          "returnType": "HRESULT",
+          "vtableOffset": 68,
+          "parameters": [
+            {
+              "name": "systemTag",
+              "type": "BSTR",
+              "in": true,
+              "out": false,
+              "retVal": false
+            },
+            {
+              "name": "onlineState",
+              "type": "VARIANT_BOOL",
+              "in": true,
+              "out": false,
+              "retVal": false
+            }
+          ]
+        },
+        {
+          "name": "OnPreparedToRelease",
+          "dispId": 13,
+          "invokeKind": "FUNC",
+          "returnType": "HRESULT",
+          "vtableOffset": 72,
+          "parameters": [
+            {
+              "name": "systemTag",
+              "type": "BSTR",
+              "in": true,
+              "out": false,
+              "retVal": false
+            }
+          ]
+        },
+        {
+          "name": "OnPreparedToReleaseCommunication",
+          "dispId": 14,
+          "invokeKind": "FUNC",
+          "returnType": "HRESULT",
+          "vtableOffset": 76,
+          "parameters": [
+            {
+              "name": "systemTag",
+              "type": "BSTR",
+              "in": true,
+              "out": false,
+              "retVal": false
+            }
+          ]
+        },
+        {
+          "name": "OnInvokedFunctionFinished",
+          "dispId": 15,
+          "invokeKind": "FUNC",
+          "returnType": "HRESULT",
+          "vtableOffset": 80,
+          "parameters": [
+            {
+              "name": "invokeId",
+              "type": "FdtUUIDString",
+              "in": true,
+              "out": false,
+              "retVal": false
+            },
+            {
+              "name": "success",
+              "type": "VARIANT_BOOL",
+              "in": true,
+              "out": false,
+              "retVal": false
+            }
+          ]
+        },
+        {
+          "name": "OnScanResponse",
+          "dispId": 16,
+          "invokeKind": "FUNC",
+          "returnType": "HRESULT",
+          "vtableOffset": 84,
+          "parameters": [
+            {
+              "name": "invokeId",
+              "type": "FdtUUIDString",
+              "in": true,
+              "out": false,
+              "retVal": false
+            },
+            {
+              "name": "response",
+              "type": "FdtXmlDocument",
+              "in": true,
+              "out": false,
+              "retVal": false
+            }
+          ]
+        }
+      ],
+      "implements": [],
+      "members": []
+    },
+    {
+      "name": "IDtmAuditTrailEvents",
+      "guid": "036D1479-387B-11D4-86E1-00E0987270B9",
+      "kind": "DISPATCH",
+      "flags": 4160,
+      "isDual": true,
+      "isHidden": false,
+      "baseInterface": "IDispatch",
+      "methods": [
+        {
+          "name": "OnStartTransaction",
+          "dispId": 1,
+          "invokeKind": "FUNC",
+          "returnType": "HRESULT",
+          "vtableOffset": 28,
+          "parameters": [
+            {
+              "name": "systemTag",
+              "type": "BSTR",
+              "in": true,
+              "out": false,
+              "retVal": false
+            },
+            {
+              "name": "result",
+              "type": "VARIANT_BOOL*",
+              "in": false,
+              "out": true,
+              "retVal": true
+            }
+          ]
+        },
+        {
+          "name": "OnAuditTrailEvent",
+          "dispId": 2,
+          "invokeKind": "FUNC",
+          "returnType": "HRESULT",
+          "vtableOffset": 32,
+          "parameters": [
+            {
+              "name": "systemTag",
+              "type": "BSTR",
+              "in": true,
+              "out": false,
+              "retVal": false
+            },
+            {
+              "name": "logEntry",
+              "type": "FdtXmlDocument",
+              "in": true,
+              "out": false,
+              "retVal": false
+            }
+          ]
+        },
+        {
+          "name": "OnEndTransaction",
+          "dispId": 3,
+          "invokeKind": "FUNC",
+          "returnType": "HRESULT",
+          "vtableOffset": 36,
+          "parameters": [
+            {
+              "name": "systemTag",
+              "type": "BSTR",
+              "in": true,
+              "out": false,
+              "retVal": false
+            },
+            {
+              "name": "result",
+              "type": "VARIANT_BOOL*",
+              "in": false,
+              "out": true,
+              "retVal": true
+            }
+          ]
+        }
+      ],
+      "implements": [],
+      "members": []
+    },
+    {
+      "name": "IFdtActiveX",
+      "guid": "5959F485-2C51-4A55-80A7-DD3C45D8BAF2",
+      "kind": "DISPATCH",
+      "flags": 4160,
+      "isDual": true,
+      "isHidden": false,
+      "baseInterface": "IDispatch",
+      "methods": [
+        {
+          "name": "OpenActiveXControlRequest",
+          "dispId": 1,
+          "invokeKind": "FUNC",
+          "returnType": "HRESULT",
+          "vtableOffset": 28,
+          "parameters": [
+            {
+              "name": "systemTag",
+              "type": "BSTR",
+              "in": true,
+              "out": false,
+              "retVal": false
+            },
+            {
+              "name": "functionCall",
+              "type": "FdtXmlDocument",
+              "in": true,
+              "out": false,
+              "retVal": false
+            },
+            {
+              "name": "result",
+              "type": "VARIANT_BOOL*",
+              "in": false,
+              "out": true,
+              "retVal": true
+            }
+          ]
+        },
+        {
+          "name": "CloseActiveXControlRequest",
+          "dispId": 2,
+          "invokeKind": "FUNC",
+          "returnType": "HRESULT",
+          "vtableOffset": 32,
+          "parameters": [
+            {
+              "name": "invokeId",
+              "type": "FdtUUIDString",
+              "in": true,
+              "out": false,
+              "retVal": false
+            },
+            {
+              "name": "result",
+              "type": "VARIANT_BOOL*",
+              "in": false,
+              "out": true,
+              "retVal": true
+            }
+          ]
+        }
+      ],
+      "implements": [],
+      "members": []
+    },
+    {
+      "name": "IFdtBulkData",
+      "guid": "036D148D-387B-11D4-86E1-00E0987270B9",
+      "kind": "DISPATCH",
+      "flags": 4160,
+      "isDual": true,
+      "isHidden": false,
+      "baseInterface": "IDispatch",
+      "methods": [
+        {
+          "name": "GetProjectRelatedPath",
+          "dispId": 1610809344,
+          "invokeKind": "FUNC",
+          "returnType": "HRESULT",
+          "vtableOffset": 28,
+          "parameters": [
+            {
+              "name": "systemTag",
+              "type": "BSTR",
+              "in": true,
+              "out": false,
+              "retVal": false
+            },
+            {
+              "name": "result",
+              "type": "BSTR*",
+              "in": false,
+              "out": true,
+              "retVal": true
+            }
+          ]
+        },
+        {
+          "name": "GetInstanceRelatedPath",
+          "dispId": 1610809345,
+          "invokeKind": "FUNC",
+          "returnType": "HRESULT",
+          "vtableOffset": 32,
+          "parameters": [
+            {
+              "name": "systemTag",
+              "type": "BSTR",
+              "in": true,
+              "out": false,
+              "retVal": false
+            },
+            {
+              "name": "result",
+              "type": "BSTR*",
+              "in": false,
+              "out": true,
+              "retVal": true
+            }
+          ]
+        }
+      ],
+      "implements": [],
+      "members": []
+    },
+    {
+      "name": "IFdtDialog",
+      "guid": "15C19931-6161-11D4-A0A9-005004011A04",
+      "kind": "DISPATCH",
+      "flags": 4160,
+      "isDual": true,
+      "isHidden": false,
+      "baseInterface": "IDispatch",
+      "methods": [
+        {
+          "name": "UserDialog",
+          "dispId": 1,
+          "invokeKind": "FUNC",
+          "returnType": "HRESULT",
+          "vtableOffset": 28,
+          "parameters": [
+            {
+              "name": "systemTag",
+              "type": "BSTR",
+              "in": true,
+              "out": false,
+              "retVal": false
+            },
+            {
+              "name": "userMessage",
+              "type": "FdtXmlDocument",
+              "in": true,
+              "out": false,
+              "retVal": false
+            },
+            {
+              "name": "result",
+              "type": "FdtXmlDocument*",
+              "in": false,
+              "out": true,
+              "retVal": true
+            }
+          ]
+        }
+      ],
+      "implements": [],
+      "members": []
+    },
+    {
+      "name": "IFdtTopology",
+      "guid": "036D147A-387B-11D4-86E1-00E0987270B9",
+      "kind": "DISPATCH",
+      "flags": 4160,
+      "isDual": true,
+      "isHidden": false,
+      "baseInterface": "IDispatch",
+      "methods": [
+        {
+          "name": "GetParentNodes",
+          "dispId": 1,
+          "invokeKind": "FUNC",
+          "returnType": "HRESULT",
+          "vtableOffset": 28,
+          "parameters": [
+            {
+              "name": "systemTag",
+              "type": "BSTR",
+              "in": true,
+              "out": false,
+              "retVal": false
+            },
+            {
+              "name": "result",
+              "type": "FdtXmlDocument*",
+              "in": false,
+              "out": true,
+              "retVal": true
+            }
+          ]
+        },
+        {
+          "name": "GetChildNodes",
+          "dispId": 2,
+          "invokeKind": "FUNC",
+          "returnType": "HRESULT",
+          "vtableOffset": 32,
+          "parameters": [
+            {
+              "name": "systemTag",
+              "type": "BSTR",
+              "in": true,
+              "out": false,
+              "retVal": false
+            },
+            {
+              "name": "channelPath",
+              "type": "FdtXPath",
+              "in": true,
+              "out": false,
+              "retVal": false
+            },
+            {
+              "name": "result",
+              "type": "FdtXmlDocument*",
+              "in": false,
+              "out": true,
+              "retVal": true
+            }
+          ]
+        },
+        {
+          "name": "CreateChild",
+          "dispId": 3,
+          "invokeKind": "FUNC",
+          "returnType": "HRESULT",
+          "vtableOffset": 36,
+          "parameters": [
+            {
+              "name": "deviceType",
+              "type": "FdtXmlDocument",
+              "in": true,
+              "out": false,
+              "retVal": false
+            },
+            {
+              "name": "channelPath",
+              "type": "FdtXPath",
+              "in": true,
+              "out": false,
+              "retVal": false
+            },
+            {
+              "name": "result",
+              "type": "BSTR*",
+              "in": false,
+              "out": true,
+              "retVal": true
+            }
+          ]
+        },
+        {
+          "name": "DeleteChild",
+          "dispId": 4,
+          "invokeKind": "FUNC",
+          "returnType": "HRESULT",
+          "vtableOffset": 40,
+          "parameters": [
+            {
+              "name": "systemTag",
+              "type": "BSTR",
+              "in": true,
+              "out": false,
+              "retVal": false
+            },
+            {
+              "name": "channelPath",
+              "type": "FdtXPath",
+              "in": true,
+              "out": false,
+              "retVal": false
+            },
+            {
+              "name": "result",
+              "type": "VARIANT_BOOL*",
+              "in": false,
+              "out": true,
+              "retVal": true
+            }
+          ]
+        },
+        {
+          "name": "GetDtmForSystemTag",
+          "dispId": 5,
+          "invokeKind": "FUNC",
+          "returnType": "HRESULT",
+          "vtableOffset": 44,
+          "parameters": [
+            {
+              "name": "systemTag",
+              "type": "BSTR",
+              "in": true,
+              "out": false,
+              "retVal": false
+            },
+            {
+              "name": "result",
+              "type": "IDtm**",
+              "in": false,
+              "out": true,
+              "retVal": true
+            }
+          ]
+        },
+        {
+          "name": "GetDtmInfoList",
+          "dispId": 6,
+          "invokeKind": "FUNC",
+          "returnType": "HRESULT",
+          "vtableOffset": 48,
+          "parameters": [
+            {
+              "name": "result",
+              "type": "FdtXmlDocument*",
+              "in": false,
+              "out": true,
+              "retVal": true
+            }
+          ]
+        },
+        {
+          "name": "MoveChild",
+          "dispId": 7,
+          "invokeKind": "FUNC",
+          "returnType": "HRESULT",
+          "vtableOffset": 52,
+          "parameters": [
+            {
+              "name": "systemTag",
+              "type": "BSTR",
+              "in": true,
+              "out": false,
+              "retVal": false
+            },
+            {
+              "name": "destinationchannelPath",
+              "type": "FdtXPath",
+              "in": true,
+              "out": false,
+              "retVal": false
+            },
+            {
+              "name": "result",
+              "type": "VARIANT_BOOL*",
+              "in": false,
+              "out": true,
+              "retVal": true
+            }
+          ]
+        },
+        {
+          "name": "ReleaseDtmForSystemTag",
+          "dispId": 8,
+          "invokeKind": "FUNC",
+          "returnType": "HRESULT",
+          "vtableOffset": 56,
+          "parameters": [
+            {
+              "name": "systemTag",
+              "type": "BSTR",
+              "in": true,
+              "out": false,
+              "retVal": false
+            },
+            {
+              "name": "result",
+              "type": "VARIANT_BOOL*",
+              "in": false,
+              "out": true,
+              "retVal": true
+            }
+          ]
+        }
+      ],
+      "implements": [],
+      "members": []
+    },
+    {
+      "name": "IBtm",
+      "guid": "96341E37-9611-46BA-80ED-A85BD73BF518",
+      "kind": "DISPATCH",
+      "flags": 4160,
+      "isDual": true,
+      "isHidden": false,
+      "baseInterface": "IDtm",
+      "methods": [],
+      "implements": [],
+      "members": []
+    },
+    {
+      "name": "IBtmInformation",
+      "guid": "87DCC81C-9F97-46C2-A483-5A89B155204C",
+      "kind": "DISPATCH",
+      "flags": 4160,
+      "isDual": true,
+      "isHidden": false,
+      "baseInterface": "IDispatch",
+      "methods": [
+        {
+          "name": "GetInformation",
+          "dispId": 1,
+          "invokeKind": "FUNC",
+          "returnType": "HRESULT",
+          "vtableOffset": 28,
+          "parameters": [
+            {
+              "name": "result",
+              "type": "FdtXmlDocument*",
+              "in": false,
+              "out": true,
+              "retVal": true
+            }
+          ]
+        }
+      ],
+      "implements": [],
+      "members": []
+    },
+    {
+      "name": "IBtmParameter",
+      "guid": "43D592CC-5F8E-4ECA-9365-8D4749390C55",
+      "kind": "DISPATCH",
+      "flags": 4160,
+      "isDual": true,
+      "isHidden": false,
+      "baseInterface": "IDispatch",
+      "methods": [
+        {
+          "name": "GetParameters",
+          "dispId": 1,
+          "invokeKind": "FUNC",
+          "returnType": "HRESULT",
+          "vtableOffset": 28,
+          "parameters": [
+            {
+              "name": "parameterPath",
+              "type": "FdtXPath",
+              "in": true,
+              "out": false,
+              "retVal": false
+            },
+            {
+              "name": "result",
+              "type": "FdtXmlDocument*",
+              "in": false,
+              "out": true,
+              "retVal": true
+            }
+          ]
+        },
+        {
+          "name": "SetParameters",
+          "dispId": 2,
+          "invokeKind": "FUNC",
+          "returnType": "HRESULT",
+          "vtableOffset": 32,
+          "parameters": [
+            {
+              "name": "parameterPath",
+              "type": "FdtXPath",
+              "in": true,
+              "out": false,
+              "retVal": false
+            },
+            {
+              "name": "FdtXmlDocument",
+              "type": "FdtXmlDocument",
+              "in": true,
+              "out": false,
+              "retVal": false
+            },
+            {
+              "name": "result",
+              "type": "VARIANT_BOOL*",
+              "in": false,
+              "out": true,
+              "retVal": true
+            }
+          ]
+        }
+      ],
+      "implements": [],
+      "members": []
+    },
+    {
+      "name": "IBtmActiveXControl",
+      "guid": "0E0418B4-9BC6-4A28-B980-5D3E7F457E4F",
+      "kind": "DISPATCH",
+      "flags": 4160,
+      "isDual": true,
+      "isHidden": false,
+      "baseInterface": "IDispatch",
+      "methods": [
+        {
+          "name": "Init",
+          "dispId": 1,
+          "invokeKind": "FUNC",
+          "returnType": "HRESULT",
+          "vtableOffset": 28,
+          "parameters": [
+            {
+              "name": "invokeId",
+              "type": "FdtUUIDString",
+              "in": true,
+              "out": false,
+              "retVal": false
+            },
+            {
+              "name": "functionCall",
+              "type": "FdtXmlDocument",
+              "in": true,
+              "out": false,
+              "retVal": false
+            },
+            {
+              "name": "btm",
+              "type": "IBtm*",
+              "in": true,
+              "out": false,
+              "retVal": false
+            },
+            {
+              "name": "result",
+              "type": "VARIANT_BOOL*",
+              "in": false,
+              "out": true,
+              "retVal": true
+            }
+          ]
+        },
+        {
+          "name": "PrepareToRelease",
+          "dispId": 2,
+          "invokeKind": "FUNC",
+          "returnType": "HRESULT",
+          "vtableOffset": 32,
+          "parameters": [
+            {
+              "name": "result",
+              "type": "VARIANT_BOOL*",
+              "in": false,
+              "out": true,
+              "retVal": true
+            }
+          ]
+        }
+      ],
+      "implements": [],
+      "members": []
+    },
+    {
+      "name": "IFdtBtmTopology",
+      "guid": "18250F40-73FB-4C22-A0F1-DB2A11B3FE8D",
+      "kind": "DISPATCH",
+      "flags": 4160,
+      "isDual": true,
+      "isHidden": false,
+      "baseInterface": "IDispatch",
+      "methods": [
+        {
+          "name": "GetParentNodes",
+          "dispId": 1,
+          "invokeKind": "FUNC",
+          "returnType": "HRESULT",
+          "vtableOffset": 28,
+          "parameters": [
+            {
+              "name": "systemTag",
+              "type": "BSTR",
+              "in": true,
+              "out": false,
+              "retVal": false
+            },
+            {
+              "name": "result",
+              "type": "FdtXmlDocument*",
+              "in": false,
+              "out": true,
+              "retVal": true
+            }
+          ]
+        },
+        {
+          "name": "GetChildNodes",
+          "dispId": 2,
+          "invokeKind": "FUNC",
+          "returnType": "HRESULT",
+          "vtableOffset": 32,
+          "parameters": [
+            {
+              "name": "systemTag",
+              "type": "BSTR",
+              "in": true,
+              "out": false,
+              "retVal": false
+            },
+            {
+              "name": "channelPath",
+              "type": "FdtXPath",
+              "in": true,
+              "out": false,
+              "retVal": false
+            },
+            {
+              "name": "result",
+              "type": "FdtXmlDocument*",
+              "in": false,
+              "out": true,
+              "retVal": true
+            }
+          ]
+        },
+        {
+          "name": "CreateChild",
+          "dispId": 3,
+          "invokeKind": "FUNC",
+          "returnType": "HRESULT",
+          "vtableOffset": 36,
+          "parameters": [
+            {
+              "name": "deviceType",
+              "type": "FdtXmlDocument",
+              "in": true,
+              "out": false,
+              "retVal": false
+            },
+            {
+              "name": "channelPath",
+              "type": "FdtXPath",
+              "in": true,
+              "out": false,
+              "retVal": false
+            },
+            {
+              "name": "result",
+              "type": "BSTR*",
+              "in": false,
+              "out": true,
+              "retVal": true
+            }
+          ]
+        },
+        {
+          "name": "DeleteChild",
+          "dispId": 4,
+          "invokeKind": "FUNC",
+          "returnType": "HRESULT",
+          "vtableOffset": 40,
+          "parameters": [
+            {
+              "name": "systemTag",
+              "type": "BSTR",
+              "in": true,
+              "out": false,
+              "retVal": false
+            },
+            {
+              "name": "channelPath",
+              "type": "FdtXPath",
+              "in": true,
+              "out": false,
+              "retVal": false
+            },
+            {
+              "name": "result",
+              "type": "VARIANT_BOOL*",
+              "in": false,
+              "out": true,
+              "retVal": true
+            }
+          ]
+        },
+        {
+          "name": "GetBtmForSystemTag",
+          "dispId": 5,
+          "invokeKind": "FUNC",
+          "returnType": "HRESULT",
+          "vtableOffset": 44,
+          "parameters": [
+            {
+              "name": "systemTag",
+              "type": "BSTR",
+              "in": true,
+              "out": false,
+              "retVal": false
+            },
+            {
+              "name": "result",
+              "type": "IBtm**",
+              "in": false,
+              "out": true,
+              "retVal": true
+            }
+          ]
+        },
+        {
+          "name": "GetBtmInfoList",
+          "dispId": 6,
+          "invokeKind": "FUNC",
+          "returnType": "HRESULT",
+          "vtableOffset": 48,
+          "parameters": [
+            {
+              "name": "result",
+              "type": "FdtXmlDocument*",
+              "in": false,
+              "out": true,
+              "retVal": true
+            }
+          ]
+        },
+        {
+          "name": "MoveChild",
+          "dispId": 7,
+          "invokeKind": "FUNC",
+          "returnType": "HRESULT",
+          "vtableOffset": 52,
+          "parameters": [
+            {
+              "name": "systemTag",
+              "type": "BSTR",
+              "in": true,
+              "out": false,
+              "retVal": false
+            },
+            {
+              "name": "destinationchannelPath",
+              "type": "FdtXPath",
+              "in": true,
+              "out": false,
+              "retVal": false
+            },
+            {
+              "name": "result",
+              "type": "VARIANT_BOOL*",
+              "in": false,
+              "out": true,
+              "retVal": true
+            }
+          ]
+        },
+        {
+          "name": "ReleaseBtmForSystemTag",
+          "dispId": 8,
+          "invokeKind": "FUNC",
+          "returnType": "HRESULT",
+          "vtableOffset": 56,
+          "parameters": [
+            {
+              "name": "systemTag",
+              "type": "BSTR",
+              "in": true,
+              "out": false,
+              "retVal": false
+            },
+            {
+              "name": "result",
+              "type": "VARIANT_BOOL*",
+              "in": false,
+              "out": true,
+              "retVal": true
+            }
+          ]
+        }
+      ],
+      "implements": [],
+      "members": []
+    },
+    {
+      "name": "IFdtActiveX2",
+      "guid": "1922C2DE-4EE7-4085-878A-80AC6C6728AD",
+      "kind": "DISPATCH",
+      "flags": 4160,
+      "isDual": true,
+      "isHidden": false,
+      "baseInterface": "IDispatch",
+      "methods": [
+        {
+          "name": "OpenDialogActiveXControlRequest",
+          "dispId": 1,
+          "invokeKind": "FUNC",
+          "returnType": "HRESULT",
+          "vtableOffset": 28,
+          "parameters": [
+            {
+              "name": "systemTag",
+              "type": "BSTR",
+              "in": true,
+              "out": false,
+              "retVal": false
+            },
+            {
+              "name": "functionCall",
+              "type": "FdtXmlDocument",
+              "in": true,
+              "out": false,
+              "retVal": false
+            },
+            {
+              "name": "result",
+              "type": "VARIANT_BOOL*",
+              "in": false,
+              "out": true,
+              "retVal": true
+            }
+          ]
+        },
+        {
+          "name": "OpenChannelActiveXControlRequest",
+          "dispId": 2,
+          "invokeKind": "FUNC",
+          "returnType": "HRESULT",
+          "vtableOffset": 32,
+          "parameters": [
+            {
+              "name": "channelPath",
+              "type": "BSTR",
+              "in": true,
+              "out": false,
+              "retVal": false
+            },
+            {
+              "name": "functionCall",
+              "type": "FdtXmlDocument",
+              "in": true,
+              "out": false,
+              "retVal": false
+            },
+            {
+              "name": "result",
+              "type": "VARIANT_BOOL*",
+              "in": false,
+              "out": true,
+              "retVal": true
+            }
+          ]
+        },
+        {
+          "name": "CloseChannelActiveXControlRequest",
+          "dispId": 3,
+          "invokeKind": "FUNC",
+          "returnType": "HRESULT",
+          "vtableOffset": 36,
+          "parameters": [
+            {
+              "name": "invokeId",
+              "type": "FdtUUIDString",
+              "in": true,
+              "out": false,
+              "retVal": false
+            },
+            {
+              "name": "result",
+              "type": "VARIANT_BOOL*",
+              "in": false,
+              "out": true,
+              "retVal": true
+            }
+          ]
+        },
+        {
+          "name": "OpenDialogChannelActiveXControlRequest",
+          "dispId": 4,
+          "invokeKind": "FUNC",
+          "returnType": "HRESULT",
+          "vtableOffset": 40,
+          "parameters": [
+            {
+              "name": "channelPath",
+              "type": "BSTR",
+              "in": true,
+              "out": false,
+              "retVal": false
+            },
+            {
+              "name": "functionCall",
+              "type": "FdtXmlDocument",
+              "in": true,
+              "out": false,
+              "retVal": false
+            },
+            {
+              "name": "result",
+              "type": "VARIANT_BOOL*",
+              "in": false,
+              "out": true,
+              "retVal": true
+            }
+          ]
+        }
+      ],
+      "implements": [],
+      "members": []
+    },
+    {
+      "name": "IDtm2",
+      "guid": "51E1F44B-D6A1-423D-B11F-AD38EDE78047",
+      "kind": "DISPATCH",
+      "flags": 4160,
+      "isDual": true,
+      "isHidden": false,
+      "baseInterface": "IDispatch",
+      "methods": [
+        {
+          "name": "Environment2",
+          "dispId": 1,
+          "invokeKind": "FUNC",
+          "returnType": "HRESULT",
+          "vtableOffset": 28,
+          "parameters": [
+            {
+              "name": "systemTag",
+              "type": "BSTR",
+              "in": true,
+              "out": false,
+              "retVal": false
+            },
+            {
+              "name": "container",
+              "type": "IFdtContainer*",
+              "in": true,
+              "out": false,
+              "retVal": false
+            },
+            {
+              "name": "frameInfo",
+              "type": "FdtXmlDocument",
+              "in": true,
+              "out": false,
+              "retVal": false
+            },
+            {
+              "name": "result",
+              "type": "VARIANT_BOOL*",
+              "in": false,
+              "out": true,
+              "retVal": true
+            }
+          ]
+        },
+        {
+          "name": "SetSystemGuiLabel",
+          "dispId": 2,
+          "invokeKind": "FUNC",
+          "returnType": "HRESULT",
+          "vtableOffset": 32,
+          "parameters": [
+            {
+              "name": "systemGuiLabel",
+              "type": "FdtXmlDocument",
+              "in": true,
+              "out": false,
+              "retVal": false
+            },
+            {
+              "name": "result",
+              "type": "VARIANT_BOOL*",
+              "in": false,
+              "out": true,
+              "retVal": true
+            }
+          ]
+        }
+      ],
+      "implements": [],
+      "members": []
+    },
+    {
+      "name": "IDtmRedundancyEvents",
+      "guid": "04808A4C-90C3-45A7-B69E-034A2FA8314D",
+      "kind": "DISPATCH",
+      "flags": 4160,
+      "isDual": true,
+      "isHidden": false,
+      "baseInterface": "IDispatch",
+      "methods": [
+        {
+          "name": "OnAddedRedundantChild",
+          "dispId": 1,
+          "invokeKind": "FUNC",
+          "returnType": "HRESULT",
+          "vtableOffset": 28,
+          "parameters": [
+            {
+              "name": "systemTag",
+              "type": "BSTR",
+              "in": true,
+              "out": false,
+              "retVal": false
+            },
+            {
+              "name": "channelPath",
+              "type": "FdtXPath",
+              "in": true,
+              "out": false,
+              "retVal": false
+            },
+            {
+              "name": "result",
+              "type": "VARIANT_BOOL*",
+              "in": false,
+              "out": true,
+              "retVal": true
+            }
+          ]
+        },
+        {
+          "name": "OnRemovedRedundantChild",
+          "dispId": 2,
+          "invokeKind": "FUNC",
+          "returnType": "HRESULT",
+          "vtableOffset": 32,
+          "parameters": [
+            {
+              "name": "systemTag",
+              "type": "BSTR",
+              "in": true,
+              "out": false,
+              "retVal": false
+            },
+            {
+              "name": "channelPath",
+              "type": "FdtXPath",
+              "in": true,
+              "out": false,
+              "retVal": false
+            },
+            {
+              "name": "result",
+              "type": "VARIANT_BOOL*",
+              "in": false,
+              "out": true,
+              "retVal": true
+            }
+          ]
+        }
+      ],
+      "implements": [],
+      "members": []
+    },
+    {
+      "name": "IDtmEvents2",
+      "guid": "494FFD2B-6E58-4E42-80DB-85EBDF6E2CF5",
+      "kind": "DISPATCH",
+      "flags": 4160,
+      "isDual": true,
+      "isHidden": false,
+      "baseInterface": "IDispatch",
+      "methods": [
+        {
+          "name": "OnStateChanged",
+          "dispId": 1,
+          "invokeKind": "FUNC",
+          "returnType": "HRESULT",
+          "vtableOffset": 28,
+          "parameters": [
+            {
+              "name": "systemTag",
+              "type": "BSTR",
+              "in": true,
+              "out": false,
+              "retVal": false
+            },
+            {
+              "name": "xmldoc",
+              "type": "FdtXmlDocument",
+              "in": true,
+              "out": false,
+              "retVal": false
+            }
+          ]
+        }
+      ],
+      "implements": [],
+      "members": []
+    },
+    {
+      "name": "IFdtChannelActiveXControl2",
+      "guid": "73757F49-F3A6-41F7-BEA0-1A3E59D69D5B",
+      "kind": "DISPATCH",
+      "flags": 4160,
+      "isDual": true,
+      "isHidden": false,
+      "baseInterface": "IDispatch",
+      "methods": [
+        {
+          "name": "Init2",
+          "dispId": 1,
+          "invokeKind": "FUNC",
+          "returnType": "HRESULT",
+          "vtableOffset": 28,
+          "parameters": [
+            {
+              "name": "invokeId",
+              "type": "FdtUUIDString",
+              "in": true,
+              "out": false,
+              "retVal": false
+            },
+            {
+              "name": "functionCall",
+              "type": "FdtXmlDocument",
+              "in": true,
+              "out": false,
+              "retVal": false
+            },
+            {
+              "name": "channel",
+              "type": "IFdtChannel*",
+              "in": true,
+              "out": false,
+              "retVal": false
+            },
+            {
+              "name": "result",
+              "type": "VARIANT_BOOL*",
+              "in": false,
+              "out": true,
+              "retVal": true
+            }
+          ]
+        }
+      ],
+      "implements": [],
+      "members": []
+    },
+    {
+      "name": "IDtmScanEvents",
+      "guid": "515590B9-5177-474A-9310-708A3E785B2B",
+      "kind": "DISPATCH",
+      "flags": 4160,
+      "isDual": true,
+      "isHidden": false,
+      "baseInterface": "IDispatch",
+      "methods": [
+        {
+          "name": "OnScanResponse",
+          "dispId": 1,
+          "invokeKind": "FUNC",
+          "returnType": "HRESULT",
+          "vtableOffset": 28,
+          "parameters": [
+            {
+              "name": "invokeId",
+              "type": "FdtUUIDString",
+              "in": true,
+              "out": false,
+              "retVal": false
+            },
+            {
+              "name": "response",
+              "type": "FdtXmlDocument",
+              "in": true,
+              "out": false,
+              "retVal": false
+            }
+          ]
+        },
+        {
+          "name": "OnScanHardwareResponse",
+          "dispId": 2,
+          "invokeKind": "FUNC",
+          "returnType": "HRESULT",
+          "vtableOffset": 32,
+          "parameters": [
+            {
+              "name": "invokeId",
+              "type": "FdtUUIDString",
+              "in": true,
+              "out": false,
+              "retVal": false
+            },
+            {
+              "name": "response",
+              "type": "FdtXmlDocument",
+              "in": true,
+              "out": false,
+              "retVal": false
+            }
+          ]
+        }
+      ],
+      "implements": [],
+      "members": []
+    },
+    {
+      "name": "IFdtChannelScan",
+      "guid": "64A4310D-F9EE-411D-B4F9-51D3360DF359",
+      "kind": "DISPATCH",
+      "flags": 4160,
+      "isDual": true,
+      "isHidden": false,
+      "baseInterface": "IDispatch",
+      "methods": [
+        {
+          "name": "ScanRequest",
+          "dispId": 1,
+          "invokeKind": "FUNC",
+          "returnType": "HRESULT",
+          "vtableOffset": 28,
+          "parameters": [
+            {
+              "name": "invokeId",
+              "type": "FdtUUIDString",
+              "in": true,
+              "out": false,
+              "retVal": false
+            },
+            {
+              "name": "request",
+              "type": "FdtXmlDocument",
+              "in": true,
+              "out": false,
+              "retVal": false
+            },
+            {
+              "name": "result",
+              "type": "VARIANT_BOOL*",
+              "in": false,
+              "out": true,
+              "retVal": true
+            }
+          ]
+        },
+        {
+          "name": "CancelAction",
+          "dispId": 2,
+          "invokeKind": "FUNC",
+          "returnType": "HRESULT",
+          "vtableOffset": 32,
+          "parameters": [
+            {
+              "name": "invokeId",
+              "type": "FdtUUIDString",
+              "in": true,
+              "out": false,
+              "retVal": false
+            },
+            {
+              "name": "result",
+              "type": "VARIANT_BOOL*",
+              "in": false,
+              "out": true,
+              "retVal": true
+            }
+          ]
+        }
+      ],
+      "implements": [],
+      "members": []
+    },
+    {
+      "name": "IFdtChannelSubTopology2",
+      "guid": "6359FBF1-D373-4202-90E8-E696C37739D4",
+      "kind": "DISPATCH",
+      "flags": 4160,
+      "isDual": true,
+      "isHidden": false,
+      "baseInterface": "IDispatch",
+      "methods": [
+        {
+          "name": "SetChildrenAdresses",
+          "dispId": 1,
+          "invokeKind": "FUNC",
+          "returnType": "HRESULT",
+          "vtableOffset": 28,
+          "parameters": [
+            {
+              "name": "dtmDeviceList",
+              "type": "FdtXmlDocument",
+              "in": true,
+              "out": false,
+              "retVal": false
+            },
+            {
+              "name": "result",
+              "type": "FdtXmlDocument*",
+              "in": false,
+              "out": true,
+              "retVal": true
+            }
+          ]
+        }
+      ],
+      "implements": [],
+      "members": []
+    },
+    {
+      "name": "IDtmInformation2",
+      "guid": "C2934CC6-B72D-4611-890F-1C6531D1F8EB",
+      "kind": "DISPATCH",
+      "flags": 4160,
+      "isDual": true,
+      "isHidden": false,
+      "baseInterface": "IDispatch",
+      "methods": [
+        {
+          "name": "GetDeviceIdentificationInformation",
+          "dispId": 1,
+          "invokeKind": "FUNC",
+          "returnType": "HRESULT",
+          "vtableOffset": 28,
+          "parameters": [
+            {
+              "name": "request",
+              "type": "FdtXmlDocument",
+              "in": true,
+              "out": false,
+              "retVal": false
+            },
+            {
+              "name": "protocolId",
+              "type": "FdtUUIDString",
+              "in": true,
+              "out": false,
+              "retVal": false
+            },
+            {
+              "name": "response",
+              "type": "FdtXmlDocument*",
+              "in": false,
+              "out": true,
+              "retVal": true
+            }
+          ]
+        }
+      ],
+      "implements": [],
+      "members": []
+    },
+    {
+      "name": "IDtmHardwareIdentification",
+      "guid": "9A1DD233-987C-43D1-9424-DA5C1FC6F292",
+      "kind": "DISPATCH",
+      "flags": 4160,
+      "isDual": true,
+      "isHidden": false,
+      "baseInterface": "IDispatch",
+      "methods": [
+        {
+          "name": "ScanHardwareRequest",
+          "dispId": 1,
+          "invokeKind": "FUNC",
+          "returnType": "HRESULT",
+          "vtableOffset": 28,
+          "parameters": [
+            {
+              "name": "invokeId",
+              "type": "FdtUUIDString",
+              "in": true,
+              "out": false,
+              "retVal": false
+            },
+            {
+              "name": "request",
+              "type": "FdtXmlDocument",
+              "in": true,
+              "out": false,
+              "retVal": false
+            },
+            {
+              "name": "result",
+              "type": "VARIANT_BOOL*",
+              "in": false,
+              "out": true,
+              "retVal": true
+            }
+          ]
+        },
+        {
+          "name": "CancelAction",
+          "dispId": 2,
+          "invokeKind": "FUNC",
+          "returnType": "HRESULT",
+          "vtableOffset": 32,
+          "parameters": [
+            {
+              "name": "invokeId",
+              "type": "FdtUUIDString",
+              "in": true,
+              "out": false,
+              "retVal": false
+            },
+            {
+              "name": "result",
+              "type": "VARIANT_BOOL*",
+              "in": false,
+              "out": true,
+              "retVal": true
+            }
+          ]
+        }
+      ],
+      "implements": [],
+      "members": []
+    },
+    {
+      "name": "IFdtCommunicationEvents2",
+      "guid": "7A0AEF6A-A9E7-4673-8F45-01B8AC28F55D",
+      "kind": "DISPATCH",
+      "flags": 4160,
+      "isDual": true,
+      "isHidden": false,
+      "baseInterface": "IDispatch",
+      "methods": [
+        {
+          "name": "OnConnectResponse2",
+          "dispId": 1,
+          "invokeKind": "FUNC",
+          "returnType": "HRESULT",
+          "vtableOffset": 28,
+          "parameters": [
+            {
+              "name": "invokeId",
+              "type": "FdtUUIDString",
+              "in": true,
+              "out": false,
+              "retVal": false
+            },
+            {
+              "name": "parentInformation",
+              "type": "FdtXmlDocument",
+              "in": true,
+              "out": false,
+              "retVal": false
+            },
+            {
+              "name": "response",
+              "type": "FdtXmlDocument",
+              "in": true,
+              "out": false,
+              "retVal": false
+            }
+          ]
+        }
+      ],
+      "implements": [],
+      "members": []
+    },
+    {
+      "name": "IDtmSingleDeviceDataAccess",
+      "guid": "D67240E4-664B-44B0-B692-A1D1ED3FB8F8",
+      "kind": "DISPATCH",
+      "flags": 4160,
+      "isDual": true,
+      "isHidden": false,
+      "baseInterface": "IDispatch",
+      "methods": [
+        {
+          "name": "CancelRequest",
+          "dispId": 1,
+          "invokeKind": "FUNC",
+          "returnType": "HRESULT",
+          "vtableOffset": 28,
+          "parameters": [
+            {
+              "name": "invokeId",
+              "type": "FdtUUIDString",
+              "in": true,
+              "out": false,
+              "retVal": false
+            },
+            {
+              "name": "result",
+              "type": "VARIANT_BOOL*",
+              "in": false,
+              "out": true,
+              "retVal": true
+            }
+          ]
+        },
+        {
+          "name": "ItemListRequest",
+          "dispId": 2,
+          "invokeKind": "FUNC",
+          "returnType": "HRESULT",
+          "vtableOffset": 32,
+          "parameters": [
+            {
+              "name": "invokeId",
+              "type": "FdtUUIDString",
+              "in": true,
+              "out": false,
+              "retVal": false
+            }
+          ]
+        },
+        {
+          "name": "ReadRequest",
+          "dispId": 3,
+          "invokeKind": "FUNC",
+          "returnType": "HRESULT",
+          "vtableOffset": 36,
+          "parameters": [
+            {
+              "name": "invokeId",
+              "type": "FdtUUIDString",
+              "in": true,
+              "out": false,
+              "retVal": false
+            },
+            {
+              "name": "itemSelectionList",
+              "type": "FdtXmlDocument",
+              "in": true,
+              "out": false,
+              "retVal": false
+            }
+          ]
+        },
+        {
+          "name": "WriteRequest",
+          "dispId": 4,
+          "invokeKind": "FUNC",
+          "returnType": "HRESULT",
+          "vtableOffset": 40,
+          "parameters": [
+            {
+              "name": "invokeId",
+              "type": "FdtUUIDString",
+              "in": true,
+              "out": false,
+              "retVal": false
+            },
+            {
+              "name": "itemList",
+              "type": "FdtXmlDocument",
+              "in": true,
+              "out": false,
+              "retVal": false
+            }
+          ]
+        }
+      ],
+      "implements": [],
+      "members": []
+    },
+    {
+      "name": "IDtmSingleInstanceDataAccess",
+      "guid": "84F9A19A-7E38-40B5-A311-60B14F30C258",
+      "kind": "DISPATCH",
+      "flags": 4160,
+      "isDual": true,
+      "isHidden": false,
+      "baseInterface": "IDispatch",
+      "methods": [
+        {
+          "name": "GetItemList",
+          "dispId": 1,
+          "invokeKind": "FUNC",
+          "returnType": "HRESULT",
+          "vtableOffset": 28,
+          "parameters": [
+            {
+              "name": "result",
+              "type": "FdtXmlDocument*",
+              "in": false,
+              "out": true,
+              "retVal": true
+            }
+          ]
+        },
+        {
+          "name": "Read",
+          "dispId": 2,
+          "invokeKind": "FUNC",
+          "returnType": "HRESULT",
+          "vtableOffset": 32,
+          "parameters": [
+            {
+              "name": "itemSelectionList",
+              "type": "FdtXmlDocument",
+              "in": true,
+              "out": false,
+              "retVal": false
+            },
+            {
+              "name": "result",
+              "type": "FdtXmlDocument*",
+              "in": false,
+              "out": true,
+              "retVal": true
+            }
+          ]
+        },
+        {
+          "name": "Write",
+          "dispId": 3,
+          "invokeKind": "FUNC",
+          "returnType": "HRESULT",
+          "vtableOffset": 36,
+          "parameters": [
+            {
+              "name": "itemList",
+              "type": "FdtXmlDocument",
+              "in": true,
+              "out": false,
+              "retVal": false
+            },
+            {
+              "name": "result",
+              "type": "FdtXmlDocument*",
+              "in": false,
+              "out": true,
+              "retVal": true
+            }
+          ]
+        }
+      ],
+      "implements": [],
+      "members": []
+    },
+    {
+      "name": "IDtmSingleDeviceDataAccessEvents",
+      "guid": "2357691C-E69A-4E0A-A8AA-EB7F1D080CEF",
+      "kind": "DISPATCH",
+      "flags": 4160,
+      "isDual": true,
+      "isHidden": false,
+      "baseInterface": "IDispatch",
+      "methods": [
+        {
+          "name": "OnItemListResponse",
+          "dispId": 1,
+          "invokeKind": "FUNC",
+          "returnType": "HRESULT",
+          "vtableOffset": 28,
+          "parameters": [
+            {
+              "name": "invokeId",
+              "type": "FdtUUIDString",
+              "in": true,
+              "out": false,
+              "retVal": false
+            },
+            {
+              "name": "response",
+              "type": "FdtXmlDocument",
+              "in": true,
+              "out": false,
+              "retVal": false
+            }
+          ]
+        },
+        {
+          "name": "OnDeviceItemListChanged",
+          "dispId": 2,
+          "invokeKind": "FUNC",
+          "returnType": "HRESULT",
+          "vtableOffset": 32,
+          "parameters": [
+            {
+              "name": "systemTag",
+              "type": "BSTR",
+              "in": true,
+              "out": false,
+              "retVal": false
+            }
+          ]
+        },
+        {
+          "name": "OnReadResponse",
+          "dispId": 3,
+          "invokeKind": "FUNC",
+          "returnType": "HRESULT",
+          "vtableOffset": 36,
+          "parameters": [
+            {
+              "name": "invokeId",
+              "type": "FdtUUIDString",
+              "in": true,
+              "out": false,
+              "retVal": false
+            },
+            {
+              "name": "response",
+              "type": "FdtXmlDocument",
+              "in": true,
+              "out": false,
+              "retVal": false
+            }
+          ]
+        },
+        {
+          "name": "OnWriteResponse",
+          "dispId": 4,
+          "invokeKind": "FUNC",
+          "returnType": "HRESULT",
+          "vtableOffset": 40,
+          "parameters": [
+            {
+              "name": "invokeId",
+              "type": "FdtUUIDString",
+              "in": true,
+              "out": false,
+              "retVal": false
+            },
+            {
+              "name": "response",
+              "type": "FdtXmlDocument",
+              "in": true,
+              "out": false,
+              "retVal": false
+            }
+          ]
+        }
+      ],
+      "implements": [],
+      "members": []
+    },
+    {
+      "name": "IDtmSingleInstanceDataAccessEvents",
+      "guid": "EBC093F1-4F7A-4208-A209-C172E54AB185",
+      "kind": "DISPATCH",
+      "flags": 4160,
+      "isDual": true,
+      "isHidden": false,
+      "baseInterface": "IDispatch",
+      "methods": [
+        {
+          "name": "OnInstanceItemListChanged",
+          "dispId": 1,
+          "invokeKind": "FUNC",
+          "returnType": "HRESULT",
+          "vtableOffset": 28,
+          "parameters": [
+            {
+              "name": "systemTag",
+              "type": "BSTR",
+              "in": true,
+              "out": false,
+              "retVal": false
+            }
+          ]
+        }
+      ],
+      "implements": [],
+      "members": []
+    }
+  ]
+}

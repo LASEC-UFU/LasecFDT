@@ -1,0 +1,242 @@
+{
+  "clsid": "328D45D6-2E31-4411-AD20-796FBDCD7034",
+  "systemTag": "LASEC-4A775F7E",
+  "startedAt": "2026-11-23T18:44:42.004567-03:00",
+  "hostProcess": "x86 / CLR 4.0.30319.42000",
+  "created": true,
+  "environmentAccepted": true,
+  "configured": true,
+  "releasedCleanly": true,
+  "finalState": "Released",
+  "persistenceKind": "PropertyBag",
+  "interfaces": {
+    "IBtm": false,
+    "IBtmActiveXControl": false,
+    "IBtmInformation": false,
+    "IBtmParameter": false,
+    "IDtm": true,
+    "IDtm2": false,
+    "IDtmActiveXControl": false,
+    "IDtmActiveXInformation": true,
+    "IDtmApplication": false,
+    "IDtmAuditTrailEvents": false,
+    "IDtmChannel": false,
+    "IDtmDiagnosis": false,
+    "IDtmDocumentation": false,
+    "IDtmEvents": false,
+    "IDtmEvents2": false,
+    "IDtmHardwareIdentification": false,
+    "IDtmImportExport": false,
+    "IDtmInformation": true,
+    "IDtmInformation2": false,
+    "IDtmOnlineDiagnosis": false,
+    "IDtmOnlineParameter": true,
+    "IDtmParameter": true,
+    "IDtmRedundancyEvents": false,
+    "IDtmScanEvents": false,
+    "IDtmSingleDeviceDataAccess": false,
+    "IDtmSingleDeviceDataAccessEvents": false,
+    "IDtmSingleInstanceDataAccess": false,
+    "IDtmSingleInstanceDataAccessEvents": false,
+    "IFdtActiveX": false,
+    "IFdtActiveX2": false,
+    "IFdtBtmTopology": false,
+    "IFdtBulkData": false,
+    "IFdtChannel": false,
+    "IFdtChannelActiveXControl": false,
+    "IFdtChannelActiveXControl2": false,
+    "IFdtChannelActiveXInformation": false,
+    "IFdtChannelCollection": false,
+    "IFdtChannelScan": false,
+    "IFdtChannelSubTopology": false,
+    "IFdtChannelSubTopology2": false,
+    "IFdtCommunication": false,
+    "IFdtCommunicationEvents": true,
+    "IFdtCommunicationEvents2": false,
+    "IFdtContainer": false,
+    "IFdtDialog": false,
+    "IFdtEvents": true,
+    "IFdtFunctionBlockData": false,
+    "IFdtTopology": false,
+    "IPersistStreamInit": true,
+    "IPersistPropertyBag": true,
+    "IOleObject": false
+  },
+  "missingMandatoryDtmInterfaces": [
+    "IDtm2",
+    "IDtmDocumentation",
+    "IDtmDiagnosis",
+    "IDtmInformation2",
+    "IDtmOnlineDiagnosis",
+    "IDtmSingleInstanceDataAccess"
+  ],
+  "information": {
+    "fdtVersion": "1.2",
+    "name": "TP301DTM",
+    "vendor": "Smar",
+    "version": "2.04",
+    "date": "2013-04-25",
+    "deviceTypes": [
+      {
+        "index": 0,
+        "name": "TP301",
+        "vendor": "Smar",
+        "version": "2.10",
+        "date": "2007-03-01",
+        "busCategories": [
+          "HART"
+        ],
+        "variants": [],
+        "outerXml": "<fdt:DtmDeviceType readAccess=\"1\" writeAccess=\"0\" manufacturerId=\"62\" deviceTypeId=\"5\" xmlns:fdt=\"x-schema:FDTDataTypesSchema.xml\"><fdt:VersionInformation name=\"TP301\" readAccess=\"1\" writeAccess=\"0\" vendor=\"Smar\" version=\"2.10\" date=\"2007-03-01\" /><fdt:SupportedLanguages><fdt:LanguageId languageId=\"1033\" /></fdt:SupportedLanguages><fdt:BusCategories><fdt:BusCategory busCategory=\"036D1498-387B-11D4-86E1-00E0987270B9\" busCategoryName=\"HART\"><fdt:CommunicationTypeEntry communicationType=\"required\" /></fdt:BusCategory></fdt:BusCategories></fdt:DtmDeviceType>"
+      }
+    ]
+  },
+  "informationXml": "<?xml version=\"1.0\"?>\r\n\t<FDT xmlns          =\"x-schema:DTMInformationSchema.xml\" \r\n\t\t xmlns:fdt      =\"x-schema:FDTDataTypesSchema.xml\" \r\n\t\t xmlns:fdtappid =\"x-schema:FDTApplicationIdSchema.xml\">\r\n\r\n\t<DtmInfo>\r\n\r\n\t\t<FDTVersion \r\n\t\t\tmajor =\"1\" \r\n\t\t\tminor =\"2\"\r\n\t\t/>\r\n\r\n\t\t<fdt:VersionInformation \r\n\t\t\tname        =\"TP301DTM\" \r\n\t\t\treadAccess  =\"1\" \r\n\t\t\twriteAccess =\"0\" \r\n\t\t\tvendor      =\"Smar\" \r\n\t\t\tversion     =\"2.04\" \r\n\t\t\tdate        =\"2013-04-25\"\r\n\t\t/>\r\n\r\n\t\t<DtmDeviceTypes>\r\n\r\n\t\t\t<fdt:DtmDeviceType \r\n\t\t\t\treadAccess  =\"1\" \r\n\t\t\t\twriteAccess =\"0\"\r\n\t\t\t\tmanufacturerId = \"62\"\r\n\t\t\t\tdeviceTypeId = \"5\"\r\n\t\t\t>\r\n\t\t\r\n\t\t\t\t<fdt:VersionInformation \r\n\t\t\t\t\tname        =\"TP301\"  \r\n\t\t\t\t\treadAccess  =\"1\" \r\n\t\t\t\t\twriteAccess =\"0\" \r\n\t\t\t\t\tvendor      =\"Smar\" \r\n\t\t\t\t\tversion     =\"2.10\" \r\n\t\t\t\t\tdate        =\"2007-03-01\"\r\n\t\t\t\t/>\r\n\r\n\t\t\t\t<fdt:SupportedLanguages>\r\n\t\t\t\t\t<fdt:LanguageId \r\n\t\t\t\t\t\tlanguageId =\"1033\"\r\n\t\t\t\t\t/>\r\n\t\t\t\t</fdt:SupportedLanguages>\r\n\r\n\t\t\t\t<fdt:BusCategories>\r\n\t\t\t\t\t<fdt:BusCategory \r\n\t\t\t\t\t\tbusCategory =\"036D1498-387B-11D4-86E1-00E0987270B9\"\r\n\t\t\t\t\t\tbusCategoryName =\"HART\">\r\n\t\t\t\t\t\t<fdt:CommunicationTypeEntry communicationType=\"required\"/>\r\n\t\t\t\t\t</fdt:BusCategory>\r\n\t\t\t\t</fdt:BusCategories>\r\n\r\n\t\t\t</fdt:DtmDeviceType>\r\n\t\t</DtmDeviceTypes>\r\n\t</DtmInfo>\r\n</FDT>\r\n",
+  "functions": [
+    {
+      "functionId": "1",
+      "name": "MainOperationTP301-ActiveX",
+      "applicationId": "fdtOnlineParameterize",
+      "isStandard": true,
+      "enabled": false,
+      "hidden": false,
+      "path": "Functions"
+    },
+    {
+      "functionId": "2",
+      "name": "MainOperationTP301-ActiveX",
+      "applicationId": "fdtOfflineParameterize",
+      "isStandard": true,
+      "enabled": true,
+      "hidden": false,
+      "path": "Functions"
+    }
+  ],
+  "activeXByFunction": {
+    "1 MainOperationTP301-ActiveX": "A9E296E5-8F8D-4447-A987-8D23DB2BB337",
+    "2 MainOperationTP301-ActiveX": "A9E296E5-8F8D-4447-A987-8D23DB2BB337"
+  },
+  "savedDataSet": {
+    "kind": "PropertyBag",
+    "properties": [
+      {
+        "name": "DTM_DATA",
+        "type": "Byte[]",
+        "value": "XAQAADwAZgBkAHQAOgBEAHQAbQBEAGUAdgBpAGMAZQBUAHkAcABlACAAcgBlAGEAZABBAGMAYwBlAHMAcwA9ACIAMQAiACAAdwByAGkAdABlAEEAYwBjAGUAcwBzAD0AIgAwACIAIABtAGEAbgB1AGYAYQBjAHQAdQByAGUAcgBJAGQAPQAiADYAMgAiACAAZABlAHYAaQBjAGUAVAB5AHAAZQBJAGQAPQAiADUAIgAgAHgAbQBsAG4AcwA6AGYAZAB0AD0AIgB4AC0AcwBjAGgAZQBtAGEAOgBGAEQAVABEAGEAdABhAFQAeQBwAGUAcwBTAGMAaABlAG0AYQAuAHgAbQBsACIAPgA8AGYAZAB0ADoAVgBlAHIAcwBpAG8AbgBJAG4AZgBvAHIAbQBhAHQAaQBvAG4AIABuAGEAbQBlAD0AIgBUAFAAMwAwADEAIgAgAHIAZQBhAGQAQQBjAGMAZQBzAHMAPQAiADEAIgAgAHcAcgBpAHQAZQBBAGMAYwBlAHMAcwA9ACIAMAAiACAAdgBlAG4AZABvAHIAPQAiAFMAbQBhAHIAIgAgAHYAZQByAHMAaQBvAG4APQAiADIALgAxADAAIgAgAGQAYQB0AGUAPQAiADIAMAAwADcALQAwADMALQAwADEAIgAvAD4APABmAGQAdAA6AFMAdQBwAHAAbwByAHQAZQBkAEwAYQBuAGcAdQBhAGcAZQBzAD4APABmAGQAdAA6AEwAYQBuAGcAdQBhAGcAZQBJAGQAIABsAGEAbgBnAHUAYQBnAGUASQBkAD0AIgAxADAAMwAzACIALwA+ADwALwBmAGQAdAA6AFMAdQBwAHAAbwByAHQAZQBkAEwAYQBuAGcAdQBhAGcAZQBzAD4APABmAGQAdAA6AEIAdQBzAEMAYQB0AGUAZwBvAHIAaQBlAHMAPgA8AGYAZAB0ADoAQgB1AHMAQwBhAHQAZQBnAG8AcgB5ACAAYgB1AHMAQwBhAHQAZQBnAG8AcgB5AD0AIgAwADMANgBEADEANAA5ADgALQAzADgANwBCAC0AMQAxAEQANAAtADgANgBFADEALQAwADAARQAwADkAOAA3ADIANwAwAEIAOQAiACAAYgB1AHMAQwBhAHQAZQBnAG8AcgB5AE4AYQBtAGUAPQAiAEgAQQBSAFQAIgA+ADwAZgBkAHQAOgBDAG8AbQBtAHUAbgBpAGMAYQB0AGkAbwBuAFQAeQBwAGUARQBuAHQAcgB5ACAAYwBvAG0AbQB1AG4AaQBjAGEAdABpAG8AbgBUAHkAcABlAD0AIgByAGUAcQB1AGkAcgBlAGQAIgAvAD4APAAvAGYAZAB0ADoAQgB1AHMAQwBhAHQAZQBnAG8AcgB5AD4APAAvAGYAZAB0ADoAQgB1AHMAQwBhAHQAZQBnAG8AcgBpAGUAcwA+ADwALwBmAGQAdAA6AEQAdABtAEQAZQB2AGkAYwBlAFQAeQBwAGUAPgAAAAgACAAAADEALgAwAAAACAAEAAAAMQAAAAMAYAAAABMAAwAAAAgACAAAAFQAQQBHAAAAEwAEAAAACAAeAAAAMQA2ACAAQwBIAEEAUgBBAEMAVABFAFIARQBTAAAAEwAFAAAACAACAAAAAAATAAYAAAAIAB4AAAAzADIAIABDAEgAQQBSAEEAQwBUAEUAUgBFAFMAAAATABAAAAARAAETABEAAAARAAATABIAAAARAAATABMAAAARAAETABQAAAAEAAAAyEITABUAAAAEAAAAAAATABgAAAARAAITABkAAAAEAAAAAAATABoAAAAEAAAAyEITABsAAAAEAAAAAAATABwAAAAEAAAAAAATAB0AAAAEAAAAAAATAB4AAAAEAAAAAAATAB8AAAAEAAAAAAATACAAAAAEAAAAAAATACEAAAAEAAAAAAATACIAAAAEAAAAAAATACMAAAAEAAAAAAATACQAAAAEAAAAAAATACUAAAAEAAAAAAATACYAAAAEAAAAAAATACcAAAAEAAAAAAATACgAAAAEAAAAAAATACkAAAAEAAAAAAATACoAAAAEAAAAAAATACsAAAAEAAAAAAATACwAAAAEAAAAAAATAC0AAAAEAAAAAAATAC4AAAAEAAAAAAATAC8AAAAEAAAAAAATADAAAAAEAAAAAAATADEAAAAEAAAAAAATADIAAAAEAAAAAAATADMAAAAEAAAAAAATADQAAAAEAAAAAAATADUAAAAEAAAAAAATADYAAAAEAAAAAAATADcAAAAEAAAAAAATADgAAAAEAAAAAAATAEoAAAARAAATAEsAAAARAAATAFYAAAAIAAIAAAAAABMAVwAAAAsAAAATAFgAAAARAAATAFkAAAARAAATAFoAAAARAAATAFsAAAARAAATAFwAAAARAAATAF0AAAARAAATAGAAAAAIAAgAAABUAEEARwAAABMAYQAAAAgAHgAAADEANgAgAEMASABBAFIAQQBDAFQARQBSAEUAUwAAABMAYgAAAAgAAgAAAAAAEwBjAAAACAAeAAAAMwAyACAAQwBIAEEAUgBBAEMAVABFAFIARQBTAAAAEwBkAAAAEQABEwBlAAAAEQAAEwBmAAAAEQAAEwBnAAAAEQABEwBoAAAABAAAAMhCEwBpAAAABAAAAAAAEwBqAAAAEQACEwBrAAAABAAAAAAAEwBsAAAABAAAAMhCEwBtAAAABAAAAAAAEwBuAAAABAAAAAAAEwBvAAAABAAAAAAAEwBwAAAABAAAAAAAEwBxAAAABAAAAAAAEwByAAAABAAAAAAAEwBzAAAABAAAAAAAEwB0AAAABAAAAAAAEwB1AAAABAAAAAAAEwB2AAAABAAAAAAAEwB3AAAABAAAAAAAEwB4AAAABAAAAAAAEwB5AAAABAAAAAAAEwB6AAAABAAAAAAAEwB7AAAABAAAAMhCEwB8AAAABAAAAAAAEwB9AAAABAAAAAAAEwB+AAAABAAAAAAAEwB/AAAABAAAAAAAEwCAAAAABAAAAAAAEwCBAAAABAAAAAAAEwCCAAAABAAAAAAAEwCDAAAABAAAAAAAEwCEAAAABAAAAAAAEwCFAAAABAAAAAAAEwCGAAAABAAAAAAAEwCHAAAABAAAAAAAEwCIAAAABAAAAAAAEwCJAAAABAAAAAAAEwCKAAAABAAAAAAA"
+      }
+    ],
+    "savedUtc": "2026-11-23T21:44:42.2325806Z"
+  },
+  "steps": [
+    {
+      "step": "CoCreateInstance",
+      "ok": true,
+      "result": "System.__ComObject",
+      "durationMs": 57,
+      "stateAfter": "Up"
+    },
+    {
+      "step": "QueryInterface (inventário)",
+      "ok": true,
+      "result": "IDtm, IDtmActiveXInformation, IDtmInformation, IDtmOnlineParameter, IDtmParameter, IFdtCommunicationEvents, IFdtEvents, IPersistStreamInit, IPersistPropertyBag",
+      "durationMs": 0,
+      "stateAfter": "Up"
+    },
+    {
+      "step": "IPersistPropertyBag::InitNew",
+      "ok": true,
+      "durationMs": 0,
+      "stateAfter": "NewCreated"
+    },
+    {
+      "step": "IDtm::Environment",
+      "ok": true,
+      "result": "TRUE",
+      "durationMs": 42,
+      "stateAfter": "NewEnabled"
+    },
+    {
+      "step": "IDtm::SetLanguage(0x0409)",
+      "ok": true,
+      "result": "FALSE",
+      "durationMs": 0,
+      "stateAfter": "NewEnabled"
+    },
+    {
+      "step": "IDtmInformation::GetInformation",
+      "ok": true,
+      "result": "FDT 1.2; Smar TP301DTM 2.04; 1 device type(s)",
+      "durationMs": 16,
+      "stateAfter": "NewEnabled"
+    },
+    {
+      "step": "IDtm::InitNew",
+      "ok": true,
+      "result": "TRUE",
+      "durationMs": 13,
+      "stateAfter": "Running"
+    },
+    {
+      "step": "IDtm::Config",
+      "ok": true,
+      "result": "TRUE",
+      "durationMs": 5,
+      "stateAfter": "Configured"
+    },
+    {
+      "step": "IDtm::GetFunctions",
+      "ok": true,
+      "result": "2 função(ões); default=",
+      "durationMs": 4,
+      "stateAfter": "Configured"
+    },
+    {
+      "step": "IDtmActiveXInformation::GetActiveXGuid",
+      "ok": true,
+      "result": "A9E296E5-8F8D-4447-A987-8D23DB2BB337",
+      "durationMs": 20,
+      "stateAfter": "Configured"
+    },
+    {
+      "step": "IDtmActiveXInformation::GetActiveXGuid",
+      "ok": true,
+      "result": "A9E296E5-8F8D-4447-A987-8D23DB2BB337",
+      "durationMs": 1,
+      "stateAfter": "Configured"
+    },
+    {
+      "step": "IPersistPropertyBag::Save",
+      "ok": true,
+      "result": "1 propriedades",
+      "durationMs": 5,
+      "stateAfter": "Configured"
+    },
+    {
+      "step": "IDtm::PrepareToRelease",
+      "ok": true,
+      "result": "TRUE",
+      "durationMs": 3,
+      "stateAfter": "Configured"
+    },
+    {
+      "step": "aguardar IDtmEvents::OnPreparedToRelease",
+      "ok": true,
+      "result": "7 ms",
+      "durationMs": 0,
+      "stateAfter": "Configured"
+    },
+    {
+      "step": "IUnknown::Release (final)",
+      "ok": true,
+      "result": "refs RCW restantes=0",
+      "durationMs": 0,
+      "stateAfter": "Released"
+    }
+  ],
+  "events": [
+    "18:44:42.211 IDtmEvents.OnFunctionChanged tag=LASEC-4A775F7E ",
+    "18:44:42.231 IDtmEvents.OnFunctionChanged tag=LASEC-4A775F7E ",
+    "18:44:42.235 IDtmEvents.OnParameterChanged tag=LASEC-4A775F7E <?xml version=\"1.0\"?> \r\n<OnParameterChangedDocument> \r\n\t<PARAMETERS> \r\n</PARAMETERS> \r\n \r\n</OnParameterChangedDocument> \r\n",
+    "18:44:42.235 IDtmEvents.OnPreparedToRelease tag=LASEC-4A775F7E "
+  ]
+}

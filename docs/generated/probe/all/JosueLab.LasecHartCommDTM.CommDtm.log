@@ -1,0 +1,2 @@
+  FAIL CoCreateInstance                                    53 ms  Up               FileNotFoundException: Falha na recuperação de fábrica de classes COM do componente com CLSID {B4B6B3E7-639D-460B-B9A0-6C7F7EB20010} devido ao seguinte erro: 80070002 O sistema não pode encontrar o arquivo especificado. (Exceção de HRESULT: 0x80070002).
+Resultado: created=False environment=False configured=False releasedCleanly=True final=Failed roundTrip=

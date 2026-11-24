@@ -1,0 +1,1608 @@
+{
+  "generatedAtUtc": "2026-11-23T21:43:21.8671793Z",
+  "machineName": "NOTE-CASA-JO",
+  "osIs64Bit": true,
+  "scannerProcessArch": "x86",
+  "catalogModificationFlag": "BD84B296-B1FC-4B54-8CB5-B1DEE2591010",
+  "fdtTypeLibrary": {
+    "registered": true,
+    "versions": [
+      "1.4e84"
+    ],
+    "win32Path": "C:\\WINDOWS\\SysWOW64\\FDT100.dll"
+  },
+  "fdtCategories": [
+    {
+      "catid": "036D1490-387B-11D4-86E1-00E0987270B9",
+      "name": "FDT DTM",
+      "registryView": "32"
+    },
+    {
+      "catid": "036D1491-387B-11D4-86E1-00E0987270B9",
+      "name": "FDT DTM Device",
+      "registryView": "32"
+    },
+    {
+      "catid": "036D1492-387B-11D4-86E1-00E0987270B9",
+      "name": "FDT DTM Module",
+      "registryView": "32"
+    },
+    {
+      "catid": "036D1493-387B-11D4-86E1-00E0987270B9",
+      "name": "FDT DTM Channel",
+      "registryView": "32"
+    },
+    {
+      "catid": "036D1494-387B-11D4-86E1-00E0987270B9",
+      "name": "FDT DTM Communication",
+      "registryView": "32"
+    },
+    {
+      "catid": "036D1495-387B-11D4-86E1-00E0987270B9",
+      "name": "FDT DTM Presentation ActiveXControl",
+      "registryView": "32"
+    },
+    {
+      "catid": "036D1496-387B-11D4-86E1-00E0987270B9",
+      "name": "FDT DTM Included Presentation",
+      "registryView": "32"
+    },
+    {
+      "catid": "036D1497-387B-11D4-86E1-00E0987270B9",
+      "name": "FDT FIELDBUS Profibus DPV0",
+      "registryView": "32"
+    },
+    {
+      "catid": "036D1498-387B-11D4-86E1-00E0987270B9",
+      "name": "FDT FIELDBUS Hart",
+      "registryView": "32"
+    },
+    {
+      "catid": "036D1499-387B-11D4-86E1-00E0987270B9",
+      "name": "FDT FIELDBUS Profibus DPV1",
+      "registryView": "32"
+    },
+    {
+      "catid": "036D1690-387B-11D4-86E1-00E0987270B9",
+      "name": "FDT BTM",
+      "registryView": "32"
+    },
+    {
+      "catid": "036D1691-387B-11D4-86E1-00E0987270B9",
+      "name": "FDT FIELDBUS FF H1",
+      "registryView": "32"
+    },
+    {
+      "catid": "036D1692-387B-11D4-86E1-00E0987270B9",
+      "name": "FDT FIELDBUS FF HSE",
+      "registryView": "32"
+    },
+    {
+      "catid": "036D1693-387B-11D4-86E1-00E0987270B9",
+      "name": "FDT FF STANDARD BLOCK",
+      "registryView": "32"
+    },
+    {
+      "catid": "036D1490-387B-11D4-86E1-00E0987270B9",
+      "name": "FDT DTM",
+      "registryView": "64"
+    },
+    {
+      "catid": "036D1491-387B-11D4-86E1-00E0987270B9",
+      "name": "FDT DTM Device",
+      "registryView": "64"
+    },
+    {
+      "catid": "036D1492-387B-11D4-86E1-00E0987270B9",
+      "name": "FDT DTM Module",
+      "registryView": "64"
+    },
+    {
+      "catid": "036D1493-387B-11D4-86E1-00E0987270B9",
+      "name": "FDT DTM Channel",
+      "registryView": "64"
+    },
+    {
+      "catid": "036D1494-387B-11D4-86E1-00E0987270B9",
+      "name": "FDT DTM Communication",
+      "registryView": "64"
+    },
+    {
+      "catid": "036D1495-387B-11D4-86E1-00E0987270B9",
+      "name": "FDT DTM Presentation ActiveXControl",
+      "registryView": "64"
+    },
+    {
+      "catid": "036D1496-387B-11D4-86E1-00E0987270B9",
+      "name": "FDT DTM Included Presentation",
+      "registryView": "64"
+    },
+    {
+      "catid": "036D1497-387B-11D4-86E1-00E0987270B9",
+      "name": "FDT FIELDBUS Profibus DPV0",
+      "registryView": "64"
+    },
+    {
+      "catid": "036D1498-387B-11D4-86E1-00E0987270B9",
+      "name": "FDT FIELDBUS Hart",
+      "registryView": "64"
+    },
+    {
+      "catid": "036D1499-387B-11D4-86E1-00E0987270B9",
+      "name": "FDT FIELDBUS Profibus DPV1",
+      "registryView": "64"
+    },
+    {
+      "catid": "036D1690-387B-11D4-86E1-00E0987270B9",
+      "name": "FDT BTM",
+      "registryView": "64"
+    },
+    {
+      "catid": "036D1691-387B-11D4-86E1-00E0987270B9",
+      "name": "FDT FIELDBUS FF H1",
+      "registryView": "64"
+    },
+    {
+      "catid": "036D1692-387B-11D4-86E1-00E0987270B9",
+      "name": "FDT FIELDBUS FF HSE",
+      "registryView": "64"
+    },
+    {
+      "catid": "036D1693-387B-11D4-86E1-00E0987270B9",
+      "name": "FDT FF STANDARD BLOCK",
+      "registryView": "64"
+    }
+  ],
+  "dtms": [
+    {
+      "clsid": "B4B6B3E7-639D-460B-B9A0-6C7F7EB20010",
+      "name": "LasecHartCommDTM.CommDtm",
+      "progId": "JosueLab.LasecHartCommDTM.CommDtm",
+      "registryView": "32",
+      "categories": [
+        {
+          "catid": "036D1490-387B-11D4-86E1-00E0987270B9",
+          "name": "FDT DTM"
+        },
+        {
+          "catid": "62C8FE65-4EBB-45E7-B440-6E39B2CDBF29",
+          "name": ".NET Category"
+        }
+      ],
+      "roles": [
+        "Dtm"
+      ],
+      "fieldbuses": [],
+      "server": {
+        "kind": "InprocServer32",
+        "registeredPath": "mscoree.dll",
+        "resolvedPath": "C:\\SourceCode\\LasecHartCommDTM\\src\\LasecHartCommDTM\\bin\\Release\\net48\\LasecHartCommDTM.DLL",
+        "fileExists": false,
+        "threadingModel": "Both",
+        "msiAdvertised": false,
+        "isManaged": true,
+        "managedAssembly": "LasecHartCommDTM, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+        "managedClass": "LasecHartCommDTM.CommDtm",
+        "managedRuntimeVersion": "v4.0.30319",
+        "managedCodeBase": "file:///C:/SourceCode/LasecHartCommDTM/src/LasecHartCommDTM/bin/Release/net48/LasecHartCommDTM.DLL",
+        "managedCodeBaseExists": false
+      },
+      "declaredInterfacesNote": "DTM gerenciado sem type library registrada: interfaces só verificáveis por sonda (probe).",
+      "requiredHostArch": "x86",
+      "issues": [
+        "CodeBase do assembly .NET não existe: C:\\SourceCode\\LasecHartCommDTM\\src\\LasecHartCommDTM\\bin\\Release\\net48\\LasecHartCommDTM.DLL",
+        "DTM .NET Framework (CLR v4): o host precisa ser processo .NET Framework 4.x (não .NET 5+)."
+      ]
+    },
+    {
+      "clsid": "6358CCBF-AA0E-4633-9564-9EEFB7FDE86D",
+      "name": "CWHartFdt.clsDTM",
+      "progId": "CWHartFdt.clsDTM",
+      "registryView": "32",
+      "categories": [
+        {
+          "catid": "036D1490-387B-11D4-86E1-00E0987270B9",
+          "name": "FDT DTM"
+        },
+        {
+          "catid": "036D1493-387B-11D4-86E1-00E0987270B9",
+          "name": "FDT DTM Channel"
+        },
+        {
+          "catid": "036D1494-387B-11D4-86E1-00E0987270B9",
+          "name": "FDT DTM Communication"
+        },
+        {
+          "catid": "036D1495-387B-11D4-86E1-00E0987270B9",
+          "name": "FDT DTM Presentation ActiveXControl"
+        },
+        {
+          "catid": "036D1498-387B-11D4-86E1-00E0987270B9",
+          "name": "FDT FIELDBUS Hart"
+        },
+        {
+          "catid": "0DE86A53-2BAA-11CF-A229-00AA003D7352",
+          "name": "Class implements IPersistStreamInit"
+        },
+        {
+          "catid": "0DE86A57-2BAA-11CF-A229-00AA003D7352",
+          "name": "Class implements IPersistPropertyBag"
+        },
+        {
+          "catid": "40FC6ED5-2438-11CF-A3DB-080036F12502",
+          "name": "Automation Objects"
+        }
+      ],
+      "roles": [
+        "Dtm",
+        "Channel",
+        "Communication",
+        "PresentationActiveX"
+      ],
+      "fieldbuses": [
+        "HART"
+      ],
+      "server": {
+        "kind": "InprocServer32",
+        "registeredPath": "C:\\WINDOWS\\SysWow64\\CWHARTFDT.ocx",
+        "resolvedPath": "C:\\WINDOWS\\SysWow64\\CWHARTFDT.ocx",
+        "fileExists": true,
+        "threadingModel": "Apartment",
+        "msiAdvertised": false,
+        "peMachine": "x86",
+        "isManaged": false,
+        "companyName": "Codewrights GmbH",
+        "productName": "CWHartFdt",
+        "fileDescription": "FDT Hart Protocoll Driver",
+        "fileVersion": "1.00.0058",
+        "productVersion": "1.00.0058"
+      },
+      "typeLib": {
+        "libId": "6A4CF9E6-7C73-4E3A-B8A2-F3515387CC59",
+        "version": "1.4",
+        "path": "C:\\WINDOWS\\SysWow64\\CWHARTFDT.ocx",
+        "fileExists": true
+      },
+      "declaredInterfaces": [
+        {
+          "name": "_clsDTM",
+          "iid": "62514671-65D9-4136-96E3-ECF85DE77BCC",
+          "isFdt": false,
+          "isSource": false
+        },
+        {
+          "name": "IFdtFunctionBlockData",
+          "iid": "036D1475-387B-11D4-86E1-00E0987270B9",
+          "isFdt": true,
+          "isSource": false
+        },
+        {
+          "name": "IFdtEvents",
+          "iid": "036D1478-387B-11D4-86E1-00E0987270B9",
+          "isFdt": true,
+          "isSource": false
+        },
+        {
+          "name": "IDtm",
+          "iid": "036D1481-387B-11D4-86E1-00E0987270B9",
+          "isFdt": true,
+          "isSource": false
+        },
+        {
+          "name": "IDtmActiveXInformation",
+          "iid": "036D1480-387B-11D4-86E1-00E0987270B9",
+          "isFdt": true,
+          "isSource": false
+        },
+        {
+          "name": "IDtmInformation",
+          "iid": "036D147F-387B-11D4-86E1-00E0987270B9",
+          "isFdt": true,
+          "isSource": false
+        },
+        {
+          "name": "IDtmParameter",
+          "iid": "036D147D-387B-11D4-86E1-00E0987270B9",
+          "isFdt": true,
+          "isSource": false
+        },
+        {
+          "name": "IDtmDocumentation",
+          "iid": "036D147C-387B-11D4-86E1-00E0987270B9",
+          "isFdt": true,
+          "isSource": false
+        },
+        {
+          "name": "IDtmChannel",
+          "iid": "036D1489-387B-11D4-86E1-00E0987270B9",
+          "isFdt": true,
+          "isSource": false
+        },
+        {
+          "name": "IFdtChannel",
+          "iid": "036D1488-387B-11D4-86E1-00E0987270B9",
+          "isFdt": true,
+          "isSource": false
+        },
+        {
+          "name": "IFdtCommunication",
+          "iid": "039ECFC4-9CA8-44E6-944D-B37F288A34D8",
+          "isFdt": true,
+          "isSource": false
+        },
+        {
+          "name": "IFdtChannelSubTopology",
+          "iid": "036D1484-387B-11D4-86E1-00E0987270B9",
+          "isFdt": true,
+          "isSource": false
+        }
+      ],
+      "declaredInterfacesNote": "Declaração estática da type library; a confirmação real é feita por QueryInterface na sonda.",
+      "requiredHostArch": "x86",
+      "issues": []
+    },
+    {
+      "clsid": "00E77DC4-EF94-4DAE-8675-E0CBBBE2DD8D",
+      "name": "DT301DTM DTM",
+      "progId": "Smar.DT301DTM.1",
+      "versionIndependentProgId": "Smar.DT301DTM",
+      "registryView": "32",
+      "categories": [
+        {
+          "catid": "036D1490-387B-11D4-86E1-00E0987270B9",
+          "name": "FDT DTM"
+        },
+        {
+          "catid": "036D1491-387B-11D4-86E1-00E0987270B9",
+          "name": "FDT DTM Device"
+        },
+        {
+          "catid": "036D1498-387B-11D4-86E1-00E0987270B9",
+          "name": "FDT FIELDBUS Hart"
+        }
+      ],
+      "roles": [
+        "Dtm",
+        "Device"
+      ],
+      "fieldbuses": [
+        "HART"
+      ],
+      "server": {
+        "kind": "InprocServer32",
+        "registeredPath": "C:\\Program Files (x86)\\Smar\\HART\\DTM\\DT301DTM\\SmarDT301DTM.dll",
+        "resolvedPath": "C:\\Program Files (x86)\\Smar\\HART\\DTM\\DT301DTM\\SmarDT301DTM.dll",
+        "fileExists": true,
+        "threadingModel": "Apartment",
+        "msiAdvertised": true,
+        "peMachine": "x86",
+        "isManaged": false,
+        "companyName": "Smar",
+        "productName": "SmarDT301DTM Module",
+        "fileDescription": "SmarDT301DTM Module",
+        "fileVersion": "not used",
+        "productVersion": "not used"
+      },
+      "typeLib": {
+        "libId": "C549B9AF-16C5-4A11-BE08-190D505B4E0E",
+        "version": "1.0",
+        "path": "C:\\PROGRA~2\\Smar\\HART\\DTM\\DT301DTM\\SMARDT~1.DLL",
+        "fileExists": true
+      },
+      "declaredInterfaces": [
+        {
+          "name": "IDT301DTM",
+          "iid": "F1029AB6-2ECB-4DA7-BAB8-010930A8584A",
+          "isFdt": false,
+          "isSource": false
+        }
+      ],
+      "declaredInterfacesNote": "Declaração estática da type library; a confirmação real é feita por QueryInterface na sonda.",
+      "requiredHostArch": "x86",
+      "issues": []
+    },
+    {
+      "clsid": "50299458-7B8F-4573-88C4-190B640180E6",
+      "name": "LD400DTM DTM",
+      "progId": "Smar.LD400DTM.1",
+      "versionIndependentProgId": "Smar.LD400DTM",
+      "registryView": "32",
+      "categories": [
+        {
+          "catid": "036D1490-387B-11D4-86E1-00E0987270B9",
+          "name": "FDT DTM"
+        },
+        {
+          "catid": "036D1491-387B-11D4-86E1-00E0987270B9",
+          "name": "FDT DTM Device"
+        },
+        {
+          "catid": "036D1498-387B-11D4-86E1-00E0987270B9",
+          "name": "FDT FIELDBUS Hart"
+        }
+      ],
+      "roles": [
+        "Dtm",
+        "Device"
+      ],
+      "fieldbuses": [
+        "HART"
+      ],
+      "server": {
+        "kind": "InprocServer32",
+        "registeredPath": "C:\\Program Files (x86)\\Smar\\HART\\DTM\\LD400DTM\\SmarLD400DTM.dll",
+        "resolvedPath": "C:\\Program Files (x86)\\Smar\\HART\\DTM\\LD400DTM\\SmarLD400DTM.dll",
+        "fileExists": true,
+        "threadingModel": "Apartment",
+        "msiAdvertised": true,
+        "peMachine": "x86",
+        "isManaged": false,
+        "companyName": "Smar",
+        "productName": "SmarLD400DTM Module",
+        "fileDescription": "SmarLD400DTM Module",
+        "fileVersion": "not used",
+        "productVersion": "not used"
+      },
+      "typeLib": {
+        "libId": "E544FD35-2BBC-4284-B8D5-C74D4CAAA274",
+        "version": "1.0",
+        "path": "C:\\PROGRA~2\\Smar\\HART\\DTM\\LD400DTM\\SMARLD~1.DLL",
+        "fileExists": true
+      },
+      "declaredInterfaces": [
+        {
+          "name": "ILD400DTM",
+          "iid": "550E30BC-5E83-4B1B-B164-C3ECA1B8A8AD",
+          "isFdt": false,
+          "isSource": false
+        }
+      ],
+      "declaredInterfacesNote": "Declaração estática da type library; a confirmação real é feita por QueryInterface na sonda.",
+      "requiredHostArch": "x86",
+      "issues": []
+    },
+    {
+      "clsid": "328D45D6-2E31-4411-AD20-796FBDCD7034",
+      "name": "TP301DTM DTM",
+      "progId": "Smar.TP301DTM.1",
+      "versionIndependentProgId": "Smar.TP301DTM",
+      "registryView": "32",
+      "categories": [
+        {
+          "catid": "036D1490-387B-11D4-86E1-00E0987270B9",
+          "name": "FDT DTM"
+        },
+        {
+          "catid": "036D1491-387B-11D4-86E1-00E0987270B9",
+          "name": "FDT DTM Device"
+        },
+        {
+          "catid": "036D1498-387B-11D4-86E1-00E0987270B9",
+          "name": "FDT FIELDBUS Hart"
+        }
+      ],
+      "roles": [
+        "Dtm",
+        "Device"
+      ],
+      "fieldbuses": [
+        "HART"
+      ],
+      "server": {
+        "kind": "InprocServer32",
+        "registeredPath": "C:\\Program Files (x86)\\Smar\\HART\\DTM\\TP301DTM\\SmarTP301DTM.dll",
+        "resolvedPath": "C:\\Program Files (x86)\\Smar\\HART\\DTM\\TP301DTM\\SmarTP301DTM.dll",
+        "fileExists": true,
+        "threadingModel": "Apartment",
+        "msiAdvertised": true,
+        "peMachine": "x86",
+        "isManaged": false,
+        "companyName": "Smar",
+        "productName": "SmarTP301DTM Module",
+        "fileDescription": "SmarTP301DTM Module",
+        "fileVersion": "not used",
+        "productVersion": "not used"
+      },
+      "typeLib": {
+        "libId": "95EC0A10-2E1E-42AD-BCE9-B7F29BC26CC7",
+        "version": "1.0",
+        "path": "C:\\PROGRA~2\\Smar\\HART\\DTM\\TP301DTM\\SMARTP~1.DLL",
+        "fileExists": true
+      },
+      "declaredInterfaces": [
+        {
+          "name": "ITP301DTM",
+          "iid": "DD8368CA-B4D0-4BF5-A77E-30C718DD42A4",
+          "isFdt": false,
+          "isSource": false
+        }
+      ],
+      "declaredInterfacesNote": "Declaração estática da type library; a confirmação real é feita por QueryInterface na sonda.",
+      "requiredHostArch": "x86",
+      "issues": []
+    },
+    {
+      "clsid": "542D3C6D-534E-4D90-9D86-CFBF550F4176",
+      "name": "TT301DTM DTM",
+      "progId": "Smar.TT301DTM.1",
+      "versionIndependentProgId": "Smar.TT301DTM",
+      "registryView": "32",
+      "categories": [
+        {
+          "catid": "036D1490-387B-11D4-86E1-00E0987270B9",
+          "name": "FDT DTM"
+        },
+        {
+          "catid": "036D1491-387B-11D4-86E1-00E0987270B9",
+          "name": "FDT DTM Device"
+        },
+        {
+          "catid": "036D1498-387B-11D4-86E1-00E0987270B9",
+          "name": "FDT FIELDBUS Hart"
+        }
+      ],
+      "roles": [
+        "Dtm",
+        "Device"
+      ],
+      "fieldbuses": [
+        "HART"
+      ],
+      "server": {
+        "kind": "InprocServer32",
+        "registeredPath": "C:\\Program Files (x86)\\Smar\\HART\\DTM\\TT301DTM\\SmarTT301DTM.dll",
+        "resolvedPath": "C:\\Program Files (x86)\\Smar\\HART\\DTM\\TT301DTM\\SmarTT301DTM.dll",
+        "fileExists": true,
+        "threadingModel": "Apartment",
+        "msiAdvertised": true,
+        "peMachine": "x86",
+        "isManaged": false,
+        "companyName": "Smar",
+        "productName": "SmarTT301DTM Module",
+        "fileDescription": "SmarTT301DTM Module",
+        "fileVersion": "not used",
+        "productVersion": "not used"
+      },
+      "typeLib": {
+        "libId": "D671114E-22E7-45D1-A4AD-F7082BE55E23",
+        "version": "1.0",
+        "path": "C:\\PROGRA~2\\Smar\\HART\\DTM\\TT301DTM\\SMARTT~1.DLL",
+        "fileExists": true
+      },
+      "declaredInterfaces": [
+        {
+          "name": "ITT301DTM",
+          "iid": "EDC47447-284D-44C9-BCBA-2EF2D88C8232",
+          "isFdt": false,
+          "isSource": false
+        }
+      ],
+      "declaredInterfacesNote": "Declaração estática da type library; a confirmação real é feita por QueryInterface na sonda.",
+      "requiredHostArch": "x86",
+      "issues": []
+    },
+    {
+      "clsid": "BB98D12E-6CDB-4DCF-9EA6-D88E090F6E54",
+      "name": "DTMCore Class",
+      "progId": "SmarDF116CommunicationDTM.DTMCore.1",
+      "versionIndependentProgId": "SmarDF116CommunicationDTM.DTMCore",
+      "registryView": "32",
+      "categories": [
+        {
+          "catid": "036D1490-387B-11D4-86E1-00E0987270B9",
+          "name": "FDT DTM"
+        }
+      ],
+      "roles": [
+        "Dtm"
+      ],
+      "fieldbuses": [],
+      "server": {
+        "kind": "InprocServer32",
+        "registeredPath": "C:\\Program Files (x86)\\Smar\\HART\\DTM\\DF116-DF117DTM\\SmarDF116CommunicationDTM.dll",
+        "resolvedPath": "C:\\Program Files (x86)\\Smar\\HART\\DTM\\DF116-DF117DTM\\SmarDF116CommunicationDTM.dll",
+        "fileExists": true,
+        "threadingModel": "Apartment",
+        "msiAdvertised": false,
+        "peMachine": "x86",
+        "isManaged": false,
+        "companyName": "Smar Equipamentos Industriais Ltda.",
+        "productName": "DF116 DTM",
+        "fileDescription": "DF116 and DF117 Communication DTM",
+        "fileVersion": "3.0.0.8",
+        "productVersion": "3.0.0.8"
+      },
+      "typeLib": {
+        "libId": "06355DFD-8F61-4FC3-8103-C5D1E3963278",
+        "version": "1.0",
+        "path": "C:\\Program Files (x86)\\Smar\\HART\\DTM\\DF116-DF117DTM\\SmarDF116CommunicationDTM.dll",
+        "fileExists": true
+      },
+      "declaredInterfaces": [
+        {
+          "name": "IDTMCore",
+          "iid": "F91F5034-A03F-4034-8A1D-F08487F9E827",
+          "isFdt": false,
+          "isSource": false
+        }
+      ],
+      "declaredInterfacesNote": "Declaração estática da type library; a confirmação real é feita por QueryInterface na sonda.",
+      "requiredHostArch": "x86",
+      "issues": []
+    },
+    {
+      "clsid": "1C8EF1EE-D3B4-4D37-A5CC-5DFAECC31564",
+      "name": "DTMCore Class",
+      "progId": "SmarFY500DTM.DTMCore.1",
+      "versionIndependentProgId": "SmarFY500DTM.DTMCore",
+      "registryView": "32",
+      "categories": [
+        {
+          "catid": "036D1490-387B-11D4-86E1-00E0987270B9",
+          "name": "FDT DTM"
+        },
+        {
+          "catid": "036D1491-387B-11D4-86E1-00E0987270B9",
+          "name": "FDT DTM Device"
+        }
+      ],
+      "roles": [
+        "Dtm",
+        "Device"
+      ],
+      "fieldbuses": [],
+      "server": {
+        "kind": "InprocServer32",
+        "registeredPath": "C:\\Program Files (x86)\\Smar\\HART\\DTM\\FY500DTM\\SmarFY500DTM.dll",
+        "resolvedPath": "C:\\Program Files (x86)\\Smar\\HART\\DTM\\FY500DTM\\SmarFY500DTM.dll",
+        "fileExists": true,
+        "threadingModel": "Apartment",
+        "msiAdvertised": true,
+        "peMachine": "x86",
+        "isManaged": false,
+        "companyName": "TODO: <Company name>",
+        "productName": "TODO: <Product name>",
+        "fileDescription": "TODO: <File description>",
+        "fileVersion": "1.0.0.1",
+        "productVersion": "1.0.0.1"
+      },
+      "typeLib": {
+        "libId": "F298AAA4-C79A-4D79-9C4C-BAFA066772FE",
+        "version": "1.0",
+        "path": "C:\\PROGRA~2\\Smar\\HART\\DTM\\FY500DTM\\SMARFY~1.DLL",
+        "fileExists": true
+      },
+      "declaredInterfaces": [
+        {
+          "name": "IDTMCore",
+          "iid": "8B276DC3-DE23-45E5-B8CD-0DA9A7E49BD4",
+          "isFdt": false,
+          "isSource": false
+        }
+      ],
+      "declaredInterfacesNote": "Declaração estática da type library; a confirmação real é feita por QueryInterface na sonda.",
+      "requiredHostArch": "x86",
+      "issues": []
+    },
+    {
+      "clsid": "3407678A-1F31-46F8-93FF-479DE8071747",
+      "name": "DTMCore Class",
+      "progId": "SmarLD1_0DTM.DTMCore.1",
+      "versionIndependentProgId": "SmarLD1_0DTM.DTMCore",
+      "registryView": "32",
+      "categories": [
+        {
+          "catid": "036D1490-387B-11D4-86E1-00E0987270B9",
+          "name": "FDT DTM"
+        },
+        {
+          "catid": "036D1491-387B-11D4-86E1-00E0987270B9",
+          "name": "FDT DTM Device"
+        }
+      ],
+      "roles": [
+        "Dtm",
+        "Device"
+      ],
+      "fieldbuses": [],
+      "server": {
+        "kind": "InprocServer32",
+        "registeredPath": "C:\\Program Files (x86)\\Smar\\HART\\DTM\\LD1.0DTM\\SmarLD1_0DTM.dll",
+        "resolvedPath": "C:\\Program Files (x86)\\Smar\\HART\\DTM\\LD1.0DTM\\SmarLD1_0DTM.dll",
+        "fileExists": true,
+        "threadingModel": "Apartment",
+        "msiAdvertised": false,
+        "peMachine": "x86",
+        "isManaged": false,
+        "companyName": "TODO: <Company name>",
+        "productName": "TODO: <Product name>",
+        "fileDescription": "TODO: <File description>",
+        "fileVersion": "1.0.0.1",
+        "productVersion": "1.0.0.1"
+      },
+      "typeLib": {
+        "libId": "E708EBCC-A7E1-4FB9-9618-EB1E7F87028D",
+        "version": "1.0",
+        "path": "C:\\Program Files (x86)\\Smar\\HART\\DTM\\LD1.0DTM\\SmarLD1_0DTM.dll",
+        "fileExists": true
+      },
+      "declaredInterfaces": [
+        {
+          "name": "IDTMCore",
+          "iid": "E208CD0D-08EA-4BAF-97C7-B6A9AE8E703E",
+          "isFdt": false,
+          "isSource": false
+        }
+      ],
+      "declaredInterfacesNote": "Declaração estática da type library; a confirmação real é feita por QueryInterface na sonda.",
+      "requiredHostArch": "x86",
+      "issues": []
+    },
+    {
+      "clsid": "444511DC-1892-47AC-8A11-96B619727C06",
+      "name": "DTMCore Class",
+      "progId": "SmarTT481WDTM.DTMCore.1",
+      "versionIndependentProgId": "SmarTT481WDTM.DTMCore",
+      "registryView": "32",
+      "categories": [
+        {
+          "catid": "036D1490-387B-11D4-86E1-00E0987270B9",
+          "name": "FDT DTM"
+        },
+        {
+          "catid": "036D1491-387B-11D4-86E1-00E0987270B9",
+          "name": "FDT DTM Device"
+        }
+      ],
+      "roles": [
+        "Dtm",
+        "Device"
+      ],
+      "fieldbuses": [],
+      "server": {
+        "kind": "InprocServer32",
+        "registeredPath": "C:\\Program Files (x86)\\Smar\\HART\\DTM\\TT481WDTM\\SmarTT481WDTM.dll",
+        "resolvedPath": "C:\\Program Files (x86)\\Smar\\HART\\DTM\\TT481WDTM\\SmarTT481WDTM.dll",
+        "fileExists": true,
+        "threadingModel": "Apartment",
+        "msiAdvertised": true,
+        "peMachine": "x86",
+        "isManaged": false,
+        "companyName": "TODO: <Company name>",
+        "productName": "TODO: <Product name>",
+        "fileDescription": "TODO: <File description>",
+        "fileVersion": "1.0.0.1",
+        "productVersion": "1.0.0.1"
+      },
+      "typeLib": {
+        "libId": "679F59C0-0420-4734-8A2B-77739A97064A",
+        "version": "1.0",
+        "path": "C:\\PROGRA~2\\Smar\\HART\\DTM\\TT481W~1\\SMARTT~1.DLL",
+        "fileExists": true
+      },
+      "declaredInterfaces": [
+        {
+          "name": "IDTMCore",
+          "iid": "FBC3C6C8-89D4-4B95-9917-2E84EA951C86",
+          "isFdt": false,
+          "isSource": false
+        }
+      ],
+      "declaredInterfacesNote": "Declaração estática da type library; a confirmação real é feita por QueryInterface na sonda.",
+      "requiredHostArch": "x86",
+      "issues": []
+    },
+    {
+      "clsid": "4993D104-5009-4FE0-9767-5C87BF5D1FA9",
+      "name": "DTMCore Class",
+      "progId": "SmarDT400WDTM.DTMCore.1",
+      "versionIndependentProgId": "SmarDT400WDTM.DTMCore",
+      "registryView": "32",
+      "categories": [
+        {
+          "catid": "036D1490-387B-11D4-86E1-00E0987270B9",
+          "name": "FDT DTM"
+        },
+        {
+          "catid": "036D1491-387B-11D4-86E1-00E0987270B9",
+          "name": "FDT DTM Device"
+        }
+      ],
+      "roles": [
+        "Dtm",
+        "Device"
+      ],
+      "fieldbuses": [],
+      "server": {
+        "kind": "InprocServer32",
+        "registeredPath": "C:\\Program Files (x86)\\Smar\\HART\\DTM\\DT400WDTM\\SmarDT400WDTM.dll",
+        "resolvedPath": "C:\\Program Files (x86)\\Smar\\HART\\DTM\\DT400WDTM\\SmarDT400WDTM.dll",
+        "fileExists": true,
+        "threadingModel": "Apartment",
+        "msiAdvertised": true,
+        "peMachine": "x86",
+        "isManaged": false,
+        "companyName": "TODO: <Company name>",
+        "productName": "TODO: <Product name>",
+        "fileDescription": "TODO: <File description>",
+        "fileVersion": "1.0.0.1",
+        "productVersion": "1.0.0.1"
+      },
+      "typeLib": {
+        "libId": "9A7631CC-6A01-4A46-8559-8B998DF5335B",
+        "version": "1.0",
+        "path": "C:\\PROGRA~2\\Smar\\HART\\DTM\\DT400W~1\\SMARDT~1.DLL",
+        "fileExists": true
+      },
+      "declaredInterfaces": [
+        {
+          "name": "IDTMCore",
+          "iid": "F2B63982-6DB2-4B3E-96E5-25AEEBEF549A",
+          "isFdt": false,
+          "isSource": false
+        }
+      ],
+      "declaredInterfacesNote": "Declaração estática da type library; a confirmação real é feita por QueryInterface na sonda.",
+      "requiredHostArch": "x86",
+      "issues": []
+    },
+    {
+      "clsid": "4B4B264C-2D6D-4F8C-9F1F-2986FF015031",
+      "name": "DTMCore Class",
+      "progId": "SmarRD500HDTM.DTMCore.1",
+      "versionIndependentProgId": "SmarRD500HDTM.DTMCore",
+      "registryView": "32",
+      "categories": [
+        {
+          "catid": "036D1490-387B-11D4-86E1-00E0987270B9",
+          "name": "FDT DTM"
+        },
+        {
+          "catid": "036D1491-387B-11D4-86E1-00E0987270B9",
+          "name": "FDT DTM Device"
+        }
+      ],
+      "roles": [
+        "Dtm",
+        "Device"
+      ],
+      "fieldbuses": [],
+      "server": {
+        "kind": "InprocServer32",
+        "registeredPath": "C:\\Program Files (x86)\\Smar\\HART\\DTM\\RD500HDTM\\SmarRD500HDTM.dll",
+        "resolvedPath": "C:\\Program Files (x86)\\Smar\\HART\\DTM\\RD500HDTM\\SmarRD500HDTM.dll",
+        "fileExists": true,
+        "threadingModel": "Apartment",
+        "msiAdvertised": true,
+        "peMachine": "x86",
+        "isManaged": false,
+        "companyName": "TODO: <Company name>",
+        "productName": "TODO: <Product name>",
+        "fileDescription": "TODO: <File description>",
+        "fileVersion": "1.0.0.1",
+        "productVersion": "1.0.0.1"
+      },
+      "typeLib": {
+        "libId": "E8034431-82F0-41AF-9896-14F9F43D82DF",
+        "version": "1.0",
+        "path": "C:\\PROGRA~2\\Smar\\HART\\DTM\\RD500H~1\\SMARRD~1.DLL",
+        "fileExists": true
+      },
+      "declaredInterfaces": [
+        {
+          "name": "IDTMCore",
+          "iid": "F619C5A2-1C94-43B9-9A69-768270C59BAB",
+          "isFdt": false,
+          "isSource": false
+        }
+      ],
+      "declaredInterfacesNote": "Declaração estática da type library; a confirmação real é feita por QueryInterface na sonda.",
+      "requiredHostArch": "x86",
+      "issues": []
+    },
+    {
+      "clsid": "4ECD134E-97F7-42CC-8A53-66C6E11FEB2A",
+      "name": "DTMCore Class",
+      "progId": "SmarLD291DTM.DTMCore.1",
+      "versionIndependentProgId": "SmarLD291DTM.DTMCore",
+      "registryView": "32",
+      "categories": [
+        {
+          "catid": "036D1490-387B-11D4-86E1-00E0987270B9",
+          "name": "FDT DTM"
+        },
+        {
+          "catid": "036D1491-387B-11D4-86E1-00E0987270B9",
+          "name": "FDT DTM Device"
+        }
+      ],
+      "roles": [
+        "Dtm",
+        "Device"
+      ],
+      "fieldbuses": [],
+      "server": {
+        "kind": "InprocServer32",
+        "registeredPath": "C:\\Program Files (x86)\\Smar\\HART\\DTM\\LD291DTM\\SmarLD291DTM.dll",
+        "resolvedPath": "C:\\Program Files (x86)\\Smar\\HART\\DTM\\LD291DTM\\SmarLD291DTM.dll",
+        "fileExists": true,
+        "threadingModel": "Apartment",
+        "msiAdvertised": true,
+        "peMachine": "x86",
+        "isManaged": false,
+        "companyName": "TODO: <Company name>",
+        "productName": "TODO: <Product name>",
+        "fileDescription": "TODO: <File description>",
+        "fileVersion": "1.0.0.1",
+        "productVersion": "1.0.0.1"
+      },
+      "typeLib": {
+        "libId": "21B62E56-7D64-47B1-886A-D01E1091A863",
+        "version": "1.0",
+        "path": "C:\\PROGRA~2\\Smar\\HART\\DTM\\LD291DTM\\SMARLD~1.DLL",
+        "fileExists": true
+      },
+      "declaredInterfaces": [
+        {
+          "name": "IDTMCore",
+          "iid": "75EB15D8-627E-4C87-AB22-6EEA740B34C1",
+          "isFdt": false,
+          "isSource": false
+        }
+      ],
+      "declaredInterfacesNote": "Declaração estática da type library; a confirmação real é feita por QueryInterface na sonda.",
+      "requiredHostArch": "x86",
+      "issues": []
+    },
+    {
+      "clsid": "5AE26BF7-AA96-42FD-AE98-2329D52350E1",
+      "name": "DTMCore Class",
+      "progId": "SmarHCC301DTM.DTMCore.1",
+      "versionIndependentProgId": "SmarHCC301DTM.DTMCore",
+      "registryView": "32",
+      "categories": [
+        {
+          "catid": "036D1490-387B-11D4-86E1-00E0987270B9",
+          "name": "FDT DTM"
+        },
+        {
+          "catid": "036D1491-387B-11D4-86E1-00E0987270B9",
+          "name": "FDT DTM Device"
+        }
+      ],
+      "roles": [
+        "Dtm",
+        "Device"
+      ],
+      "fieldbuses": [],
+      "server": {
+        "kind": "InprocServer32",
+        "registeredPath": "C:\\Program Files (x86)\\Smar\\HART\\DTM\\HCC301DTM\\SmarHCC301DTM.dll",
+        "resolvedPath": "C:\\Program Files (x86)\\Smar\\HART\\DTM\\HCC301DTM\\SmarHCC301DTM.dll",
+        "fileExists": true,
+        "threadingModel": "Apartment",
+        "msiAdvertised": false,
+        "peMachine": "x86",
+        "isManaged": false,
+        "companyName": "TODO: <Company name>",
+        "productName": "TODO: <Product name>",
+        "fileDescription": "TODO: <File description>",
+        "fileVersion": "1.0.0.1",
+        "productVersion": "1.0.0.1"
+      },
+      "typeLib": {
+        "libId": "AF266178-EE94-435E-A87E-82F46D6DEE3B",
+        "version": "1.0",
+        "path": "C:\\Program Files (x86)\\Smar\\HART\\DTM\\HCC301DTM\\SmarHCC301DTM.dll",
+        "fileExists": true
+      },
+      "declaredInterfaces": [
+        {
+          "name": "IDTMCore",
+          "iid": "85BB21DC-CFB0-48F2-86E5-1339E80991A4",
+          "isFdt": false,
+          "isSource": false
+        }
+      ],
+      "declaredInterfacesNote": "Declaração estática da type library; a confirmação real é feita por QueryInterface na sonda.",
+      "requiredHostArch": "x86",
+      "issues": []
+    },
+    {
+      "clsid": "6CCBF3E7-E04C-4866-BFBE-75E35B7D3EF1",
+      "name": "DTMCore Class",
+      "progId": "SmarRD400HDTM.DTMCore.1",
+      "versionIndependentProgId": "SmarRD400HDTM.DTMCore",
+      "registryView": "32",
+      "categories": [
+        {
+          "catid": "036D1490-387B-11D4-86E1-00E0987270B9",
+          "name": "FDT DTM"
+        },
+        {
+          "catid": "036D1491-387B-11D4-86E1-00E0987270B9",
+          "name": "FDT DTM Device"
+        }
+      ],
+      "roles": [
+        "Dtm",
+        "Device"
+      ],
+      "fieldbuses": [],
+      "server": {
+        "kind": "InprocServer32",
+        "registeredPath": "C:\\Program Files (x86)\\Smar\\HART\\DTM\\RD400HDTM\\SmarRD400HDTM.dll",
+        "resolvedPath": "C:\\Program Files (x86)\\Smar\\HART\\DTM\\RD400HDTM\\SmarRD400HDTM.dll",
+        "fileExists": true,
+        "threadingModel": "Apartment",
+        "msiAdvertised": true,
+        "peMachine": "x86",
+        "isManaged": false,
+        "companyName": "TODO: <Company name>",
+        "productName": "TODO: <Product name>",
+        "fileDescription": "TODO: <File description>",
+        "fileVersion": "1.0.0.1",
+        "productVersion": "1.0.0.1"
+      },
+      "typeLib": {
+        "libId": "62B67A16-FE7C-43B0-8ED5-AED0B5AC2661",
+        "version": "1.0",
+        "path": "C:\\PROGRA~2\\Smar\\HART\\DTM\\RD400H~1\\SMARRD~1.DLL",
+        "fileExists": true
+      },
+      "declaredInterfaces": [
+        {
+          "name": "IDTMCore",
+          "iid": "1A6FA1B2-42DF-4111-81B3-DA10DE4B5092",
+          "isFdt": false,
+          "isSource": false
+        }
+      ],
+      "declaredInterfacesNote": "Declaração estática da type library; a confirmação real é feita por QueryInterface na sonda.",
+      "requiredHostArch": "x86",
+      "issues": []
+    },
+    {
+      "clsid": "7205B11B-7F3C-4CA2-94E5-9AB9B6F2F605",
+      "name": "DTMCore Class",
+      "progId": "SmarLD400WDTM.DTMCore.1",
+      "versionIndependentProgId": "SmarLD400WDTM.DTMCore",
+      "registryView": "32",
+      "categories": [
+        {
+          "catid": "036D1490-387B-11D4-86E1-00E0987270B9",
+          "name": "FDT DTM"
+        },
+        {
+          "catid": "036D1491-387B-11D4-86E1-00E0987270B9",
+          "name": "FDT DTM Device"
+        }
+      ],
+      "roles": [
+        "Dtm",
+        "Device"
+      ],
+      "fieldbuses": [],
+      "server": {
+        "kind": "InprocServer32",
+        "registeredPath": "C:\\Program Files (x86)\\Smar\\HART\\DTM\\LD400WDTM\\SmarLD400WDTM.dll",
+        "resolvedPath": "C:\\Program Files (x86)\\Smar\\HART\\DTM\\LD400WDTM\\SmarLD400WDTM.dll",
+        "fileExists": true,
+        "threadingModel": "Apartment",
+        "msiAdvertised": true,
+        "peMachine": "x86",
+        "isManaged": false,
+        "companyName": "TODO: <Company name>",
+        "productName": "TODO: <Product name>",
+        "fileDescription": "TODO: <File description>",
+        "fileVersion": "1.0.0.1",
+        "productVersion": "1.0.0.1"
+      },
+      "typeLib": {
+        "libId": "19DF2958-9152-4003-A16C-3C7027C462F8",
+        "version": "1.0",
+        "path": "C:\\PROGRA~2\\Smar\\HART\\DTM\\LD400W~1\\SMARLD~1.DLL",
+        "fileExists": true
+      },
+      "declaredInterfaces": [
+        {
+          "name": "IDTMCore",
+          "iid": "4BB6EA3C-A006-428D-8930-DDBFAD69E458",
+          "isFdt": false,
+          "isSource": false
+        }
+      ],
+      "declaredInterfacesNote": "Declaração estática da type library; a confirmação real é feita por QueryInterface na sonda.",
+      "requiredHostArch": "x86",
+      "issues": []
+    },
+    {
+      "clsid": "7524ED93-4F1A-4C2C-B220-5E329762BF0D",
+      "name": "DTMCore Class",
+      "progId": "SmarFY400DTM.DTMCore.1",
+      "versionIndependentProgId": "SmarFY400DTM.DTMCore",
+      "registryView": "32",
+      "categories": [
+        {
+          "catid": "036D1490-387B-11D4-86E1-00E0987270B9",
+          "name": "FDT DTM"
+        },
+        {
+          "catid": "036D1491-387B-11D4-86E1-00E0987270B9",
+          "name": "FDT DTM Device"
+        }
+      ],
+      "roles": [
+        "Dtm",
+        "Device"
+      ],
+      "fieldbuses": [],
+      "server": {
+        "kind": "InprocServer32",
+        "registeredPath": "C:\\Program Files (x86)\\Smar\\HART\\DTM\\FY400DTM\\SmarFY400DTM.dll",
+        "resolvedPath": "C:\\Program Files (x86)\\Smar\\HART\\DTM\\FY400DTM\\SmarFY400DTM.dll",
+        "fileExists": true,
+        "threadingModel": "Apartment",
+        "msiAdvertised": true,
+        "peMachine": "x86",
+        "isManaged": false,
+        "companyName": "TODO: <Company name>",
+        "productName": "TODO: <Product name>",
+        "fileDescription": "TODO: <File description>",
+        "fileVersion": "1.0.0.1",
+        "productVersion": "1.0.0.1"
+      },
+      "typeLib": {
+        "libId": "971336CB-063A-41F8-A5E1-07AF2CCE5870",
+        "version": "1.0",
+        "path": "C:\\PROGRA~2\\Smar\\HART\\DTM\\FY400DTM\\SMARFY~1.DLL",
+        "fileExists": true
+      },
+      "declaredInterfaces": [
+        {
+          "name": "IDTMCore",
+          "iid": "00875026-0524-4E53-AAD7-3E9B1E840861",
+          "isFdt": false,
+          "isSource": false
+        }
+      ],
+      "declaredInterfacesNote": "Declaração estática da type library; a confirmação real é feita por QueryInterface na sonda.",
+      "requiredHostArch": "x86",
+      "issues": []
+    },
+    {
+      "clsid": "9A9209FC-DC92-4DD7-ACC6-59E1486D1029",
+      "name": "DTMCore Class",
+      "progId": "SmarTT400DTM.DTMCore.1",
+      "versionIndependentProgId": "SmarTT400DTM.DTMCore",
+      "registryView": "32",
+      "categories": [
+        {
+          "catid": "036D1490-387B-11D4-86E1-00E0987270B9",
+          "name": "FDT DTM"
+        },
+        {
+          "catid": "036D1491-387B-11D4-86E1-00E0987270B9",
+          "name": "FDT DTM Device"
+        }
+      ],
+      "roles": [
+        "Dtm",
+        "Device"
+      ],
+      "fieldbuses": [],
+      "server": {
+        "kind": "InprocServer32",
+        "registeredPath": "C:\\Program Files (x86)\\Smar\\HART\\DTM\\TT400DTM\\SmarTT400DTM.dll",
+        "resolvedPath": "C:\\Program Files (x86)\\Smar\\HART\\DTM\\TT400DTM\\SmarTT400DTM.dll",
+        "fileExists": true,
+        "threadingModel": "Apartment",
+        "msiAdvertised": true,
+        "peMachine": "x86",
+        "isManaged": false,
+        "companyName": "TODO: <Company name>",
+        "productName": "TODO: <Product name>",
+        "fileDescription": "TODO: <File description>",
+        "fileVersion": "1.0.0.1",
+        "productVersion": "1.0.0.1"
+      },
+      "typeLib": {
+        "libId": "11CAF842-D337-4E42-A92B-FA4830B6E39A",
+        "version": "1.0",
+        "path": "C:\\PROGRA~2\\Smar\\HART\\DTM\\TT400DTM\\SMARTT~1.DLL",
+        "fileExists": true
+      },
+      "declaredInterfaces": [
+        {
+          "name": "IDTMCore",
+          "iid": "6C75593B-35CA-4711-8686-DD0A1CD295AA",
+          "isFdt": false,
+          "isSource": false
+        }
+      ],
+      "declaredInterfacesNote": "Declaração estática da type library; a confirmação real é feita por QueryInterface na sonda.",
+      "requiredHostArch": "x86",
+      "issues": []
+    },
+    {
+      "clsid": "B5F03F82-3587-4EFA-94EF-C0827163F056",
+      "name": "DTMCore Class",
+      "progId": "SmarDF100DTM.DTMCore.1",
+      "versionIndependentProgId": "SmarDF100DTM.DTMCore",
+      "registryView": "32",
+      "categories": [
+        {
+          "catid": "036D1490-387B-11D4-86E1-00E0987270B9",
+          "name": "FDT DTM"
+        }
+      ],
+      "roles": [
+        "Dtm"
+      ],
+      "fieldbuses": [],
+      "server": {
+        "kind": "InprocServer32",
+        "registeredPath": "C:\\Program Files (x86)\\Smar\\HART\\DTM\\DF100DTM\\SmarDF100DTM.dll",
+        "resolvedPath": "C:\\Program Files (x86)\\Smar\\HART\\DTM\\DF100DTM\\SmarDF100DTM.dll",
+        "fileExists": true,
+        "threadingModel": "Apartment",
+        "msiAdvertised": true,
+        "peMachine": "x86",
+        "isManaged": false,
+        "companyName": "TODO: <Company name>",
+        "productName": "TODO: <Product name>",
+        "fileDescription": "TODO: <File description>",
+        "fileVersion": "1.0.0.1",
+        "productVersion": "1.0.0.1"
+      },
+      "typeLib": {
+        "libId": "6DBC8D8D-4767-4C6D-8FC1-E0E62D919D7A",
+        "version": "1.0",
+        "path": "C:\\PROGRA~2\\Smar\\HART\\DTM\\DF100DTM\\SMARDF~1.DLL",
+        "fileExists": true
+      },
+      "declaredInterfaces": [
+        {
+          "name": "IDTMCore",
+          "iid": "A48854F8-79D6-4292-8EF7-22A6F87A2D1C",
+          "isFdt": false,
+          "isSource": false
+        }
+      ],
+      "declaredInterfacesNote": "Declaração estática da type library; a confirmação real é feita por QueryInterface na sonda.",
+      "requiredHostArch": "x86",
+      "issues": []
+    },
+    {
+      "clsid": "BF46B4B5-C48B-40F5-8932-A640D76AA0FF",
+      "name": "DTMCore Class",
+      "progId": "SmarTP400WDTM.DTMCore.1",
+      "versionIndependentProgId": "SmarTP400WDTM.DTMCore",
+      "registryView": "32",
+      "categories": [
+        {
+          "catid": "036D1490-387B-11D4-86E1-00E0987270B9",
+          "name": "FDT DTM"
+        },
+        {
+          "catid": "036D1491-387B-11D4-86E1-00E0987270B9",
+          "name": "FDT DTM Device"
+        }
+      ],
+      "roles": [
+        "Dtm",
+        "Device"
+      ],
+      "fieldbuses": [],
+      "server": {
+        "kind": "InprocServer32",
+        "registeredPath": "C:\\Program Files (x86)\\Smar\\HART\\DTM\\TP400WDTM\\SmarTP400WDTM.dll",
+        "resolvedPath": "C:\\Program Files (x86)\\Smar\\HART\\DTM\\TP400WDTM\\SmarTP400WDTM.dll",
+        "fileExists": true,
+        "threadingModel": "Apartment",
+        "msiAdvertised": true,
+        "peMachine": "x86",
+        "isManaged": false,
+        "companyName": "TODO: <Company name>",
+        "productName": "TODO: <Product name>",
+        "fileDescription": "TODO: <File description>",
+        "fileVersion": "1.0.0.1",
+        "productVersion": "1.0.0.1"
+      },
+      "typeLib": {
+        "libId": "2DCDB96B-3D84-4D66-BB13-6B17F3C97CD1",
+        "version": "1.0",
+        "path": "C:\\PROGRA~2\\Smar\\HART\\DTM\\TP400W~1\\SMARTP~1.DLL",
+        "fileExists": true
+      },
+      "declaredInterfaces": [
+        {
+          "name": "IDTMCore",
+          "iid": "556969BC-CDE2-4F39-A993-CEEA8B95260F",
+          "isFdt": false,
+          "isSource": false
+        }
+      ],
+      "declaredInterfacesNote": "Declaração estática da type library; a confirmação real é feita por QueryInterface na sonda.",
+      "requiredHostArch": "x86",
+      "issues": []
+    },
+    {
+      "clsid": "CFF519F1-D3DF-4384-84BD-C0C0DB0CFC85",
+      "name": "DTMCore Class",
+      "progId": "SmarTT400WDTM.DTMCore.1",
+      "versionIndependentProgId": "SmarTT400WDTM.DTMCore",
+      "registryView": "32",
+      "categories": [
+        {
+          "catid": "036D1490-387B-11D4-86E1-00E0987270B9",
+          "name": "FDT DTM"
+        },
+        {
+          "catid": "036D1491-387B-11D4-86E1-00E0987270B9",
+          "name": "FDT DTM Device"
+        }
+      ],
+      "roles": [
+        "Dtm",
+        "Device"
+      ],
+      "fieldbuses": [],
+      "server": {
+        "kind": "InprocServer32",
+        "registeredPath": "C:\\Program Files (x86)\\Smar\\HART\\DTM\\TT400WDTM\\SmarTT400WDTM.dll",
+        "resolvedPath": "C:\\Program Files (x86)\\Smar\\HART\\DTM\\TT400WDTM\\SmarTT400WDTM.dll",
+        "fileExists": true,
+        "threadingModel": "Apartment",
+        "msiAdvertised": true,
+        "peMachine": "x86",
+        "isManaged": false,
+        "companyName": "TODO: <Company name>",
+        "productName": "TODO: <Product name>",
+        "fileDescription": "TODO: <File description>",
+        "fileVersion": "1.0.0.1",
+        "productVersion": "1.0.0.1"
+      },
+      "typeLib": {
+        "libId": "9DFF6B12-8240-44DC-B1C0-89B9C8217EEE",
+        "version": "1.0",
+        "path": "C:\\PROGRA~2\\Smar\\HART\\DTM\\TT400W~1\\SMARTT~1.DLL",
+        "fileExists": true
+      },
+      "declaredInterfaces": [
+        {
+          "name": "IDTMCore",
+          "iid": "0D4F9CD7-10FC-419E-9D57-2C4CD3782B77",
+          "isFdt": false,
+          "isSource": false
+        }
+      ],
+      "declaredInterfacesNote": "Declaração estática da type library; a confirmação real é feita por QueryInterface na sonda.",
+      "requiredHostArch": "x86",
+      "issues": []
+    },
+    {
+      "clsid": "D0D55CD6-A01F-4786-8DB2-950B0E886C61",
+      "name": "DTMCore Class",
+      "progId": "SmarRP400DTM.DTMCore.1",
+      "versionIndependentProgId": "SmarRP400DTM.DTMCore",
+      "registryView": "32",
+      "categories": [
+        {
+          "catid": "036D1490-387B-11D4-86E1-00E0987270B9",
+          "name": "FDT DTM"
+        },
+        {
+          "catid": "036D1491-387B-11D4-86E1-00E0987270B9",
+          "name": "FDT DTM Device"
+        }
+      ],
+      "roles": [
+        "Dtm",
+        "Device"
+      ],
+      "fieldbuses": [],
+      "server": {
+        "kind": "InprocServer32",
+        "registeredPath": "C:\\Program Files (x86)\\Smar\\HART\\DTM\\RP400WDTM\\SmarRP400DTM.dll",
+        "resolvedPath": "C:\\Program Files (x86)\\Smar\\HART\\DTM\\RP400WDTM\\SmarRP400DTM.dll",
+        "fileExists": true,
+        "threadingModel": "Apartment",
+        "msiAdvertised": true,
+        "peMachine": "x86",
+        "isManaged": false,
+        "companyName": "TODO: <Company name>",
+        "productName": "TODO: <Product name>",
+        "fileDescription": "TODO: <File description>",
+        "fileVersion": "1.0.0.1",
+        "productVersion": "1.0.0.1"
+      },
+      "typeLib": {
+        "libId": "841C4951-F32F-4A08-8021-19C43A13D882",
+        "version": "1.0",
+        "path": "C:\\PROGRA~2\\Smar\\HART\\DTM\\RP400W~1\\SMARRP~1.DLL",
+        "fileExists": true
+      },
+      "declaredInterfaces": [
+        {
+          "name": "IDTMCore",
+          "iid": "C4910E64-C306-41EA-93E8-5309FC33E06C",
+          "isFdt": false,
+          "isSource": false
+        }
+      ],
+      "declaredInterfacesNote": "Declaração estática da type library; a confirmação real é feita por QueryInterface na sonda.",
+      "requiredHostArch": "x86",
+      "issues": []
+    },
+    {
+      "clsid": "DC1E06D6-ED58-4DEA-84E2-1C5797098DD1",
+      "name": "DTMCore Class",
+      "progId": "SmarFY301DTM.DTMCore.1",
+      "versionIndependentProgId": "SmarFY301DTM.DTMCore",
+      "registryView": "32",
+      "categories": [
+        {
+          "catid": "036D1490-387B-11D4-86E1-00E0987270B9",
+          "name": "FDT DTM"
+        },
+        {
+          "catid": "036D1491-387B-11D4-86E1-00E0987270B9",
+          "name": "FDT DTM Device"
+        }
+      ],
+      "roles": [
+        "Dtm",
+        "Device"
+      ],
+      "fieldbuses": [],
+      "server": {
+        "kind": "InprocServer32",
+        "registeredPath": "C:\\Program Files (x86)\\Smar\\HART\\DTM\\FY301DTM\\SmarFY301DTM.dll",
+        "resolvedPath": "C:\\Program Files (x86)\\Smar\\HART\\DTM\\FY301DTM\\SmarFY301DTM.dll",
+        "fileExists": true,
+        "threadingModel": "Apartment",
+        "msiAdvertised": true,
+        "peMachine": "x86",
+        "isManaged": false,
+        "companyName": "TODO: <Company name>",
+        "productName": "TODO: <Product name>",
+        "fileDescription": "TODO: <File description>",
+        "fileVersion": "1.0.0.1",
+        "productVersion": "1.0.0.1"
+      },
+      "typeLib": {
+        "libId": "FC31097A-1BA4-479A-9680-062FD0B65864",
+        "version": "1.0",
+        "path": "C:\\PROGRA~2\\Smar\\HART\\DTM\\FY301DTM\\SMARFY~1.DLL",
+        "fileExists": true
+      },
+      "declaredInterfaces": [
+        {
+          "name": "IDTMCore",
+          "iid": "C18E5C5F-A521-4A02-8D33-71491D0CB485",
+          "isFdt": false,
+          "isSource": false
+        }
+      ],
+      "declaredInterfacesNote": "Declaração estática da type library; a confirmação real é feita por QueryInterface na sonda.",
+      "requiredHostArch": "x86",
+      "issues": []
+    },
+    {
+      "clsid": "EF34EF99-0829-4ED5-8486-7118F89BEB5A",
+      "name": "DTMCore Class",
+      "progId": "SmarTT421DTM.DTMCore.1",
+      "versionIndependentProgId": "SmarTT421DTM.DTMCore",
+      "registryView": "32",
+      "categories": [
+        {
+          "catid": "036D1490-387B-11D4-86E1-00E0987270B9",
+          "name": "FDT DTM"
+        },
+        {
+          "catid": "036D1491-387B-11D4-86E1-00E0987270B9",
+          "name": "FDT DTM Device"
+        }
+      ],
+      "roles": [
+        "Dtm",
+        "Device"
+      ],
+      "fieldbuses": [],
+      "server": {
+        "kind": "InprocServer32",
+        "registeredPath": "C:\\Program Files (x86)\\Smar\\HART\\DTM\\TT421DTM\\SmarTT421DTM.dll",
+        "resolvedPath": "C:\\Program Files (x86)\\Smar\\HART\\DTM\\TT421DTM\\SmarTT421DTM.dll",
+        "fileExists": true,
+        "threadingModel": "Apartment",
+        "msiAdvertised": true,
+        "peMachine": "x86",
+        "isManaged": false,
+        "companyName": "TODO: <Company name>",
+        "productName": "TODO: <Product name>",
+        "fileDescription": "TODO: <File description>",
+        "fileVersion": "1.0.0.1",
+        "productVersion": "1.0.0.1"
+      },
+      "typeLib": {
+        "libId": "5C02842D-9B86-4598-B550-B34F6FCCCCEB",
+        "version": "1.0",
+        "path": "C:\\PROGRA~2\\Smar\\HART\\DTM\\TT421DTM\\SMARTT~1.DLL",
+        "fileExists": true
+      },
+      "declaredInterfaces": [
+        {
+          "name": "IDTMCore",
+          "iid": "CCF78BCD-97E5-43D6-B4BC-E6DE747757D6",
+          "isFdt": false,
+          "isSource": false
+        }
+      ],
+      "declaredInterfacesNote": "Declaração estática da type library; a confirmação real é feita por QueryInterface na sonda.",
+      "requiredHostArch": "x86",
+      "issues": []
+    },
+    {
+      "clsid": "F4A426FF-E4DE-49AE-A797-0EC8C307AAA1",
+      "name": "DTMCore Class",
+      "progId": "SmarLD301DTM.DTMCore.1",
+      "versionIndependentProgId": "SmarLD301DTM.DTMCore",
+      "registryView": "32",
+      "categories": [
+        {
+          "catid": "036D1490-387B-11D4-86E1-00E0987270B9",
+          "name": "FDT DTM"
+        },
+        {
+          "catid": "036D1491-387B-11D4-86E1-00E0987270B9",
+          "name": "FDT DTM Device"
+        }
+      ],
+      "roles": [
+        "Dtm",
+        "Device"
+      ],
+      "fieldbuses": [],
+      "server": {
+        "kind": "InprocServer32",
+        "registeredPath": "C:\\Program Files (x86)\\Smar\\HART\\DTM\\LD301DTM\\SmarLD301DTM.dll",
+        "resolvedPath": "C:\\Program Files (x86)\\Smar\\HART\\DTM\\LD301DTM\\SmarLD301DTM.dll",
+        "fileExists": true,
+        "threadingModel": "Apartment",
+        "msiAdvertised": true,
+        "peMachine": "x86",
+        "isManaged": false,
+        "companyName": "TODO: <Company name>",
+        "productName": "TODO: <Product name>",
+        "fileDescription": "TODO: <File description>",
+        "fileVersion": "1.0.0.1",
+        "productVersion": "1.0.0.1"
+      },
+      "typeLib": {
+        "libId": "2CE03BBD-AC91-49F5-B16A-AEB968DA9482",
+        "version": "1.0",
+        "path": "C:\\PROGRA~2\\Smar\\HART\\DTM\\LD301DTM\\SMARLD~1.DLL",
+        "fileExists": true
+      },
+      "declaredInterfaces": [
+        {
+          "name": "IDTMCore",
+          "iid": "07F128A4-F254-4F5E-A348-76484DF21614",
+          "isFdt": false,
+          "isSource": false
+        }
+      ],
+      "declaredInterfacesNote": "Declaração estática da type library; a confirmação real é feita por QueryInterface na sonda.",
+      "requiredHostArch": "x86",
+      "issues": []
+    }
+  ],
+  "relatedFdtObjects": [],
+  "categoryManagerCrossCheck": {
+    "processView": "32",
+    "classesFound": 25,
+    "missingFromRegistryScan": [],
+    "missingFromCategoryManager": []
+  }
+}

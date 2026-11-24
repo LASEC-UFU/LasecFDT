@@ -1,0 +1,50 @@
+<Project>
+  <!--
+    Executáveis que hospedam DTMs (CopyFdtSchemas=true) recebem a pasta FDTSchemas\ com os schemas XDR
+    que o Frame disponibiliza via IFdtContainer::GetXmlSchemaPath (FDT 1.2.1 §7.1.4).
+    Ordem de cópia (a última vence): FDT 1.2 (contém os schemas HART) -> FDT 1.2.1 -> anexo PROFIBUS.
+  -->
+  <Target Name="CopyFdtSchemas" AfterTargets="Build" Condition="'$(CopyFdtSchemas)' == 'true'">
+    <ItemGroup>
+      <_Fdt12Schemas Include="$(LasecFdtRoot)specs\FDT-1.2\XML-Files\*Schema*.xml;$(LasecFdtRoot)specs\FDT-1.2\XML-Files\*.xsl" />
+      <_Fdt121Schemas Include="$(LasecFdtRoot)specs\FDT-1.2.1\spec\XML\Schemas\*.*" />
+      <_FdtProfibusSchemas Include="$(LasecFdtRoot)specs\FDT-1.2.1\profibus-annex\XML\Schemas\*.*" />
+    </ItemGroup>
+    <Copy SourceFiles="@(_Fdt12Schemas)" DestinationFolder="$(OutDir)FDTSchemas" SkipUnchangedFiles="false" />
+    <Copy SourceFiles="@(_Fdt121Schemas)" DestinationFolder="$(OutDir)FDTSchemas" SkipUnchangedFiles="false" />
+    <Copy SourceFiles="@(_FdtProfibusSchemas)" DestinationFolder="$(OutDir)FDTSchemas" SkipUnchangedFiles="false" />
+  </Target>
+
+  <!--
+    Hosts de controles ActiveX legados (LasecLegacyActiveXHost=true): remove IMAGE_DLLCHARACTERISTICS_NX_COMPAT
+    (0x0100) do cabeçalho PE do executável. Motivo (medido, doc 08 §5): controles ATL 3.0/VC6 (ex.: família
+    Smar.*DTM.1) executam "thunks" de janela alocados no heap; num executável NXCOMPAT o Windows desliga a
+    emulação de thunks ATL e o processo cai (0xC0000005, execução bloqueada por DEP) ao ativar o controle.
+    Em tempo de execução o host religa o DEP COM emulação de thunks (SetProcessDEPPolicy(PROCESS_DEP_ENABLE)),
+    a mesma proteção que o Windows dá a executáveis legados como o PACTware.
+  -->
+  <UsingTask TaskName="ClearNxCompat" TaskFactory="RoslynCodeTaskFactory" AssemblyFile="$(MSBuildToolsPath)\Microsoft.Build.Tasks.Core.dll">
+    <ParameterGroup>
+      <File ParameterType="System.String" Required="true" />
+    </ParameterGroup>
+    <Task>
+      <Code Type="Fragment" Language="cs"><![CDATA[
+        var b = System.IO.File.ReadAllBytes(File);
+        int pe = System.BitConverter.ToInt32(b, 0x3C);
+        if (b[pe] != (byte)'P' || b[pe + 1] != (byte)'E') { Log.LogError("Não é um arquivo PE: " + File); return false; }
+        int off = pe + 24 + 70; // IMAGE_OPTIONAL_HEADER.DllCharacteristics (PE32 e PE32+)
+        ushort dc = System.BitConverter.ToUInt16(b, off);
+        if ((dc & 0x0100) != 0)
+        {
+            dc = (ushort)(dc & ~0x0100);
+            b[off] = (byte)dc; b[off + 1] = (byte)(dc >> 8);
+            System.IO.File.WriteAllBytes(File, b);
+            Log.LogMessage(MessageImportance.High, "NXCOMPAT removido (host ActiveX legado): " + File);
+        }
+      ]]></Code>
+    </Task>
+  </UsingTask>
+  <Target Name="ClearNxCompatOnHost" AfterTargets="CopyFilesToOutputDirectory" Condition="'$(LasecLegacyActiveXHost)' == 'true'">
+    <ClearNxCompat File="$(TargetPath)" />
+  </Target>
+</Project>

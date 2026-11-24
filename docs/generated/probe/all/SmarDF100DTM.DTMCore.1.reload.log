@@ -1,0 +1,24 @@
+  [evento] 18:45:07.724 IFdtContainer.GetXmlSchemaPath tag= C:\Source Local\LasecFDT\src\LasecFDT.Cli\bin\Debug\net48\FDTSchemas\
+  [evento] 18:45:07.880 IDtmEvents.OnPreparedToRelease tag=LASEC-336EA3A1 
+  OK   CoCreateInstance                                    44 ms  Up               System.__ComObject
+  OK   QueryInterface (inventário)                          0 ms  Up               IDtm, IDtmActiveXInformation, IDtmChannel, IDtmInformation, IDtmParameter, IFdtEvents, IPersistStreamInit
+  OK   IPersistStreamInit::Load                             2 ms  ExistingCreated  1374 bytes
+  OK   IDtm::Environment                                   34 ms  Running          TRUE
+  OK   IDtm::SetLanguage(0x0409)                            0 ms  Running          TRUE
+  OK   IDtm::Config                                         2 ms  Configured       TRUE
+  OK   IPersistStreamInit::Save                             0 ms  Configured       1374 bytes
+  OK   IDtm::PrepareToRelease                              18 ms  Configured       TRUE
+  OK   aguardar IDtmEvents::OnPreparedToRelease             0 ms  Configured       92 ms
+  OK   IUnknown::Release (final)                            1 ms  Released         refs RCW restantes=0
+  -- round-trip de persistência --
+  OK   CoCreateInstance                                    44 ms  Up               System.__ComObject
+  OK   QueryInterface (inventário)                          0 ms  Up               IDtm, IDtmActiveXInformation, IDtmChannel, IDtmInformation, IDtmParameter, IFdtEvents, IPersistStreamInit
+  OK   IPersistStreamInit::Load                             2 ms  ExistingCreated  1374 bytes
+  OK   IDtm::Environment                                   34 ms  Running          TRUE
+  OK   IDtm::SetLanguage(0x0409)                            0 ms  Running          TRUE
+  OK   IDtm::Config                                         2 ms  Configured       TRUE
+  OK   IPersistStreamInit::Save                             0 ms  Configured       1374 bytes
+  OK   IDtm::PrepareToRelease                              18 ms  Configured       TRUE
+  OK   aguardar IDtmEvents::OnPreparedToRelease             0 ms  Configured       92 ms
+  OK   IUnknown::Release (final)                            1 ms  Released         refs RCW restantes=0
+Resultado: created=True environment=False configured=True releasedCleanly=True final=Released roundTrip=ok: data set idêntico após LoadSave

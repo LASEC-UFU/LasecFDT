@@ -1,0 +1,368 @@
+{
+  "clsid": "6358CCBF-AA0E-4633-9564-9EEFB7FDE86D",
+  "systemTag": "LASEC-0146D905",
+  "startedAt": "2026-11-23T18:44:33.2005765-03:00",
+  "hostProcess": "x86 / CLR 4.0.30319.42000",
+  "created": true,
+  "environmentAccepted": true,
+  "configured": true,
+  "releasedCleanly": true,
+  "finalState": "Released",
+  "persistenceKind": "PropertyBag",
+  "interfaces": {
+    "IBtm": false,
+    "IBtmActiveXControl": false,
+    "IBtmInformation": false,
+    "IBtmParameter": false,
+    "IDtm": true,
+    "IDtm2": false,
+    "IDtmActiveXControl": false,
+    "IDtmActiveXInformation": true,
+    "IDtmApplication": false,
+    "IDtmAuditTrailEvents": false,
+    "IDtmChannel": true,
+    "IDtmDiagnosis": false,
+    "IDtmDocumentation": true,
+    "IDtmEvents": false,
+    "IDtmEvents2": false,
+    "IDtmHardwareIdentification": false,
+    "IDtmImportExport": false,
+    "IDtmInformation": true,
+    "IDtmInformation2": false,
+    "IDtmOnlineDiagnosis": false,
+    "IDtmOnlineParameter": false,
+    "IDtmParameter": true,
+    "IDtmRedundancyEvents": false,
+    "IDtmScanEvents": false,
+    "IDtmSingleDeviceDataAccess": false,
+    "IDtmSingleDeviceDataAccessEvents": false,
+    "IDtmSingleInstanceDataAccess": false,
+    "IDtmSingleInstanceDataAccessEvents": false,
+    "IFdtActiveX": false,
+    "IFdtActiveX2": false,
+    "IFdtBtmTopology": false,
+    "IFdtBulkData": false,
+    "IFdtChannel": true,
+    "IFdtChannelActiveXControl": false,
+    "IFdtChannelActiveXControl2": false,
+    "IFdtChannelActiveXInformation": false,
+    "IFdtChannelCollection": false,
+    "IFdtChannelScan": false,
+    "IFdtChannelSubTopology": true,
+    "IFdtChannelSubTopology2": false,
+    "IFdtCommunication": true,
+    "IFdtCommunicationEvents": false,
+    "IFdtCommunicationEvents2": false,
+    "IFdtContainer": false,
+    "IFdtDialog": false,
+    "IFdtEvents": true,
+    "IFdtFunctionBlockData": true,
+    "IFdtTopology": false,
+    "IPersistStreamInit": true,
+    "IPersistPropertyBag": true,
+    "IOleObject": false
+  },
+  "missingMandatoryDtmInterfaces": [
+    "IDtm2",
+    "IDtmDiagnosis",
+    "IDtmInformation2",
+    "IDtmOnlineDiagnosis",
+    "IDtmSingleInstanceDataAccess"
+  ],
+  "information": {
+    "fdtVersion": "1.2",
+    "name": "HART Communication",
+    "vendor": "Codewrights GmbH",
+    "version": "1.0.58",
+    "date": "2019-3-20",
+    "deviceTypes": [
+      {
+        "index": 0,
+        "name": "HART Communication",
+        "vendor": "CodeWrights GmbH",
+        "version": "1.0.58",
+        "date": "2019-3-20",
+        "busCategories": [
+          "HART"
+        ],
+        "variants": [],
+        "outerXml": "<fdt:DtmDeviceType readAccess=\"1\" writeAccess=\"0\" deviceTypeInformation=\"HART Communication FDT 1.2 DTM\" xmlns:fdt=\"x-schema:FDTDataTypesSchema.xml\"><fdt:VersionInformation name=\"HART Communication\" vendor=\"CodeWrights GmbH\" version=\"1.0.58\" date=\"2019-3-20\" /><fdt:SupportedLanguages><fdt:LanguageId languageId=\"1031\" /><fdt:LanguageId languageId=\"1033\" /></fdt:SupportedLanguages><fdt:BusCategories><fdt:BusCategory busCategory=\"036D1498-387B-11D4-86E1-00E0987270B9\" busCategoryName=\"HART\"><fdt:CommunicationTypeEntry communicationType=\"supported\" /></fdt:BusCategory></fdt:BusCategories><fdt:DeviceIcon path=\"C:\\Program Files (x86)\\Common Files\\CodeWrights\\CWHARTCommDTM\\Common\\HART.ICO\" /></fdt:DtmDeviceType>"
+      }
+    ]
+  },
+  "informationXml": "<?xml version=\"1.0\" ?>\r\n<!--VERSION MAJOR=0 MINOR=4 REVISION=0-->\r\n<FDT xmlns=\"x-schema:DTMInformationSchema.xml\" xmlns:fdt=\"x-schema:FDTDataTypesSchema.xml\" xmlns:fdtappid=\"x-schema:FDTApplicationIdSchema.xml\">\r\n <DtmInfo>\r\n  <FDTVersion major=\"1\" minor=\"2\"/>\r\n  <fdt:VersionInformation name=\"HART Communication\" readAccess=\"1\" writeAccess=\"0\" vendor=\"Codewrights GmbH\" version=\"1.0.58\" date=\"2019-3-20\"/>\r\n  <DtmDeviceTypes>\r\n   <fdt:DtmDeviceType readAccess=\"1\" writeAccess=\"0\" deviceTypeInformation=\"HART Communication FDT 1.2 DTM\">\r\n    <fdt:VersionInformation name=\"HART Communication\" vendor=\"CodeWrights GmbH\" version=\"1.0.58\" date=\"2019-3-20\"/>\r\n    <fdt:SupportedLanguages>\r\n     <fdt:LanguageId languageId=\"1031\"/>\r\n     <fdt:LanguageId languageId=\"1033\"/>\r\n    </fdt:SupportedLanguages>\r\n    <fdt:BusCategories>\r\n     <fdt:BusCategory busCategory=\"036D1498-387B-11D4-86E1-00E0987270B9\" busCategoryName=\"HART\">\r\n      <fdt:CommunicationTypeEntry communicationType=\"supported\"/>\r\n     </fdt:BusCategory>\r\n    </fdt:BusCategories>\r\n    <fdt:DeviceIcon path=\"C:\\Program Files (x86)\\Common Files\\CodeWrights\\CWHARTCommDTM\\Common\\HART.ICO\"/>\r\n   </fdt:DtmDeviceType>\r\n  </DtmDeviceTypes>\r\n </DtmInfo>\r\n</FDT>\r\n\r\n",
+  "functions": [
+    {
+      "functionId": "1",
+      "name": "Configuration",
+      "applicationId": "fdtConfiguration",
+      "isStandard": true,
+      "enabled": true,
+      "hidden": false,
+      "path": "Functions"
+    },
+    {
+      "functionId": "20",
+      "name": "mnChangeDeviceAddress",
+      "isStandard": false,
+      "enabled": true,
+      "hidden": false,
+      "path": "Functions"
+    },
+    {
+      "functionId": "30",
+      "name": "mnChangeDtmAddress",
+      "isStandard": false,
+      "enabled": true,
+      "hidden": false,
+      "path": "Functions"
+    },
+    {
+      "functionId": "10",
+      "name": "mnLog",
+      "isStandard": false,
+      "enabled": true,
+      "hidden": false,
+      "path": "Functions"
+    },
+    {
+      "functionId": "100",
+      "name": "mnAbout",
+      "isStandard": false,
+      "enabled": true,
+      "hidden": false,
+      "path": "Functions"
+    }
+  ],
+  "activeXByFunction": {
+    "1 Configuration": "(nenhum)",
+    "20 mnChangeDeviceAddress": "(nenhum)",
+    "30 mnChangeDtmAddress": "(nenhum)",
+    "10 mnLog": "(nenhum)",
+    "100 mnAbout": "(nenhum)"
+  },
+  "savedDataSet": {
+    "kind": "PropertyBag",
+    "properties": [
+      {
+        "name": "Port",
+        "type": "String",
+        "value": "COM0"
+      },
+      {
+        "name": "Tag",
+        "type": "String",
+        "value": ""
+      },
+      {
+        "name": "Baudrate",
+        "type": "Int16",
+        "value": "1200"
+      },
+      {
+        "name": "RTSToggle",
+        "type": "Int16",
+        "value": "3"
+      },
+      {
+        "name": "DTR",
+        "type": "Int16",
+        "value": "1"
+      },
+      {
+        "name": "Parity",
+        "type": "Int16",
+        "value": "1"
+      },
+      {
+        "name": "StopBits",
+        "type": "Int16",
+        "value": "0"
+      },
+      {
+        "name": "HARTTiming",
+        "type": "Int16",
+        "value": "1"
+      },
+      {
+        "name": "CommunicationTimeout",
+        "type": "Int16",
+        "value": "2"
+      },
+      {
+        "name": "BurstMode",
+        "type": "Int16",
+        "value": "1"
+      },
+      {
+        "name": "HARTMux",
+        "type": "Int16",
+        "value": "0"
+      },
+      {
+        "name": "PreambleCount",
+        "type": "Int16",
+        "value": "5"
+      },
+      {
+        "name": "PrimaryMaster",
+        "type": "Int16",
+        "value": "1"
+      },
+      {
+        "name": "RetryCount",
+        "type": "Int16",
+        "value": "3"
+      },
+      {
+        "name": "ScanStart",
+        "type": "Int16",
+        "value": "0"
+      },
+      {
+        "name": "ScanStop",
+        "type": "Int16",
+        "value": "0"
+      },
+      {
+        "name": "DtmChildSysTagAvail",
+        "type": "String",
+        "value": "yes"
+      },
+      {
+        "name": "Version",
+        "type": "String",
+        "value": "1.0.58"
+      }
+    ],
+    "savedUtc": "2026-11-23T21:44:33.754032Z"
+  },
+  "steps": [
+    {
+      "step": "CoCreateInstance",
+      "ok": true,
+      "result": "System.__ComObject",
+      "durationMs": 134,
+      "stateAfter": "Up"
+    },
+    {
+      "step": "QueryInterface (inventário)",
+      "ok": true,
+      "result": "IDtm, IDtmActiveXInformation, IDtmChannel, IDtmDocumentation, IDtmInformation, IDtmParameter, IFdtChannel, IFdtChannelSubTopology, IFdtCommunication, IFdtEvents, IFdtFunctionBlockData, IPersistStreamInit, IPersistPropertyBag",
+      "durationMs": 0,
+      "stateAfter": "Up"
+    },
+    {
+      "step": "IPersistPropertyBag::InitNew",
+      "ok": true,
+      "durationMs": 16,
+      "stateAfter": "NewCreated"
+    },
+    {
+      "step": "IDtm::Environment",
+      "ok": true,
+      "result": "TRUE",
+      "durationMs": 253,
+      "stateAfter": "NewEnabled"
+    },
+    {
+      "step": "IDtm::SetLanguage(0x0409)",
+      "ok": true,
+      "result": "TRUE",
+      "durationMs": 8,
+      "stateAfter": "NewEnabled"
+    },
+    {
+      "step": "IDtmInformation::GetInformation",
+      "ok": true,
+      "result": "FDT 1.2; Codewrights GmbH HART Communication 1.0.58; 1 device type(s)",
+      "durationMs": 31,
+      "stateAfter": "NewEnabled"
+    },
+    {
+      "step": "IDtm::InitNew",
+      "ok": true,
+      "result": "TRUE",
+      "durationMs": 0,
+      "stateAfter": "Running"
+    },
+    {
+      "step": "IDtm::Config",
+      "ok": true,
+      "result": "TRUE",
+      "durationMs": 13,
+      "stateAfter": "Configured"
+    },
+    {
+      "step": "IDtm::GetFunctions",
+      "ok": true,
+      "result": "5 função(ões); default=",
+      "durationMs": 5,
+      "stateAfter": "Configured"
+    },
+    {
+      "step": "IDtmActiveXInformation::GetActiveXGuid",
+      "ok": true,
+      "durationMs": 0,
+      "stateAfter": "Configured"
+    },
+    {
+      "step": "IDtmActiveXInformation::GetActiveXGuid",
+      "ok": true,
+      "durationMs": 0,
+      "stateAfter": "Configured"
+    },
+    {
+      "step": "IDtmActiveXInformation::GetActiveXGuid",
+      "ok": true,
+      "durationMs": 0,
+      "stateAfter": "Configured"
+    },
+    {
+      "step": "IDtmActiveXInformation::GetActiveXGuid",
+      "ok": true,
+      "durationMs": 0,
+      "stateAfter": "Configured"
+    },
+    {
+      "step": "IDtmActiveXInformation::GetActiveXGuid",
+      "ok": true,
+      "durationMs": 0,
+      "stateAfter": "Configured"
+    },
+    {
+      "step": "IPersistPropertyBag::Save",
+      "ok": true,
+      "result": "18 propriedades",
+      "durationMs": 8,
+      "stateAfter": "Configured"
+    },
+    {
+      "step": "IDtm::PrepareToRelease",
+      "ok": true,
+      "result": "TRUE",
+      "durationMs": 1,
+      "stateAfter": "Configured"
+    },
+    {
+      "step": "aguardar IDtmEvents::OnPreparedToRelease",
+      "ok": true,
+      "result": "10 ms",
+      "durationMs": 0,
+      "stateAfter": "Configured"
+    },
+    {
+      "step": "IUnknown::Release (final)",
+      "ok": true,
+      "result": "refs RCW restantes=0",
+      "durationMs": 0,
+      "stateAfter": "Released"
+    }
+  ],
+  "events": [
+    "18:44:33.688 IDtmEvents.OnFunctionChanged tag=LASEC-0146D905 ",
+    "18:44:33.733 IDtmEvents.OnFunctionChanged tag=LASEC-0146D905 ",
+    "18:44:33.753 IDtmEvents.OnParameterChanged tag=LASEC-0146D905 <?xml version=\"1.0\"?>\r\n<FDT xmlns=\"x-schema:DTMParameterSchema.xml\" xmlns:fdt=\"x-schema:FDTDataTypesSchema.xml\" \r\n fdt:storageState=\"persistent\" fdt:dataSetState=\"allDataLoaded\">\r\n <fdt:DtmDeviceType readAccess=\"0\" writeAccess=\"0\">\r\n  <fdt:VersionInformation name=\"HART Communication\" vendor=\"Codewri…",
+    "18:44:33.758 IDtmEvents.OnPreparedToRelease tag=LASEC-0146D905 "
+  ]
+}

@@ -1,0 +1,10 @@
+bin/
+obj/
+*.user
+.vs/
+TestResults/
+
+# A especificação FDT NÃO pode ser redistribuída (License_Conditions.pdf, item 2.3).
+# Os ZIPs originais e a extração ficam apenas locais.
+*.zip
+specs/

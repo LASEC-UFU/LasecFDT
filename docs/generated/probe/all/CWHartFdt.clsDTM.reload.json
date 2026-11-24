@@ -1,0 +1,155 @@
+{
+  "clsid": "6358CCBF-AA0E-4633-9564-9EEFB7FDE86D",
+  "startedAt": "2026-11-23T18:44:36.46324-03:00",
+  "hostProcess": "x86 / CLR 4.0.30319.42000",
+  "created": true,
+  "environmentAccepted": false,
+  "configured": true,
+  "releasedCleanly": true,
+  "finalState": "Released",
+  "roundTrip": "ok: data set idêntico após Load→Save",
+  "steps": [
+    {
+      "step": "CoCreateInstance",
+      "ok": true,
+      "result": "System.__ComObject",
+      "durationMs": 73,
+      "stateAfter": "Up"
+    },
+    {
+      "step": "QueryInterface (inventário)",
+      "ok": true,
+      "result": "IDtm, IDtmActiveXInformation, IDtmChannel, IDtmDocumentation, IDtmInformation, IDtmParameter, IFdtChannel, IFdtChannelSubTopology, IFdtCommunication, IFdtEvents, IFdtFunctionBlockData, IPersistStreamInit, IPersistPropertyBag",
+      "durationMs": 0,
+      "stateAfter": "Up"
+    },
+    {
+      "step": "IPersistPropertyBag::Load",
+      "ok": true,
+      "result": "18 propriedades",
+      "durationMs": 13,
+      "stateAfter": "ExistingCreated"
+    },
+    {
+      "step": "IDtm::Environment",
+      "ok": true,
+      "result": "TRUE",
+      "durationMs": 42,
+      "stateAfter": "Running"
+    },
+    {
+      "step": "IDtm::SetLanguage(0x0409)",
+      "ok": true,
+      "result": "TRUE",
+      "durationMs": 7,
+      "stateAfter": "Running"
+    },
+    {
+      "step": "IDtm::Config",
+      "ok": true,
+      "result": "TRUE",
+      "durationMs": 15,
+      "stateAfter": "Configured"
+    },
+    {
+      "step": "IPersistPropertyBag::Save",
+      "ok": true,
+      "result": "18 propriedades",
+      "durationMs": 7,
+      "stateAfter": "Configured"
+    },
+    {
+      "step": "IDtm::PrepareToRelease",
+      "ok": true,
+      "result": "TRUE",
+      "durationMs": 4,
+      "stateAfter": "Configured"
+    },
+    {
+      "step": "aguardar IDtmEvents::OnPreparedToRelease",
+      "ok": true,
+      "result": "8 ms",
+      "durationMs": 0,
+      "stateAfter": "Configured"
+    },
+    {
+      "step": "IUnknown::Release (final)",
+      "ok": true,
+      "result": "refs RCW restantes=0",
+      "durationMs": 0,
+      "stateAfter": "Released"
+    }
+  ],
+  "roundTripSteps": [
+    {
+      "step": "CoCreateInstance",
+      "ok": true,
+      "result": "System.__ComObject",
+      "durationMs": 73,
+      "stateAfter": "Up"
+    },
+    {
+      "step": "QueryInterface (inventário)",
+      "ok": true,
+      "result": "IDtm, IDtmActiveXInformation, IDtmChannel, IDtmDocumentation, IDtmInformation, IDtmParameter, IFdtChannel, IFdtChannelSubTopology, IFdtCommunication, IFdtEvents, IFdtFunctionBlockData, IPersistStreamInit, IPersistPropertyBag",
+      "durationMs": 0,
+      "stateAfter": "Up"
+    },
+    {
+      "step": "IPersistPropertyBag::Load",
+      "ok": true,
+      "result": "18 propriedades",
+      "durationMs": 13,
+      "stateAfter": "ExistingCreated"
+    },
+    {
+      "step": "IDtm::Environment",
+      "ok": true,
+      "result": "TRUE",
+      "durationMs": 42,
+      "stateAfter": "Running"
+    },
+    {
+      "step": "IDtm::SetLanguage(0x0409)",
+      "ok": true,
+      "result": "TRUE",
+      "durationMs": 7,
+      "stateAfter": "Running"
+    },
+    {
+      "step": "IDtm::Config",
+      "ok": true,
+      "result": "TRUE",
+      "durationMs": 15,
+      "stateAfter": "Configured"
+    },
+    {
+      "step": "IPersistPropertyBag::Save",
+      "ok": true,
+      "result": "18 propriedades",
+      "durationMs": 7,
+      "stateAfter": "Configured"
+    },
+    {
+      "step": "IDtm::PrepareToRelease",
+      "ok": true,
+      "result": "TRUE",
+      "durationMs": 4,
+      "stateAfter": "Configured"
+    },
+    {
+      "step": "aguardar IDtmEvents::OnPreparedToRelease",
+      "ok": true,
+      "result": "8 ms",
+      "durationMs": 0,
+      "stateAfter": "Configured"
+    },
+    {
+      "step": "IUnknown::Release (final)",
+      "ok": true,
+      "result": "refs RCW restantes=0",
+      "durationMs": 0,
+      "stateAfter": "Released"
+    }
+  ]
+}

@@ -1,0 +1,29 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <!--
+    Worker FDT 1.x: um processo por instância de DTM (isolamento de falhas — doc 06).
+    net48 x86 (DTMs COM in-process de 32 bits; DTMs .NET Framework exigem CLR v4),
+    sem NXCOMPAT (emulação de thunks ATL para controles ATL 3.0/VB6 — doc 08 §5).
+    Fala JSON-RPC por named pipe com o supervisor (LasecFDT.Supervisor).
+  -->
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net48</TargetFramework>
+    <PlatformTarget>x86</PlatformTarget>
+    <RootNamespace>LasecFDT.Worker.Fdt1</RootNamespace>
+    <AssemblyName>LasecFDT.Worker.Fdt1</AssemblyName>
+    <UseWindowsForms>true</UseWindowsForms>
+    <CopyFdtSchemas>true</CopyFdtSchemas>
+    <LasecLegacyActiveXHost>true</LasecLegacyActiveXHost>
+    <ApplicationHighDpiMode>SystemAware</ApplicationHighDpiMode>
+  </PropertyGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\LasecFDT.Core\LasecFDT.Core.csproj" />
+    <ProjectReference Include="..\LasecFDT.Fdt1\LasecFDT.Fdt1.csproj" />
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="Jigfdt.fdt100">
+      <HintPath>$(LasecFdtRoot)lib\fdt-jig\Jigfdt.fdt100.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Core" />
+  </ItemGroup>
+</Project>

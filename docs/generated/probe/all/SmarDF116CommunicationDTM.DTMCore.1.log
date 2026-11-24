@@ -1,0 +1,20 @@
+  [evento] 18:44:45.496 IFdtContainer.GetXmlSchemaPath tag= C:\Source Local\LasecFDT\src\LasecFDT.Cli\bin\Debug\net48\FDTSchemas\
+  [evento] 18:44:45.776 IDtmEvents.OnParameterChanged tag=LASEC-BF15C9B4 
+  [evento] 18:44:45.927 IDtmEvents.OnPreparedToRelease tag=LASEC-BF15C9B4 
+  OK   CoCreateInstance                                    51 ms  Up               System.__ComObject
+  OK   QueryInterface (inventário)                          0 ms  Up               IDtm, IDtmActiveXInformation, IDtmChannel, IDtmInformation, IDtmParameter, IFdtEvents, IPersistStreamInit
+  OK   IPersistStreamInit::InitNew                          0 ms  NewCreated       
+  OK   IDtm::Environment                                  202 ms  NewEnabled       TRUE
+  OK   IDtm::SetLanguage(0x0409)                            0 ms  NewEnabled       TRUE
+  OK   IDtmInformation::GetInformation                     25 ms  NewEnabled       FDT 1.2; Smar DF116-DF117 Comm DTM 3.0.0.8; 1 device type(s)
+  OK   IDtm::InitNew                                        1 ms  Running          TRUE
+  OK   IDtm::Config                                         4 ms  Configured       TRUE
+  OK   IDtm::GetFunctions                                   7 ms  Configured       3 função(ões); default=
+  OK   IDtmActiveXInformation::GetActiveXGuid              31 ms  Configured       F1EF798F-8A76-4CCC-A610-61B019717206
+  OK   IDtmActiveXInformation::GetActiveXGuid               1 ms  Configured       
+  OK   IDtmActiveXInformation::GetActiveXGuid               1 ms  Configured       F1EF798F-8A76-4CCC-A610-61B019717206
+  OK   IPersistStreamInit::Save                             2 ms  Configured       1354 bytes
+  OK   IDtm::PrepareToRelease                              19 ms  Configured       TRUE
+  OK   aguardar IDtmEvents::OnPreparedToRelease             0 ms  Configured       155 ms
+  OK   IUnknown::Release (final)                            0 ms  Released         refs RCW restantes=0
+Resultado: created=True environment=True configured=True releasedCleanly=True final=Released roundTrip=

@@ -1,0 +1,32 @@
+  [evento] 18:44:39.026 IFdtContainer.GetXmlSchemaPath tag= C:\Source Local\LasecFDT\src\LasecFDT.Cli\bin\Debug\net48\FDTSchemas\
+  [evento] 18:44:39.114 IDtmEvents.OnFunctionChanged tag=LASEC-3FCA4CFC 
+  [evento] 18:44:39.183 IDtmEvents.OnParameterChanged tag=LASEC-3FCA4CFC <?xml version="1.0"?> 
+<OnParameterChangedDocument> 
+	<PARAMETERS> 
+</PARAMETERS> 
+ 
+</OnParameterChangedDocument> 
+
+  [evento] 18:44:39.183 IDtmEvents.OnPreparedToRelease tag=LASEC-3FCA4CFC 
+  OK   CoCreateInstance                                    78 ms  Up               System.__ComObject
+  OK   QueryInterface (inventário)                          0 ms  Up               IDtm, IDtmActiveXInformation, IDtmInformation, IDtmOnlineParameter, IDtmParameter, IFdtCommunicationEvents, IFdtEvents, IPersistStreamInit, IPersistPropertyBag
+  OK   IPersistPropertyBag::Load                            7 ms  ExistingCreated  1 propriedades
+  OK   IDtm::Environment                                   85 ms  Running          TRUE
+  OK   IDtm::SetLanguage(0x0409)                            1 ms  Running          TRUE
+  OK   IDtm::Config                                         7 ms  Configured       TRUE
+  OK   IPersistPropertyBag::Save                            6 ms  Configured       1 propriedades
+  OK   IDtm::PrepareToRelease                               3 ms  Configured       TRUE
+  OK   aguardar IDtmEvents::OnPreparedToRelease             0 ms  Configured       8 ms
+  OK   IUnknown::Release (final)                            0 ms  Released         refs RCW restantes=0
+  -- round-trip de persistência --
+  OK   CoCreateInstance                                    78 ms  Up               System.__ComObject
+  OK   QueryInterface (inventário)                          0 ms  Up               IDtm, IDtmActiveXInformation, IDtmInformation, IDtmOnlineParameter, IDtmParameter, IFdtCommunicationEvents, IFdtEvents, IPersistStreamInit, IPersistPropertyBag
+  OK   IPersistPropertyBag::Load                            7 ms  ExistingCreated  1 propriedades
+  OK   IDtm::Environment                                   85 ms  Running          TRUE
+  OK   IDtm::SetLanguage(0x0409)                            1 ms  Running          TRUE
+  OK   IDtm::Config                                         7 ms  Configured       TRUE
+  OK   IPersistPropertyBag::Save                            6 ms  Configured       1 propriedades
+  OK   IDtm::PrepareToRelease                               3 ms  Configured       TRUE
+  OK   aguardar IDtmEvents::OnPreparedToRelease             0 ms  Configured       8 ms
+  OK   IUnknown::Release (final)                            0 ms  Released         refs RCW restantes=0
+Resultado: created=True environment=False configured=True releasedCleanly=True final=Released roundTrip=ok: data set idêntico após LoadSave

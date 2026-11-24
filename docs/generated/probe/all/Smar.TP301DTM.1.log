@@ -1,0 +1,27 @@
+  [evento] 18:44:42.119 IFdtContainer.GetXmlSchemaPath tag= C:\Source Local\LasecFDT\src\LasecFDT.Cli\bin\Debug\net48\FDTSchemas\
+  [evento] 18:44:42.211 IDtmEvents.OnFunctionChanged tag=LASEC-4A775F7E 
+  [evento] 18:44:42.231 IDtmEvents.OnFunctionChanged tag=LASEC-4A775F7E 
+  [evento] 18:44:42.235 IDtmEvents.OnParameterChanged tag=LASEC-4A775F7E <?xml version="1.0"?> 
+<OnParameterChangedDocument> 
+	<PARAMETERS> 
+</PARAMETERS> 
+ 
+</OnParameterChangedDocument> 
+
+  [evento] 18:44:42.235 IDtmEvents.OnPreparedToRelease tag=LASEC-4A775F7E 
+  OK   CoCreateInstance                                    57 ms  Up               System.__ComObject
+  OK   QueryInterface (inventário)                          0 ms  Up               IDtm, IDtmActiveXInformation, IDtmInformation, IDtmOnlineParameter, IDtmParameter, IFdtCommunicationEvents, IFdtEvents, IPersistStreamInit, IPersistPropertyBag
+  OK   IPersistPropertyBag::InitNew                         0 ms  NewCreated       
+  OK   IDtm::Environment                                   42 ms  NewEnabled       TRUE
+  OK   IDtm::SetLanguage(0x0409)                            0 ms  NewEnabled       FALSE
+  OK   IDtmInformation::GetInformation                     16 ms  NewEnabled       FDT 1.2; Smar TP301DTM 2.04; 1 device type(s)
+  OK   IDtm::InitNew                                       13 ms  Running          TRUE
+  OK   IDtm::Config                                         5 ms  Configured       TRUE
+  OK   IDtm::GetFunctions                                   4 ms  Configured       2 função(ões); default=
+  OK   IDtmActiveXInformation::GetActiveXGuid              20 ms  Configured       A9E296E5-8F8D-4447-A987-8D23DB2BB337
+  OK   IDtmActiveXInformation::GetActiveXGuid               1 ms  Configured       A9E296E5-8F8D-4447-A987-8D23DB2BB337
+  OK   IPersistPropertyBag::Save                            5 ms  Configured       1 propriedades
+  OK   IDtm::PrepareToRelease                               3 ms  Configured       TRUE
+  OK   aguardar IDtmEvents::OnPreparedToRelease             0 ms  Configured       7 ms
+  OK   IUnknown::Release (final)                            0 ms  Released         refs RCW restantes=0
+Resultado: created=True environment=True configured=True releasedCleanly=True final=Released roundTrip=

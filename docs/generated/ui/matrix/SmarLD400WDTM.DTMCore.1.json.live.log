@@ -1,0 +1,98 @@
+21:46:45.947 [t1] 25 DTM(s) hospedáveis neste processo (x86).
+21:46:46.116 [t1] [trace] -> LASEC-BA8D10D9 CoCreateInstance
+21:46:46.222 [t1] [trace] <- LASEC-BA8D10D9 OK   CoCreateInstance                                   104 ms  Up               System.__ComObject
+21:46:46.237 [t1] [trace] <- LASEC-BA8D10D9 OK   QueryInterface (inventário)                          0 ms  Up               IDtm, IDtmActiveXInformation, IDtmInformation, IDtmOnlineParameter, IDtmParameter, IFdtEvents, IPersistStreamInit
+21:46:46.243 [t1] [trace] -> LASEC-BA8D10D9 IPersistStreamInit::InitNew
+21:46:46.253 [t1] [trace] <- LASEC-BA8D10D9 OK   IPersistStreamInit::InitNew                          9 ms  NewCreated       
+21:46:46.256 [t1] [trace] -> LASEC-BA8D10D9 IDtm::Environment
+21:46:46.268 [t1] [evento] 21:46:46.267 IFdtContainer.GetXmlSchemaPath tag= C:\Source Local\LasecFDT\src\LasecFDT.TestHost\bin\Debug\net48\FDTSchemas\
+21:46:46.341 [t1] [trace] <- LASEC-BA8D10D9 OK   IDtm::Environment                                   84 ms  NewEnabled       TRUE
+21:46:46.345 [t1] [trace] -> LASEC-BA8D10D9 IDtm::SetLanguage(0x0409)
+21:46:46.350 [t1] [trace] <- LASEC-BA8D10D9 OK   IDtm::SetLanguage(0x0409)                            4 ms  NewEnabled       TRUE
+21:46:46.353 [t1] [trace] -> LASEC-BA8D10D9 IDtmInformation::GetInformation
+21:46:46.369 [t1] [trace] <- LASEC-BA8D10D9 OK   IDtmInformation::GetInformation                     16 ms  NewEnabled       FDT 1.2; Smar LD400 Wireless DTM 1.00; 1 device type(s)
+21:46:46.375 [t1] [trace] -> LASEC-BA8D10D9 IDtm::InitNew
+21:46:46.381 [t1] [trace] <- LASEC-BA8D10D9 OK   IDtm::InitNew                                        6 ms  Running          TRUE
+21:46:46.385 [t1] [trace] -> LASEC-BA8D10D9 IDtm::Config
+21:46:46.398 [t1] [trace] <- LASEC-BA8D10D9 OK   IDtm::Config                                        13 ms  Configured       TRUE
+21:46:46.404 [t1] [trace] -> LASEC-BA8D10D9 IDtm::PrivateDialogEnabled(True)
+21:46:46.412 [t1] [evento] 21:46:46.412 IDtmEvents.OnFunctionChanged tag=LASEC-BA8D10D9 
+21:46:46.418 [t1] [trace] <- LASEC-BA8D10D9 OK   IDtm::PrivateDialogEnabled(True)                    12 ms  Configured       TRUE
+21:46:46.423 [t1] [trace] -> LASEC-BA8D10D9 IDtm::GetFunctions
+21:46:46.444 [t1] [trace] <- LASEC-BA8D10D9 OK   IDtm::GetFunctions                                  20 ms  Configured       1 função(ões); default=
+21:46:46.474 [t1] [trace] -> LASEC-BA8D10D9 IDtmActiveXInformation::GetActiveXGuid
+21:46:46.500 [t1] [trace] <- LASEC-BA8D10D9 OK   IDtmActiveXInformation::GetActiveXGuid              25 ms  Configured       C056D1B0-6A97-4E77-8B6E-F73EA05FB607
+21:46:46.506 [t1] [trace] ActiveX C056D1B0-6A97-4E77-8B6E-F73EA05FB607 ordem=InitBeforeEmbed: criando
+21:46:52.103 [t1] [evento] 21:46:52.103 IFdtContainer.LockDataSet tag=LASEC-BA8D10D9 
+21:46:52.109 [t1] [evento] 21:46:52.109 IDtmEvents.OnFunctionChanged tag=LASEC-BA8D10D9 
+21:46:52.190 [t1] [trace] ActiveX C056D1B0-6A97-4E77-8B6E-F73EA05FB607 invoke=E41FA3B2-6F01-4B63-848B-5DD4E110C8D8 Init=True (5683 ms)
+21:46:52.196 [t1] UI aberta: função 2 'OfflineParameterize' controle C056D1B0-6A97-4E77-8B6E-F73EA05FB607
+21:46:54.347 [t1] [evento] 21:46:54.346 IDtmEvents.OnApplicationClosed tag= invoke=E41FA3B2-6F01-4B63-848B-5DD4E110C8D8 
+21:46:54.361 [t1] [evento] 21:46:54.361 IDtmEvents.OnFunctionChanged tag=LASEC-BA8D10D9 
+21:46:54.371 [t1] [evento] 21:46:54.371 IFdtContainer.SaveRequest tag=LASEC-BA8D10D9 
+21:46:54.378 [t1] [evento] 21:46:54.378 IFdtContainer.UnlockDataSet tag=LASEC-BA8D10D9 
+21:46:54.383 [t1] [trace] ActiveX invoke=E41FA3B2-6F01-4B63-848B-5DD4E110C8D8 PrepareToRelease aceito; OnApplicationClosed=recebido
+21:46:54.650 [t1] [trace] -> LASEC-BA8D10D9 IDtm::PrepareToRelease
+21:46:54.675 [t1] [evento] 21:46:54.675 IFdtContainer.LockDataSet tag=LASEC-BA8D10D9 
+21:46:54.682 [t1] [evento] 21:46:54.682 IFdtContainer.SaveRequest tag=LASEC-BA8D10D9 
+21:46:54.690 [t1] [evento] 21:46:54.690 IFdtContainer.SaveRequest tag=LASEC-BA8D10D9 
+21:46:54.695 [t1] [evento] 21:46:54.695 IFdtContainer.UnlockDataSet tag=LASEC-BA8D10D9 
+21:46:54.700 [t1] [trace] <- LASEC-BA8D10D9 OK   IDtm::PrepareToRelease                              49 ms  Configured       TRUE
+21:46:54.706 [t1] [evento] 21:46:54.706 IDtmEvents.OnPreparedToRelease tag=LASEC-BA8D10D9 
+21:46:54.736 [t1] [trace] <- LASEC-BA8D10D9 OK   aguardar IDtmEvents::OnPreparedToRelease             0 ms  Configured       31 ms
+21:46:54.750 [t1] [trace] -> LASEC-BA8D10D9 IUnknown::Release (final)
+21:46:54.767 [t1] [trace] <- LASEC-BA8D10D9 OK   IUnknown::Release (final)                           16 ms  Released         refs RCW restantes=0
+21:46:54.776 [t1] [trace] -> GC.Collect/WaitForPendingFinalizers
+21:46:54.787 [t1] [trace] <- GC concluído
+21:46:54.806 [t1] Fechado: OnApplicationClosed=True OnPreparedToRelease=True
+22:35:19.121 [t1] Processo: DEP=ativo, emulação de thunks ATL=ativa, permanente=True
+22:35:20.044 [t1] 25 DTM(s) hospedáveis neste processo (x86).
+22:35:20.172 [t1] [trace] -> LASEC-CB9FB03D CoCreateInstance
+22:35:20.243 [t1] [trace] <- LASEC-CB9FB03D OK   CoCreateInstance                                    70 ms  Up               System.__ComObject
+22:35:20.258 [t1] [trace] <- LASEC-CB9FB03D OK   QueryInterface (inventário)                          0 ms  Up               IDtm, IDtmActiveXInformation, IDtmInformation, IDtmOnlineParameter, IDtmParameter, IFdtEvents, IPersistStreamInit
+22:35:20.262 [t1] [trace] -> LASEC-CB9FB03D IPersistStreamInit::InitNew
+22:35:20.274 [t1] [trace] <- LASEC-CB9FB03D OK   IPersistStreamInit::InitNew                         11 ms  NewCreated       
+22:35:20.276 [t1] [trace] -> LASEC-CB9FB03D IDtm::Environment
+22:35:20.288 [t1] [evento] 22:35:20.286 IFdtContainer.GetXmlSchemaPath tag= C:\Source Local\LasecFDT\src\LasecFDT.TestHost\bin\Debug\net48\FDTSchemas\
+22:35:20.356 [t1] [trace] <- LASEC-CB9FB03D OK   IDtm::Environment                                   79 ms  NewEnabled       TRUE
+22:35:20.358 [t1] [trace] -> LASEC-CB9FB03D IDtm::SetLanguage(0x0409)
+22:35:20.362 [t1] [trace] <- LASEC-CB9FB03D OK   IDtm::SetLanguage(0x0409)                            3 ms  NewEnabled       TRUE
+22:35:20.366 [t1] [trace] -> LASEC-CB9FB03D IDtmInformation::GetInformation
+22:35:20.379 [t1] [trace] <- LASEC-CB9FB03D OK   IDtmInformation::GetInformation                     12 ms  NewEnabled       FDT 1.2; Smar LD400 Wireless DTM 1.00; 1 device type(s)
+22:35:20.383 [t1] [trace] -> LASEC-CB9FB03D IDtm::InitNew
+22:35:20.388 [t1] [trace] <- LASEC-CB9FB03D OK   IDtm::InitNew                                        5 ms  Running          TRUE
+22:35:20.397 [t1] [trace] -> LASEC-CB9FB03D IDtm::Config
+22:35:20.406 [t1] [trace] <- LASEC-CB9FB03D OK   IDtm::Config                                         9 ms  Configured       TRUE
+22:35:20.412 [t1] [trace] -> LASEC-CB9FB03D IDtm::PrivateDialogEnabled(True)
+22:35:20.419 [t1] [evento] 22:35:20.419 IDtmEvents.OnFunctionChanged tag=LASEC-CB9FB03D 
+22:35:20.424 [t1] [trace] <- LASEC-CB9FB03D OK   IDtm::PrivateDialogEnabled(True)                    11 ms  Configured       TRUE
+22:35:20.429 [t1] [trace] -> LASEC-CB9FB03D IDtm::GetFunctions
+22:35:20.440 [t1] [trace] <- LASEC-CB9FB03D OK   IDtm::GetFunctions                                  11 ms  Configured       1 função(ões); default=
+22:35:20.465 [t1] [trace] -> LASEC-CB9FB03D IDtmActiveXInformation::GetActiveXGuid
+22:35:20.487 [t1] [trace] <- LASEC-CB9FB03D OK   IDtmActiveXInformation::GetActiveXGuid              21 ms  Configured       C056D1B0-6A97-4E77-8B6E-F73EA05FB607
+22:35:20.492 [t1] [trace] ActiveX C056D1B0-6A97-4E77-8B6E-F73EA05FB607 ordem=EmbedThenInit: criando
+22:35:25.040 [t1] [evento] 22:35:25.040 IFdtContainer.LockDataSet tag=LASEC-CB9FB03D 
+22:35:25.043 [t1] [evento] 22:35:25.043 IDtmEvents.OnFunctionChanged tag=LASEC-CB9FB03D 
+22:35:25.048 [t1] [trace] ActiveX C056D1B0-6A97-4E77-8B6E-F73EA05FB607 invoke=C02E8A8F-F005-4599-8021-58952FDEC142 Init=True (4556 ms)
+22:35:25.053 [t1] UI aberta: função 2 'OfflineParameterize' controle C056D1B0-6A97-4E77-8B6E-F73EA05FB607
+22:35:27.214 [t1] [evento] 22:35:27.214 IDtmEvents.OnApplicationClosed tag= invoke=C02E8A8F-F005-4599-8021-58952FDEC142 
+22:35:27.218 [t1] [evento] 22:35:27.218 IDtmEvents.OnFunctionChanged tag=LASEC-CB9FB03D 
+22:35:27.222 [t1] [evento] 22:35:27.222 IFdtContainer.SaveRequest tag=LASEC-CB9FB03D 
+22:35:27.226 [t1] [evento] 22:35:27.226 IFdtContainer.UnlockDataSet tag=LASEC-CB9FB03D 
+22:35:27.232 [t1] [trace] ActiveX invoke=C02E8A8F-F005-4599-8021-58952FDEC142 PrepareToRelease aceito; OnApplicationClosed=recebido
+22:35:27.523 [t1] [trace] -> LASEC-CB9FB03D IDtm::PrepareToRelease
+22:35:27.545 [t1] [evento] 22:35:27.545 IFdtContainer.LockDataSet tag=LASEC-CB9FB03D 
+22:35:27.554 [t1] [evento] 22:35:27.554 IFdtContainer.SaveRequest tag=LASEC-CB9FB03D 
+22:35:27.559 [t1] [evento] 22:35:27.559 IFdtContainer.SaveRequest tag=LASEC-CB9FB03D 
+22:35:27.564 [t1] [evento] 22:35:27.564 IFdtContainer.UnlockDataSet tag=LASEC-CB9FB03D 
+22:35:27.568 [t1] [trace] <- LASEC-CB9FB03D OK   IDtm::PrepareToRelease                              45 ms  Configured       TRUE
+22:35:27.572 [t1] [evento] 22:35:27.572 IDtmEvents.OnPreparedToRelease tag=LASEC-CB9FB03D 
+22:35:27.604 [t1] [trace] <- LASEC-CB9FB03D OK   aguardar IDtmEvents::OnPreparedToRelease             0 ms  Configured       32 ms
+22:35:27.623 [t1] [trace] -> LASEC-CB9FB03D IUnknown::Release (final)
+22:35:27.635 [t1] [trace] <- LASEC-CB9FB03D OK   IUnknown::Release (final)                           11 ms  Released         refs RCW restantes=0
+22:35:27.644 [t1] [trace] -> GC.Collect/WaitForPendingFinalizers
+22:35:27.653 [t1] [trace] <- GC concluído
+22:35:27.669 [t1] Fechado: OnApplicationClosed=True OnPreparedToRelease=True
+22:35:27.852 [t1] [saída] relatório gravado; limpeza COM na thread STA
+22:35:28.902 [t1] [saída] Close()
+[saída] Application.Run terminou; código 0

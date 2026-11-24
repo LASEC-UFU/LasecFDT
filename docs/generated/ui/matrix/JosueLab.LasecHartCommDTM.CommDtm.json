@@ -1,0 +1,16 @@
+{
+  "dtm": "B4B6B3E7-639D-460B-B9A0-6C7F7EB20010",
+  "uiOpened": false,
+  "order": "EmbedThenInit",
+  "dep": "DEP=ativo, emulação de thunks ATL=ativa, permanente=True",
+  "parent": null,
+  "policy": "Blocked",
+  "log": [
+    "22:33:33.482 Processo: DEP=ativo, emulação de thunks ATL=ativa, permanente=True",
+    "22:33:34.381 25 DTM(s) hospedáveis neste processo (x86).",
+    "22:33:34.513 [trace] -> LASEC-3E72D782 CoCreateInstance",
+    "22:33:34.564 [trace] <- LASEC-3E72D782 FAIL CoCreateInstance                                    44 ms  Up               FileNotFoundException: Falha na recuperação de fábrica de classes COM do componente com CLSID {B4B6B3E7-639D-460B-B9A0-6C7F7EB20010} devido ao seguinte erro: 80070002 O sistema não pode encontrar o arquivo especificado. (Exceção de HRESULT: 0x80070002).",
+    "22:33:34.574 ERRO: Falha em inicialização: FileNotFoundException: Falha na recuperação de fábrica de classes COM do componente com CLSID {B4B6B3E7-639D-460B-B9A0-6C7F7EB20010} devido ao seguinte erro: 80070002 O sistema não pode encontrar o arquivo especificado. (Exceção de HRESULT: 0x80070002).",
+    ""
+  ]
+}

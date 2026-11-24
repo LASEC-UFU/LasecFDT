@@ -1,0 +1,28 @@
+  [evento] 18:44:33.427 IFdtContainer.GetXmlSchemaPath tag= C:\Source Local\LasecFDT\src\LasecFDT.Cli\bin\Debug\net48\FDTSchemas\
+  [evento] 18:44:33.688 IDtmEvents.OnFunctionChanged tag=LASEC-0146D905 
+  [evento] 18:44:33.733 IDtmEvents.OnFunctionChanged tag=LASEC-0146D905 
+  [evento] 18:44:33.753 IDtmEvents.OnParameterChanged tag=LASEC-0146D905 <?xml version="1.0"?>
+<FDT xmlns="x-schema:DTMParameterSchema.xml" xmlns:fdt="x-schema:FDTDataTypesSchema.xml" 
+ fdt:storageState="persistent" fdt:dataSetState="allDataLoaded">
+ <fdt:DtmDeviceType readAccess="0" writeAccess="0">
+  <fdt:VersionInformation name="HART Communication" vendor="Codewri.
+  [evento] 18:44:33.758 IDtmEvents.OnPreparedToRelease tag=LASEC-0146D905 
+  OK   CoCreateInstance                                   134 ms  Up               System.__ComObject
+  OK   QueryInterface (inventário)                          0 ms  Up               IDtm, IDtmActiveXInformation, IDtmChannel, IDtmDocumentation, IDtmInformation, IDtmParameter, IFdtChannel, IFdtChannelSubTopology, IFdtCommunication, IFdtEvents, IFdtFunctionBlockData, IPersistStreamInit, IPersistPropertyBag
+  OK   IPersistPropertyBag::InitNew                        16 ms  NewCreated       
+  OK   IDtm::Environment                                  253 ms  NewEnabled       TRUE
+  OK   IDtm::SetLanguage(0x0409)                            8 ms  NewEnabled       TRUE
+  OK   IDtmInformation::GetInformation                     31 ms  NewEnabled       FDT 1.2; Codewrights GmbH HART Communication 1.0.58; 1 device type(s)
+  OK   IDtm::InitNew                                        0 ms  Running          TRUE
+  OK   IDtm::Config                                        13 ms  Configured       TRUE
+  OK   IDtm::GetFunctions                                   5 ms  Configured       5 função(ões); default=
+  OK   IDtmActiveXInformation::GetActiveXGuid               0 ms  Configured       
+  OK   IDtmActiveXInformation::GetActiveXGuid               0 ms  Configured       
+  OK   IDtmActiveXInformation::GetActiveXGuid               0 ms  Configured       
+  OK   IDtmActiveXInformation::GetActiveXGuid               0 ms  Configured       
+  OK   IDtmActiveXInformation::GetActiveXGuid               0 ms  Configured       
+  OK   IPersistPropertyBag::Save                            8 ms  Configured       18 propriedades
+  OK   IDtm::PrepareToRelease                               1 ms  Configured       TRUE
+  OK   aguardar IDtmEvents::OnPreparedToRelease             0 ms  Configured       10 ms
+  OK   IUnknown::Release (final)                            0 ms  Released         refs RCW restantes=0
+Resultado: created=True environment=True configured=True releasedCleanly=True final=Released roundTrip=

@@ -1,0 +1,14 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <!--
+    Supervisor dos workers FDT: um processo worker por instância de DTM, JSON-RPC por named pipe,
+    timeouts, reação a quedas e orquestração da comunicação aninhada entre processos.
+    netstandard2.0: utilizável pelo host .NET Framework (CLI/testes) e por um serviço .NET moderno (UI Flutter).
+  -->
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <RootNamespace>LasecFDT.Supervisor</RootNamespace>
+  </PropertyGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\LasecFDT.Core\LasecFDT.Core.csproj" />
+  </ItemGroup>
+</Project>

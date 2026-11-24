@@ -1,0 +1,18 @@
+<Project>
+  <PropertyGroup>
+    <LangVersion>latest</LangVersion>
+    <Nullable>disable</Nullable>
+    <ImplicitUsings>disable</ImplicitUsings>
+    <Deterministic>true</Deterministic>
+    <Company>Lasec</Company>
+    <Product>LasecFDT</Product>
+    <Version>0.1.0</Version>
+    <!-- Raiz do repositório para localizar lib/ e specs/ -->
+    <LasecFdtRoot>$(MSBuildThisFileDirectory)</LasecFdtRoot>
+  </PropertyGroup>
+
+  <!-- Reference assemblies do .NET Framework 4.8 via NuGet (máquinas sem targeting pack instalado) -->
+  <ItemGroup Condition="'$(TargetFramework)' == 'net48'">
+    <PackageReference Include="Microsoft.NETFramework.ReferenceAssemblies" Version="1.0.3" PrivateAssets="all" />
+  </ItemGroup>
+</Project>

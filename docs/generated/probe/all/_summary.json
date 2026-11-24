@@ -1,0 +1,202 @@
+[
+  {
+    "clsid": "B4B6B3E7-639D-460B-B9A0-6C7F7EB20010",
+    "progId": "JosueLab.LasecHartCommDTM.CommDtm",
+    "outcome": "exit 3",
+    "ms": 861,
+    "reloadInNewProcess": "-",
+    "report": "JosueLab.LasecHartCommDTM.CommDtm.json"
+  },
+  {
+    "clsid": "6358CCBF-AA0E-4633-9564-9EEFB7FDE86D",
+    "progId": "CWHartFdt.clsDTM",
+    "outcome": "ok",
+    "ms": 1900,
+    "reloadInNewProcess": "ok: data set idêntico após Load→Save",
+    "report": "CWHartFdt.clsDTM.json"
+  },
+  {
+    "clsid": "00E77DC4-EF94-4DAE-8675-E0CBBBE2DD8D",
+    "progId": "Smar.DT301DTM.1",
+    "outcome": "ok",
+    "ms": 1157,
+    "reloadInNewProcess": "ok: data set idêntico após Load→Save",
+    "report": "Smar.DT301DTM.1.json"
+  },
+  {
+    "clsid": "50299458-7B8F-4573-88C4-190B640180E6",
+    "progId": "Smar.LD400DTM.1",
+    "outcome": "ok",
+    "ms": 1182,
+    "reloadInNewProcess": "ok: data set idêntico após Load→Save",
+    "report": "Smar.LD400DTM.1.json"
+  },
+  {
+    "clsid": "328D45D6-2E31-4411-AD20-796FBDCD7034",
+    "progId": "Smar.TP301DTM.1",
+    "outcome": "ok",
+    "ms": 950,
+    "reloadInNewProcess": "ok: data set idêntico após Load→Save",
+    "report": "Smar.TP301DTM.1.json"
+  },
+  {
+    "clsid": "542D3C6D-534E-4D90-9D86-CFBF550F4176",
+    "progId": "Smar.TT301DTM.1",
+    "outcome": "ok",
+    "ms": 885,
+    "reloadInNewProcess": "ok: data set idêntico após Load→Save",
+    "report": "Smar.TT301DTM.1.json"
+  },
+  {
+    "clsid": "BB98D12E-6CDB-4DCF-9EA6-D88E090F6E54",
+    "progId": "SmarDF116CommunicationDTM.DTMCore.1",
+    "outcome": "ok",
+    "ms": 1301,
+    "reloadInNewProcess": "ok: data set idêntico após Load→Save",
+    "report": "SmarDF116CommunicationDTM.DTMCore.1.json"
+  },
+  {
+    "clsid": "1C8EF1EE-D3B4-4D37-A5CC-5DFAECC31564",
+    "progId": "SmarFY500DTM.DTMCore.1",
+    "outcome": "ok",
+    "ms": 1223,
+    "reloadInNewProcess": "ok: data set idêntico após Load→Save",
+    "report": "SmarFY500DTM.DTMCore.1.json"
+  },
+  {
+    "clsid": "3407678A-1F31-46F8-93FF-479DE8071747",
+    "progId": "SmarLD1_0DTM.DTMCore.1",
+    "outcome": "ok",
+    "ms": 1001,
+    "reloadInNewProcess": "ok: data set idêntico após Load→Save",
+    "report": "SmarLD1_0DTM.DTMCore.1.json"
+  },
+  {
+    "clsid": "444511DC-1892-47AC-8A11-96B619727C06",
+    "progId": "SmarTT481WDTM.DTMCore.1",
+    "outcome": "ok",
+    "ms": 1470,
+    "reloadInNewProcess": "ok: data set idêntico após Load→Save",
+    "report": "SmarTT481WDTM.DTMCore.1.json"
+  },
+  {
+    "clsid": "4993D104-5009-4FE0-9767-5C87BF5D1FA9",
+    "progId": "SmarDT400WDTM.DTMCore.1",
+    "outcome": "ok",
+    "ms": 714,
+    "reloadInNewProcess": "ok: data set idêntico após Load→Save",
+    "report": "SmarDT400WDTM.DTMCore.1.json"
+  },
+  {
+    "clsid": "4B4B264C-2D6D-4F8C-9F1F-2986FF015031",
+    "progId": "SmarRD500HDTM.DTMCore.1",
+    "outcome": "ok",
+    "ms": 939,
+    "reloadInNewProcess": "ok: data set idêntico após Load→Save",
+    "report": "SmarRD500HDTM.DTMCore.1.json"
+  },
+  {
+    "clsid": "4ECD134E-97F7-42CC-8A53-66C6E11FEB2A",
+    "progId": "SmarLD291DTM.DTMCore.1",
+    "outcome": "ok",
+    "ms": 909,
+    "reloadInNewProcess": "ok: data set idêntico após Load→Save",
+    "report": "SmarLD291DTM.DTMCore.1.json"
+  },
+  {
+    "clsid": "5AE26BF7-AA96-42FD-AE98-2329D52350E1",
+    "progId": "SmarHCC301DTM.DTMCore.1",
+    "outcome": "ok",
+    "ms": 657,
+    "reloadInNewProcess": "ok: data set idêntico após Load→Save",
+    "report": "SmarHCC301DTM.DTMCore.1.json"
+  },
+  {
+    "clsid": "6CCBF3E7-E04C-4866-BFBE-75E35B7D3EF1",
+    "progId": "SmarRD400HDTM.DTMCore.1",
+    "outcome": "ok",
+    "ms": 978,
+    "reloadInNewProcess": "ok: data set idêntico após Load→Save",
+    "report": "SmarRD400HDTM.DTMCore.1.json"
+  },
+  {
+    "clsid": "7205B11B-7F3C-4CA2-94E5-9AB9B6F2F605",
+    "progId": "SmarLD400WDTM.DTMCore.1",
+    "outcome": "ok",
+    "ms": 859,
+    "reloadInNewProcess": "ok: data set idêntico após Load→Save",
+    "report": "SmarLD400WDTM.DTMCore.1.json"
+  },
+  {
+    "clsid": "7524ED93-4F1A-4C2C-B220-5E329762BF0D",
+    "progId": "SmarFY400DTM.DTMCore.1",
+    "outcome": "ok",
+    "ms": 555,
+    "reloadInNewProcess": "ok: data set idêntico após Load→Save",
+    "report": "SmarFY400DTM.DTMCore.1.json"
+  },
+  {
+    "clsid": "9A9209FC-DC92-4DD7-ACC6-59E1486D1029",
+    "progId": "SmarTT400DTM.DTMCore.1",
+    "outcome": "ok",
+    "ms": 587,
+    "reloadInNewProcess": "ok: data set idêntico após Load→Save",
+    "report": "SmarTT400DTM.DTMCore.1.json"
+  },
+  {
+    "clsid": "B5F03F82-3587-4EFA-94EF-C0827163F056",
+    "progId": "SmarDF100DTM.DTMCore.1",
+    "outcome": "ok",
+    "ms": 607,
+    "reloadInNewProcess": "ok: data set idêntico após Load→Save",
+    "report": "SmarDF100DTM.DTMCore.1.json"
+  },
+  {
+    "clsid": "BF46B4B5-C48B-40F5-8932-A640D76AA0FF",
+    "progId": "SmarTP400WDTM.DTMCore.1",
+    "outcome": "ok",
+    "ms": 592,
+    "reloadInNewProcess": "ok: data set idêntico após Load→Save",
+    "report": "SmarTP400WDTM.DTMCore.1.json"
+  },
+  {
+    "clsid": "CFF519F1-D3DF-4384-84BD-C0C0DB0CFC85",
+    "progId": "SmarTT400WDTM.DTMCore.1",
+    "outcome": "ok",
+    "ms": 639,
+    "reloadInNewProcess": "ok: data set idêntico após Load→Save",
+    "report": "SmarTT400WDTM.DTMCore.1.json"
+  },
+  {
+    "clsid": "D0D55CD6-A01F-4786-8DB2-950B0E886C61",
+    "progId": "SmarRP400DTM.DTMCore.1",
+    "outcome": "ok",
+    "ms": 800,
+    "reloadInNewProcess": "ok: data set idêntico após Load→Save",
+    "report": "SmarRP400DTM.DTMCore.1.json"
+  },
+  {
+    "clsid": "DC1E06D6-ED58-4DEA-84E2-1C5797098DD1",
+    "progId": "SmarFY301DTM.DTMCore.1",
+    "outcome": "ok",
+    "ms": 758,
+    "reloadInNewProcess": "ok: data set idêntico após Load→Save",
+    "report": "SmarFY301DTM.DTMCore.1.json"
+  },
+  {
+    "clsid": "EF34EF99-0829-4ED5-8486-7118F89BEB5A",
+    "progId": "SmarTT421DTM.DTMCore.1",
+    "outcome": "ok",
+    "ms": 649,
+    "reloadInNewProcess": "ok: data set idêntico após Load→Save",
+    "report": "SmarTT421DTM.DTMCore.1.json"
+  },
+  {
+    "clsid": "F4A426FF-E4DE-49AE-A797-0EC8C307AAA1",
+    "progId": "SmarLD301DTM.DTMCore.1",
+    "outcome": "ok",
+    "ms": 577,
+    "reloadInNewProcess": "ok: data set idêntico após Load→Save",
+    "report": "SmarLD301DTM.DTMCore.1.json"
+  }
+]

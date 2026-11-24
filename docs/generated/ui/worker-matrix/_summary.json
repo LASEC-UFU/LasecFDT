@@ -1,0 +1,250 @@
+[
+  {
+    "dtm": "CWHartFdt.clsDTM",
+    "uiOpened": true,
+    "function": "Configuration",
+    "colors": 142,
+    "closedCleanly": true,
+    "released": true,
+    "workerExit": 0,
+    "ms": 2207
+  },
+  {
+    "dtm": "JosueLab.LasecHartCommDTM.CommDtm",
+    "uiOpened": true,
+    "function": "Configuration",
+    "colors": 228,
+    "closedCleanly": true,
+    "released": true,
+    "workerExit": 0,
+    "ms": 2025
+  },
+  {
+    "dtm": "Smar.DT301DTM.1",
+    "uiOpened": true,
+    "function": "MainOperationDT301-ActiveX",
+    "colors": 1921,
+    "closedCleanly": true,
+    "released": true,
+    "workerExit": 0,
+    "ms": 2775
+  },
+  {
+    "dtm": "Smar.LD400DTM.1",
+    "uiOpened": true,
+    "function": "MainOperationLD400-ActiveX",
+    "colors": 1973,
+    "closedCleanly": true,
+    "released": true,
+    "workerExit": 0,
+    "ms": 5368
+  },
+  {
+    "dtm": "Smar.TP301DTM.1",
+    "uiOpened": true,
+    "function": "MainOperationTP301-ActiveX",
+    "colors": 2541,
+    "closedCleanly": true,
+    "released": true,
+    "workerExit": 0,
+    "ms": 2249
+  },
+  {
+    "dtm": "Smar.TT301DTM.1",
+    "uiOpened": true,
+    "function": "MainOperationTT301-ActiveX",
+    "colors": 1590,
+    "closedCleanly": true,
+    "released": true,
+    "workerExit": 0,
+    "ms": 2749
+  },
+  {
+    "dtm": "SmarDF116CommunicationDTM.DTMCore.1",
+    "uiOpened": true,
+    "function": "OfflineParameterize",
+    "colors": 468,
+    "closedCleanly": true,
+    "released": true,
+    "workerExit": 0,
+    "ms": 1747
+  },
+  {
+    "dtm": "SmarFY500DTM.DTMCore.1",
+    "uiOpened": true,
+    "function": "OfflineParameterize",
+    "colors": 795,
+    "closedCleanly": true,
+    "released": true,
+    "workerExit": 0,
+    "ms": 4082
+  },
+  {
+    "dtm": "SmarLD1_0DTM.DTMCore.1",
+    "uiOpened": true,
+    "function": "OfflineParameterize",
+    "colors": 2109,
+    "closedCleanly": true,
+    "released": true,
+    "workerExit": 0,
+    "ms": 2446
+  },
+  {
+    "dtm": "SmarTT481WDTM.DTMCore.1",
+    "uiOpened": true,
+    "function": "OfflineParameterize",
+    "colors": 1412,
+    "closedCleanly": true,
+    "released": true,
+    "workerExit": 0,
+    "ms": 6328
+  },
+  {
+    "dtm": "SmarDT400WDTM.DTMCore.1",
+    "uiOpened": true,
+    "function": "OfflineParameterize",
+    "colors": 1736,
+    "closedCleanly": true,
+    "released": true,
+    "workerExit": 0,
+    "ms": 4238
+  },
+  {
+    "dtm": "SmarRD500HDTM.DTMCore.1",
+    "uiOpened": false,
+    "error": "2 'OfflineParameterize': Falha ao instanciar/embutir o controle 2B016858-E508-49C3-BDC2-7777E76CAE46: Component 'comct232.ocx' or one of its dependencies not correctly registered: a file is missing or invalid",
+    "released": true,
+    "workerExit": 0,
+    "ms": 1466
+  },
+  {
+    "dtm": "SmarLD291DTM.DTMCore.1",
+    "uiOpened": true,
+    "function": "OfflineParameterize",
+    "colors": 914,
+    "closedCleanly": true,
+    "released": true,
+    "workerExit": 0,
+    "ms": 5333
+  },
+  {
+    "dtm": "SmarHCC301DTM.DTMCore.1",
+    "uiOpened": true,
+    "function": "OfflineParameterize",
+    "colors": 2918,
+    "closedCleanly": true,
+    "released": true,
+    "workerExit": 0,
+    "ms": 2371
+  },
+  {
+    "dtm": "SmarRD400HDTM.DTMCore.1",
+    "uiOpened": true,
+    "function": "OfflineParameterize",
+    "colors": 1415,
+    "closedCleanly": true,
+    "released": true,
+    "workerExit": 0,
+    "ms": 2332
+  },
+  {
+    "dtm": "SmarLD400WDTM.DTMCore.1",
+    "uiOpened": true,
+    "function": "OfflineParameterize",
+    "colors": 1368,
+    "closedCleanly": true,
+    "released": true,
+    "workerExit": 0,
+    "ms": 6663
+  },
+  {
+    "dtm": "SmarFY400DTM.DTMCore.1",
+    "uiOpened": true,
+    "function": "OfflineParameterize",
+    "colors": 819,
+    "closedCleanly": true,
+    "released": true,
+    "workerExit": 0,
+    "ms": 4938
+  },
+  {
+    "dtm": "SmarTT400DTM.DTMCore.1",
+    "uiOpened": true,
+    "function": "OfflineParameterize",
+    "colors": 1969,
+    "closedCleanly": true,
+    "released": true,
+    "workerExit": 0,
+    "ms": 2701
+  },
+  {
+    "dtm": "SmarDF100DTM.DTMCore.1",
+    "uiOpened": true,
+    "function": "2",
+    "colors": 437,
+    "closedCleanly": true,
+    "released": true,
+    "workerExit": 0,
+    "ms": 1760
+  },
+  {
+    "dtm": "SmarTP400WDTM.DTMCore.1",
+    "uiOpened": true,
+    "function": "OfflineParameterize",
+    "colors": 1939,
+    "closedCleanly": true,
+    "released": true,
+    "workerExit": 0,
+    "ms": 3673
+  },
+  {
+    "dtm": "SmarTT400WDTM.DTMCore.1",
+    "uiOpened": true,
+    "function": "OfflineParameterize",
+    "colors": 1276,
+    "closedCleanly": true,
+    "released": true,
+    "workerExit": 0,
+    "ms": 3840
+  },
+  {
+    "dtm": "SmarRP400DTM.DTMCore.1",
+    "uiOpened": true,
+    "function": "OfflineParameterize",
+    "colors": 1187,
+    "closedCleanly": true,
+    "released": true,
+    "workerExit": 0,
+    "ms": 2549
+  },
+  {
+    "dtm": "SmarFY301DTM.DTMCore.1",
+    "uiOpened": true,
+    "function": "OfflineParameterize",
+    "colors": 830,
+    "closedCleanly": true,
+    "released": true,
+    "workerExit": 0,
+    "ms": 4311
+  },
+  {
+    "dtm": "SmarTT421DTM.DTMCore.1",
+    "uiOpened": true,
+    "function": "OfflineParameterize",
+    "colors": 1925,
+    "closedCleanly": true,
+    "released": true,
+    "workerExit": 0,
+    "ms": 2782
+  },
+  {
+    "dtm": "SmarLD301DTM.DTMCore.1",
+    "uiOpened": true,
+    "function": "OfflineParameterize",
+    "colors": 889,
+    "closedCleanly": true,
+    "released": true,
+    "workerExit": 0,
+    "ms": 5653
+  }
+]

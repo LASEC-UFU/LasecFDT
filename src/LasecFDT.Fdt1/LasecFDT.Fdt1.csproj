@@ -1,0 +1,30 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <!--
+    Motor FDT 1.x (COM). Precisa rodar em processo x86 porque os DTMs FDT 1.2
+    instalados são servidores COM in-process de 32 bits, e em .NET Framework 4.8
+    porque DTMs gerenciados (InprocServer32 = mscoree.dll) exigem o CLR v4 in-process.
+  -->
+  <PropertyGroup>
+    <TargetFramework>net48</TargetFramework>
+    <PlatformTarget>x86</PlatformTarget>
+    <RootNamespace>LasecFDT.Fdt1</RootNamespace>
+    <UseWindowsForms>true</UseWindowsForms>
+  </PropertyGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\LasecFDT.Core\LasecFDT.Core.csproj" />
+  </ItemGroup>
+  <ItemGroup>
+    <!-- Interop assembly oficial do FDT-JIG (redistribuível via FDT_InteropAssembly.msm) -->
+    <Reference Include="Jigfdt.fdt100">
+      <HintPath>$(LasecFdtRoot)lib\fdt-jig\Jigfdt.fdt100.dll</HintPath>
+      <Private>true</Private>
+      <EmbedInteropTypes>false</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="Microsoft.CSharp" /> <!-- dynamic: MSXML por late binding (XdrValidator) -->
+  </ItemGroup>
+  <ItemGroup>
+    <!-- Type library oficial: fonte autoritativa dos IIDs (lida com LoadTypeLibEx, sem registrar) -->
+    <None Include="$(LasecFdtRoot)lib\fdt-jig\FDT100.dll" Link="FDT100.dll" CopyToOutputDirectory="PreserveNewest" />
+  </ItemGroup>
+</Project>
