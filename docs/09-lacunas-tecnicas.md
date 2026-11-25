@@ -4,7 +4,7 @@
 
 | Lacuna | Por que importa | Como obter |
 |---|---|---|
-| **Anexo HART para FDT 1.2.1** (schemas `FDTHARTCommunicationSchema`, `FDTHARTChannelParameterSchema`, ident/scan) | Comunicação HART aninhada; os schemas da pasta são da 1.2 e diferem dos atualmente instalados no PC | FDT Group / FieldComm Group (gratuito para membros/registrados; verificar licença) |
+| **Anexo HART para FDT 1.2.1** (schemas `FDTHARTCommunicationSchema`, `FDTHARTChannelParameterSchema`, ident/scan) | Comunicação HART aninhada; os schemas da pasta são da 1.2 e diferem dos atualmente instalados no PC | FDT Group / FieldComm Group (gratuito para membros/registrados; verificar licença). Os schemas HART da FDT 1.2 vêm na pasta `XML-Files` da *FDT Interface Specification* da PROFIBUS: <https://www.profibus.com/download/fdt-interface-specification> |
 | Anexos FF, IO-Link, Modbus, PROFINET | Outros protocolos | FDT Group |
 | Especificação **FDT 2.x** (IEC 62453-42) e Common Components | Host FDT 2.x | FDT Group / IEC (pago) — não comprar sem decisão |
 | FDT 3.x | DTMs web | FDT Group |

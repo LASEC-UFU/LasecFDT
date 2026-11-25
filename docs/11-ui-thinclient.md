@@ -158,7 +158,7 @@ Regras que o Host garante, independentemente da UI:
 - Validado a partir do MSI extraído: 41 schemas mais 13 subpastas de protocolo encontradas nesta máquina.
 - **Os schemas HART são obrigatórios.** Em teste com o simulador, sem eles os DTMs dizem que conectaram mas não trocam dados: o comparar do TT301 não lê nada do instrumento, e, na cadeia CodeWrights → TT301, só passa o quadro inicial de identificação (comando 0): a tela do TT301 abre mas não lê nada (com os schemas: 6 quadros, comandos 0 e 13), e o desligamento falha. É uma falha silenciosa.
 - **Pasta do operador:** `C:\ProgramData\LasecFDT\Schemas\` (`FdtSchemaLocator.PlantSchemaFolder`), criada pelo instalador com permissão de escrita para Usuários e um `LEIA-ME.txt`.
-  - O operador coloca ali os schemas que obteve sob a licença dele, por exemplo o *HART Annex* da FDT 1.2.1 do FDT Group (hoje no FieldComm Group: <https://www.fieldcommgroup.org/technologies/fdt>).
+  - O operador coloca ali os schemas que obteve sob a licença dele, por exemplo a pasta `XML-Files` da *FDT Interface Specification* (FDT 1.2, PNO 2.162), baixada em <https://www.profibus.com/download/fdt-interface-specification>.
   - Aceita arquivos `.xml`/`.xsl` soltos, em subpastas ou dentro do `.zip` baixado. Tudo vai para a raiz da pasta montada.
   - Prioridade: schemas do merge module 1.2.1 > pasta do operador > outros Frames. Arquivo novo na pasta muda o hash e a pasta é montada de novo.
   - É permanente: a desinstalação não apaga o que o operador colocou.

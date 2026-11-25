@@ -12,9 +12,11 @@ com o instrumento.
 Como usar
 ---------
 1. Obtenha os schemas por um destes caminhos:
-   a) Anexo HART da FDT 1.2.1 ("HART Annex") no site do FDT Group, hoje parte
-      do FieldComm Group: https://www.fieldcommgroup.org/technologies/fdt
-      (área de especificações FDT 1.2.1). Leia e aceite a licença do site.
+   a) Baixe a "FDT Interface Specification" (FDT 1.2, PNO 2.162) no site da
+      PROFIBUS & PROFINET International:
+        https://www.profibus.com/download/fdt-interface-specification
+      O pacote traz a pasta XML-Files, com os schemas HART. Leia e aceite a
+      licença do site (pode pedir cadastro).
    b) Ou instale o PACTware (gratuito, www.pactware.com) neste computador: o
       LasecFDT encontra sozinho os schemas que ele instala e esta pasta pode
       ficar vazia.
