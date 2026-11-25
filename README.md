@@ -17,7 +17,7 @@ O LasecFDT **não pode distribuir os schemas XML do protocolo HART da FDT**, por
 | Opção | O que fazer |
 |---|---|
 | **1. PACTware no mesmo computador** (mais simples) | Instale o PACTware (gratuito, [www.pactware.com](http://www.pactware.com)). O LasecFDT encontra sozinho os schemas que ele instala. Não é preciso fazer mais nada. |
-| **2. Especificação FDT da PROFIBUS** | Baixe a *FDT Interface Specification* (FDT 1.2, PNO 2.162) em <https://www.profibus.com/download/fdt-interface-specification>. O pacote traz a pasta `XML-Files`, com os schemas HART. O site pode pedir cadastro e aceite da licença. Copie o **.zip do jeito que baixou** (ou os `.xml`) para **`C:\ProgramData\LasecFDT\Schemas\`**. Essa pasta é criada pelo instalador e tem um `LEIA-ME.txt`. Feche e abra o LasecFDT. |
+| **2. Especificação FDT da PROFIBUS** | Baixe a *FDT Interface Specification* (FDT 1.2, PNO 2.162) em <https://www.profibus.com/download/fdt-interface-specification>. O site pede cadastro. Na lista de downloads, baixe **`FDTSpecV12+Addendum(2162_V12+2162_Add).zip`** (o `FDTSpecV121+Addendum.zip` não serve: não traz os schemas HART). **Não precisa descompactar:** copie o .zip do jeito que veio (ou só os `.xml` da pasta `XML-Files` dele) para **`C:\ProgramData\LasecFDT\Schemas\`**. Essa pasta é criada pelo instalador e tem um `LEIA-ME.txt`. Feche e abra o LasecFDT. |
 | **3. Pasta própria** (avançado) | Defina a variável de ambiente `LASECFDT_SCHEMA_PATH` com uma pasta completa de schemas (os base e os de protocolo, todos na raiz). Ela substitui as opções acima. |
 
 A pasta `C:\ProgramData\LasecFDT\Schemas\` vale para todas as estações do servidor, aceita subpastas e arquivos `.zip`, e a desinstalação não a apaga. Detalhes: [doc 11 §8](docs/11-ui-thinclient.md).

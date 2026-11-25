@@ -15,8 +15,10 @@ Como usar
    a) Baixe a "FDT Interface Specification" (FDT 1.2, PNO 2.162) no site da
       PROFIBUS & PROFINET International:
         https://www.profibus.com/download/fdt-interface-specification
-      O pacote traz a pasta XML-Files, com os schemas HART. Leia e aceite a
-      licença do site (pode pedir cadastro).
+      O site pede cadastro. Baixe o arquivo
+        FDTSpecV12+Addendum(2162_V12+2162_Add).zip
+      (o FDTSpecV121+Addendum.zip NÃO serve: não traz os schemas HART).
+      Não precisa descompactar.
    b) Ou instale o PACTware (gratuito, www.pactware.com) neste computador: o
       LasecFDT encontra sozinho os schemas que ele instala e esta pasta pode
       ficar vazia.
