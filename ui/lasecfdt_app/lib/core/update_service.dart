@@ -147,7 +147,10 @@ class UpdateService {
   Future<String> download(UpdateRelease r, {required void Function(int received, int total) onProgress}) async {
     final dir = Directory('$_localDir\\Updates');
     await dir.create(recursive: true);
-    final file = File('${dir.path}\\LasecFDT_${r.tag.replaceAll(RegExp(r'[^A-Za-z0-9._-]'), '_')}.msi');
+    // Mesmo nome do arquivo do Release: o Windows Installer registra esse nome (PackageName) e, para reparar ou
+    // rodar de novo o MSI da versão instalada, precisa achar um pacote com o mesmo nome (senão: erro 1316).
+    final safe = r.assetName.replaceAll(RegExp(r'[^A-Za-z0-9._-]'), '_');
+    final file = File('${dir.path}\\${safe.toLowerCase().endsWith('.msi') ? safe : '$safe.msi'}');
     final client = HttpClient()
       ..userAgent = _agent
       ..connectionTimeout = const Duration(seconds: 20);
@@ -372,7 +375,12 @@ try {
   Show-UpdateMessage "Não foi possível concluir a atualização. $message" $true
   Start-LasecFdt
 } finally {
-  if ($installed) { Remove-Item -LiteralPath $MsiPath -Force -ErrorAction SilentlyContinue }
+  # O MSI da versão instalada fica (origem registrada no Windows Installer: reparo e reinstalação precisam dele,
+  # senão erro 1316). Só os de versões anteriores são apagados.
+  if ($installed) {
+    Get-ChildItem -LiteralPath (Split-Path -Parent $MsiPath) -Filter '*.msi' -ErrorAction SilentlyContinue |
+      Where-Object { $_.FullName -ne $MsiPath } | Remove-Item -Force -ErrorAction SilentlyContinue
+  }
   Remove-Item -LiteralPath $PSCommandPath -Force -ErrorAction SilentlyContinue
 }
 ''';
