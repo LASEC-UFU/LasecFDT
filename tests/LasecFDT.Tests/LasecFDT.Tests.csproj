@@ -23,5 +23,7 @@
     <Reference Include="Jigfdt.fdt100">
       <HintPath>$(LasecFdtRoot)lib\fdt-jig\Jigfdt.fdt100.dll</HintPath>
     </Reference>
+    <Reference Include="System.IO.Compression" />
+    <Reference Include="System.IO.Compression.FileSystem" />
   </ItemGroup>
 </Project>

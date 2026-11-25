@@ -83,17 +83,26 @@ jobs:
           target_commitish: ${{ github.sha }}
           name: LasecFDT ${{ env.TAG }}
           body: |
-            **LasecFDT ${{ env.TAG }}** — Frame FDT 1.2 com interface moderna, para estações e servidores de terminal (thin clients).
+            **LasecFDT ${{ env.TAG }}**: Frame FDT 1.2 com interface moderna, para estações e servidores de terminal (thin clients).
 
-            **Instalação:** execute `LasecFDT-${{ env.VERSION }}.msi` como administrador (no servidor de terminal, uma vez para todas as estações).
+            ## ⚠️ Antes de usar: schemas HART
+
+            O LasecFDT **não pode distribuir os schemas XML do protocolo HART da FDT**, por causa da licença do FDT Group. Sem eles, os DTMs HART abrem e dizem que conectaram, mas **não trocam dados com o instrumento**. Escolha uma das opções:
+
+            1. **PACTware no mesmo computador** (mais simples): instale o PACTware (gratuito, [www.pactware.com](http://www.pactware.com)). O LasecFDT encontra sozinho os schemas que ele instala.
+            2. **Anexo HART da FDT 1.2.1:** baixe o *HART Annex* da FDT 1.2.1 na área de especificações do FDT Group, hoje parte do FieldComm Group: https://www.fieldcommgroup.org/technologies/fdt. O site pode exigir cadastro e aceite da licença. Copie o **.zip do jeito que baixou** (ou os `.xml`) para **`C:\ProgramData\LasecFDT\Schemas\`**. Essa pasta é criada pelo instalador e tem um `LEIA-ME.txt`. Feche e abra o LasecFDT.
+            3. **Avançado:** a variável de ambiente `LASECFDT_SCHEMA_PATH` aponta para uma pasta completa de schemas e substitui as opções acima.
+
+            ## Instalação
+
+            Execute `LasecFDT-${{ env.VERSION }}.msi` como administrador. No servidor de terminal, basta uma vez para todas as estações.
             - Instala em `C:\Program Files (x86)\LasecFDT` (UI + motor em `engine\`).
-            - Cria `C:\ProgramData\LasecFDT` (projetos, catálogo e bloqueios compartilhados entre as estações) com permissão de escrita para Usuários.
-            - Componentes FDT 1.2.1 oficiais redistribuíveis: FDT100.dll (compartilhada, com contagem de referência) e os schemas XML do Frame.
+            - Cria `C:\ProgramData\LasecFDT`, a pasta compartilhada entre as estações (projetos, catálogo, bloqueios e `Schemas\`), com permissão de escrita para Usuários.
+            - Inclui os componentes oficiais redistribuíveis da FDT 1.2.1: FDT100.dll (compartilhada, com contagem de referência) e os schemas XML do Frame.
 
-            **Requisitos:** Windows 10/11 ou Windows Server 2019+, .NET Framework 4.8, e os DTMs FDT 1.x dos instrumentos instalados no mesmo computador.
-            Os schemas de protocolo HART (FDT 1.2) não são redistribuíveis: o LasecFDT usa os já instalados por outro Frame na máquina (ex.: PACTware).
+            **Requisitos:** Windows 10/11 ou Windows Server 2019+, .NET Framework 4.8, os DTMs FDT 1.x dos instrumentos instalados no mesmo computador e os schemas HART (acima).
 
-            `LasecFDT-${{ env.VERSION }}-portable.zip`: os mesmos arquivos, sem instalação (sem os componentes FDT, que exigem o MSI).
+            `LasecFDT-${{ env.VERSION }}-portable.zip`: os mesmos arquivos, sem instalação. Não traz os componentes FDT, que exigem o MSI.
           files: |
             artifacts/LasecFDT-${{ env.VERSION }}.msi
             artifacts/LasecFDT-${{ env.VERSION }}-portable.zip

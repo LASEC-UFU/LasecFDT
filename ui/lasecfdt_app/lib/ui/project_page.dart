@@ -183,6 +183,21 @@ class _ProjectView extends StatelessWidget {
   }
 }
 
+/// Botão "Parar": interrompe na hora o que está em andamento ou na fila nesta estação (AppState.stopAll).
+class StopButton extends StatelessWidget {
+  const StopButton({required this.state, this.label = 'Parar', super.key});
+  final AppState state;
+  final String label;
+
+  @override
+  Widget build(BuildContext context) => ElevatedButton.icon(
+        style: ElevatedButton.styleFrom(backgroundColor: AppTheme.danger, foregroundColor: Colors.white),
+        onPressed: state.stopping ? null : state.stopAll,
+        icon: state.stopping ? busySpinner(color: Colors.white) : const Icon(Icons.stop_rounded, size: 18),
+        label: Text(state.stopping ? 'Parando…' : label),
+      );
+}
+
 class _Toolbar extends StatelessWidget {
   const _Toolbar({required this.state});
   final AppState state;
@@ -221,6 +236,14 @@ class _Toolbar extends StatelessWidget {
         icon: const Icon(Icons.close_rounded, size: 18),
         label: const Text('Fechar'),
       ),
+      if (state.working) ...[
+        const SizedBox(width: 16),
+        StopButton(state: state),
+        const SizedBox(width: 10),
+        Flexible(
+          child: Text(state.busy.values.join(' · '), overflow: TextOverflow.ellipsis, style: TextStyle(color: AppTheme.textSecondary, fontSize: 12.5)),
+        ),
+      ],
       const Spacer(),
       if (ro)
         Text('Somente leitura: use "Salvar como" para criar uma cópia sua.', style: TextStyle(color: AppTheme.warning, fontSize: 12.5)),
@@ -633,7 +656,13 @@ class _NodeDetails extends StatelessWidget {
               Text('${n['vendor'] ?? ''} · ${n['dtmName'] ?? ''}', style: TextStyle(color: AppTheme.textSecondary)),
             ]),
           ),
-          if (busy != null) ...[busySpinner(), const SizedBox(width: 8), Text(busy, style: TextStyle(color: AppTheme.textSecondary))],
+          if (busy != null) ...[
+            busySpinner(),
+            const SizedBox(width: 8),
+            Text(busy, style: TextStyle(color: AppTheme.textSecondary)),
+            const SizedBox(width: 10),
+            StopButton(state: state),
+          ],
           const SizedBox(width: 12),
           Pill(stateLabel(n['state'] as String?), color: stateColor(n['state'] as String?), icon: Icons.circle),
           if (online && n['policy'] != null) ...[

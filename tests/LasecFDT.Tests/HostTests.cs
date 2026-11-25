@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
@@ -148,6 +149,54 @@ namespace LasecFDT.Tests
                 }
                 finally { a.Dispose(); }
             }
+        }
+
+        /// <summary>
+        /// Botão Parar: busca real pela porta virtual sem instrumento (varre todos os endereços, ~80 s) e uma operação
+        /// esperando na fila do projeto. O Parar encerra as duas na hora, solta a porta, o nó volta a "offline" sem erro
+        /// e a estação continua usável (o DTM carrega de novo no próximo uso).
+        /// </summary>
+        [VirtualPortPairFact]
+        public async Task Stop_interrupts_running_and_queued_operations_immediately_and_nothing_stays_locked()
+        {
+            var a = NewStation("TC-STOP", _plant);
+            try
+            {
+                var cat = await Call<CatalogDto>(a, HostMethods.CatalogList, new CatalogParams { Refresh = true });
+                var comm = cat.Dtms.Single(d => d.ProgId == LasecHartCommDtmTests.ProgId);
+                await Call<ProjectDto>(a, HostMethods.ProjectNew, new ProjectRef { Name = "Parar" });
+                var c = await Call<NodeDto>(a, HostMethods.NodeAdd, new NodeAddParams
+                { Clsid = comm.Clsid, Properties = new Dictionary<string, string> { ["Port"] = VirtualPortPairFactAttribute.Master } });
+
+                async Task<bool> PortHeld() => (await Call<List<LeaseInfo>>(a, HostMethods.Leases)).Any(l => l.Key.StartsWith("port:"));
+                var scan = a.DispatchAsync(HostMethods.NodeScan, JsonLineChannel.ToNode(new NodeScanParams { Tag = c.Tag }));
+                var started = Stopwatch.StartNew();
+                while (!await PortHeld() && started.Elapsed < TimeSpan.FromSeconds(60)) await Task.Delay(200);
+                Assert.True(await PortHeld(), "a busca não começou");
+                await Task.Delay(2000);
+                Assert.False(scan.IsCompleted);
+                var queued = a.DispatchAsync(HostMethods.NodeFunctions, JsonLineChannel.ToNode(new NodeRef { Tag = c.Tag })); // espera a busca
+
+                var sw = Stopwatch.StartNew();
+                var r = await Call<CancelResultDto>(a, HostMethods.OperationCancel);
+                Assert.Equal(RpcException.Canceled, (await Assert.ThrowsAsync<RpcException>(() => scan)).Code);
+                Assert.Equal(RpcException.Canceled, (await Assert.ThrowsAsync<RpcException>(() => queued)).Code);
+                Assert.True(sw.Elapsed < TimeSpan.FromSeconds(10), $"parar levou {sw.Elapsed.TotalSeconds:0.0} s");
+                Assert.Contains(c.Name, r.StoppedNodes);
+                Assert.False(await PortHeld()); // porta solta
+
+                var node = (await Call<ProjectDto>(a, HostMethods.ProjectCurrent)).Nodes.Single(n => n.Tag == c.Tag);
+                Assert.Equal("offline", node.State);
+                Assert.Null(node.Error);
+
+                // Nada ficou preso: a fila do projeto anda e o DTM carrega de novo.
+                var f = await Call<NodeFunctionsDto>(a, HostMethods.NodeFunctions, new NodeRef { Tag = c.Tag });
+                Assert.NotNull(f.Functions);
+                await a.DispatchAsync(HostMethods.ProjectClose, null);
+            }
+            finally { a.Dispose(); }
+            var audit = string.Join("\n", Directory.GetFiles(Path.Combine(_plant, "Audit")).Select(File.ReadAllText));
+            Assert.Contains("operation.cancel", audit);
         }
 
         /// <summary>

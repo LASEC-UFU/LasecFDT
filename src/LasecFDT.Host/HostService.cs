@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text.Json.Nodes;
+using System.Threading;
 using System.Threading.Tasks;
 using LasecFDT.Core;
 using LasecFDT.Core.Rpc;
@@ -81,21 +82,34 @@ namespace LasecFDT.Host
 
         // ================================================================ laço
 
+        private int _active; // requisições em andamento ou na fila (sem contar o próprio "Parar")
+
         public async Task RunAsync()
         {
             var pending = new List<Task>();
             while (true)
             {
                 var m = await _ui.ReadAsync().ConfigureAwait(false);
-                if (m == null) break;              // a UI fechou: encerra tudo pelo protocolo
+                if (m == null) break;              // a UI fechou
                 if (!m.IsRequest) continue;
                 pending.Add(Task.Run(() => HandleAsync(m)));
                 pending.RemoveAll(t => t.IsCompleted);
             }
-            await Task.WhenAll(pending).ConfigureAwait(false);
+            // Fechar a janela no meio de uma operação (ex.: busca de minutos) não espera por ela: interrompe como o botão
+            // Parar; o que estiver ocioso é liberado pelo protocolo em seguida (Dispose, com tempo limitado).
+            if (pending.Any(t => !t.IsCompleted)) _ws.Cancel(Volatile.Read(ref _active));
+            await Task.WhenAny(Task.WhenAll(pending), Task.Delay(TimeSpan.FromSeconds(10))).ConfigureAwait(false);
         }
 
         private async Task HandleAsync(RpcMessage m)
+        {
+            bool counted = m.Method != HostMethods.OperationCancel;
+            if (counted) Interlocked.Increment(ref _active);
+            try { await HandleCoreAsync(m).ConfigureAwait(false); }
+            finally { if (counted) Interlocked.Decrement(ref _active); }
+        }
+
+        private async Task HandleCoreAsync(RpcMessage m)
         {
             RpcMessage reply;
             try { reply = new RpcMessage { Id = m.Id, Result = await DispatchAsync(m.Method, m.Params).ConfigureAwait(false) ?? JsonValue.Create(true) }; }
@@ -155,6 +169,7 @@ namespace LasecFDT.Host
                 case HostMethods.NodeRevert: return R(await _ws.RevertAsync(P<NodeRef>(p).Tag).ConfigureAwait(false));
                 case HostMethods.NodeDownload: return R(await _ws.DownloadAsync(P<NodeDownloadParams>(p)).ConfigureAwait(false));
                 case HostMethods.NodeScan: return R(await _ws.ScanAsync(P<NodeScanParams>(p)).ConfigureAwait(false));
+                case HostMethods.OperationCancel: return R(await Task.Run(() => _ws.Cancel(Volatile.Read(ref _active))).ConfigureAwait(false));
                 case HostMethods.NodeUnload: return R(await _ws.UnloadAsync(P<NodeRef>(p).Tag).ConfigureAwait(false));
 
                 default: throw new RpcException(RpcException.MethodNotFound, "Método desconhecido: " + method);
@@ -183,10 +198,14 @@ namespace LasecFDT.Host
             string.Equals(lang, "en-US", StringComparison.OrdinalIgnoreCase) || string.Equals(lang, "en", StringComparison.OrdinalIgnoreCase) ? 0x0409
             : string.Equals(lang, "de-DE", StringComparison.OrdinalIgnoreCase) ? 0x0407 : 0x0416;
 
+        /// <summary>
+        /// Fecha o projeto liberando os DTMs pelo protocolo, com tempo total limitado: um DTM que não responde não segura
+        /// o fechamento da janela (os que sobrarem são encerrados à força, liberando portas e servidores de comunicação).
+        /// </summary>
         public void Dispose()
         {
-            _ws.Dispose();
-            _sup.Dispose();
+            var graceful = Task.Run(() => { _ws.Dispose(); _sup.Dispose(); });
+            if (!graceful.Wait(TimeSpan.FromSeconds(12))) _sup.KillAll();
             _leases.Dispose();
         }
     }

@@ -156,8 +156,18 @@ Regras que o Host garante, independentemente da UI:
 - Na primeira execução, o motor monta `C:\ProgramData\LasecFDT\FDTSchemas-<hash>\` (`FdtSchemaLocator`). Ela combina os schemas 1.2.1 instalados com as subpastas de protocolo (§6.4) que outros Frames já instalaram na máquina, por exemplo o PACTware: HART `036D1498-…`, PROFIBUS e outros.
 - Os arquivos dessas subpastas também são copiados para a **raiz** da pasta montada, porque é lá que os DTMs procuram `x-schema:FDTHARTCommunicationSchema.xml` e os demais (é assim que o PACTware os instala). O `v0.1.0` só os copiava para a subpasta; isso foi corrigido no `v0.1.1`.
 - Validado a partir do MSI extraído: 41 schemas mais 13 subpastas de protocolo encontradas nesta máquina.
-- **Os schemas HART são obrigatórios.** Em teste com o simulador, sem eles os DTMs dizem que conectaram mas não trocam dados: o comparar do TT301 não lê nada do instrumento, e a cadeia CodeWrights → TT301 não envia nenhum quadro HART. É uma falha silenciosa.
-- Sem outro Frame na máquina (por exemplo, o PACTware), os schemas HART faltam. Nesse caso, informe uma pasta com eles em `LASECFDT_SCHEMA_PATH`.
+- **Os schemas HART são obrigatórios.** Em teste com o simulador, sem eles os DTMs dizem que conectaram mas não trocam dados: o comparar do TT301 não lê nada do instrumento, e, na cadeia CodeWrights → TT301, só passa o quadro inicial de identificação (comando 0): a tela do TT301 abre mas não lê nada (com os schemas: 6 quadros, comandos 0 e 13), e o desligamento falha. É uma falha silenciosa.
+- **Pasta do operador:** `C:\ProgramData\LasecFDT\Schemas\` (`FdtSchemaLocator.PlantSchemaFolder`), criada pelo instalador com permissão de escrita para Usuários e um `LEIA-ME.txt`.
+  - O operador coloca ali os schemas que obteve sob a licença dele, por exemplo o *HART Annex* da FDT 1.2.1 do FDT Group (hoje no FieldComm Group: <https://www.fieldcommgroup.org/technologies/fdt>).
+  - Aceita arquivos `.xml`/`.xsl` soltos, em subpastas ou dentro do `.zip` baixado. Tudo vai para a raiz da pasta montada.
+  - Prioridade: schemas do merge module 1.2.1 > pasta do operador > outros Frames. Arquivo novo na pasta muda o hash e a pasta é montada de novo.
+  - É permanente: a desinstalação não apaga o que o operador colocou.
+- Sem PACTware e sem a pasta do operador, os schemas HART faltam. `LASECFDT_SCHEMA_PATH` (pasta completa) substitui tudo.
+- **MSI de uso interno:** `tools\release\build-release.ps1 -Version X.Y.Z -InternalHart` gera `artifacts\LasecFDT-X.Y.Z-USO-INTERNO.msi`.
+  - Ele inclui os 3 schemas HART da FDT 1.2 (`specs\FDT-1.2\XML-Files`) na raiz de `engine\FDT XML Schemas\`, sem alteração, junto com `engine\LEIA-ME-USO-INTERNO.txt`.
+  - Gera também `LasecFDT-X.Y.Z-USO-INTERNO-portable.zip`. Sem o MSI não há o merge module de schemas, então o portátil leva a pasta completa `engine\FDTSchemas\` (FDT 1.2 com HART + 1.2.1 + anexo PROFIBUS, a mesma do desenvolvimento). Validado rodando o `engine\lasecfdt.exe` extraído, sem variável de ambiente: cadeia CodeWrights → TT301 com tela, 6 quadros HART, desligamento ok.
+  - A licença da PNO concede esses arquivos *"solely for internal use by the User"* e proíbe repassá-los a terceiros. Por isso o script recusa rodar no GitHub Actions, e esses pacotes nunca devem ser publicados.
+  - Validado: com a pasta montada só a partir desse MSI, sem PACTware, 53/53 testes passam.
 
 **No servidor de terminal:**
 1. Instale o MSI uma vez, como administrador. Instale também os DTMs dos instrumentos, como hoje.
@@ -226,3 +236,16 @@ Toda leitura e toda gravação mostram:
 
 **O que não foi possível validar:** a leitura e a gravação *completas* com sucesso. Os DTMs da Smar usam comandos próprios do fabricante (TT301: 162; LD301: 128, 139, 157, 165, 179, 180, 183, 191, 203, entre outros), que o simulador não conhece. Por isso o DTM informa falha ("Upload failed!", "Download failed!"), e o LasecFDT mostra isso como está. Inventar respostas para comandos proprietários seria simular um comportamento que não conheço. A validação completa exige um instrumento real (doc 10), lendo primeiro, e só gravando com autorização.
 
+## 12. Botão Parar e fechamento da janela
+
+- **Problema encontrado:** as operações do projeto passam uma de cada vez por uma fila no Host.
+  - Uma busca de instrumentos sem resposta leva cerca de 80 s.
+  - Fechar o diálogo não a interrompia: ela seguia escondida e segurava a fila.
+  - Ao fechar a janela, o Host esperava a busca terminar e a UI ficava 30 s sem resposta antes de forçar o fim.
+- **Parar** (`operation.cancel`): botão vermelho na barra do projeto e no painel do nó sempre que há operação em andamento; no diálogo de busca, "Parar busca" (o "Fechar" também para).
+  - O Host encerra na hora o processo do DTM ocupado. É a única forma garantida de soltar um DTM preso, e o isolamento por processo torna isso seguro: a porta e os servidores de comunicação são liberados.
+  - As operações em andamento e as que estavam na fila terminam com o código `RpcException.Canceled`.
+  - O nó volta a "offline" sem erro e carrega de novo no próximo uso, com o data set salvo antes da operação. Ler, comparar e gravar guardam o data set no projeto antes de falar com o instrumento.
+  - Gravação interrompida é auditada e avisada: o instrumento pode ter ficado parcialmente gravado.
+- **Fechar a janela (X):** a UI mostra "Encerrando…" na hora. O Host interrompe o que estiver em andamento (como o Parar), libera os DTMs ociosos pelo protocolo e encerra à força o que passar de 12 s.
+- Validado: teste `Stop_interrupts_running_and_queued_operations_immediately_and_nothing_stays_locked` (busca real pela porta virtual + operação na fila, interrompidas em menos de 10 s; porta solta; o nó volta a funcionar). Pela UI: busca, X, janela fechada em poucos segundos.

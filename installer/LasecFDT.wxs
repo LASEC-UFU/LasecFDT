@@ -31,7 +31,11 @@
 
     <Icon Id="LasecFDT.ico" SourceFile="$(var.IconFile)" />
     <Property Id="ARPPRODUCTICON" Value="LasecFDT.ico" />
-    <Property Id="ARPURLINFOABOUT" Value="https://github.com/josuemoraisgh/LasecFDT" />
+    <Property Id="ARPURLINFOABOUT" Value="https://github.com/LASEC-UFU/LasecFDT" />
+    <?if $(var.Internal) = 1 ?>
+    <!-- build-release.ps1 -InternalHart: contém os schemas HART da FDT 1.2 (licença PNO, uso interno). -->
+    <Property Id="ARPCOMMENTS" Value="USO INTERNO - contém schemas HART da FDT 1.2 (licença PNO). Não repassar a terceiros." />
+    <?endif?>
 
     <!-- .NET Framework 4.8 (motor e workers): Release >= 528040 -->
     <Property Id="NETFX48RELEASE">
@@ -56,7 +60,11 @@
       <Merge Id="Fdt100" SourceFile="$(var.RedistDir)\FDT_100.msm" DiskId="1" Language="0" />
 
       <Directory Id="CommonAppDataFolder">
-        <Directory Id="PLANTDIR" Name="LasecFDT" />
+        <Directory Id="PLANTDIR" Name="LasecFDT">
+          <!-- Schemas que o LasecFDT não pode distribuir (ex.: anexo HART da FDT 1.2.1): o operador os coloca aqui
+               (FdtSchemaLocator.PlantSchemaFolder). -->
+          <Directory Id="OPSCHEMASDIR" Name="Schemas" />
+        </Directory>
       </Directory>
       <Directory Id="ProgramMenuFolder">
         <Directory Id="MENUDIR" Name="LasecFDT" />
@@ -76,6 +84,18 @@
       </Component>
     </DirectoryRef>
 
+    <!-- Pasta de schemas do operador: permanente (desinstalar não apaga o que ele colocou), gravável por Usuários. -->
+    <DirectoryRef Id="OPSCHEMASDIR">
+      <Component Id="OperatorSchemasFolder" Guid="{DE3773DF-0868-439D-BDC9-A67CA36208C7}" Permanent="yes">
+        <CreateFolder>
+          <util:PermissionEx User="[WIX_ACCOUNT_USERS]" GenericAll="yes" />
+        </CreateFolder>
+      </Component>
+      <Component Id="OperatorSchemasReadme" Guid="{CD9D6690-C05B-457A-8DFF-868C3E495BB4}">
+        <File Id="OperatorSchemasReadme" Name="LEIA-ME.txt" Source="$(var.ReadmeSchemas)" KeyPath="yes" />
+      </Component>
+    </DirectoryRef>
+
     <DirectoryRef Id="MENUDIR">
       <Component Id="Shortcuts" Guid="{6E2C2BDD-DBCA-4F27-B112-053E4210AAD7}">
         <Shortcut Id="MenuShortcut" Name="LasecFDT" Description="Frame FDT" Target="[INSTALLFOLDER]lasecfdt_ui.exe" WorkingDirectory="INSTALLFOLDER" Icon="LasecFDT.ico" />
@@ -89,6 +109,8 @@
     <Feature Id="Main" Title="LasecFDT" Level="1" Absent="disallow">
       <ComponentGroupRef Id="AppFiles" />
       <ComponentRef Id="PlantFolder" />
+      <ComponentRef Id="OperatorSchemasFolder" />
+      <ComponentRef Id="OperatorSchemasReadme" />
       <ComponentRef Id="Shortcuts" />
       <MergeRef Id="Fdt100" />
       <MergeRef Id="FdtXmlSchemata" />

@@ -50,6 +50,45 @@ namespace LasecFDT.Host
         private readonly Action<HostEventDto> _event;
         private readonly Action<NodeDto> _nodeChanged;
         private readonly SemaphoreSlim _gate = new SemaphoreSlim(1, 1);
+
+        // ---------------------------------------------------------------- botão "Parar"
+        // As operações do projeto passam uma de cada vez por _gate. Cada uma guarda a "época" em que entrou na fila;
+        // Cancel() avança a época e encerra os workers ocupados: a que está rodando falha na hora (o DTM preso morre com
+        // o processo dele) e as que esperavam desistem ao ganhar a vez.
+        private int _epoch;
+        private int _opEpoch; // época da operação que está com _gate (só uma por vez)
+
+        private const string CanceledMessage = "Operação interrompida pelo operador.";
+        private static RpcException Canceled() => new RpcException(RpcException.Canceled, CanceledMessage);
+        public static bool IsCanceled(Exception ex) => (ex as RpcException ?? ex?.InnerException as RpcException)?.Code == RpcException.Canceled;
+
+        private async Task EnterAsync()
+        {
+            int epoch = Volatile.Read(ref _epoch);
+            await _gate.WaitAsync().ConfigureAwait(false);
+            if (epoch != Volatile.Read(ref _epoch)) { _gate.Release(); throw Canceled(); }
+            _opEpoch = epoch;
+        }
+
+        /// <summary>Ponto de parada entre etapas de uma operação longa.</summary>
+        private void Check() { if (_opEpoch != Volatile.Read(ref _epoch)) throw Canceled(); }
+
+        /// <summary>
+        /// Botão "Parar": interrompe na hora a operação em andamento e as que estão na fila. Não passa por _gate.
+        /// O DTM interrompido perde só o que não estava salvo (o data set do projeto fica como antes da operação).
+        /// </summary>
+        public CancelResultDto Cancel(int operations)
+        {
+            Interlocked.Increment(ref _epoch);
+            var stopped = _sup.AbortBusy(CanceledMessage);
+            var r = new CancelResultDto { Operations = operations };
+            foreach (var i in stopped)
+                if (i.SystemTag != null && _nodes.TryGetValue(i.SystemTag, out var n)) r.StoppedNodes.Add(n.Model.DisplayName);
+            Emit("operation", null, "canceled",
+                r.StoppedNodes.Count > 0 ? $"Interrompido pelo operador: {string.Join(", ", r.StoppedNodes)}" : "Interrompido pelo operador.", "warning");
+            if (operations > 0 || stopped.Count > 0) _audit.Write("operation.cancel", _projectName, $"{operations} operação(ões); DTMs encerrados: {string.Join(", ", r.StoppedNodes)}");
+            return r;
+        }
         private readonly System.Collections.Concurrent.ConcurrentDictionary<string, Node> _nodes =
             new System.Collections.Concurrent.ConcurrentDictionary<string, Node>(StringComparer.OrdinalIgnoreCase);
 
@@ -102,7 +141,7 @@ namespace LasecFDT.Host
         {
             if (string.IsNullOrWhiteSpace(name)) throw Bad("Informe o nome do projeto.");
             name = name.Trim();
-            await _gate.WaitAsync().ConfigureAwait(false);
+            await EnterAsync().ConfigureAwait(false);
             try
             {
                 if (File.Exists(ProjectPath(name))) throw Bad($"Já existe um projeto '{name}'.");
@@ -120,7 +159,7 @@ namespace LasecFDT.Host
 
         public async Task<ProjectDto> OpenProjectAsync(string name)
         {
-            await _gate.WaitAsync().ConfigureAwait(false);
+            await EnterAsync().ConfigureAwait(false);
             try
             {
                 string path = ProjectPath(name ?? "");
@@ -139,7 +178,7 @@ namespace LasecFDT.Host
 
         public async Task<ProjectDto> SaveProjectAsync(string saveAs = null)
         {
-            await _gate.WaitAsync().ConfigureAwait(false);
+            await EnterAsync().ConfigureAwait(false);
             try
             {
                 RequireProject();
@@ -205,7 +244,7 @@ namespace LasecFDT.Host
 
         public async Task<NodeDto> AddNodeAsync(NodeAddParams a)
         {
-            await _gate.WaitAsync().ConfigureAwait(false);
+            await EnterAsync().ConfigureAwait(false);
             try
             {
                 RequireWritable();
@@ -266,7 +305,7 @@ namespace LasecFDT.Host
 
         public async Task<bool> RemoveNodeAsync(string tag)
         {
-            await _gate.WaitAsync().ConfigureAwait(false);
+            await EnterAsync().ConfigureAwait(false);
             try
             {
                 RequireWritable();
@@ -283,7 +322,7 @@ namespace LasecFDT.Host
 
         public async Task<NodeDto> RenameNodeAsync(string tag, string name)
         {
-            await _gate.WaitAsync().ConfigureAwait(false);
+            await EnterAsync().ConfigureAwait(false);
             try
             {
                 RequireWritable();
@@ -298,7 +337,7 @@ namespace LasecFDT.Host
 
         public async Task<NodeFunctionsDto> FunctionsAsync(string tag)
         {
-            await _gate.WaitAsync().ConfigureAwait(false);
+            await EnterAsync().ConfigureAwait(false);
             try
             {
                 var n = Get(tag);
@@ -321,7 +360,7 @@ namespace LasecFDT.Host
 
         public async Task<UiResult> OpenUiAsync(NodeUiParams a)
         {
-            await _gate.WaitAsync().ConfigureAwait(false);
+            await EnterAsync().ConfigureAwait(false);
             try
             {
                 var n = Get(a.Tag);
@@ -341,7 +380,7 @@ namespace LasecFDT.Host
 
         public async Task<bool> CloseUiAsync(string tag)
         {
-            await _gate.WaitAsync().ConfigureAwait(false);
+            await EnterAsync().ConfigureAwait(false);
             try
             {
                 var n = Get(tag);
@@ -361,7 +400,7 @@ namespace LasecFDT.Host
             string policy = NormalizePolicy(a.Policy);
             if (policy == "Full" && !a.ConfirmFull)
                 throw Bad("A política 'Full' permite ESCREVER no instrumento: exige confirmação explícita do operador.");
-            await _gate.WaitAsync().ConfigureAwait(false);
+            await EnterAsync().ConfigureAwait(false);
             try
             {
                 var n = Get(a.Tag);
@@ -375,6 +414,7 @@ namespace LasecFDT.Host
         private async Task ConnectCoreAsync(Node n, string policy)
         {
             if (n.State == "online" && n.Link != null && !n.Link.Broken) return;
+            Check();
             if (string.IsNullOrEmpty(n.Model.ParentTag)) throw Bad($"{n.Model.DisplayName} está ligado direto ao PC: conecte os dispositivos abaixo dele.");
             var parent = Get(n.Model.ParentTag);
             if (!string.IsNullOrEmpty(parent.Model.ParentTag)) await ConnectCoreAsync(parent, policy).ConfigureAwait(false); // gateway: conecta o caminho acima primeiro
@@ -402,7 +442,8 @@ namespace LasecFDT.Host
             }
             catch (Exception ex)
             {
-                n.State = n.Inst?.Alive == true ? "loaded" : "error"; n.Error = ex.Message; n.Link = null;
+                bool canceled = IsCanceled(ex);
+                n.State = n.Inst?.Alive == true ? "loaded" : canceled ? "offline" : "error"; n.Error = canceled ? null : ex.Message; n.Link = null;
                 ReleasePortIfIdle(root);
                 throw;
             }
@@ -411,7 +452,7 @@ namespace LasecFDT.Host
 
         public async Task<NodeDto> DisconnectAsync(string tag)
         {
-            await _gate.WaitAsync().ConfigureAwait(false);
+            await EnterAsync().ConfigureAwait(false);
             try
             {
                 var n = Get(tag);
@@ -438,7 +479,7 @@ namespace LasecFDT.Host
 
         public async Task<List<CommRecordDto>> CommLogAsync(string tag)
         {
-            await _gate.WaitAsync().ConfigureAwait(false);
+            await EnterAsync().ConfigureAwait(false);
             try
             {
                 var n = Get(tag);
@@ -449,7 +490,7 @@ namespace LasecFDT.Host
 
         public async Task<NodeDto> UnloadAsync(string tag)
         {
-            await _gate.WaitAsync().ConfigureAwait(false);
+            await EnterAsync().ConfigureAwait(false);
             try
             {
                 var n = Get(tag);
@@ -465,7 +506,7 @@ namespace LasecFDT.Host
         /// <summary>Parâmetros atuais do DTM (IDtmParameter::GetParameters na raiz do documento).</summary>
         public async Task<ParameterSetDto> ParametersAsync(string tag)
         {
-            await _gate.WaitAsync().ConfigureAwait(false);
+            await EnterAsync().ConfigureAwait(false);
             try
             {
                 var n = Get(tag);
@@ -482,19 +523,22 @@ namespace LasecFDT.Host
         /// </summary>
         public async Task<CompareResultDto> UploadCompareAsync(string tag, bool keep)
         {
-            await _gate.WaitAsync().ConfigureAwait(false);
+            await EnterAsync().ConfigureAwait(false);
             try
             {
                 var n = Get(tag);
                 if (n.State != "online" || n.Link == null) throw Bad($"Conecte {n.Model.DisplayName} antes de ler ou comparar com o instrumento.");
                 var snapshot = await _sup.SaveAsync(n.Inst).ConfigureAwait(false);
+                n.Model.DataSet = snapshot; // se o operador mandar parar no meio, o DTM volta exatamente assim
                 var before = ParameterModel.Parse(tag, await _sup.GetParametersAsync(n.Inst).ConfigureAwait(false));
                 string verdict = null;
                 try { verdict = ParameterModel.CompareVerdict(await _sup.OnlineCompareAsync(n.Inst).ConfigureAwait(false)); } catch (RpcException) { }
                 int logBefore = (await _sup.GetCommLogAsync(n.Inst).ConfigureAwait(false)).Count;
 
+                Check();
                 Emit("project", tag, keep ? "uploadStarted" : "compareStarted", $"{n.Model.DisplayName}: lendo os parâmetros do instrumento");
                 var up = await _sup.UploadAsync(n.Inst).ConfigureAwait(false);
+                Check();
                 var log = await _sup.GetCommLogAsync(n.Inst).ConfigureAwait(false);
                 var after = ParameterModel.Parse(tag, await _sup.GetParametersAsync(n.Inst).ConfigureAwait(false));
 
@@ -526,7 +570,7 @@ namespace LasecFDT.Host
         /// <summary>Volta ao data set de antes da última leitura do instrumento.</summary>
         public async Task<NodeDto> RevertAsync(string tag)
         {
-            await _gate.WaitAsync().ConfigureAwait(false);
+            await EnterAsync().ConfigureAwait(false);
             try
             {
                 var n = Get(tag);
@@ -556,15 +600,25 @@ namespace LasecFDT.Host
         /// </summary>
         public async Task<OnlineParameterResult> DownloadAsync(NodeDownloadParams a)
         {
-            await _gate.WaitAsync().ConfigureAwait(false);
+            await EnterAsync().ConfigureAwait(false);
             try
             {
                 var n = Get(a.Tag);
                 if (n.State != "online" || n.Link == null) throw Bad($"Conecte {n.Model.DisplayName} antes de gravar no instrumento.");
                 if (n.Policy != "Full") throw Bad($"{n.Model.DisplayName} está conectado como '{n.Policy}'. Para gravar, desconecte e conecte em modo completo (permite escrita).");
                 if (!a.Confirm) throw Bad("Gravar no instrumento exige confirmação explícita do operador.");
+                n.Model.DataSet = await _sup.SaveAsync(n.Inst).ConfigureAwait(false); // o que vai ser gravado fica no projeto mesmo se parar
+                Check();
                 Emit("project", a.Tag, "downloadStarted", $"{n.Model.DisplayName}: gravando os parâmetros no instrumento", "warning");
-                var r = await _sup.DownloadAsync(n.Inst).ConfigureAwait(false);
+                OnlineParameterResult r;
+                try { r = await _sup.DownloadAsync(n.Inst).ConfigureAwait(false); }
+                catch (Exception ex) when (IsCanceled(ex))
+                {
+                    const string partial = "gravação interrompida pelo operador: o instrumento pode ter ficado parcialmente gravado";
+                    _audit.Write("node.download", _projectName + "/" + n.Model.DisplayName, partial);
+                    Emit("project", a.Tag, "downloadCanceled", $"{n.Model.DisplayName}: {partial}", "error");
+                    throw new RpcException(RpcException.Canceled, "Gravação interrompida. O instrumento pode ter ficado parcialmente gravado: confira os parâmetros (Comparar) antes de usá-lo.");
+                }
                 _audit.Write("node.download", _projectName + "/" + n.Model.DisplayName, $"sucesso={r.Success}; {r.Error}");
                 Emit("project", a.Tag, "downloadFinished", $"{n.Model.DisplayName}: {(r.Success ? "gravação concluída" : "gravação falhou: " + r.Error)}", r.Success ? "info" : "error");
                 n.Snapshot = null;
@@ -584,9 +638,17 @@ namespace LasecFDT.Host
         public async Task<ScanResultDto> ScanAsync(NodeScanParams a)
         {
             // Descrições antes do bloqueio do projeto: na 1ª vez no servidor cada DTM é lido num worker descartável.
+            // O "Parar" também vale nesta fase (antes da fila do projeto): o worker descartável em leitura é encerrado e
+            // o próximo DTM da lista não começa.
+            int epoch = Volatile.Read(ref _epoch);
             var catalog = DescribedCatalog == null ? new List<CatalogEntryDto>()
-                : await DescribedCatalog(m => Emit("catalog", a.Tag, "describing", m)).ConfigureAwait(false);
-            await _gate.WaitAsync().ConfigureAwait(false);
+                : await DescribedCatalog(m =>
+                {
+                    if (epoch != Volatile.Read(ref _epoch)) throw Canceled();
+                    Emit("catalog", a.Tag, "describing", m);
+                }).ConfigureAwait(false);
+            if (epoch != Volatile.Read(ref _epoch)) throw Canceled();
+            await EnterAsync().ConfigureAwait(false);
             try
             {
                 var n = Get(a.Tag);
@@ -602,6 +664,7 @@ namespace LasecFDT.Host
                 ScanResult r;
                 try { r = await _sup.ScanAsync(n.Inst, ch.Path, a.TimeoutMs).ConfigureAwait(false); }
                 finally { ReleasePortIfIdle(root); n.LastUsed = DateTime.UtcNow; }
+                Check();
                 if (!r.Accepted || !r.Completed) throw Bad($"{n.Model.DisplayName}: {r.Error ?? "a busca não terminou"}");
 
                 var dto = new ScanResultDto { Tag = n.Model.SystemTag, ChannelPath = ch.Path, DurationMs = r.DurationMs, Xml = r.Xml, Devices = ParseScan(r.Xml) };
@@ -726,6 +789,7 @@ namespace LasecFDT.Host
         {
             n.LastUsed = DateTime.UtcNow;
             if (n.Inst?.Alive == true) return;
+            Check();
             RequireWorkerSlot();
             n.State = "loading"; n.Error = null; _nodeChanged(Dto(n));
             try
@@ -735,7 +799,12 @@ namespace LasecFDT.Host
                     : await _sup.CreateAsync(new CreateDtmParams { Dtm = n.Model.DtmClsid, SystemTag = n.Model.SystemTag, DeviceTypeIndex = n.Model.DeviceTypeIndex, Lcid = Lcid }).ConfigureAwait(false);
                 n.State = "loaded";
             }
-            catch (Exception ex) { n.State = "error"; n.Error = ex.Message; n.Inst = null; throw; }
+            catch (Exception ex)
+            {
+                bool canceled = IsCanceled(ex);
+                n.State = canceled ? "offline" : "error"; n.Error = canceled ? null : ex.Message; n.Inst = null;
+                throw;
+            }
             finally { _nodeChanged(Dto(n)); }
         }
 
@@ -810,10 +879,28 @@ namespace LasecFDT.Host
                     if (n != null) { n.Inst = null; n.Link = null; n.UiOpen = false; n.State = "error"; n.Error = "O processo do DTM terminou inesperadamente."; _nodeChanged(Dto(n)); }
                     Emit("worker", tag, "died", e.Detail, "error");
                     return;
+                case "aborted":
+                    // Botão Parar: não é falha. O nó volta a "offline" e carrega de novo no próximo uso, com o data set salvo.
+                    if (n != null)
+                    {
+                        n.Inst = null; n.Link = null; n.UiOpen = false; n.State = "offline"; n.Error = null;
+                        if (n.PortLease != null) { _leases.Release(n.PortLease); Emit("plant", tag, "portReleased", n.PortLease); n.PortLease = null; }
+                        _nodeChanged(Dto(n));
+                    }
+                    Emit("worker", tag, "aborted", e.Detail, "warning");
+                    return;
                 case "linkBroken":
+                    bool byOperator = e.Instance?.Worker?.AbortReason != null;
                     foreach (var c in _nodes.Values.Where(c => c.Link?.Broken == true).ToList())
-                    { c.Link = null; c.State = c.Inst?.Alive == true ? "loaded" : "error"; c.Error = "Conexão interrompida: " + e.Detail; _nodeChanged(Dto(c)); }
-                    Emit("worker", tag, "linkBroken", e.Detail, "error");
+                    {
+                        c.Link = null;
+                        c.State = c.Inst?.Alive == true ? "loaded" : byOperator ? "offline" : "error";
+                        c.Error = byOperator ? null : "Conexão interrompida: " + e.Detail;
+                        _nodeChanged(Dto(c));
+                    }
+                    if (byOperator) // a porta do Comm DTM raiz não fica presa
+                        foreach (var r in _nodes.Values.Where(x => x.PortLease != null).ToList()) ReleasePortIfIdle(r);
+                    Emit("worker", tag, "linkBroken", e.Detail, byOperator ? "info" : "error");
                     return;
                 default:
                     Emit("worker", tag, e.Kind, e.Detail, "warning");
@@ -884,7 +971,7 @@ namespace LasecFDT.Host
         public void Dispose()
         {
             _idleTimer.Dispose();
-            try { CloseProjectAsync().Wait(TimeSpan.FromSeconds(60)); } catch { }
+            try { CloseProjectAsync().Wait(TimeSpan.FromSeconds(10)); } catch { } // o Host limita o tempo total do fechamento
         }
     }
 }

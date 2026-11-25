@@ -8,9 +8,13 @@ param(
   [Parameter(Mandatory = $true)][string]$Version,
   [string]$WixDir,
   [switch]$SkipFlutter,
-  [switch]$SkipDotnet
+  [switch]$SkipDotnet,
+  # MSI SÓ PARA USO INTERNO: inclui os schemas HART da FDT 1.2 (specs\FDT-1.2\XML-Files, licença PNO "solely for
+  # internal use by the User", sem repasse a terceiros). Nunca publicar: o script recusa rodar no GitHub Actions.
+  [switch]$InternalHart
 )
 $ErrorActionPreference = 'Stop'
+if ($InternalHart -and $env:GITHUB_ACTIONS) { throw 'O MSI de uso interno (schemas HART da FDT 1.2) não pode ser gerado no GitHub Actions.' }
 $root = Resolve-Path (Join-Path $PSScriptRoot '..\..')
 $ver = $Version.TrimStart('v')
 if ($ver -notmatch '^\d+\.\d+\.\d+$') { throw "Versão inválida '$Version' (use X.Y.Z, ex.: 0.2.0)." }
@@ -89,24 +93,66 @@ foreach ($must in 'LasecFDT.Host.exe', 'LasecFDT.Worker.Fdt1.exe', 'lasecfdt.exe
   if (-not (Test-Path (Join-Path $engine $must))) { throw "Faltou no motor: $must" }
 }
 
+if ($InternalHart) {
+  # Schemas HART na RAIZ de engine\FDT XML Schemas\ (ao lado dos do merge module 1.2.1; é na raiz que os DTMs procuram).
+  # Arquivos copiados sem alteração (a licença proíbe mudar ou remover avisos de copyright).
+  Step 'Uso interno: incluindo os schemas HART da FDT 1.2'
+  $hartSrc = Join-Path $root 'specs\FDT-1.2\XML-Files'
+  $hartDst = Join-Path $engine 'FDT XML Schemas'
+  New-Item -ItemType Directory -Force $hartDst | Out-Null
+  foreach ($f in 'DTMHARTDeviceSchema.xml', 'FDTHARTChannelParameterSchema.xml', 'FDTHARTCommunicationSchema.xml') {
+    $src = Join-Path $hartSrc $f
+    if (-not (Test-Path $src)) { throw "Schema HART não encontrado: $src (pasta specs\ da especificação licenciada)" }
+    Copy-Item $src $hartDst
+  }
+  Set-Content -Encoding utf8 (Join-Path $engine 'LEIA-ME-USO-INTERNO.txt') @"
+Esta cópia do LasecFDT contém schemas XML da especificação FDT, inclusive os HART da FDT 1.2
+(MSI: engine\FDT XML Schemas\*HART*.xml; portátil: engine\FDTSchemas\),
+Copyright Profibus Nutzerorganisation e.V. (PNO).
+
+A licença da PNO concede esses arquivos "solely for internal use by the User" e proíbe
+alugá-los ou emprestá-los a terceiros. Este pacote é de USO INTERNO do licenciado:
+não o publique, não o envie e não o instale em computadores de terceiros.
+"@
+}
+
 # ---------------------------------------------------------------- MSI
 Step 'Gerando o MSI (WiX)'
 $obj = Join-Path $art 'obj'
 New-Item -ItemType Directory -Force $obj | Out-Null
 $heat = Join-Path $WixDir 'heat.exe'; $candle = Join-Path $WixDir 'candle.exe'; $light = Join-Path $WixDir 'light.exe'
 Exec $heat @('dir', $stage, '-nologo', '-cg', 'AppFiles', '-dr', 'INSTALLFOLDER', '-srd', '-sreg', '-scom', '-ag', '-var', 'var.StageDir', '-out', (Join-Path $obj 'AppFiles.wxs'))
-$defs = @("-dStageDir=$stage", "-dVersion=$ver", "-dRedistDir=$(Join-Path $root 'lib\fdt-jig\redist')", "-dIconFile=$(Join-Path $ui 'windows\runner\resources\app_icon.ico')")
+$defs = @("-dStageDir=$stage", "-dVersion=$ver", "-dInternal=$(if ($InternalHart) { 1 } else { 0 })", "-dRedistDir=$(Join-Path $root 'lib\fdt-jig\redist')", "-dIconFile=$(Join-Path $ui 'windows\runner\resources\app_icon.ico')", "-dReadmeSchemas=$(Join-Path $root 'installer\LEIA-ME-schemas.txt')")
 # Barra final dupla: num caminho com espaço, "...\obj\" escaparia a aspa ao montar a linha de comando.
 Exec $candle (@('-nologo', '-arch', 'x86', '-ext', 'WixUtilExtension', '-ext', 'WixUIExtension', '-out', ($obj + '\\')) + $defs + @((Join-Path $root 'installer\LasecFDT.wxs'), (Join-Path $obj 'AppFiles.wxs')))
-$msi = Join-Path $art "LasecFDT-$ver.msi"
+$msi = Join-Path $art "LasecFDT-$ver$(if ($InternalHart) { '-USO-INTERNO' }).msi"
 # ICE: avisos conhecidos de merge modules de terceiros (FDT) e de arquivos sem versão não impedem a instalação.
 Exec $light @('-nologo', '-ext', 'WixUtilExtension', '-ext', 'WixUIExtension', '-cultures:pt-BR', '-spdb', '-sw1055', '-sw1056', '-sw1076', '-sice:ICE99', '-out', $msi, (Join-Path $obj 'LasecFDT.wixobj'), (Join-Path $obj 'AppFiles.wixobj'))
 
-Step 'Gerando o zip portátil'
-$zip = Join-Path $art "LasecFDT-$ver-portable.zip"
-if (Test-Path $zip) { Remove-Item $zip }
-Compress-Archive -Path (Join-Path $stage '*') -DestinationPath $zip
-
 Write-Host ''
 Write-Host "MSI:      $msi ($([math]::Round((Get-Item $msi).Length / 1MB, 1)) MB)" -ForegroundColor Green
-Write-Host "Portátil: $zip ($([math]::Round((Get-Item $zip).Length / 1MB, 1)) MB)" -ForegroundColor Green
+if ($InternalHart) {
+  # Portátil interno: sem MSI não há merge module de schemas, então leva a pasta completa engine\FDTSchemas\
+  # (a mesma do desenvolvimento: FDT 1.2 com HART + 1.2.1 + anexo PROFIBUS; FdtSchemaLocator a usa primeiro).
+  Step 'Gerando o zip portátil de uso interno'
+  $pstage = Join-Path $art 'stage-interno\LasecFDT'
+  if (Test-Path (Split-Path $pstage)) { Remove-Item (Split-Path $pstage) -Recurse -Force }
+  New-Item -ItemType Directory -Force $pstage | Out-Null
+  Copy-Item (Join-Path $stage '*') $pstage -Recurse
+  Remove-Item (Join-Path $pstage 'engine\FDT XML Schemas') -Recurse -Force
+  $devSchemas = Join-Path $root 'src\LasecFDT.Worker.Fdt1\bin\Release\net48\FDTSchemas'
+  if (-not (Test-Path (Join-Path $devSchemas 'FDTHARTCommunicationSchema.xml'))) { throw "Schemas completos não encontrados: $devSchemas" }
+  Copy-Item $devSchemas (Join-Path $pstage 'engine\FDTSchemas') -Recurse
+  $zip = Join-Path $art "LasecFDT-$ver-USO-INTERNO-portable.zip"
+  if (Test-Path $zip) { Remove-Item $zip }
+  Compress-Archive -Path (Join-Path $pstage '*') -DestinationPath $zip
+  Remove-Item (Split-Path $pstage) -Recurse -Force
+  Write-Host "Portátil: $zip ($([math]::Round((Get-Item $zip).Length / 1MB, 1)) MB)" -ForegroundColor Green
+  Write-Host 'USO INTERNO: contém schemas da especificação FDT (licença PNO). Não publique nem repasse a terceiros.' -ForegroundColor Yellow
+} else {
+  Step 'Gerando o zip portátil'
+  $zip = Join-Path $art "LasecFDT-$ver-portable.zip"
+  if (Test-Path $zip) { Remove-Item $zip }
+  Compress-Archive -Path (Join-Path $stage '*') -DestinationPath $zip
+  Write-Host "Portátil: $zip ($([math]::Round((Get-Item $zip).Length / 1MB, 1)) MB)" -ForegroundColor Green
+}

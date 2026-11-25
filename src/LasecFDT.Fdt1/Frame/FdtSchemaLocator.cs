@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.IO;
+using System.IO.Compression;
 using System.Linq;
 using System.Security.Cryptography;
 using System.Text;
@@ -17,10 +18,20 @@ namespace LasecFDT.Fdt1.Frame
     ///     %ProgramData%\LasecFDT\FDTSchemas-&lt;hash&gt;\ com esses schemas e as subpastas de protocolo (§6.4, nome =
     ///     GUID do protocolo, ex.: HART 036D1498-…) que outros Frames já instalaram nesta máquina (ex.: PACTware).
     ///     Os schemas de protocolo HART da FDT 1.2 não são redistribuíveis; por isso vêm da própria máquina.
+    ///  4. Pasta da planta <see cref="PlantSchemaFolder"/> (%ProgramData%\LasecFDT\Schemas\, criada pelo instalador):
+    ///     o operador coloca ali os schemas que obteve sob a licença dele (ex.: anexo HART da FDT 1.2.1), soltos, em
+    ///     subpastas ou no próprio .zip baixado. Entram na pasta composta com prioridade sobre os de outros Frames
+    ///     (os do merge module 1.2.1 continuam valendo para os arquivos de mesmo nome).
     /// </summary>
     public static class FdtSchemaLocator
     {
         private static string _cached;
+
+        /// <summary>Pasta onde o operador coloca schemas que o LasecFDT não pode distribuir (doc 11 §8).</summary>
+        public static string PlantSchemaFolder =>
+            Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.CommonApplicationData), "LasecFDT", "Schemas");
+
+        private static readonly string[] SchemaExtensions = { ".xml", ".xsl" };
 
         public static string Resolve()
         {
@@ -41,7 +52,7 @@ namespace LasecFDT.Fdt1.Frame
                 {
                     Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.CommonApplicationData), "LasecFDT"),
                     Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "LasecFDT"),
-                });
+                }, PlantSchemaFolder);
             }
             catch { return _cached = installed; }
         }
@@ -72,9 +83,11 @@ namespace LasecFDT.Fdt1.Frame
         public static bool IsProtocolFolder(string dir) => Guid.TryParse(Path.GetFileName(dir), out _);
 
         /// <summary>Monta (uma vez por conteúdo) a pasta de schemas: os instalados + subpastas de protocolo de outros Frames.</summary>
-        public static string Compose(string installed, IList<string> protocolDirs, IEnumerable<string> targetRoots)
+        public static string Compose(string installed, IList<string> protocolDirs, IEnumerable<string> targetRoots, string operatorDir = null)
         {
             var sources = new List<string> { installed };
+            bool hasOperator = operatorDir != null && Directory.Exists(operatorDir) && Directory.EnumerateFiles(operatorDir, "*", SearchOption.AllDirectories).Any();
+            if (hasOperator) sources.Add(operatorDir);
             sources.AddRange(protocolDirs);
             // "layout2": arquivos de protocolo também na raiz (pastas montadas antes disso não são reaproveitadas).
             string stamp = "layout2|" + string.Join("|", sources.Select(s =>
@@ -94,6 +107,7 @@ namespace LasecFDT.Fdt1.Frame
                     // Montagem em pasta temporária e renomeação: outra estação montando ao mesmo tempo não vê pasta pela metade.
                     string tmp = target + ".tmp-" + Guid.NewGuid().ToString("N").Substring(0, 8);
                     CopyTree(installed, tmp);
+                    if (hasOperator) AddOperatorSchemas(operatorDir, tmp);
                     foreach (var p in protocolDirs)
                     {
                         string dest = Path.Combine(tmp, Path.GetFileName(p));
@@ -117,6 +131,42 @@ namespace LasecFDT.Fdt1.Frame
                 catch (IOException) { }
             }
             return installed;
+        }
+
+        /// <summary>
+        /// Schemas que o operador colocou na pasta da planta: arquivos .xml/.xsl (em qualquer subpasta) e os de dentro de
+        /// arquivos .zip vão para a raiz (é lá que os DTMs procuram); subpastas com nome de GUID de protocolo também são
+        /// copiadas como estão. Não sobrescreve o que já está na pasta composta.
+        /// </summary>
+        private static void AddOperatorSchemas(string operatorDir, string target)
+        {
+            foreach (var d in Directory.GetDirectories(operatorDir, "*", SearchOption.AllDirectories).Where(IsProtocolFolder))
+            {
+                string dest = Path.Combine(target, Path.GetFileName(d));
+                if (!Directory.Exists(dest)) CopyTree(d, dest);
+            }
+            foreach (var f in Directory.GetFiles(operatorDir, "*", SearchOption.AllDirectories))
+            {
+                string ext = Path.GetExtension(f).ToLowerInvariant();
+                if (SchemaExtensions.Contains(ext))
+                {
+                    string dest = Path.Combine(target, Path.GetFileName(f));
+                    if (!File.Exists(dest)) File.Copy(f, dest);
+                }
+                else if (ext == ".zip")
+                {
+                    try
+                    {
+                        using (var zip = ZipFile.OpenRead(f))
+                            foreach (var e in zip.Entries.Where(e => e.Name.Length > 0 && SchemaExtensions.Contains(Path.GetExtension(e.Name).ToLowerInvariant())))
+                            {
+                                string dest = Path.Combine(target, e.Name); // só o nome: nada sai da pasta de destino
+                                if (!File.Exists(dest)) e.ExtractToFile(dest);
+                            }
+                    }
+                    catch (InvalidDataException) { } // .zip corrompido ou não é zip: ignorado
+                }
+            }
         }
 
         private static void CopyTree(string from, string to)

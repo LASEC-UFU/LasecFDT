@@ -44,8 +44,13 @@ class _LasecFdtAppState extends State<LasecFdtApp> {
         ));
     });
     // Ao fechar a janela: o Host libera todos os DTMs pelo protocolo antes de o processo terminar.
+    // Fechar no meio de uma operação não espera por ela: o Host interrompe como o botão Parar (doc 11 §12).
+    // A tela "Encerrando…" aparece na hora; as janelas dos DTMs somem para não cobri-la.
     _lifecycle = AppLifecycleListener(onExitRequested: () async {
-      await widget.state.host.stop();
+      if (widget.state.closing) return AppExitResponse.cancel; // segundo clique no X: o primeiro já está encerrando
+      widget.state.beginClose();
+      unawaited(NativeDock.instance.overlayOpened());
+      await widget.state.host.stop(wait: const Duration(seconds: 20));
       return AppExitResponse.exit;
     });
   }

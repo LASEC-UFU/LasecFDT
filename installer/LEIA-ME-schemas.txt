@@ -1,0 +1,30 @@
+LasecFDT - pasta de schemas do operador
+=======================================
+
+Coloque nesta pasta os schemas XML de protocolo que o LasecFDT não pode
+distribuir, em especial os do anexo HART da especificação FDT 1.2.1
+(DTMHARTDeviceSchema.xml, FDTHARTChannelParameterSchema.xml,
+FDTHARTCommunicationSchema.xml e outros).
+
+Sem os schemas HART, os DTMs HART abrem e "conectam", mas não trocam dados
+com o instrumento.
+
+Como usar
+---------
+1. Obtenha os schemas por um destes caminhos:
+   a) Anexo HART da FDT 1.2.1 ("HART Annex") no site do FDT Group, hoje parte
+      do FieldComm Group: https://www.fieldcommgroup.org/technologies/fdt
+      (área de especificações FDT 1.2.1). Leia e aceite a licença do site.
+   b) Ou instale o PACTware (gratuito, www.pactware.com) neste computador: o
+      LasecFDT encontra sozinho os schemas que ele instala e esta pasta pode
+      ficar vazia.
+2. Copie para ESTA pasta o .zip baixado (do jeito que veio) ou os arquivos
+   .xml/.xsl, soltos ou em subpastas. O LasecFDT extrai e usa automaticamente.
+3. Feche e abra o LasecFDT. Não é preciso configurar nada.
+
+Esta pasta fica em C:\ProgramData\LasecFDT\Schemas e vale para todas as
+estações do servidor. Desinstalar o LasecFDT não apaga o que você colocou aqui.
+
+Avançado: a variável de ambiente LASECFDT_SCHEMA_PATH, se definida, substitui
+tudo isso e aponta direto para uma pasta de schemas completa (com os schemas
+base e os de protocolo na raiz).

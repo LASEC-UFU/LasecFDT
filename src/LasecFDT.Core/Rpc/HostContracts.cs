@@ -41,6 +41,12 @@ namespace LasecFDT.Core.Rpc
         public const string NodeRevert = "node.revert";           // NodeRef → NodeDto (volta ao data set de antes da última leitura)
         public const string NodeDownload = "node.download";       // NodeDownloadParams → OnlineParameterResult (grava no instrumento)
         public const string NodeScan = "node.scan";               // NodeScanParams → ScanResultDto (busca de instrumentos no canal do nó)
+        /// <summary>
+        /// Botão "Parar": interrompe na hora tudo o que está em andamento ou na fila nesta estação. Os processos dos DTMs
+        /// ocupados são encerrados (liberando porta e servidores de comunicação); as requisições interrompidas respondem
+        /// com <see cref="RpcException.Canceled"/>. Não espera a fila do projeto.
+        /// </summary>
+        public const string OperationCancel = "operation.cancel"; // → CancelResultDto
 
         public const string Event = "event";                      // notificação → HostEventDto
         public const string NodeChanged = "nodeChanged";          // notificação → NodeDto
@@ -218,6 +224,15 @@ namespace LasecFDT.Core.Rpc
         public string Policy { get; set; } = "ReadOnly";
         /// <summary>Obrigatório para "Full": o operador confirmou que pode escrever no instrumento.</summary>
         public bool ConfirmFull { get; set; }
+    }
+
+    /// <summary>Resultado do botão "Parar".</summary>
+    public sealed class CancelResultDto
+    {
+        /// <summary>Operações (requisições) que estavam em andamento ou na fila.</summary>
+        public int Operations { get; set; }
+        /// <summary>Nós cujo DTM foi encerrado porque estava ocupado (voltam a carregar no próximo uso, com o data set salvo).</summary>
+        public List<string> StoppedNodes { get; set; } = new List<string>();
     }
 
     public sealed class NodeScanParams

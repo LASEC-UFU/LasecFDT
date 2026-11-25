@@ -249,11 +249,34 @@ namespace LasecFDT.Supervisor
 
         // ================================================================ quedas
 
+        /// <summary>
+        /// Botão Parar: encerra na hora os workers com chamada em andamento ou na fila (inclusive os descartáveis de
+        /// leitura do catálogo). Devolve as instâncias interrompidas.
+        /// </summary>
+        public List<DtmInstance> AbortBusy(string reason)
+        {
+            var busy = Instances.Where(i => i.Alive && i.Worker.Busy).ToList();
+            Parallel.ForEach(busy, i => i.Worker.Abort(reason));
+            return busy;
+        }
+
+        /// <summary>Encerra todos os workers sem protocolo (último recurso no fechamento, quando o tempo acabou).</summary>
+        public void KillAll()
+        {
+            Parallel.ForEach(Instances, i =>
+            {
+                i.Releasing = true;
+                try { i.Worker?.Abort("Encerrando o LasecFDT."); } catch { }
+            });
+        }
+
         private void OnWorkerExited(DtmInstance inst)
         {
             if (inst.Releasing && !inst.Worker.Crashed) return;
-            Raise(new SupervisorEvent { Instance = inst, Kind = "died", Detail = $"worker {inst.Worker.ProcessId} terminou inesperadamente" });
-            KillOwnedCommServers(inst, "worker do Comm DTM caiu");
+            bool aborted = inst.Worker.AbortReason != null;
+            Raise(new SupervisorEvent { Instance = inst, Kind = aborted ? "aborted" : "died",
+                Detail = aborted ? $"worker {inst.Worker.ProcessId} interrompido: {inst.Worker.AbortReason}" : $"worker {inst.Worker.ProcessId} terminou inesperadamente" });
+            KillOwnedCommServers(inst, aborted ? "operação interrompida pelo operador" : "worker do Comm DTM caiu", waitMs: aborted ? 0 : 3000);
             List<ChannelLink> affected;
             lock (_gate) affected = _links.Where(l => l.Parent == inst || l.Child == inst).ToList();
             foreach (var l in affected)
@@ -292,7 +315,7 @@ namespace LasecFDT.Supervisor
         private IEnumerable<int> CommServerPids() =>
             Options.CommServerImages.SelectMany(n => { try { return Process.GetProcessesByName(n).Select(p => p.Id).ToList(); } catch { return new List<int>(); } });
 
-        private void KillOwnedCommServers(DtmInstance inst, string reason)
+        private void KillOwnedCommServers(DtmInstance inst, string reason, int waitMs = 3000)
         {
             List<int> pids;
             lock (_gate) pids = inst.OwnedCommServers.ToList();
@@ -302,8 +325,8 @@ namespace LasecFDT.Supervisor
                 {
                     var p = Process.GetProcessById(pid);
                     if (!Options.CommServerImages.Any(n => string.Equals(p.ProcessName, n, StringComparison.OrdinalIgnoreCase))) continue; // PID reutilizado
-                    // Espera breve: o servidor normalmente encerra sozinho quando o cliente some.
-                    if (!p.WaitForExit(3000)) { p.Kill(); Raise(new SupervisorEvent { Instance = inst, Kind = "janitor", Detail = $"servidor de comunicação órfão {p.ProcessName} ({pid}) encerrado: {reason}" }); }
+                    // Espera breve: o servidor normalmente encerra sozinho quando o cliente some (sem espera quando o operador mandou parar).
+                    if (!p.WaitForExit(waitMs)) { p.Kill(); Raise(new SupervisorEvent { Instance = inst, Kind = "janitor", Detail = $"servidor de comunicação órfão {p.ProcessName} ({pid}) encerrado: {reason}" }); }
                 }
                 catch { }
             }

@@ -11,7 +11,7 @@ Future<void> showParametersDialog(BuildContext context, AppState s, Json node) a
   try {
     data = await s.parameters(node['tag'] as String);
   } catch (e) {
-    s.toast('Parâmetros: $e', error: true);
+    if (!AppState.isCanceled(e)) s.toast('Parâmetros: $e', error: true);
     return;
   }
   if (!context.mounted) return;
@@ -110,7 +110,7 @@ Future<void> showCompareDialog(BuildContext context, AppState s, Json node, {req
   try {
     r = keep ? await s.upload(tag) : await s.compare(tag);
   } catch (e) {
-    s.toast('${keep ? 'Leitura' : 'Comparação'}: $e', error: true);
+    if (!AppState.isCanceled(e)) s.toast('${keep ? 'Leitura' : 'Comparação'}: $e', error: true);
     return;
   }
   if (!context.mounted) return;

@@ -33,6 +33,14 @@ namespace LasecFDT.Supervisor
         public bool HasExited { get { try { return Process.HasExited; } catch { return true; } } }
         /// <summary>True se o processo terminou sem shutdown pedido (queda, morte forçada por timeout etc.).</summary>
         public bool Crashed { get; private set; }
+        /// <summary>Encerrado pelo operador (botão Parar): o motivo, ou null.</summary>
+        public string AbortReason { get; private set; }
+        /// <summary>Há uma chamada em andamento ou esperando a vez neste worker.</summary>
+        public bool Busy => _pending.Count > 0 || _callLock.CurrentCount == 0;
+
+        private RpcException Dead(string why) => AbortReason != null
+            ? new RpcException(RpcException.Canceled, AbortReason)
+            : new RpcException(RpcException.WorkerDied, $"Worker {ProcessId}: {why}");
 
         public event Action<WorkerHandle, WorkerEvent> EventReceived;
         /// <summary>Disparado uma vez quando o processo termina (esperado ou não).</summary>
@@ -112,7 +120,7 @@ namespace LasecFDT.Supervisor
         {
             foreach (var kv in _pending)
                 if (_pending.TryRemove(kv.Key, out var tcs))
-                    tcs.TrySetException(new RpcException(RpcException.WorkerDied, $"Worker {ProcessId}: {why}"));
+                    tcs.TrySetException(Dead(why));
         }
 
         private void OnProcessExit()
@@ -127,10 +135,11 @@ namespace LasecFDT.Supervisor
 
         public async Task<JsonNode> CallAsync(string method, object parameters = null, TimeSpan? timeout = null)
         {
-            if (HasExited) throw new RpcException(RpcException.WorkerDied, $"Worker {ProcessId} não está em execução.");
+            if (HasExited) throw Dead("não está em execução.");
             await _callLock.WaitAsync().ConfigureAwait(false);
             try
             {
+                if (HasExited) throw Dead("não está em execução."); // encerrado enquanto esta chamada esperava a vez
                 long id = Interlocked.Increment(ref _nextId);
                 var tcs = new TaskCompletionSource<RpcMessage>(TaskCreationOptions.RunContinuationsAsynchronously);
                 _pending[id] = tcs;
@@ -170,6 +179,18 @@ namespace LasecFDT.Supervisor
         public void Kill()
         {
             try { if (!Process.HasExited) Process.Kill(); } catch { }
+        }
+
+        /// <summary>
+        /// Interrompe o worker na hora (botão Parar): o processo é encerrado — a única forma garantida de soltar uma STA
+        /// presa dentro do DTM — e as chamadas pendentes falham com <see cref="RpcException.Canceled"/>.
+        /// </summary>
+        public void Abort(string reason)
+        {
+            AbortReason = reason ?? "Operação interrompida pelo operador.";
+            Kill();
+            try { Process.WaitForExit(5000); } catch { }
+            if (HasExited) OnProcessExit(); // não depende do evento Exited (assíncrono) para liberar quem espera
         }
 
         public void Dispose()

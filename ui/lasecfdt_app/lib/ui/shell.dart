@@ -23,6 +23,14 @@ class Shell extends StatelessWidget {
           child: ListenableBuilder(
             listenable: state,
             builder: (context, _) {
+              if (state.closing) {
+                return EmptyState(
+                  icon: Icons.power_settings_new_rounded,
+                  title: 'Encerrando o LasecFDT…',
+                  message: 'Interrompendo o que estava em andamento e liberando os DTMs desta estação.',
+                  action: busySpinner(size: 26),
+                );
+              }
               if (state.fatal != null && !state.ready) return _Fatal(state: state);
               if (!state.ready) {
                 return EmptyState(

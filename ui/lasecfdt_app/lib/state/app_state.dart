@@ -50,6 +50,39 @@ class AppState extends ChangeNotifier {
   String? selectedTag;
   final busy = <String, String>{}; // tag → operação em andamento
 
+  /// Há operação em andamento nesta estação (o botão Parar aparece).
+  bool get working => busy.isNotEmpty;
+  bool stopping = false;
+
+  /// A janela está fechando (X): a UI mostra "Encerrando…" enquanto o Host interrompe e libera os DTMs.
+  bool closing = false;
+
+  /// Erro do Host para uma operação interrompida pelo operador (RpcException.Canceled).
+  static bool isCanceled(Object e) => e is HostError && e.code == -32020;
+
+  /// Botão Parar: interrompe na hora tudo o que está em andamento ou na fila nesta estação (o Host encerra os
+  /// processos dos DTMs ocupados; nada fica preso). As operações interrompidas terminam com isCanceled.
+  Future<void> stopAll() async {
+    if (stopping) return;
+    stopping = true;
+    notifyListeners();
+    try {
+      final r = Map<String, dynamic>.from(await host.call('operation.cancel', null, const Duration(seconds: 20)) as Map);
+      final names = ((r['stoppedNodes'] as List?) ?? []).join(', ');
+      toast(names.isEmpty ? 'Operação interrompida.' : 'Operação interrompida: $names. O DTM carrega de novo no próximo uso.');
+    } catch (e) {
+      toast('Parar: $e', error: true);
+    } finally {
+      stopping = false;
+      notifyListeners();
+    }
+  }
+
+  void beginClose() {
+    closing = true;
+    notifyListeners();
+  }
+
   // ---------------------------------------------------------------- telas (abas) e eventos
   final tabs = <DtmTab>[];
   int activeTab = -1;
@@ -238,7 +271,7 @@ class AppState extends ChangeNotifier {
       await op();
       return true;
     } catch (e) {
-      toast(e.toString(), error: true);
+      if (!isCanceled(e)) toast(e.toString(), error: true); // interrompida: o próprio Parar já avisou
       return false;
     } finally {
       if (tag != null) busy.remove(tag);

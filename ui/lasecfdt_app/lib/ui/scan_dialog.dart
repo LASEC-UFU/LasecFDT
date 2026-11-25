@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import '../core/app_theme.dart';
 import '../core/host_client.dart';
 import '../state/app_state.dart';
+import 'project_page.dart' show StopButton;
 import 'widgets.dart';
 
 /// Busca de instrumentos no canal de um Comm DTM/gateway (como a busca de topologia do PACTware): o Comm DTM varre
@@ -32,6 +33,7 @@ class _ScanDialog extends StatefulWidget {
 class _ScanDialogState extends State<_ScanDialog> {
   String _progress = 'Preparando…';
   String? _error;
+  bool _canceled = false;
   List<_Row>? _rows;
   Json? _result;
   bool _adding = false;
@@ -40,6 +42,7 @@ class _ScanDialogState extends State<_ScanDialog> {
   Timer? _tick;
 
   String get _tag => widget.node['tag'] as String;
+  bool get _running => _rows == null && _error == null;
 
   @override
   void initState() {
@@ -62,6 +65,7 @@ class _ScanDialogState extends State<_ScanDialog> {
   Future<void> _run() async {
     setState(() {
       _error = null;
+      _canceled = false;
       _rows = null;
       _progress = 'Preparando…';
     });
@@ -74,7 +78,12 @@ class _ScanDialogState extends State<_ScanDialog> {
         _rows = ((r['devices'] as List?) ?? []).map((d) => _Row(Map<String, dynamic>.from(d as Map))).toList();
       });
     } catch (e) {
-      if (mounted) setState(() => _error = e.toString());
+      if (mounted) {
+        setState(() {
+          _canceled = AppState.isCanceled(e);
+          _error = e.toString();
+        });
+      }
     }
   }
 
@@ -121,9 +130,9 @@ class _ScanDialogState extends State<_ScanDialog> {
         height: 480,
         child: _error != null
             ? EmptyState(
-                icon: Icons.error_outline_rounded,
-                title: 'A busca não foi concluída',
-                message: _error,
+                icon: _canceled ? Icons.stop_circle_outlined : Icons.error_outline_rounded,
+                title: _canceled ? 'Busca interrompida' : 'A busca não foi concluída',
+                message: _canceled ? 'A busca foi interrompida e a porta liberada. Nada mudou no projeto.' : _error,
                 action: OutlinedButton.icon(onPressed: _run, icon: const Icon(Icons.refresh_rounded), label: const Text('Tentar de novo')),
               )
             : rows == null
@@ -158,7 +167,17 @@ class _ScanDialogState extends State<_ScanDialog> {
                       ]),
       ),
       actions: [
-        TextButton(onPressed: _adding ? null : () => Navigator.pop(context), child: const Text('Fechar')),
+        // Fechar no meio da busca também a interrompe (antes, ela seguia escondida e segurava a fila do projeto).
+        TextButton(
+          onPressed: _adding
+              ? null
+              : () {
+                  if (_running) unawaited(widget.state.stopAll());
+                  Navigator.pop(context);
+                },
+          child: const Text('Fechar'),
+        ),
+        if (_running) ListenableBuilder(listenable: widget.state, builder: (_, _) => StopButton(state: widget.state, label: 'Parar busca')),
         if (rows != null && rows.isNotEmpty)
           ElevatedButton.icon(
             onPressed: selected == 0 || _adding || widget.state.projectReadOnly ? null : _add,

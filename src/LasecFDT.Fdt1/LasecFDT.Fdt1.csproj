@@ -21,6 +21,8 @@
       <EmbedInteropTypes>false</EmbedInteropTypes>
     </Reference>
     <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.IO.Compression" />
+    <Reference Include="System.IO.Compression.FileSystem" /> <!-- ZipFile: schemas do operador no .zip baixado -->
     <Reference Include="Microsoft.CSharp" /> <!-- dynamic: MSXML por late binding (XdrValidator) -->
   </ItemGroup>
   <ItemGroup>

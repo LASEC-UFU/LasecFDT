@@ -40,7 +40,8 @@ namespace LasecFDT.Core.Rpc
     {
         public int Code { get; }
         public RpcException(int code, string message) : base(message) { Code = code; }
-        public const int MethodNotFound = -32601, InvalidParams = -32602, Internal = -32603, Timeout = -32000, WorkerDied = -32001, DtmFailure = -32010;
+        public const int MethodNotFound = -32601, InvalidParams = -32602, Internal = -32603, Timeout = -32000, WorkerDied = -32001, DtmFailure = -32010,
+            Canceled = -32020; // operação interrompida pelo operador (botão Parar ou fechamento da janela)
     }
 
     /// <summary>
