@@ -8,8 +8,10 @@ import 'core/host_client.dart';
 import 'core/native_dock.dart';
 import 'state/app_state.dart';
 import 'ui/shell.dart';
+import 'ui/update_dialog.dart';
 
 final messengerKey = GlobalKey<ScaffoldMessengerState>();
+final navigatorKey = GlobalKey<NavigatorState>();
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
@@ -29,10 +31,13 @@ class LasecFdtApp extends StatefulWidget {
 class _LasecFdtAppState extends State<LasecFdtApp> {
   late final AppLifecycleListener _lifecycle;
   StreamSubscription<(String, bool)>? _toasts;
+  bool _updateChecked = false;
 
   @override
   void initState() {
     super.initState();
+    // Ao abrir (motor pronto): se houver versão nova no GitHub, pergunta se pode atualizar (doc 11 §13).
+    widget.state.addListener(_maybeCheckUpdates);
     _toasts = widget.state.messages.listen((m) {
       messengerKey.currentState
         ?..hideCurrentSnackBar()
@@ -55,8 +60,16 @@ class _LasecFdtAppState extends State<LasecFdtApp> {
     });
   }
 
+  void _maybeCheckUpdates() {
+    if (_updateChecked || !widget.state.ready) return;
+    _updateChecked = true;
+    widget.state.removeListener(_maybeCheckUpdates);
+    unawaited(checkForUpdates(() => navigatorKey.currentContext ?? context, widget.state));
+  }
+
   @override
   void dispose() {
+    widget.state.removeListener(_maybeCheckUpdates);
     _toasts?.cancel();
     _lifecycle.dispose();
     super.dispose();
@@ -72,6 +85,7 @@ class _LasecFdtAppState extends State<LasecFdtApp> {
           title: 'LasecFDT',
           debugShowCheckedModeBanner: false,
           scaffoldMessengerKey: messengerKey,
+          navigatorKey: navigatorKey,
           theme: AppTheme.build(light: true),
           darkTheme: AppTheme.build(light: false),
           themeMode: light ? ThemeMode.light : ThemeMode.dark,

@@ -27,6 +27,20 @@
              Description="LasecFDT - Frame FDT" Comments="Frame FDT 1.2 com interface moderna para estações e thin clients" />
 
     <MajorUpgrade DowngradeErrorMessage="Uma versão mais nova do LasecFDT já está instalada." />
+
+    <!--
+      Atualização sem perder schemas: uma versão de USO INTERNO tem os schemas HART da FDT 1.2 em
+      engine\FDT XML Schemas\. Ao remover a versão anterior, o Windows Installer apagaria esses arquivos e o pacote
+      público não os traz. Antes disso, eles são copiados para a pasta de schemas do operador (permanente; o
+      FdtSchemaLocator a lê). Nunca sobrescreve o que já está lá (/XC /XN /XO). Falha na cópia não interrompe a
+      instalação (robocopy devolve 1 quando copia).
+      Ação imediata logo antes de RemoveExistingProducts (que fica fora da transação, posição padrão): uma ação
+      diferida antes dela é proibida (erro 2613). Não precisa de administrador: Usuários escrevem em
+      %ProgramData%\LasecFDT (PlantFolder) e leem Arquivos de Programas.
+    -->
+    <SetProperty Id="WixQuietExecCmdLine" Before="PreserveHartSchemas" Sequence="execute"
+                 Value="&quot;[SystemFolder]robocopy.exe&quot; &quot;[INSTALLFOLDER]engine\FDT XML Schemas&quot; &quot;[CommonAppDataFolder]LasecFDT\Schemas&quot; *HART*.xml /XC /XN /XO /R:0 /W:0 /NP /NJH" />
+    <CustomAction Id="PreserveHartSchemas" BinaryKey="WixCA" DllEntry="WixQuietExec" Execute="immediate" Return="ignore" />
     <MediaTemplate EmbedCab="yes" CompressionLevel="high" />
 
     <Icon Id="LasecFDT.ico" SourceFile="$(var.IconFile)" />
@@ -120,6 +134,7 @@
     <InstallExecuteSequence>
       <SelfUnregModules Sequence="2200" />
       <SelfRegModules Sequence="6500" />
+      <Custom Action="PreserveHartSchemas" Before="RemoveExistingProducts">WIX_UPGRADE_DETECTED</Custom>
     </InstallExecuteSequence>
     <!-- ResolveSource vindo do merge module: na fase de custeio, como exige o ICE27. -->
     <InstallUISequence>

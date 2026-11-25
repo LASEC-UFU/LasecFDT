@@ -58,6 +58,7 @@ src\LasecFDT.Cli\bin\Debug\net48\lasecfdt.exe sim --serial CNCB0      # o Comm D
 ## Instalador e Release
 
 - **Instalar:** baixe `LasecFDT-<versão>.msi` em *Releases* no GitHub e execute como administrador. No servidor de terminal, uma vez vale para todas as estações. Detalhes no [doc 11 §8](docs/11-ui-thinclient.md).
+- **Atualizar:** ao abrir, o LasecFDT instalado consulta o GitHub e, se houver versão nova, pergunta se pode atualizar (baixa, fecha, instala e reabre). Num servidor, só atualiza com as outras estações fechadas. Os schemas HART de uma instalação de uso interno são copiados para `C:\ProgramData\LasecFDT\Schemas\` antes da troca. [doc 11 §13](docs/11-ui-thinclient.md).
 - **Publicar uma versão:** GitHub → Actions → **Release LasecFDT** → *Run workflow* → versão (ex.: `v0.1.0`). O workflow compila, roda os testes que não dependem de hardware, gera o MSI e o zip portátil, cria a tag e publica o Release.
 - **Gerar localmente:** `tools\release\build-release.ps1 -Version 0.1.0 -WixDir "<WiX 3.14>\bin"`. Saída em `artifacts\`.
 
