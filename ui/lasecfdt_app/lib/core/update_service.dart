@@ -217,7 +217,10 @@ class UpdateService {
         '-ExpectedVersion', expectedVersion,
         '-LogPath', logPath,
         '-ReadyPath', readyPath,
-      ]);
+      ], environment: const {
+        // O LasecFDT reaberto pelo auxiliar herda o ambiente: sem a versão simulada do teste.
+        'LASECFDT_UPDATE_TEST_VERSION': '',
+      });
       // Modo normal com as saídas drenadas: no Windows o modo "detached" pode não executar o script (Gestor UFU).
       p.stdout.listen((_) {});
       p.stderr.listen((_) {});
