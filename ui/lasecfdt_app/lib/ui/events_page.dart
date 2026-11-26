@@ -74,7 +74,7 @@ class _EventsPageState extends State<EventsPage> {
                       final e = list[i];
                       final level = e['level'] as String? ?? 'info';
                       final color = level == 'error' ? AppTheme.danger : level == 'warning' ? AppTheme.warning : AppTheme.textSecondary;
-                      final time = DateTime.tryParse('${e['time']}');
+                      final time = DateTime.tryParse('${e['time']}')?.toLocal(); // o Host manda UTC
                       final node = s.nodes[e['tag']];
                       return Padding(
                         padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 4),

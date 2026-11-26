@@ -255,7 +255,9 @@ namespace LasecFDT.Tests
                     Assert.Equal("3", Address(await Call<ParameterSetDto>(a, HostMethods.NodeParameters, new NodeRef { Tag = dev.Tag })));
                     Assert.Equal("online", (await Call<NodeDto>(a, HostMethods.NodeConnect, new NodeConnectParams { Tag = dev.Tag, Policy = "ReadOnly" })).State);
                     Assert.Contains("Desconecte", await Refused(a, HostMethods.NodeSetAddress, new NodeAddressParams { Tag = dev.Tag, Address = 0 }));
-                    await Call<NodeDto>(a, HostMethods.NodeDisconnect, new NodeRef { Tag = dev.Tag });
+                    Assert.Null((await Call<NodeDto>(a, HostMethods.NodeDisconnect, new NodeRef { Tag = dev.Tag })).Error);
+                    await Task.Delay(1500); // o online=False do DTM chega como evento: desconexão pedida não é falha
+                    Assert.Null((await Call<ProjectDto>(a, HostMethods.ProjectCurrent, null)).Nodes.Single(x => x.Tag == dev.Tag).Error);
                     Assert.Equal("0", Address(await Call<ParameterSetDto>(a, HostMethods.NodeSetAddress, new NodeAddressParams { Tag = dev.Tag, Address = 0 })));
                     await a.DispatchAsync(HostMethods.ProjectClose, null);
                 }

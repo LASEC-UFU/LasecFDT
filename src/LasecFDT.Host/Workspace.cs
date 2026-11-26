@@ -35,6 +35,7 @@ namespace LasecFDT.Host
             public bool UiOpen;
             public string Error;
             public bool Dirty;
+            public bool Disconnecting;         // desconexão pedida pelo usuário: o online=False do DTM não é falha
             public string PortLease;           // só no nó raiz que segura a porta
             public PersistedDataSet Snapshot;  // data set de antes da última leitura do instrumento (para "restaurar")
             public DateTime LastUsed = DateTime.UtcNow;
@@ -513,12 +514,18 @@ namespace LasecFDT.Host
         private async Task DisconnectCoreAsync(Node n)
         {
             foreach (var c in Children(n).Where(c => c.Link != null).ToList()) await DisconnectCoreAsync(c).ConfigureAwait(false);
-            if (n.Link != null)
+            n.Disconnecting = true;
+            try
             {
-                try { await _sup.DisconnectAsync(n.Link).ConfigureAwait(false); } catch (Exception ex) { n.Error = ex.Message; }
-                n.Link = null;
+                if (n.Link != null)
+                {
+                    try { await _sup.DisconnectAsync(n.Link).ConfigureAwait(false); n.Error = null; }
+                    catch (Exception ex) { n.Error = ex.Message; }
+                    n.Link = null;
+                }
+                if (n.State == "online" || n.State == "connecting") n.State = n.Inst?.Alive == true ? "loaded" : "offline";
             }
-            if (n.State == "online" || n.State == "connecting") n.State = n.Inst?.Alive == true ? "loaded" : "offline";
+            finally { n.Disconnecting = false; }
             n.LastUsed = DateTime.UtcNow;
             ReleasePortIfIdle(RootOf(n));
             _nodeChanged(Dto(n));
@@ -917,7 +924,7 @@ namespace LasecFDT.Host
                     Emit("ui", tag, we.Method, we.Detail);
                     return;
                 case "worker":
-                    if (n != null && we?.Method == "OnOnlineStateChanged" && we.Detail == "online=False" && n.State == "online")
+                    if (n != null && we?.Method == "OnOnlineStateChanged" && we.Detail == "online=False" && n.State == "online" && !n.Disconnecting)
                     { n.State = "loaded"; n.Error = "O DTM informou que ficou offline."; _nodeChanged(Dto(n)); }
                     if (n != null && (we?.Method == "SaveRequest" || we?.Method == "OnParameterChanged")) { n.Dirty = true; _nodeChanged(Dto(n)); }
                     Emit("frame", tag, we?.Method, we?.Detail, we?.Method == "OnErrorMessage" ? "warning" : "info");
