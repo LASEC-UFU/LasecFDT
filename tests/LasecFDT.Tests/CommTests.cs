@@ -37,7 +37,16 @@ namespace LasecFDT.Tests
     /// <summary>Fato que só roda se as duas pontas do par virtual com0com existirem.</summary>
     public sealed class VirtualPortPairFactAttribute : FactAttribute
     {
-        public const string Master = "COM20", Slave = "CNCB0";
+        /// <summary>
+        /// Par com0com dos testes: COM20 ↔ CNCB0 por padrão. Num servidor em que esse par está em uso (bancadas),
+        /// escolha outro com LASECFDT_TEST_PORTS=COMx,COMy (ponta do Frame, ponta do simulador).
+        /// </summary>
+        public static readonly string Master = Port(0, "COM20"), Slave = Port(1, "CNCB0");
+        private static string Port(int index, string fallback)
+        {
+            var parts = (Environment.GetEnvironmentVariable("LASECFDT_TEST_PORTS") ?? "").Split(',');
+            return parts.Length == 2 && parts[index].Trim().Length > 0 ? parts[index].Trim() : fallback;
+        }
         public VirtualPortPairFactAttribute()
         {
             using (var k = Microsoft.Win32.Registry.LocalMachine.OpenSubKey(@"HARDWARE\DEVICEMAP\SERIALCOMM"))

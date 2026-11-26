@@ -36,6 +36,7 @@ namespace LasecFDT.Core.Rpc
         public const string NodeCommLog = "node.commLog";         // NodeRef → CommRecordDto[]
         public const string NodeUnload = "node.unload";           // NodeRef → NodeDto (salva o data set e encerra o worker)
         public const string NodeParameters = "node.parameters";   // NodeRef → ParameterSetDto (IDtmParameter::GetParameters)
+        public const string NodeSetAddress = "node.setAddress";   // NodeAddressParams → ParameterSetDto (BusInformation/SlaveAddress pelo IDtmParameter::SetParameters; offline)
         public const string NodeUpload = "node.upload";           // NodeRef → CompareResultDto (lê do instrumento e mantém; diferenças em relação ao projeto)
         public const string NodeCompare = "node.compare";         // NodeRef → CompareResultDto (lê, compara e restaura o projeto)
         public const string NodeRevert = "node.revert";           // NodeRef → NodeDto (volta ao data set de antes da última leitura)
@@ -188,6 +189,18 @@ namespace LasecFDT.Core.Rpc
         public string ChannelPath { get; set; }
         public string Name { get; set; }
         public Dictionary<string, string> Properties { get; set; }
+        /// <summary>
+        /// Endereço do instrumento no barramento (HART: endereço de polling) encontrado pela busca. Gravado no DTM do
+        /// instrumento (BusInformation/SlaveAddress) ao criar o nó: sem isso o DTM conecta no endereço 0 e não acha
+        /// um instrumento em multidrop.
+        /// </summary>
+        public int? SlaveAddress { get; set; }
+    }
+
+    public sealed class NodeAddressParams
+    {
+        public string Tag { get; set; }
+        public int Address { get; set; }
     }
 
     public sealed class NodeRenameParams

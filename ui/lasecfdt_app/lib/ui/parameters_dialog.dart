@@ -5,7 +5,7 @@ import '../core/host_client.dart';
 import '../state/app_state.dart';
 import 'widgets.dart';
 
-/// Parâmetros do DTM (IDtmParameter::GetParameters), com busca. Somente leitura.
+/// Parâmetros do DTM (IDtmParameter::GetParameters), com busca. Só o endereço no barramento é editável aqui.
 Future<void> showParametersDialog(BuildContext context, AppState s, Json node) async {
   Json? data;
   try {
@@ -15,8 +15,10 @@ Future<void> showParametersDialog(BuildContext context, AppState s, Json node) a
     return;
   }
   if (!context.mounted) return;
-  final items = ((data['items'] as List?) ?? []).map((e) => Map<String, dynamic>.from(e as Map)).toList();
+  List<Json> parse(Json d) => ((d['items'] as List?) ?? []).map((e) => Map<String, dynamic>.from(e as Map)).toList();
+  var items = parse(data);
   var query = '';
+  final online = node['state'] == 'online';
   await showDialog(
     context: context,
     builder: (ctx) => StatefulBuilder(builder: (ctx, set) {
@@ -50,7 +52,30 @@ Future<void> showParametersDialog(BuildContext context, AppState s, Json node) a
                   ? EmptyState(icon: Icons.tune_rounded, title: 'O DTM não publicou parâmetros', message: 'Use a tela do próprio DTM.')
                   : ListView.builder(
                       itemCount: list.length,
-                      itemBuilder: (_, i) => _ParamRow(name: '${list[i]['name']}', group: list[i]['group'] as String?, a: list[i]['value'] as String?, writable: list[i]['writable'] == true),
+                      itemBuilder: (_, i) {
+                        final it = list[i];
+                        final isAddress = '${it['name']}' == 'Endereço (slaveAddress)' && it['writable'] == true;
+                        return _ParamRow(
+                          name: '${it['name']}',
+                          group: it['group'] as String?,
+                          a: it['value'] as String?,
+                          writable: it['writable'] == true,
+                          editHint: isAddress && online ? 'Desconecte para mudar o endereço' : null,
+                          onEdit: isAddress && !online
+                              ? () async {
+                                  final v = await _askAddress(ctx, int.tryParse('${it['value']}') ?? 0);
+                                  if (v == null) return;
+                                  try {
+                                    final r = await s.setAddress(node['tag'] as String, v);
+                                    set(() => items = parse(r));
+                                    s.toast('${node['name']}: endereço no barramento = $v.');
+                                  } catch (e) {
+                                    if (!AppState.isCanceled(e)) s.toast('Endereço: $e', error: true);
+                                  }
+                                }
+                              : null,
+                        );
+                      },
                     ),
             ),
           ]),
@@ -61,8 +86,53 @@ Future<void> showParametersDialog(BuildContext context, AppState s, Json node) a
   );
 }
 
+/// Endereço de polling HART (0 a 63; HART 5: 0 a 15).
+Future<int?> _askAddress(BuildContext context, int current) {
+  final c = TextEditingController(text: '$current');
+  int? parse() {
+    final v = int.tryParse(c.text.trim());
+    return v != null && v >= 0 && v <= 63 ? v : null;
+  }
+
+  return showDialog<int>(
+    context: context,
+    builder: (ctx) => StatefulBuilder(builder: (ctx, set) {
+      final v = parse();
+      return AlertDialog(
+        title: const Text('Endereço no barramento'),
+        content: SizedBox(
+          width: 420,
+          child: Column(mainAxisSize: MainAxisSize.min, crossAxisAlignment: CrossAxisAlignment.start, children: [
+            Text(
+              'Endereço que o DTM usa para conectar (HART: endereço de polling). Use o mesmo endereço em que a busca '
+              'achou o instrumento. Isto não muda o endereço dentro do instrumento: para isso, conecte e use a tela do DTM.',
+              style: TextStyle(fontSize: 12.5, color: AppTheme.textSecondary),
+            ),
+            const SizedBox(height: 12),
+            TextField(
+              controller: c,
+              autofocus: true,
+              keyboardType: TextInputType.number,
+              decoration: InputDecoration(labelText: 'Endereço (0 a 63)', errorText: v == null ? 'Número de 0 a 63' : null),
+              onChanged: (_) => set(() {}),
+              onSubmitted: (_) {
+                if (parse() != null) Navigator.pop(ctx, parse());
+              },
+            ),
+          ]),
+        ),
+        actions: [
+          TextButton(onPressed: () => Navigator.pop(ctx), child: const Text('Cancelar')),
+          FilledButton(onPressed: v == null ? null : () => Navigator.pop(ctx, v), child: const Text('Aplicar')),
+        ],
+      );
+    }),
+  );
+}
+
 class _ParamRow extends StatelessWidget {
-  const _ParamRow({required this.name, required this.group, required this.a, this.b, this.different = false, this.compare = false, this.writable = false});
+  const _ParamRow(
+      {required this.name, required this.group, required this.a, this.b, this.different = false, this.compare = false, this.writable = false, this.onEdit, this.editHint});
   final String name;
   final String? group;
   final String? a;
@@ -70,6 +140,8 @@ class _ParamRow extends StatelessWidget {
   final bool different;
   final bool compare;
   final bool writable;
+  final VoidCallback? onEdit;
+  final String? editHint;
 
   @override
   Widget build(BuildContext context) {
@@ -97,7 +169,12 @@ class _ParamRow extends StatelessWidget {
           const SizedBox(width: 8),
           Expanded(flex: 3, child: SelectableText(show(b), style: v(different))),
         ],
-        if (!compare && writable) Tooltip(message: 'Gravável', child: Icon(Icons.edit_rounded, size: 14, color: AppTheme.textSecondary)),
+        if (!compare && onEdit != null)
+          TextButton.icon(onPressed: onEdit, icon: const Icon(Icons.edit_rounded, size: 16), label: const Text('Alterar…'))
+        else if (!compare && editHint != null)
+          Tooltip(message: editHint!, child: Icon(Icons.edit_off_rounded, size: 16, color: AppTheme.textSecondary))
+        else if (!compare && writable)
+          Tooltip(message: 'Gravável', child: Icon(Icons.edit_rounded, size: 14, color: AppTheme.textSecondary)),
       ]),
     );
   }

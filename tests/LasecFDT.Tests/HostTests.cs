@@ -152,6 +152,118 @@ namespace LasecFDT.Tests
         }
 
         /// <summary>
+        /// Multidrop: instrumento no endereço de polling 3. A busca acha o endereço; o nó criado com esse endereço grava
+        /// BusInformation/SlaveAddress no DTM e conecta (antes o DTM pedia o endereço 0 e "o instrumento não respondeu").
+        /// Depois de mudar o endereço DENTRO do instrumento, o operador acerta o do nó (node.setAddress, desconectado).
+        /// </summary>
+        [VirtualPortPairFact]
+        public async Task Scanned_multidrop_address_is_written_to_the_device_dtm_and_connects()
+        {
+            var sim = new HartDevice { ManufacturerId = 62, DeviceTypeId = 2, Tag = "TT-203", PollingAddress = 3 };
+            using (var wire = new HartWireSimulator(VirtualPortPairFactAttribute.Slave, sim))
+            {
+                wire.Start();
+                var a = NewStation("TC-MULTI", _plant);
+                try
+                {
+                    var cat = await Call<CatalogDto>(a, HostMethods.CatalogList, new CatalogParams { Refresh = true });
+                    var comm = cat.Dtms.Single(d => d.ProgId == LasecHartCommDtmTests.ProgId);
+                    await Call<ProjectDto>(a, HostMethods.ProjectNew, new ProjectRef { Name = "Multidrop" });
+                    var c = await Call<NodeDto>(a, HostMethods.NodeAdd, new NodeAddParams
+                    {
+                        Clsid = comm.Clsid,
+                        Properties = new Dictionary<string, string> { ["Port"] = VirtualPortPairFactAttribute.Master, ["ScanStop"] = "4", ["ResponseTimeoutMs"] = "500" },
+                    });
+                    var scan = await Call<ScanResultDto>(a, HostMethods.NodeScan, new NodeScanParams { Tag = c.Tag });
+                    var d = Assert.Single(scan.Devices);
+                    Assert.Equal(3, d.ShortAddress);
+                    var best = d.Candidates.First();
+
+                    // Sem o endereço (como antes da correção): o DTM fica no 0 e não conecta.
+                    var wrong = await Call<NodeDto>(a, HostMethods.NodeAdd, new NodeAddParams { Clsid = best.Clsid, DeviceTypeIndex = best.DeviceTypeIndex, ParentTag = c.Tag, Name = "SEM-ENDERECO" });
+                    Assert.Contains(Assert.Single((await Call<ParameterSetDto>(a, HostMethods.NodeParameters, new NodeRef { Tag = wrong.Tag })).Items, i => i.Name == ParameterModel.SlaveAddressName).Value, new[] { "0" });
+
+                    var dev = await Call<NodeDto>(a, HostMethods.NodeAdd, new NodeAddParams
+                    { Clsid = best.Clsid, DeviceTypeIndex = best.DeviceTypeIndex, ParentTag = c.Tag, Name = d.DeviceTag, SlaveAddress = d.ShortAddress });
+                    var ps = await Call<ParameterSetDto>(a, HostMethods.NodeParameters, new NodeRef { Tag = dev.Tag });
+                    Assert.Equal("3", ps.Items.Single(i => i.Name == ParameterModel.SlaveAddressName).Value);
+                    var on = await Call<NodeDto>(a, HostMethods.NodeConnect, new NodeConnectParams { Tag = dev.Tag, Policy = "ReadOnly" });
+                    Assert.Equal("online", on.State);
+
+                    // Endereço só muda desconectado; o novo valor vale para a próxima conexão.
+                    Assert.Contains("Desconecte", await Refused(a, HostMethods.NodeSetAddress, new NodeAddressParams { Tag = dev.Tag, Address = 0 }));
+                    await Call<NodeDto>(a, HostMethods.NodeDisconnect, new NodeRef { Tag = dev.Tag });
+                    sim.PollingAddress = 0; // como se o operador tivesse mudado o endereço no instrumento pela tela do DTM
+                    var moved = await Call<ParameterSetDto>(a, HostMethods.NodeSetAddress, new NodeAddressParams { Tag = dev.Tag, Address = 0 });
+                    Assert.Equal("0", moved.Items.Single(i => i.Name == ParameterModel.SlaveAddressName).Value);
+                    Assert.Equal("online", (await Call<NodeDto>(a, HostMethods.NodeConnect, new NodeConnectParams { Tag = dev.Tag, Policy = "ReadOnly" })).State);
+                    Assert.Contains("0 a 63", await Refused(a, HostMethods.NodeSetAddress, new NodeAddressParams { Tag = wrong.Tag, Address = 64 }));
+                    await a.DispatchAsync(HostMethods.ProjectClose, null);
+                }
+                finally { a.Dispose(); }
+            }
+        }
+
+        /// <summary>
+        /// Endereço no barramento para IDtmParameter::SetParameters: o mesmo documento de parâmetros com
+        /// BusInformation/SlaveAddress trocado (o resto intacto); sem SlaveAddress publicado, nada a gravar.
+        /// </summary>
+        [Fact]
+        public void Slave_address_is_rewritten_in_the_dtm_parameter_document()
+        {
+            const string xml = "<?xml version=\"1.0\"?><FDT xmlns=\"x-schema:DTMParameterSchema.xml\" xmlns:fdt=\"x-schema:FDTDataTypesSchema.xml\" fdt:storageState=\"persistent\">" +
+                "<DtmDevice><BusInformation><fdt:SlaveAddress slaveAddress=\"0\"/></BusInformation>" +
+                "<fdt:DtmVariables name=\"Id\"><fdt:DtmVariable name=\"Tag\"><fdt:Value writeAccess=\"1\"><fdt:Display string=\"PT-310\"/></fdt:Value></fdt:DtmVariable></fdt:DtmVariables></DtmDevice></FDT>";
+            var changed = ParameterModel.WithSlaveAddress(xml, 1);
+            var p = ParameterModel.Parse("X", changed);
+            Assert.Equal("1", p.Items.Single(i => i.Name == ParameterModel.SlaveAddressName).Value);
+            Assert.Equal("PT-310", p.Items.Single(i => i.Name == "Tag").Value);
+            Assert.Equal("persistent", p.StorageState);
+            Assert.Null(ParameterModel.WithSlaveAddress("<FDT><DtmDevice/></FDT>", 1));
+            Assert.Null(ParameterModel.WithSlaveAddress("", 1));
+        }
+
+        /// <summary>
+        /// O mesmo com o "HART Communication" da CodeWrights (o Comm DTM que acompanha o PACTware) e o DTM real do TT301:
+        /// instrumento no endereço de polling 3. Um nó novo sem o endereço não conecta (o DTM pede o endereço 0); o nó
+        /// criado com o endereço da busca conecta. (Depois da 1ª conexão o DTM guarda o endereço longo e não depende mais do
+        /// curto, por isso a prova negativa é feita num nó que nunca conectou.)
+        /// </summary>
+        [VirtualPortPairFact]
+        public async Task Multidrop_address_reaches_the_codewrights_comm_dtm()
+        {
+            var sim = new HartDevice { ManufacturerId = 62, DeviceTypeId = 2, Tag = "TT-204", PollingAddress = 3 };
+            using (var wire = new HartWireSimulator(VirtualPortPairFactAttribute.Slave, sim))
+            {
+                wire.Start();
+                var a = NewStation("TC-MULTI-CW", _plant);
+                try
+                {
+                    var cat = await Call<CatalogDto>(a, HostMethods.CatalogList, new CatalogParams { Refresh = true });
+                    var comm = cat.Dtms.FirstOrDefault(d => string.Equals(d.ProgId, "CWHartFdt.clsDTM", StringComparison.OrdinalIgnoreCase));
+                    var tt = cat.Dtms.FirstOrDefault(d => d.ProgId == "Smar.TT301DTM.1");
+                    if (comm == null || tt == null) return; // CodeWrights ou TT301 DTM ausentes nesta máquina
+                    await Call<ProjectDto>(a, HostMethods.ProjectNew, new ProjectRef { Name = "MultidropCW" });
+                    var c = await Call<NodeDto>(a, HostMethods.NodeAdd, new NodeAddParams { Clsid = comm.Clsid, Properties = new Dictionary<string, string> { ["Port"] = VirtualPortPairFactAttribute.Master } });
+                    string Address(ParameterSetDto p) => p.Items.Single(i => i.Name == ParameterModel.SlaveAddressName).Value;
+
+                    var wrong = await Call<NodeDto>(a, HostMethods.NodeAdd, new NodeAddParams { Clsid = tt.Clsid, ParentTag = c.Tag, Name = "SEM-ENDERECO" });
+                    Assert.Contains("não respondeu", await Refused(a, HostMethods.NodeConnect, new NodeConnectParams { Tag = wrong.Tag, Policy = "ReadOnly" }));
+                    await Call<bool>(a, HostMethods.NodeRemove, new NodeRef { Tag = wrong.Tag });
+
+                    var dev = await Call<NodeDto>(a, HostMethods.NodeAdd, new NodeAddParams { Clsid = tt.Clsid, ParentTag = c.Tag, Name = "TT-204", SlaveAddress = 3 });
+                    Assert.Equal("3", Address(await Call<ParameterSetDto>(a, HostMethods.NodeParameters, new NodeRef { Tag = dev.Tag })));
+                    Assert.Equal("online", (await Call<NodeDto>(a, HostMethods.NodeConnect, new NodeConnectParams { Tag = dev.Tag, Policy = "ReadOnly" })).State);
+                    Assert.Contains("Desconecte", await Refused(a, HostMethods.NodeSetAddress, new NodeAddressParams { Tag = dev.Tag, Address = 0 }));
+                    await Call<NodeDto>(a, HostMethods.NodeDisconnect, new NodeRef { Tag = dev.Tag });
+                    Assert.Equal("0", Address(await Call<ParameterSetDto>(a, HostMethods.NodeSetAddress, new NodeAddressParams { Tag = dev.Tag, Address = 0 })));
+                    await a.DispatchAsync(HostMethods.ProjectClose, null);
+                }
+                finally { a.Dispose(); }
+            }
+        }
+
+        /// <summary>
         /// Botão Parar: busca real pela porta virtual sem instrumento (varre todos os endereços, ~80 s) e uma operação
         /// esperando na fila do projeto. O Parar encerra as duas na hora, solta a porta, o nó volta a "offline" sem erro
         /// e a estação continua usável (o DTM carrega de novo no próximo uso).

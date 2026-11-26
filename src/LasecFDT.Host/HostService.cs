@@ -164,6 +164,7 @@ namespace LasecFDT.Host
                 case HostMethods.NodeDisconnect: return R(await _ws.DisconnectAsync(P<NodeRef>(p).Tag).ConfigureAwait(false));
                 case HostMethods.NodeCommLog: return R(await _ws.CommLogAsync(P<NodeRef>(p).Tag).ConfigureAwait(false));
                 case HostMethods.NodeParameters: return R(await _ws.ParametersAsync(P<NodeRef>(p).Tag).ConfigureAwait(false));
+                case HostMethods.NodeSetAddress: return R(await _ws.SetAddressAsync(P<NodeAddressParams>(p)).ConfigureAwait(false));
                 case HostMethods.NodeUpload: return R(await _ws.UploadCompareAsync(P<NodeRef>(p).Tag, keep: true).ConfigureAwait(false));
                 case HostMethods.NodeCompare: return R(await _ws.UploadCompareAsync(P<NodeRef>(p).Tag, keep: false).ConfigureAwait(false));
                 case HostMethods.NodeRevert: return R(await _ws.RevertAsync(P<NodeRef>(p).Tag).ConfigureAwait(false));

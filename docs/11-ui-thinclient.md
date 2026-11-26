@@ -111,7 +111,7 @@ JSON, uma mensagem por linha (mesmo transporte do worker). Notificações do Hos
 | Catálogo | `catalog.list` (com `refresh`), `catalog.describe` |
 | Projeto | `project.list`, `project.new`, `project.open`, `project.save` (com nome = salvar como), `project.close`, `project.current` |
 | Nós | `node.add`, `node.remove` (com a subárvore), `node.rename`, `node.functions` (DTM e canais), `node.openUi`, `node.closeUi`, `node.connect`, `node.disconnect`, `node.commLog`, `node.unload` |
-| Busca e parâmetros | `node.scan`, `node.parameters`, `node.compare`, `node.upload`, `node.revert`, `node.download` |
+| Busca e parâmetros | `node.scan`, `node.parameters`, `node.setAddress`, `node.compare`, `node.upload`, `node.revert`, `node.download` |
 
 Regras que o Host garante, independentemente da UI:
 - A política `Full`, que permite escrita no instrumento, exige `confirmFull`. Sem ela, a conexão é recusada. Com ela, a confirmação vai para a auditoria.
@@ -219,7 +219,7 @@ No painel do dispositivo, em **Parâmetros**:
 
 | Ação | Interfaces FDT | Regras |
 |---|---|---|
-| **Ver parâmetros** | `IDtmParameter::GetParameters("/FDT")` (DTMParameterSchema), achatado em lista: variáveis `fdt:DtmVariable` e o endereço `BusInformation/SlaveAddress` | Offline; não comunica |
+| **Ver parâmetros** | `IDtmParameter::GetParameters("/FDT")` (DTMParameterSchema), achatado em lista: variáveis `fdt:DtmVariable` e o endereço `BusInformation/SlaveAddress`. **Alterar…** no endereço: `node.setAddress` (`IDtmParameter::SetParameters`), só desconectado — é o endereço que o DTM usa para conectar (a busca já grava o endereço encontrado ao adicionar) | Offline; não comunica |
 | **Comparar com o instrumento** | Projeto = `GetParameters` antes da leitura; instrumento = `IDtmOnlineParameter::UploadRequest("/FDT")` → `IDtmEvents::OnUploadFinished`, e depois `GetParameters`. Também o veredito do próprio DTM, `IDtmOnlineDiagnosis::Compare` (DTMOnlineCompareSchema), quando ele informa | O data set é salvo antes e **restaurado depois** (worker recarregado e reconectado com a mesma política). **Nada muda no projeto nem no instrumento** |
 | **Ler do instrumento** | O mesmo upload, mas os valores lidos **ficam** no DTM | O projeto fica com alterações; **Restaurar o projeto** (`node.revert`) volta ao data set anterior |
 | **Gravar no instrumento** | `IDtmOnlineParameter::DownloadRequest("/FDT")` → `IDtmEvents::OnDownloadFinished` | Exige conexão em **modo completo** (já confirmada ao conectar) **e** nova confirmação do operador. O Host confere as duas coisas e grava na auditoria |

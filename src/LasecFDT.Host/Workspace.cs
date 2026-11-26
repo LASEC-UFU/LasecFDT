@@ -270,7 +270,13 @@ namespace LasecFDT.Host
                 var inst = await _sup.CreateAsync(new CreateDtmParams { Dtm = entry.Clsid, DeviceTypeIndex = a.DeviceTypeIndex, Properties = a.Properties, Lcid = Lcid })
                     .ConfigureAwait(false);
                 PersistedDataSet ds;
-                try { ds = await _sup.SaveAsync(inst).ConfigureAwait(false); }
+                try
+                {
+                    // Instrumento achado pela busca fora do endereço 0 (multidrop): o DTM precisa saber o endereço antes
+                    // de conectar, senão pede ao canal o endereço 0 e "o instrumento não respondeu".
+                    if (a.SlaveAddress is int address && parent != null) await WriteSlaveAddressAsync(inst, entry.Name, address).ConfigureAwait(false);
+                    ds = await _sup.SaveAsync(inst).ConfigureAwait(false);
+                }
                 catch { await _sup.ReleaseAsync(inst).ConfigureAwait(false); throw; }
 
                 var dt = entry.DeviceTypes?.FirstOrDefault(x => x.Index == a.DeviceTypeIndex);
@@ -333,6 +339,47 @@ namespace LasecFDT.Host
                 var dto = Dto(n); _nodeChanged(dto); return dto;
             }
             finally { _gate.Release(); }
+        }
+
+        /// <summary>
+        /// Muda o endereço do instrumento no barramento (HART: endereço de polling) no DTM do instrumento:
+        /// BusInformation/SlaveAddress do DTMParameterSchema, por IDtmParameter::SetParameters. Só desconectado — é o
+        /// endereço que o DTM usa ao conectar. Não fala com o instrumento: para mudar o endereço DENTRO dele use a tela do
+        /// DTM (HART: comando 6) e depois acerte aqui o mesmo número.
+        /// </summary>
+        public async Task<ParameterSetDto> SetAddressAsync(NodeAddressParams a)
+        {
+            await EnterAsync().ConfigureAwait(false);
+            try
+            {
+                RequireWritable();
+                var n = Get(a.Tag);
+                if (n.Link != null || n.State == "online") throw Bad($"Desconecte {n.Model.DisplayName} antes de mudar o endereço no barramento.");
+                await EnsureLoadedAsync(n).ConfigureAwait(false);
+                await WriteSlaveAddressAsync(n.Inst, n.Model.DisplayName, a.Address).ConfigureAwait(false);
+                n.Model.DataSet = await _sup.SaveAsync(n.Inst).ConfigureAwait(false);
+                n.Dirty = true; _dirty = true;
+                _audit.Write("node.setAddress", _projectName + "/" + n.Model.DisplayName, $"endereço no barramento = {a.Address}");
+                Emit("project", a.Tag, "addressChanged", $"{n.Model.DisplayName}: endereço no barramento = {a.Address}");
+                _nodeChanged(Dto(n));
+                return ParameterModel.Parse(a.Tag, await _sup.GetParametersAsync(n.Inst).ConfigureAwait(false));
+            }
+            finally { _gate.Release(); }
+        }
+
+        /// <summary>Grava BusInformation/SlaveAddress no DTM e confere relendo os parâmetros.</summary>
+        private async Task WriteSlaveAddressAsync(DtmInstance inst, string name, int address)
+        {
+            if (address < 0 || address > 63) throw Bad("Endereço fora da faixa 0 a 63.");
+            string xml = await _sup.GetParametersAsync(inst).ConfigureAwait(false);
+            string changed = ParameterModel.WithSlaveAddress(xml, address)
+                ?? throw Bad($"O DTM de {name} não publica o endereço no barramento (BusInformation/SlaveAddress).");
+            if (!await _sup.SetParametersAsync(inst, changed).ConfigureAwait(false))
+                throw Bad($"O DTM de {name} recusou o endereço {address} (IDtmParameter::SetParameters).");
+            var check = ParameterModel.Parse(name, await _sup.GetParametersAsync(inst).ConfigureAwait(false));
+            string now = check.Items.FirstOrDefault(i => i.Name == ParameterModel.SlaveAddressName)?.Value;
+            if (now != address.ToString(System.Globalization.CultureInfo.InvariantCulture))
+                throw Bad($"O DTM de {name} aceitou o pedido mas continua no endereço {now ?? "?"}.");
         }
 
         public async Task<NodeFunctionsDto> FunctionsAsync(string tag)

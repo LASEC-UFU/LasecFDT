@@ -12,6 +12,25 @@ namespace LasecFDT.Host
     /// </summary>
     public static class ParameterModel
     {
+        public const string SlaveAddressName = "Endereço (slaveAddress)";
+
+        /// <summary>
+        /// O mesmo documento de parâmetros com o endereço do barramento trocado (todos os elementos SlaveAddress), para
+        /// IDtmParameter::SetParameters. Null quando o DTM não publica SlaveAddress.
+        /// </summary>
+        public static string WithSlaveAddress(string xml, int address)
+        {
+            if (string.IsNullOrWhiteSpace(xml)) return null;
+            var doc = new XmlDocument();
+            doc.LoadXml(xml);
+            var attrs = doc.GetElementsByTagName("*").OfType<XmlElement>().Where(e => e.LocalName == "SlaveAddress")
+                .Select(e => e.Attributes.OfType<XmlAttribute>().FirstOrDefault(a => a.LocalName == "slaveAddress"))
+                .Where(a => a != null).ToList();
+            if (attrs.Count == 0) return null;
+            foreach (var a in attrs) a.Value = address.ToString(System.Globalization.CultureInfo.InvariantCulture);
+            return doc.OuterXml;
+        }
+
         public static ParameterSetDto Parse(string tag, string xml)
         {
             var r = new ParameterSetDto { Tag = tag, Xml = xml };
@@ -24,7 +43,7 @@ namespace LasecFDT.Host
             var seen = new HashSet<string>(StringComparer.Ordinal);
 
             foreach (var sa in root.GetElementsByTagName("*").OfType<XmlElement>().Where(e => e.LocalName == "SlaveAddress"))
-                Add(r, seen, "Barramento", "Endereço (slaveAddress)", Attr(sa, "slaveAddress"), true);
+                Add(r, seen, "Barramento", SlaveAddressName, Attr(sa, "slaveAddress"), true);
 
             foreach (var v in root.GetElementsByTagName("*").OfType<XmlElement>().Where(e => e.LocalName == "DtmVariable"))
             {

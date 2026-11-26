@@ -97,6 +97,8 @@ class _ScanDialogState extends State<_ScanDialog> {
         deviceTypeIndex: (c['deviceTypeIndex'] as num?)?.toInt() ?? 0,
         parentTag: _tag,
         name: '${r.device['deviceTag']}',
+        // Multidrop: o DTM tem de conectar no endereço em que a busca achou o instrumento.
+        slaveAddress: (r.device['shortAddress'] as num?)?.toInt(),
       )) {
         ok++;
       }

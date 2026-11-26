@@ -105,6 +105,34 @@ namespace LasecFDT.Tests
             }
         }
 
+        /// <summary>
+        /// Endereço no barramento (multidrop) gravado nos DTMs reais da Smar por IDtmParameter::SetParameters
+        /// (BusInformation/SlaveAddress): aceito, relido e mantido no data set ao recarregar em outro worker.
+        /// </summary>
+        [DtmFact("SmarLD301DTM.DTMCore.1")]
+        public async Task Worker_EnderecoNoBarramento_GravadoPorSetParametersNosDtmsSmar()
+        {
+            using (var sup = NewSupervisor())
+            {
+                foreach (var progId in new[] { "SmarLD301DTM.DTMCore.1", "SmarFY301DTM.DTMCore.1", "Smar.TT301DTM.1" })
+                {
+                    CreateDtmParams create = new CreateDtmParams { Dtm = progId };
+                    Supervisor.DtmInstance i;
+                    try { i = await sup.CreateAsync(create); }
+                    catch (LasecFDT.Core.Rpc.RpcException) when (progId != "SmarLD301DTM.DTMCore.1") { continue; } // DTM ausente nesta máquina
+                    string Address(string xml) => LasecFDT.Host.ParameterModel.Parse(progId, xml).Items.Single(x => x.Name == LasecFDT.Host.ParameterModel.SlaveAddressName).Value;
+                    Assert.Equal("0", Address(await sup.GetParametersAsync(i)));
+                    Assert.True(await sup.SetParametersAsync(i, LasecFDT.Host.ParameterModel.WithSlaveAddress(await sup.GetParametersAsync(i), 5)), progId + ": SetParameters recusado");
+                    Assert.Equal("5", Address(await sup.GetParametersAsync(i)));
+                    var ds = await sup.SaveAsync(i);
+                    var j = await sup.LoadAsync(new LoadParams { Dtm = progId, DataSet = ds });
+                    Assert.Equal("5", Address(await sup.GetParametersAsync(j)));
+                    Assert.True(await sup.ReleaseAsync(i));
+                    Assert.True(await sup.ReleaseAsync(j));
+                }
+            }
+        }
+
         [DtmFact("Smar.TT301DTM.1")]
         public async Task Worker_UiDaFamiliaSmarDtm1_AbreRenderizaEFechaPeloProtocolo()
         {

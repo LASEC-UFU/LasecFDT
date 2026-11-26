@@ -319,7 +319,7 @@ class AppState extends ChangeNotifier {
     notifyListeners();
   }
 
-  Future<bool> addNode({required String clsid, int deviceTypeIndex = 0, String? parentTag, String? name}) async {
+  Future<bool> addNode({required String clsid, int deviceTypeIndex = 0, String? parentTag, String? name, int? slaveAddress}) async {
     Json? added;
     final ok = await _run(() async {
       added = Map<String, dynamic>.from(await host.call('node.add', {
@@ -327,6 +327,7 @@ class AppState extends ChangeNotifier {
         'deviceTypeIndex': deviceTypeIndex,
         'parentTag': ?parentTag,
         if (name != null && name.trim().isNotEmpty) 'name': name.trim(),
+        'slaveAddress': ?slaveAddress,
       }) as Map);
       nodes[added!['tag'] as String] = added!;
       selectedTag = added!['tag'] as String;
@@ -466,6 +467,10 @@ class AppState extends ChangeNotifier {
 
   /// Parâmetros atuais do DTM (IDtmParameter::GetParameters).
   Future<Json> parameters(String tag) => _busyCall(tag, 'Lendo parâmetros do DTM…', 'node.parameters', {'tag': tag});
+
+  /// Endereço do instrumento no barramento (HART: polling) que o DTM usa ao conectar. Só com o nó desconectado.
+  Future<Json> setAddress(String tag, int address) =>
+      _busyCall(tag, 'Mudando o endereço no barramento…', 'node.setAddress', {'tag': tag, 'address': address});
 
   /// Compara o projeto com o instrumento; o projeto é restaurado ao final (nada muda).
   Future<Json> compare(String tag) => _busyCall(tag, 'Comparando com o instrumento…', 'node.compare', {'tag': tag});
